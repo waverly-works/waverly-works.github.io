@@ -16,9 +16,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* ======================
-   Unified Navbar Styles
-   ====================== */
+/* Unified Navbar Styles!!! */
 
    .navbar {
     position: fixed;
@@ -64,7 +62,7 @@ nav {
     transition: all 0.3s ease;
     position: relative;
     cursor: pointer;
-    line-height: 1.2; /* ensures no extra height */
+    line-height: 1.2; 
 }
 
 .nav-links a:hover {
@@ -110,7 +108,7 @@ nav {
 }
 
 #section-nav-list a {
-    backdrop-filter: blur(0.8px); /* Adjust the blur intensity as needed */
+    backdrop-filter: blur(0.8px); 
     display: block;
     padding: 10px 14px;
     background-color: #404c8572;
@@ -414,7 +412,7 @@ nav {
 }
 
 
- /* Research Timeline Styles - Updated to match User Journey */
+ /* Research Timeline Styles */
  .research-timeline {
     background: #ffffff00;
     border-radius: 20px;
@@ -1004,3 +1002,4 @@ nav {
         }
     }
 }
+/* why is it 1k lines holyyyyy */
