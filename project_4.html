@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waddle</title>
+    <link rel="stylesheet" href="project_purple.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="section-nav">
+        <ul id="section-nav-list">
+            <li><a href="#hero" data-section="hero">Overview</a></li>
+           <li><a href="#design-preview" data-section="design-preview">Features</a></li>
+             <li><a href="#pain-points" data-section="pain-points">Pain Points</a></li>
+             <!-- <li><a href="#survey-results" data-section="survey-results">Survey Results</a></li>-->
+            <!-- <li><a href="#final-models" data-section="final-models">Final Models</a></li>-->
+            <li><a href="#wireframes" data-section="wireframes">Wireframes</a></li>
+            <li><a href="#user-feedback" data-section="user-feedback">User Feedback</a></li>
+             <!-- <li><a href="#key-learnings" data-section="key-learnings">Key Learnings</a></li>-->
+        </ul>
+    </nav>
+
+    <div class="navbar">
+        <nav>
+          <a class="nav-button logo-btn" href="index.html">Waverly Huang</a>
+          <ul class="nav-links">
+            <li><a class="nav-button" href="index.html">Home</a></li>
+            <li><a class="nav-button" href="play.html">Play</a></li>
+            <li><a class="nav-button" href="about.html">About</a></li>
+            <li><a href="https://drive.google.com/file/d/1i9IUmrpgASbjVLabsSamCdezzKpntfi7/view?usp=sharing" target="_blank">Resume</a></li>
+            </ul>
+        </nav>
+      </div>
+
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section" id="hero"> 
+            <h1 class="project-title">Waddle 🐧</h1>
+            <p class="project-subtitle">An app which connects students with their peers via easy access to on/off campus community events, and the ability to create events themselves.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <h4>Role</h4>
+                    <p>UIUX Design</p> 
+                    <p>& Research</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Timeline</h4>
+                    <p>48 Hours</p>
+                    <p>(Hack-a-Thon)</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Team</h4>
+                    <p>Catherine Huang</p> 
+                    <p>Waverly Huang</p>
+                    <p>Elaine Zhang</p>
+                    <p>Jenny Zhuang</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Tools</h4>
+                    <p>Figma</p>
+                    <p>Adobe Suite</p>
+                </div>
+            </div>
+
+            <div class="project-labels">
+                <span class="label">Community</span>
+                <span class="label">Teamwork</span>
+                <span class="label">User Surveys</span>
+                <span class="label">UIUX</span>
+                <span class="label">Design Sprint</span>
+                <span class="label">Ideation</span>
+            </div>
+
+            <div class="project-photos">
+                <img src="images/waddle_project/waddle_1.png" alt="Images of my app with five keyframes." class="photo">
+               
+            </div>
+            
+        </div>
+
+        <!-- Project Overview Section -->
+        <section class="section" id="overview">
+            <div class="goal-item">
+                <div class="goal-label">THE CHALLENGE:</div>
+                <div class="goal-value">📌 Create something innovative which solves a problem for students.</div>
+            </div>
+                    <div class="spacing-1"></div> 
+            <div class="overview-grid">
+                <div class="overview-content">
+                    <h3>Loneliness is a huge issue students face: how can we create something that connects them?</h3>
+                </div>
+                <div class="overview-content">
+                    <h3>What sort of features connect students who live on and off campus, as well as students not in specific clubs?</h3>
+                </div>
+            </div>
+        </section>
+
+    <!-- User Journey Section -->
+    <section class="section" id="design-preview">
+          <!--<div class="section-header">
+            <h2 class="section-title">User Journey</h2>
+            <p class="section-description">A step-by-step walkthrough of how the digital-physical products work</p>
+        </div> -->
+        <div class="section-header">
+                <h2 class="section-title">Feature Overview</h2>
+        </div>
+
+        <div class="user-journey">
+            <div class="journey-step">
+                <div class="step-visual">
+                    <div class="video-placeholder">
+                        <video 
+                            controls="controls" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            class="step-video"
+                            name="Video Name"
+                            <source src="videos/waddle_project/Find_Events.mov" type="video/quicktime">
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="journey-content">
+                    <h3 class="step-title">Hosting Events</h3>
+                    <!-- <p class="step-description">This map will show multiple ways to get to one location, the elevators and stairs in buildings, as well as label every relevant RISD building by what students know them as.</p> -->
+                    <div class="detail-item">
+                        <div class="detail-label">Beginner Friendly</div>
+                        <div class="detail-value">Friendly, fun UI to encourage students to sign up</div>
+                    </div>
+                                <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">Easy Access</div>
+                        <div class="detail-value">Students can create any event they want!</div>
+                    </div>
+                                <div class="spacing-3"></div>
+                     <div class="detail-item">
+                            <div class="detail-label">Find Events</div>
+                            <div class="detail-value">Students can make events as an individual to find likeminded peers</div>
+                    </div>
+                                <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">Group Hosting</div>
+                        <div class="detail-value">Students can make events as a group with other students to form their own unofficial club</div>
+                    </div>
+                   
+                </div>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-visual">
+                    <div class="video-placeholder">
+                        <video 
+                            controls="controls" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            class="step-video"
+                            name="Video Name"
+                            <source src="videos/waddle_project/Profile_Page.mov" type="video/quicktime">
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="journey-content">
+                    <h3 class="step-title">Profile Page</h3>
+                    <!-- <p class="step-description">This map will show multiple ways to get to one location, the elevators and stairs in buildings, as well as label every relevant RISD building by what students know them as.</p> -->
+                    <div class="detail-item">
+                        <div class="detail-label">Gamifiying Feature</div>
+                        <div class="detail-value">
+                            <p>To motivate students to create and attend events, they can earn badges or achievements for:</p>
+                            <p>💜 <i>Hosting or attending events</i></p>
+                            <p>💜 <i>Leaving reviews</i></p>
+                            <p>💜 <i>Joining new groups/clubs</i></p>
+                        </div>
+                    </div>
+                                <div class="spacing-3"></div>
+                     <div class="detail-item">
+                            <div class="detail-label">Event Archives</div>
+                            <div class="detail-value">Easy to see what events you've attended or hosted</div>
+                    </div>
+                                <div class="spacing-3"></div>
+                </div>
+            </div>
+
+            <div class="journey-step">
+                <div class="step-visual">
+                    <div class="video-placeholder">
+                        <video 
+                            controls="controls" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            class="step-video"
+                            name="Video Name"
+                            <source src="videos/waddle_project/Hosted_Events.mov" type="video/quicktime">
+                        </video>
+                    </div>
+                </div>
+        
+                <div class="journey-content">
+                    <h3 class="step-title">Find Events</h3>
+                        <div class="detail-item">
+                            <div class="detail-label">Consolidated Information</div>
+                            <div class="detail-value">All active events are in one place, students no longer have to check multiple platforms</div>
+                        </div>
+                                <div class="spacing-3"></div>
+                        <div class="detail-item">
+                            <div class="detail-label">Easy Search</div>
+                            <div class="detail-value">Students can sort events via tags at the top, streamlining the search experience</div>
+                        </div>
+                </div>
+            </div>
+            
+        
+            <div class="journey-step">
+                <div class="step-visual">
+                    <div class="video-placeholder">
+                        <video 
+                            controls="controls" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            class="step-video"
+                            name="Video Name"
+                            <source src="videos/waddle_project/Event_Details.mov" type="video/quicktime">
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="journey-content">
+                    <h3 class="step-title">Event Details</h3>
+                            <div class="detail-item">
+                                <div class="detail-label">Firsthand Reviews</div>
+                                <div class="detail-value">Students can see reviews of events and hosts from their peers (less intimidation!)</div>
+                            </div>
+                                    <div class="spacing-3"></div>
+                            <div class="detail-item">
+                                <div class="detail-label">Video & Picture Gallery</div>
+                                <div class="detail-value">Viewing not only pictures, but also videos, of events will let students see what they're really like</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+
+         <!-- Research & Takeaways Section -->
+         <section class="section" id="pain-points">
+            <div class="section-header">
+                <h2 class="section-title">Pain Points & Data</h2>
+            </div>
+            
+            <div class="research-timeline">
+                <div class="research-step">
+                    <div class="research-content">
+                        <h3 class="research-title">Survey Data Highlights & Answers</h3>
+                        <h4 class="research-subtitle">93 Total Answers</h4>
+                        <div class="step-details">
+                            <div class="detail-item">
+                                <div class="detail-label">🧐 (89.3%) Experience Off-Campus Disconnect</div>
+                                <div class="detail-value">Only 10.7% of students felt that they knew about off-campus events in their surrounding community</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">📚 (63%) Aren't Maximizing Campus Resources</div>
+                                <div class="detail-value">63% of students feel like they aren't getting the most out of campus resources because they lack in specific areas</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">👤 Student, 19</div>
+                                <div class="detail-value">“I have no time to go these events, and I’m 
+                                    not super interested. They don’t give me enough information to attend.”</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">👤 Student, 19</div>
+                                <div class="detail-value">“I feel like I get overwhelmed, I don’t know what I’m looking for. I wish it was easier for students to be directly involved.”</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">👤 Student, 20</div>
+                                <div class="detail-value">“I wish I knew about events in general, I usually don’t even know when/where they’re happening. I just run into them.”</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">👤 Student, 19</div>
+                                <div class="detail-value">“I get intimidated by bigger events. If there were smaller ones hosted by students, I would be comfortable attending more.”
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                
+                <div class="research-step">
+                    <div class="research-content">
+                        <h3 class="research-title">Problems & Solutions</h3>
+                        <div class="step-details">
+                            <div class="pain-item">
+                                <div class="detail-label">😵‍💫 CONFUSION & INTIMIDATION</div>
+                                <div class="detail-value">
+                                    <p>❌ Students are intimidated by larger or confusing events</p>
+                                    <p>❌ There isn't enough information about events or the hosts</p>
+                                    <p>❌ Students don't know about events at all</p></div>
+                            </div> 
+                            <div class="solution-item">
+                                <div class="detail-label">GALLERY & EVENT FEATURES</div>
+                                <div class="detail-value"><p>✅ The Waddle 'Gallery' feature offers both videos and pictures of the event, giving a more intimate look</p>
+                                    <p>✅ 'Event Details & Reviews' lets students see their peers' firsthand experiences of the event and host</p></div>
+                            </div>
+                            <div class="pain-item">
+                                <div class="detail-label">⛓️‍💥 LACK OF CONNECTION</div>
+                                <div class="detail-value">
+                                    <p>❌ Students don't know how to be more involved on/off campus</p>
+                                    <p>❌ Students are unsure of how to create community events</p>
+                                </div>
+                            </div>
+                            <div class="solution-item">
+                                <div class="detail-label">HOSTED EVENTS FEATURE</div>
+                                <div class="detail-value">✅ 'Hosted Events' allows students to create any event they want, this ensures students can be directly involved.</b></div>
+                            </div>
+                            <div class="pain-item">
+                                <div class="detail-label">😰 LACK OF MOTIVATION</div>
+                                <div class="detail-value">
+                                    <p>❌ Students aren't motivated to attend or create events</p>
+                                    <p>❌ No incentive because of the lack of information or access</p>
+                                    </div>
+                            </div>
+                            <div class="solution-item">
+                                <div class="detail-label">'MEMORIES' FEATURE = GAMIFY</div>
+                                <div class="detail-value">✅ 'Memories' motivates students to leave reviews because you can level-up in the app by creating more memories through attending or hosting events</div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+
+    
+
+ <!-- Product Model Making Section -->
+ <section class="section" id="wireframes">
+    <div class="section-header">
+        <h2 class="section-title">Wireframes & Process</h2>
+        <!--<p class="section-description">Each step of making the physical product</p>-->
+    </div>
+    <div class="detail-item">
+        <div class="detail-label">Final Wireframes</div>
+    </div>
+    <div class="project-photos">
+        <img src="images/waddle_project/waddle_wf.png" alt="Images of my app with five keyframes." class="photo">
+   
+            <div class="spacing-1"> </div>
+
+     <div class="detail-item">
+        <div class="detail-label">Low Fidelity Wireframes</div>
+    </div>
+    <div class="project-photos">
+        <img src="images/waddle_project/waddle_wf2.png" alt="Images of my app with five keyframes." class="photo">
+   
+            <div class="spacing-1"> </div>
+   
+    <div class="detail-item">
+      <div class="detail-label">Ideation & User Flow</div>
+    </div>
+    <div class="spacing-2"> </div>
+        <img src="images/waddle_project/waddle_id.png" alt="Images of my app with five keyframes." class="photo">
+            <div class="spacing-3"> </div>
+        <img src="images/waddle_project/waddle_tf.png" alt="Images of my app with five keyframes." class="photo">
+    </div>
+</section>
+
+
+        <!-- User Feedback Section -->
+<section class="section" id="user-feedback">
+            <div class="section-header">
+                <h2 class="section-title">Feedback</h2>
+                <p class="section-description">Insights from fellow classmates we reached out to</p>
+            </div>
+            
+            <div class="feedback-cards">
+                <div class="feedback-card">
+                    <p class="quote">"I really like the UI and branding, fun colors and cute penguin. [...] I would totally use this app to get more visibility on fun things I want to do with other students. That's why the group option is cool."</p>
+                    <p class="author">— Classmate F</p>
+                </div>
+                <div class="feedback-card">
+                    <p class="quote">"I think your app successfully achieves what you wanted it to. It's different from existing invite or party apps because it's focused on connecting students, and make it easier to find friends."</p>
+                    <p class="author">— Classmate G</p>
+                </div>
+            </div>
+            <div class="overview-content">
+                <h3>What I Learned</h3>
+                <p>This project really highlighted how existing school event apps, or non-school event apps, are missing key features and values from both.</p>
+                <p>I hope to be able to connect with my peers more, and try to promote events on both RISD and Brown University campus, so more students from both campuses can come together. We don't really do that despite being a walk away from each other.</p>
+            </div>
+        </section>
+
+        <!-- Results Section 
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Results & Impact</h2>
+                <p class="section-description">Measurable improvements in user experience and business metrics</p>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">42%</div>
+                    <div class="result-label">Reduction in Cart Abandonment</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">65%</div>
+                    <div class="result-label">Increase in Conversion Rate</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">38%</div>
+                    <div class="result-label">Faster Checkout Process</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">4.8/5</div>
+                    <div class="result-label">User Satisfaction Score</div>
+                </div>
+            </div>
+        </section> -->
+
+       
+    <section id="resume" class="section">
+       <!-- <h2>Thanks for Stopping By!</h2>-->
+        <div style="text-align: center;">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 550px; margin-left: auto; margin-right: auto;">
+                Want to know more or get in contact? Click a button below!
+            </p>
+            <a href="https://drive.google.com/file/d/1i9IUmrpgASbjVLabsSamCdezzKpntfi7/view?usp=sharing" target="_blank" class="cta-button">
+                Resume 📝
+            </a>
+            <a href="https://www.linkedin.com/in/waverly-huang-66930622a/" target="_blank" class="cta-button">
+                LinkedIn 🤝
+            </a>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
