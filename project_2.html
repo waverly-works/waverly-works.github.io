@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navi</title>
+    <link rel="stylesheet" href="project_1.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="section-nav">
+        <ul id="section-nav-list">
+            <li><a href="#hero" data-section="hero">Overview</a></li>
+           <li><a href="#design-preview" data-section="design-preview">Features</a></li>
+             <li><a href="#pain-points" data-section="pain-points">Pain Points</a></li>
+             <!-- <li><a href="#survey-results" data-section="survey-results">Survey Results</a></li>-->
+            <li><a href="#initial-models" data-section="initial-models">Chatbot</a></li>
+            <!-- <li><a href="#final-models" data-section="final-models">Final Models</a></li>-->
+            <li><a href="#wireframes" data-section="wireframes">Wireframes</a></li>
+            <li><a href="#feedback" data-section="feedback">Feedback</a></li>
+             <!-- <li><a href="#key-learnings" data-section="key-learnings">Key Learnings</a></li>-->
+        </ul>
+    </nav>
+
+    <div class="navbar">
+        <nav>
+          <a class="nav-button logo-btn" href="index.html">Waverly Huang</a>
+          <ul class="nav-links">
+            <li><a class="nav-button" href="index.html">Home</a></li>
+            <li><a class="nav-button" href="play.html">Play</a></li>
+            <li><a class="nav-button" href="about.html">About</a></li>
+            <li><a href="https://drive.google.com/file/d/1i9IUmrpgASbjVLabsSamCdezzKpntfi7/view?usp=sharing" target="_blank">Resume</a></li>
+        </ul>
+        </nav>
+      </div>
+
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section" id="hero"> 
+            <h1 class="project-title">Navi</h1>
+            <p class="project-subtitle">An award-winning app that consolidates wayfinding resources for the RISD community.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <h4>Role</h4>
+                    <p>UIUX Design</p> 
+                    <p>& Research</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Timeline</h4>
+                    <p>6 Hours</p>
+                    <p>(RISD Make-a-Thon)</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Team</h4>
+                    <p>Celine Huang</p>
+                    <p>Waverly Huang</p>
+                    <p>Hyunmin Kim</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Tools</h4>
+                    <p>Figma</p>
+                    <p>Adobe Suite</p>
+                    <p>ChatGPT Bot</p>
+                </div>
+            </div>
+
+            <div class="project-labels">
+                <span class="label">AI Integration</span>
+                <span class="label">User Research</span>
+                <span class="label">User Testing</span>
+                <span class="label">UIUX</span>
+                <span class="label">Design Sprint</span>
+            </div>
+
+            <div class="project-photos">
+                <img src="images/navi_project/navi_1.png" alt="Images of my app with five keyframes." class="photo">
+               
+            </div>
+            
+        </div>
+
+        <!-- Project Overview Section -->
+        <section class="section" id="overview">
+            <div class="goal-item">
+                <div class="goal-label">THE CHALLENGE:</div>
+                <div class="goal-value">📌 Create a solution for specific challenges students face on RISD campus.</div>
+            </div>
+                    <div class="spacing-1"></div> 
+            <div class="overview-grid">
+                <div class="overview-content">
+                    <h3>How can we create something that will help people navigate campus?</h3>
+                </div>
+                <div class="overview-content">
+                    <h3>What features consolidate information from campus websites and apps?</h3>
+                </div>
+            </div>
+        </section>
+
+    <!-- User Journey Section -->
+    <section class="section" id="design-preview">
+          <!--<div class="section-header">
+            <h2 class="section-title">User Journey</h2>
+            <p class="section-description">A step-by-step walkthrough of how the digital-physical products work</p>
+        </div> -->
+        <div class="section-header">
+                <h2 class="section-title">Feature Overview</h2>
+        </div>
+
+        <div class="user-journey">
+            <div class="journey-step">
+                <div class="step-visual">
+                    <div class="video-placeholder">
+                        <video 
+                            controls="controls" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            class="step-video"
+                            name="Video Name"
+                            <source src="videos/navi_project/InitialFeature.mov" type="video/quicktime">
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="journey-content">
+                    <h3 class="step-title">Initial Features</h3>
+                    <!-- <p class="step-description">This map will show multiple ways to get to one location, the elevators and stairs in buildings, as well as label every relevant RISD building by what students know them as.</p> -->
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Multiple Paths</div>
+                        <div class="detail-value">Generates multiple paths with different accessibility levels</div>
+                    </div>
+                            <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">RISD Ride Access</div>
+                        <div class="detail-value">Easy resource for RISD Ride and other transport methods</div>
+                    </div>
+                            <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">Elevators & Stairs</div>
+                        <div class="detail-value">These will both be labeled on the map</div>
+                    </div>
+                            <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">Familiar Labels</div>
+                        <div class="detail-value">RISD Buildings are familiarly labeled</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-visual">
+                    <div class="video-placeholder">
+                        <video 
+                            controls="controls" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            class="step-video"
+                            name="Video Name"
+                            <source src="videos/navi_project/AccessibilityFeatures.mov" type="video/quicktime">
+                        </video>
+                    </div> 
+                </div>
+        
+                <div class="journey-content">
+                    <h3 class="step-title">Accessibility Features</h3>
+                    <div class="detail-item">
+                        <div class="detail-label">Elevator Path</div>
+                        <div class="detail-value">The app will calculate waiting time for elevators</div>
+                    </div>
+                            <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">RISD Ride Button</div>
+                        <div class="detail-value">Clicking on this button opens the RISD transport resource page, telling students know to call a ride</div>
+                    </div>
+                            <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">Question Mark</div>
+                        <div class="detail-value">Clicking on the question mark button opens any pathway tips/notes the app might have</div>
+                    </div>
+                            <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">Path Prioritization</div>
+                        <div class="detail-value">The map will prioritize more accessible routes, so favoring elevator routes over stairway ones</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-visual">
+                    <div class="video-placeholder">
+                        <video 
+                            controls="controls" 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                            class="step-video"
+                            name="Video Name"
+                            <source src="videos/navi_project/NaviChatBot.mov" type="video/quicktime">
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="journey-content">
+                    <h3 class="step-title">Navi Chatbot</h3>
+                  
+                    <div class="detail-item">
+                        <div class="detail-label">Reliable Information</div>
+                        <div class="detail-value">Navi chatbot is trained on a living document whose information is sourced by official university websites and staff, faculty, and students</div>
+                    </div>
+                    <div class="spacing-3"></div>
+                    <div class="detail-item">
+                        <div class="detail-label">Easy Access</div>
+                        <div class="detail-value">Navi chatbot will be available 24/7, able to answer questions at any time. It also gives answer prompts, in case students don't know what to ask</div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+         <!-- Research & Takeaways Section -->
+         <section class="section" id="pain-points">
+            <div class="section-header">
+                <h2 class="section-title">Pain Points & Inspiration</h2>
+            </div>
+            
+            <div class="research-timeline">
+                <div class="project-photos">
+                    <img src="images/navi_project/navi_2.png" alt="Images of my app with five keyframes." class="photo">
+                </div>
+                    <div class="spacing-3"> </div>
+                <div class="project-photos">
+                    <img src="images/navi_project/navi_3.png" alt="Images of my app with five keyframes." class="photo">
+                </div>
+                
+                <div class="research-step">
+                    <div class="research-content">
+                        <h3 class="research-title">Problems & Solutions</h3>
+                        <div class="step-details">
+                            <div class="pain-item">
+                                <div class="detail-label">😵‍💫 TOO MANY RESOURCES</div>
+                                <div class="detail-value">There are <b>three</b> different websites that show up for one search of RISD 'DSS,' as well as a RISD app</div>
+                            </div> 
+                            <div class="solution-item">
+                                <div class="detail-label">SOLUTION #1</div>
+                                <div class="detail-value">Navi gives answers sourced from every possible RISD website and app, as well as the relevant link(s) to sources</div>
+                            </div>
+                            <div class="pain-item">
+                                <div class="detail-label">🪜 LACK OF ACCESSIBILITY</div>
+                                <div class="detail-value">Many students are <b>unaware of the elevator shortcut</b> inside College Building, which could help them get up the hill</div>
+                            </div>
+                            <div class="solution-item">
+                                <div class="detail-label">SOLUTION #2</div>
+                                <div class="detail-value">Navi app displays where the elevator and stairs are within buildings, and <b>gives path calculations for both</b></div>
+                            </div>
+                            <div class="pain-item">
+                                <div class="detail-label">🧭 WAYFINDING CONFUSIONS</div>
+                                <div class="detail-value">Apple Maps doesn't recognize 'College Building' and places that may be locally called something else are hard to search</div>
+                            </div>
+                            <div class="solution-item">
+                                <div class="detail-label">SOLUTION #3</div>
+                                <div class="detail-value">The app and Navi chatbot will label things by the names students and other people on staff know them as</div>
+                            </div>
+                            <div class="pain-item">
+                                <div class="detail-label">📱 IDEAL FORMS</div>
+                                <div class="detail-value">What if a student didn't know to download the RISD Navi app?</div>
+                            </div>
+                            <div class="solution-item">
+                                <div class="detail-label">SOLUTION #4</div>
+                                <div class="detail-value">Ideally, there would be iPad kiosks at highly-populated areas of campus with Navi installed</div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+
+    
+        <!-- Sketch Photo Section -->
+        <section class="section" id="initial-models">
+            <div class="section-header">
+                <h2 class="section-title">ChatGPT Simulation</h2>
+                <p class="section-description"> Creating a ChatGPT chatbot to simulate the RISD Navi chatbot</p>
+            </div>
+                    <div class="journey-step">
+                        <div class="step-visual">
+                            <div class="video-placeholder">
+                                <video 
+                                    controls="controls" 
+                                    autoplay 
+                                    loop 
+                                    muted 
+                                    playsinline
+                                    class="step-video"
+                                    name="Video Name"
+                                    <source src="videos/navi_project/ChatGPT_Navi.mov" type="video/quicktime">
+                                </video>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-content">
+                            <h3 class="step-title">Navi Chatbot</h3>
+                          
+                            
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">Reliable Information</div>
+                                    <div class="detail-value">This chatbot was <b>trained on a PDF document with information</b> sourced from official sites and my team's tips</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Constant Availablity</div>
+                                    <div class="detail-value">Students might not know who to ask questions to, or they need to wait for answers via email. The chatbot is always available!</div>
+                                </div>
+                            </div>
+                            <div class="detail-item-side">
+                                <div class="detail-label">Want to try it yourself?</div>
+                                <div class="detail-value"> <a href="https://chatgpt.com/g/g-yrnMPR0p1-risd-navi" target="_blank">Try the RISD Navi Chatbot!</a></div>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+
+
+ <!-- Product Model Making Section -->
+ <section class="section" id="wireframes">
+    <div class="section-header">
+        <h2 class="section-title">Wireframes & Process</h2>
+        <!--<p class="section-description">Each step of making the physical product</p>-->
+    </div>
+    <div class="detail-item">
+        <div class="detail-label">Final Wireframes</div>
+    </div>
+    <div class="project-photos">
+        <img src="images/navi_project/navi_5_wf.png" alt="Images of my app with five keyframes." class="photo">
+   
+            <div class="spacing-1"> </div>
+
+    
+   
+    <div class="detail-item">
+      <div class="detail-label">Initial Thoughts & Scribbles</div>
+    </div>
+    <div class="spacing-2"> </div>
+        <img src="images/navi_project/navi_7.png" alt="Images of my app with five keyframes." class="photo">
+            <div class="spacing-3"> </div>
+        <img src="images/navi_project/navi_6.png" alt="Images of my app with five keyframes." class="photo">
+    </div>
+</section>
+
+
+        <!-- Feedback Section -->
+<section class="section" id="feedback">
+            <div class="section-header">
+                <h2 class="section-title">Feedback</h2>
+                <p class="section-description">Insights from the judge panel and fellow classmates</p>
+            </div>
+            
+            <div class="feedback-cards">
+                <div class="feedback-card">
+                    <p class="quote">"It's awesome how the map includes the feature where you can see stairs and elevator pathways. That really would help me figure out how to get to class, or when to leave for class."</p>
+                    <p class="author">— Classmate S</p>
+                </div>
+                <div class="feedback-card">
+                    <p class="quote">"Your project was strong and stood out because of the inspiration and reasoning. This would be a great resource for everyone on campus, I wish it existed."</p>
+                    <p class="author">— Scott Noh | Make-a-Thon Judge & Industrial Design Professor</p>
+                </div>
+                <div class="feedback-card">
+                    <p class="quote">"The way you created scenarios and pain points was super successful. It really helped put the product into context, and I think we'd all use it!"</p>
+                    <p class="author">— Classmate C</p>
+                </div>
+            </div>
+            <div class="overview-content">
+                <h3>What I Learned</h3>
+                <p>This project reinforced the importance of user-centered design. I believe we placed in the top 3 for the Make-a-Thon because of how strong of an impact our product could have. I find myself wishing it existed every day!</p>
+                <p>Also, I wouldn't have been able to do this without my lovely teammates and friends, Celine and Hyunmin. Shoutout to them for being great and keeping up fun energy. We munched the time crunch! 💌</p>
+          
+            </div>
+        </section>
+
+        <!-- Results Section 
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Results & Impact</h2>
+                <p class="section-description">Measurable improvements in user experience and business metrics</p>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">42%</div>
+                    <div class="result-label">Reduction in Cart Abandonment</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">65%</div>
+                    <div class="result-label">Increase in Conversion Rate</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">38%</div>
+                    <div class="result-label">Faster Checkout Process</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">4.8/5</div>
+                    <div class="result-label">User Satisfaction Score</div>
+                </div>
+            </div>
+        </section> -->
+
+       
+    <section id="resume" class="section">
+       <!-- <h2>Thanks for Stopping By!</h2>-->
+        <div style="text-align: center;">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 550px; margin-left: auto; margin-right: auto;">
+                Want to know more or get in contact? Click a button below!
+            </p>
+            <a href="https://drive.google.com/file/d/1i9IUmrpgASbjVLabsSamCdezzKpntfi7/view?usp=sharing" target="_blank" class="cta-button">
+                Resume 📝
+            </a>
+            <a href="https://www.linkedin.com/in/waverly-huang-66930622a/" target="_blank" class="cta-button">
+                LinkedIn 🤝
+            </a>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
