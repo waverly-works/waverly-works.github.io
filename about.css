@@ -14,7 +14,7 @@ body {
     margin: 0;
     padding: 0;
 }
-
+ 
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -182,7 +182,7 @@ a:active {
     gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 120px; /* Add top padding to account for removed hero section */
+    padding-top: 100px; 
 }
 
 .text-content {
