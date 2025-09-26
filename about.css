@@ -21,24 +21,20 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* ======================
-   Unified Navbar Styles
-   ====================== */
-
-   .navbar {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: #1a19199a;
     backdrop-filter: blur(5px);
     z-index: 100;
     transition: all 0.3s ease;
     border-bottom: none;
     box-sizing: border-box;
-    line-height: 1rem; /* keeps consistent height */
+    line-height: normal;
 }
 
 nav {
@@ -48,12 +44,21 @@ nav {
     width: 100%;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+/* UNIFIED STYLING - applies to both logo and nav links */
+.logo, .nav-links a {
+    color: white !important;
     text-decoration: none;
-    color: rgb(142, 208, 255); /* use same accent color */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
     cursor: pointer;
+    line-height: 1.2;
+}
+
+/* Make logo slightly larger but keep same color */
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .nav-links {
@@ -62,62 +67,36 @@ nav {
     gap: 2rem;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500; /* consistent text thickness */
-    transition: all 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    line-height: 1.2; /* ensures no extra height */
-}
-
-.nav-links a:hover {
+/* UNIFIED HOVER EFFECTS */
+.logo:hover, .nav-links a:hover {
     transform: translateY(-2px);
+    color: rgb(161, 164, 166) !important;
 }
 
-/* underline animation */
-.nav-links a::after {
+/* UNIFIED UNDERLINE ANIMATION */
+.logo::after, .nav-links a::after {
     content: '';
     position: absolute;
     bottom: -5px;
     left: 0;
     width: 0;
     height: 2px;
-    background: rgb(229, 231, 236);
+    background: white;
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.logo:hover::after, .nav-links a:hover::after {
     width: 100%;
 }
 
-a:link { 
-    color: rgb(227, 237, 243); 
+/* Override the global link state styles for nav items only */
+.logo:link, .logo:visited, .logo:active,
+.nav-links a:link, .nav-links a:visited, .nav-links a:active {
+    color: white !important;
 }
 
-a:visited { 
-    color: rgb(197, 210, 216); 
-}
-
-a:hover { 
-    color: rgb(161, 164, 166); 
-}
-
-a:active { 
-    color: rgb(181, 204, 219); 
-}
-
-.about-link:hover {
-    color: #95d4ee;
-    text-decoration: underline;
-    transform: translateY(-1px);
-}
-
-.about-link {
-    color: rgb(230, 253, 255);
-    text-decoration-thickness: 5px;
-    text-decoration: underline;
+.logo:hover, .nav-links a:hover {
+    color: rgb(161, 164, 166) !important;
 }
 
 
