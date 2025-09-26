@@ -22,25 +22,20 @@ body {
     100% { background-position: 0% 50%; }
 }
 
- 
-/* ======================
-   Unified Navbar Styles
-   ====================== */
-
-   .navbar {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: #1a19199a;
     backdrop-filter: blur(5px);
     z-index: 100;
     transition: all 0.3s ease;
     border-bottom: none;
     box-sizing: border-box;
-    line-height: 1rem; /* keeps consistent height */
+    line-height: normal;
 }
 
 nav {
@@ -50,12 +45,21 @@ nav {
     width: 100%;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+/* UNIFIED STYLING - applies to both logo and nav links */
+.logo, .nav-links a {
+    color: white !important;
     text-decoration: none;
-    color: rgb(142, 208, 255); /* use same accent color */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
     cursor: pointer;
+    line-height: 1.2;
+}
+
+/* Make logo slightly larger but keep same color */
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .nav-links {
@@ -64,22 +68,14 @@ nav {
     gap: 2rem;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500; /* consistent text thickness */
-    transition: all 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    line-height: 1.2; /* ensures no extra height */
-}
-
-.nav-links a:hover {
+/* UNIFIED HOVER EFFECTS */
+.logo:hover, .nav-links a:hover {
     transform: translateY(-2px);
+    color: rgb(161, 164, 166) !important;
 }
 
-/* underline animation */
-.nav-links a::after {
+/* UNIFIED UNDERLINE ANIMATION */
+.logo::after, .nav-links a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -90,41 +86,20 @@ nav {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.logo:hover::after, .nav-links a:hover::after {
     width: 100%;
 }
 
-/* unvisited link */
-a:link {
-    color: rgb(227, 237, 243);
-  }
-  
-  /* visited link */
-  a:visited {
-    color: rgb(225, 234, 239);
-  }
-  /* mouse over link */
-  a:hover {
-    color: rgb(161, 164, 166);
-  }
-  
-  /* selected link */
-  a:active {
-    color: rgb(181, 204, 219);
-  }
-
-.about-link:hover {
-    color: #95d4ee; /* Slightly different color on hover */
-    text-decoration: underline;
-    transform: translateY(-1px);
+/* Override the global link state styles for nav items only */
+.logo:link, .logo:visited, .logo:active,
+.nav-links a:link, .nav-links a:visited, .nav-links a:active {
+    color: white !important;
 }
 
-.about-link {
-    color: rgb(230, 253, 255);
-    text-decoration-thickness: 5px;
-    text-decoration: underline;
-
+.logo:hover, .nav-links a:hover {
+    color: rgb(161, 164, 166) !important;
 }
+
 
 video {
     width: 100%;
@@ -624,100 +599,6 @@ nav {
     box-sizing: border-box;
 }
 
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    position: relative;
-    cursor: pointer;
-}
-
-.nav-links a:hover {
-    transform: translateY(-2px);
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.section-nav {
-    position: fixed; 
-    width: 200px;
-    right: 0;
-    padding-left: 2rem;
-    top: 40%;
-    z-index: 1000;
-}
-
-#section-nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-#section-nav-list li {
-    margin: 0;
-}
-
-#section-nav-list a {
-    backdrop-filter: blur(0.8px); /* Adjust the blur intensity as needed */
-    display: block;
-    padding: 10px 14px;
-    background-color: #404c8572;
-    color: #f3fafa;
-    text-decoration: none;
-    border: 1px solid #e8fefe94;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-    min-width: 110px;
-    transition: all 0.3s ease;
-}
-
-#section-nav-list a:hover {
-    background-color: #356eaa52;
-    border-color: #bed9f6;
-    color: #b2d4f9;
-    transform: translateX(5px);
-}
-
-#section-nav-list a:active,
-#section-nav-list a.active {
-    background-color: #3b73af87;
-    color: white;
-    border-color: #c1d5e9;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
