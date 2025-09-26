@@ -15,9 +15,7 @@ body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-/* Unified Navbar Styles!!! */
-
-   .navbar {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -30,8 +28,9 @@ body {
     transition: all 0.3s ease;
     border-bottom: none;
     box-sizing: border-box;
-    line-height: normal; /* keeps consistent height */
+    line-height: normal;
 }
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -39,12 +38,21 @@ nav {
     width: 100%;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+/* UNIFIED STYLING - applies to both logo and nav links */
+.logo, .nav-links a {
+    color: white !important;
     text-decoration: none;
-    color: rgb(142, 208, 255); /* use same accent color */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
     cursor: pointer;
+    line-height: 1.2;
+}
+
+/* Make logo slightly larger but keep same color */
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .nav-links {
@@ -53,22 +61,14 @@ nav {
     gap: 2rem;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500; /* consistent text thickness */
-    transition: all 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    line-height: 1.2; 
-}
-
-.nav-links a:hover {
+/* UNIFIED HOVER EFFECTS */
+.logo:hover, .nav-links a:hover {
     transform: translateY(-2px);
+    color: rgb(161, 164, 166) !important;
 }
 
-/* underline animation */
-.nav-links a::after {
+/* UNIFIED UNDERLINE ANIMATION */
+.logo::after, .nav-links a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -79,8 +79,18 @@ nav {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.logo:hover::after, .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Override the global link state styles for nav items only */
+.logo:link, .logo:visited, .logo:active,
+.nav-links a:link, .nav-links a:visited, .nav-links a:active {
+    color: white !important;
+}
+
+.logo:hover, .nav-links a:hover {
+    color: rgb(161, 164, 166) !important;
 }
 
 .section-nav {
