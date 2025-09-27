@@ -47,6 +47,21 @@ nav {
     width: 100%;
 }
 
+/* Global link reset - applies to content links only (not nav) */
+a:not(.logo):not(.nav-links a) {
+    color: rgb(213, 221, 234) !important;
+    text-decoration: underline !important;
+}
+
+a:not(.logo):not(.nav-links a):link, 
+a:not(.logo):not(.nav-links a):visited, 
+a:not(.logo):not(.nav-links a):hover, 
+a:not(.logo):not(.nav-links a):active {
+    color: rgb(183, 204, 216) !important;
+    text-decoration: underline !important;
+}
+
+
 /* UNIFIED STYLING - applies to both logo and nav links */
 .logo, .nav-links a {
     color: white !important;
