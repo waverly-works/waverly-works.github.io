@@ -117,6 +117,7 @@ a:not(.logo):not(.nav-links a):active {
     color: rgb(161, 164, 166) !important;
 }
 
+
 video {
     width: 100%;
     height: auto;
@@ -247,7 +248,7 @@ video {
 
 .hero {
     margin-top: 1rem;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -275,10 +276,20 @@ video {
 }
 
 .gradient-text {
-    background:linear-gradient(to right, #4ce1ff, #c192ff);
-    -webkit-background-clip: text; /* For Chrome, Safari, and Opera */
+    background: linear-gradient(270deg, #417aff,#ab6dfb, #00eeff);
+    background-size: 300% 300%;
     background-clip: text;
+    -webkit-background-clip: text; /* Chrome, Safari, Opera */
+    color: transparent; /* make the actual text transparent */
+    animation: gradientFlow 10s ease infinite;
 }
+
+@keyframes gradientFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
 .hero p {
     color: #ced9e0;
@@ -451,7 +462,7 @@ video {
 }
 
 .label-in {
-    background: #3e4143c6;
+    background: #3e414344;
     color: #dee0e9;
     padding: 0.4rem 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.575);
@@ -475,8 +486,8 @@ video {
     padding: 0 5rem; 
     box-sizing: border-box;
 }
-
 .project-card {
+    position: relative; /* allow pseudo-element positioning */
     background: rgba(255,255,255,0.1);
     border-radius: 25px;
     overflow: hidden;
@@ -492,10 +503,37 @@ video {
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
+/* animated gradient glow layer */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: -8px; /* slightly larger than card */
+    border-radius: inherit;
+    background: linear-gradient(270deg, #4d1a8460, #0a368385, #0c486656);
+    background-size: 400% 400%;
+    filter: blur(25px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    animation: gradientFlow 8s ease infinite;
+}
+
+/* hover state triggers glow */
 .project-card:hover {
     transform: translateY(-15px);
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     border-color: rgba(255,255,255,0.4);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* keyframes for flowy gradient movement */
+@keyframes gradientFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .project-image {
@@ -798,3 +836,5 @@ video {
         transform: scale(0) rotate(360deg);
     }
 }
+
+  
