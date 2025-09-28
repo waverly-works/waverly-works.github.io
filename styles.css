@@ -345,6 +345,42 @@ video {
     }
 }
 
+@media (max-width: 480px) {
+    .content-section {
+        padding: 1rem;
+    }
+    
+    .carousel-container {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .profile-slideshow {
+        width: 100%;
+        height: auto;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .slides-container {
+        width: 400%;
+        height: 100%;
+    }
+    
+    .text-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        padding: 10px;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}
+
 .hero {
     margin-top: 1rem;
     height: 60vh;
@@ -931,4 +967,3 @@ video {
     }
 }
 
-  
