@@ -44,25 +44,24 @@ nav {
     width: 100%;
 }
 
-
-/* Global link reset - applies to content links only (not nav) */
-a:not(.logo):not(.nav-links a) {
+/* Global link reset - applies to content links only */
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button) {
     color: rgb(213, 221, 234) !important;
     text-decoration: underline !important;
 }
 
-a:not(.logo):not(.nav-links a):link, 
-a:not(.logo):not(.nav-links a):visited, 
-a:not(.logo):not(.nav-links a):hover, 
-a:not(.logo):not(.nav-links a):active {
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):link, 
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):visited, 
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover, 
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):active {
     color: rgb(183, 204, 216) !important;
     text-decoration: underline !important;
 }
 
-/* UNIFIED STYLING - applies to both logo and nav links */
-.logo, .nav-links a {
+/* UNIFIED STYLING - applies to logo, nav links, and CTA buttons ONLY (excluding section nav) */
+.logo, .nav-links a, .cta-button {
     color: white !important;
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
@@ -82,13 +81,21 @@ a:not(.logo):not(.nav-links a):active {
     gap: 2rem;
 }
 
-/* UNIFIED HOVER EFFECTS */
+/* UNIFIED HOVER EFFECTS for navbar only (excluding section nav) */
 .logo:hover, .nav-links a:hover {
     transform: translateY(-2px);
     color: rgb(161, 164, 166) !important;
 }
 
-/* UNIFIED UNDERLINE ANIMATION */
+/* CTA button has its own hover styling */
+.cta-button:hover {
+    background: rgb(55, 56, 57);
+    color: #b1b2ba !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* UNIFIED UNDERLINE ANIMATION for navbar only (exclude section nav and CTA button) */
 .logo::after, .nav-links a::after {
     content: '';
     position: absolute;
@@ -104,14 +111,107 @@ a:not(.logo):not(.nav-links a):active {
     width: 100%;
 }
 
-/* Override the global link state styles for nav items only */
+/* Override the global link state styles for nav items and CTA buttons */
 .logo:link, .logo:visited, .logo:active,
-.nav-links a:link, .nav-links a:visited, .nav-links a:active {
+.nav-links a:link, .nav-links a:visited, .nav-links a:active,
+.cta-button:link, .cta-button:visited, .cta-button:active {
     color: white !important;
+    text-decoration: none !important;
 }
 
 .logo:hover, .nav-links a:hover {
     color: rgb(161, 164, 166) !important;
+}
+
+.cta-button:hover {
+    color: #b1b2ba !important;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: rgba(29, 29, 31, 0.2);
+    border: 1px solid white;
+    color: rgb(219, 229, 235) !important; 
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.9s forwards;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+/* SEPARATE SECTION NAV STYLING */
+.section-nav {
+    position: fixed; 
+    width: 200px;
+    right: 0;
+    padding-left: 2rem;
+    top: 40%;
+    z-index: 1000;
+}
+
+#section-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#section-nav-list li {
+    margin: 0;
+}
+
+/* Section nav links with their own unique styling and hover effects */
+#section-nav-list a {
+    backdrop-filter: blur(0.8px); 
+    display: block;
+    padding: 10px 14px;
+    background-color: #404c8572;
+    color: #f3fafa !important;
+    text-decoration: none !important;
+    border: 1px solid #e8fefe94;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 110px;
+    transition: all 0.3s ease;
+    position: relative; /* for potential future effects */
+}
+
+/* Section nav specific hover effects */
+#section-nav-list a:hover {
+    background-color: #356eaa52;
+    border-color: #bed9f6;
+    color: #b2d4f9 !important;
+    transform: translateX(5px); /* unique slide effect instead of translateY */
+    text-decoration: none !important;
+}
+
+#section-nav-list a:active,
+#section-nav-list a.active {
+    background-color: #3b73af87;
+    color: white !important;
+    border-color: #c1d5e9;
+    text-decoration: none !important;
+}
+
+/* Ensure section nav links don't get navbar underline animation */
+#section-nav-list a::after {
+    display: none !important;
+}
+
+/* Force override all link states for section nav */
+#section-nav-list a:link,
+#section-nav-list a:visited,
+#section-nav-list a:hover,
+#section-nav-list a:active {
+    text-decoration: none !important;
 }
 
 
