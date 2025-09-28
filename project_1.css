@@ -41,27 +41,36 @@ nav {
     width: 100%;
 }
 
-/* Global link reset - applies to content links only (not nav) */
-a:not(.logo):not(.nav-links a) {
+
+/* Global link reset - applies to content links only */
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button) {
     color: rgb(213, 221, 234) !important;
     text-decoration: underline !important;
 }
 
-a:not(.logo):not(.nav-links a):link, 
-a:not(.logo):not(.nav-links a):visited, 
-a:not(.logo):not(.nav-links a):hover, 
-a:not(.logo):not(.nav-links a):active {
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):link, 
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):visited, 
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover, 
+a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):active {
     color: rgb(183, 204, 216) !important;
     text-decoration: underline !important;
 }
 
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: rgb(142, 208, 255); /* use same accent color */
+/* UNIFIED STYLING - applies to logo, nav links, and CTA buttons ONLY (excluding section nav) */
+.logo, .nav-links a, .cta-button {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
     cursor: pointer;
+    line-height: 1.2;
+}
+
+/* Make logo slightly larger but keep same color */
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .nav-links {
@@ -70,22 +79,22 @@ a:not(.logo):not(.nav-links a):active {
     gap: 2rem;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500; /* consistent text thickness */
-    transition: all 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    line-height: 1.2; 
-}
-
-.nav-links a:hover {
+/* UNIFIED HOVER EFFECTS for navbar only (excluding section nav) */
+.logo:hover, .nav-links a:hover {
     transform: translateY(-2px);
+    color: rgb(161, 164, 166) !important;
 }
 
-/* underline animation */
-.nav-links a::after {
+/* CTA button has its own hover styling */
+.cta-button:hover {
+    background: rgb(55, 56, 57);
+    color: #b1b2ba !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* UNIFIED UNDERLINE ANIMATION for navbar only (exclude section nav and CTA button) */
+.logo::after, .nav-links a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -96,10 +105,43 @@ a:not(.logo):not(.nav-links a):active {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.logo:hover::after, .nav-links a:hover::after {
     width: 100%;
 }
 
+/* Override the global link state styles for nav items and CTA buttons */
+.logo:link, .logo:visited, .logo:active,
+.nav-links a:link, .nav-links a:visited, .nav-links a:active,
+.cta-button:link, .cta-button:visited, .cta-button:active {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.logo:hover, .nav-links a:hover {
+    color: rgb(161, 164, 166) !important;
+}
+
+.cta-button:hover {
+    color: #b1b2ba !important;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: rgba(29, 29, 31, 0.2);
+    border: 1px solid white;
+    color: rgb(219, 229, 235) !important; 
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.9s forwards;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+/* SEPARATE SECTION NAV STYLING */
 .section-nav {
     position: fixed; 
     width: 200px;
@@ -122,13 +164,14 @@ a:not(.logo):not(.nav-links a):active {
     margin: 0;
 }
 
+/* Section nav links with their own unique styling and hover effects */
 #section-nav-list a {
     backdrop-filter: blur(0.8px); 
     display: block;
     padding: 10px 14px;
     background-color: #404c8572;
-    color: #f3fafa;
-    text-decoration: none;
+    color: #f3fafa !important;
+    text-decoration: none !important;
     border: 1px solid #e8fefe94;
     border-radius: 20px;
     font-size: 14px;
@@ -136,20 +179,37 @@ a:not(.logo):not(.nav-links a):active {
     text-align: center;
     min-width: 110px;
     transition: all 0.3s ease;
+    position: relative; /* for potential future effects */
 }
 
+/* Section nav specific hover effects */
 #section-nav-list a:hover {
     background-color: #356eaa52;
     border-color: #bed9f6;
-    color: #b2d4f9;
-    transform: translateX(5px);
+    color: #b2d4f9 !important;
+    transform: translateX(5px); /* unique slide effect instead of translateY */
+    text-decoration: none !important;
 }
 
 #section-nav-list a:active,
 #section-nav-list a.active {
     background-color: #3b73af87;
-    color: white;
+    color: white !important;
     border-color: #c1d5e9;
+    text-decoration: none !important;
+}
+
+/* Ensure section nav links don't get navbar underline animation */
+#section-nav-list a::after {
+    display: none !important;
+}
+
+/* Force override all link states for section nav */
+#section-nav-list a:link,
+#section-nav-list a:visited,
+#section-nav-list a:hover,
+#section-nav-list a:active {
+    text-decoration: none !important;
 }
 
 /* Responsive adjustments */
@@ -172,7 +232,6 @@ a:not(.logo):not(.nav-links a):active {
         min-width: 90px;
     }
 }
-
 
 .back-button {
     position: fixed;
@@ -365,36 +424,6 @@ a:not(.logo):not(.nav-links a):active {
     margin-bottom: 1.5rem;
 }
 
-/*
-.problem-solution {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.problem, .solution {
-    padding: 1.5rem;
-    border-radius: 12px;
-}
-
-.problem {
-    background: #fef2f2;
-    border-left: 4px solid #ef4444;
-}
-
-.solution {
-    background: #f0fdf4;
-    border-left: 4px solid #22c55e;
-}
-
-.problem h4, .solution h4 {
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #0f172a;
-}
-*/
-
 .image-placeholder {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 16px;
@@ -426,7 +455,6 @@ a:not(.logo):not(.nav-links a):active {
     margin: 3rem 0;
 }
 
-
  /* Research Timeline Styles */
  .research-timeline {
     background: #ffffff00;
@@ -457,12 +485,6 @@ a:not(.logo):not(.nav-links a):active {
     border: 1px solid #e2e8f0b1;
     transition: all 0.3s ease;
 }
-
-/* .research-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
-}
-*/
 
 .research-title {
     font-size: 1.5rem;
@@ -549,15 +571,6 @@ a:not(.logo):not(.nav-links a):active {
     border-radius: 8px;
 }
 
-/* .process-photo-step {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    margin-bottom: 4rem;
-    padding: 2rem 0;
-} */
-
 .process-photo-content {
     flex: 1;
     max-width: 500px;
@@ -568,13 +581,11 @@ a:not(.logo):not(.nav-links a):active {
     transition: all 0.3s ease;
 }
 
-
        /* User Journey Styles */
        .user-journey {
         background: #ffffff00;;
         padding: 1.2rem 3rem;
         border-radius: 20px;
-        /* border: 1px solid #e2e8f0b1;*/
         margin: 3rem 0;
         position: relative;
         overflow: hidden;
@@ -659,7 +670,6 @@ a:not(.logo):not(.nav-links a):active {
         margin-bottom: 0.25rem;
     }
 
-
     .goal-value {
         font-size: 1.1rem;
         padding-top: 8px;
@@ -735,7 +745,6 @@ a:not(.logo):not(.nav-links a):active {
         font-size: 0.9rem;
     }
 
-
     .detail-label {
         font-weight: 600;
         font-size: 1.1rem;
@@ -768,20 +777,6 @@ a:not(.logo):not(.nav-links a):active {
         object-fit: cover;
         border-radius: 18px;
     }
-
-
-
-
-   
-    /*.video-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0,0,0,0.7));
-        padding: 2rem 1.5rem 1.5rem;
-        color: white;
-    }*/
 
     .visual-label {
         font-size: 1.2rem;
@@ -931,7 +926,6 @@ a:not(.logo):not(.nav-links a):active {
         border-radius: 20px !important;
     }
 
-
     .step-video,
     .video-placeholder {
         height: 300px;
@@ -1017,4 +1011,3 @@ a:not(.logo):not(.nav-links a):active {
         }
     }
 }
-/* why is it 1k lines holyyyyy */
