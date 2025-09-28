@@ -163,11 +163,22 @@ a:not(.logo):not(.nav-links a):active {
     padding: 20px;
 }
 
+
 .gradient-text {
-    background: linear-gradient(to right, #4ce1ff, #c192ff);
-    -webkit-background-clip: text;
+    background: linear-gradient(270deg, #417aff,#ab6dfb, #00eeff);
+    background-size: 300% 300%;
     background-clip: text;
+    -webkit-background-clip: text; /* Chrome, Safari, Opera */
+    color: transparent; /* make the actual text transparent */
+    animation: gradientFlow 10s ease infinite;
 }
+
+@keyframes gradientFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
 /* Horizontal flexbox layout */
 .content-section {
