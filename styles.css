@@ -375,12 +375,12 @@ video {
 }
 
 .gradient-text {
-    background: linear-gradient(270deg, #417aff,#ab6dfb, #00eeff);
+    background: linear-gradient(270deg, #6daffb, #9164fb, #00eeff, #ed4cff);
     background-size: 300% 300%;
     background-clip: text;
     -webkit-background-clip: text; /* Chrome, Safari, Opera */
     color: transparent; /* make the actual text transparent */
-    animation: gradientFlow 10s ease infinite;
+    animation: gradientFlow 9s ease infinite;
 }
 
 @keyframes gradientFlow {
