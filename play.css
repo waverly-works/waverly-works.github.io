@@ -1722,9 +1722,10 @@ nav {
         transform: scale(0) rotate(360deg);
     }
 }
-
 /* Footer Styles */
 .footer {
+    margin: auto;
+    width: 50%;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     background: #1a1919;
     color: rgb(206, 210, 237);
