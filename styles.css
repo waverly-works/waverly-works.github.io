@@ -38,7 +38,6 @@ nav {
 }
 
 /* Global link reset - applies to content links only */
-/* Global link reset - applies to content links only */
 a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-study-btn) {
     color: rgb(213, 221, 234) !important;
     text-decoration: underline !important;
@@ -151,16 +150,14 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     padding: 20px;
     font-size: 4rem;
     margin-bottom: 1rem;
-    /*opacity: 0;*/
-    /*animation: fadeInUp 1s ease 0.5s forwards;*/
 }
 
 .gradient-text {
     background: linear-gradient(270deg, #6daffb, #9164fb, #00eeff, #ed4cff);
     background-size: 300% 300%;
     background-clip: text;
-    -webkit-background-clip: text; /* Chrome, Safari, Opera */
-    color: transparent; /* make the actual text transparent */
+    -webkit-background-clip: text;
+    color: transparent;
     animation: gradientFlow 10s ease infinite;
 }
 
@@ -194,6 +191,26 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     transform: translateX(-50%);
     padding: 0 2rem;
 }
+
+
+.project-card-soon {
+    position: relative;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    backdrop-filter: none;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    box-shadow: none;
+    min-height: auto;
+    max-height: none;
+}
+
 
 .project-card {
     position: relative;
@@ -235,14 +252,16 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 0;
     border-radius: 20px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 0;
 }
 
 .project-card:hover .project-image {
-    transform: scale(1.02);
+    transform: scale(1.03);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
@@ -251,6 +270,48 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     height: 100%;
     object-fit: cover;
     object-position: center;
+    border-radius: 20px;
+    z-index: 3;
+}
+
+/* Secondary thumbnail that appears on hover */
+.project-image::before {
+    content: '';
+    position: absolute;
+    top: -65%;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    width: 100%;
+    height: 100%;
+    background-image: var(--secondary-image);
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 1; /* places it behind main thumbnail */
+    pointer-events: none; 
+}
+
+.project-card:hover .project-image::before {
+    opacity: 1;
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1; /* Place this *behind* the main image */
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateX(-50%) translateY(20px) scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-50%) translateY(-5px) scale(1.05);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 .project-content {
@@ -297,6 +358,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     gap: 0.5rem;
 }
 
+
 .label-in {
     background: #3e414344;
     color: #dee0e9;
@@ -307,6 +369,14 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     font-weight: 500;
 }
 
+.label-in-soon {
+    background: #c3c7dd;
+    color: #191d20;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+}
 
 @keyframes gradientShift {
     0% {
@@ -333,7 +403,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
 }
 
 /* Responsive Design */
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
     .projects-grid {
         width: 100%;
         padding: 0 1.5rem;
@@ -349,7 +419,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 899px) {
     .projects-grid {
         padding: 0 1.5rem;
         gap: 4rem;
@@ -375,7 +445,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 599px) {
     .hero h1 {
         font-size: 2.5rem;
     }
