@@ -339,8 +339,16 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):active {
     gap 1rem;
   }
 
+  .laptop-video, 
+  .video-horizontal {
+        max-width: 100%;
+        border-radius: 20px !important;
+    }
+
 .section {
     margin-bottom: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .section-header {
