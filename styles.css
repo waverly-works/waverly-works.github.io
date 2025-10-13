@@ -478,6 +478,11 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     .project-content h3 {
         font-size: 1.8rem;
     }
+
+    .hero p {
+        color: #ced9e0;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 599px) {
@@ -512,5 +517,78 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     .case-study-btn {
         padding: 0.7rem 1.5rem;
         font-size: 0.95rem;
+    }
+
+    .hero p {
+        color: #ced9e0;
+        font-size: 1rem;
+    }
+
+
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 1rem 1.5rem;
+        }
+    
+        nav {
+            justify-content: center;
+        }
+    
+        .logo {
+            display: none;
+        }
+    
+        .nav-links {
+            gap: 1.5rem;
+        }
+    }
+    
+    @media (max-width: 599px) {
+        .navbar {
+            padding: 1rem;
+        }
+    
+        .nav-links {
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+    
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+    
+        .projects-grid {
+            padding: 0 1rem;
+            gap: 3rem;
+        }
+    
+        .project-card {
+            gap: 1.5rem;
+        }
+        .project-card-soon {
+            gap: 1.5rem;
+        }
+    
+        .project-image {
+            width: 100%;
+        }
+    
+        .project-content {
+            padding: 0;
+        }
+    
+        .project-content h3 {
+            font-size: 1.5rem;
+        }
+    
+        .case-study-btn {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.95rem;
+        }
+    
+        .hero p {
+            color: #ced9e0;
+            font-size: 1rem;
+        }
     }
 }
