@@ -163,7 +163,13 @@ document.addEventListener('click', (e) => {
         }, i * 100);
     }
 
-    // word scrolling thing
+    // secondary thumbnail
+    document.querySelectorAll('.project-image').forEach(img => {
+        const secondaryImage = img.getAttribute('data-secondary-image');
+        if (secondaryImage) {
+            img.style.setProperty('--secondary-image', `url(${secondaryImage})`);
+        }
+    });
   
 
 });
