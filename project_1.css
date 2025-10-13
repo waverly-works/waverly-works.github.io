@@ -195,27 +195,13 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):active {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .section-nav {
-        right: 10px;
-        top: 20px;
-        transform: none;
+        display: none;
     }
-    
-    #section-nav-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-    
-    #section-nav-list a {
-        padding: 8px 12px;
-        font-size: 12px;
-        min-width: 90px;
-    }
-  
 
     .social-links {
         justify-content: center;
     }
+  
 }
 
 .back-button {
