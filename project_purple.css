@@ -1182,4 +1182,236 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
     .footer-content {
         padding: 0 1rem;
     }
+    @media (max-width: 768px) {
+        .project-title {
+            font-size: 2.5rem;
+        }
+    
+        .overview-grid {
+            grid-template-columns: 1fr;
+        }
+    
+        .problem-solution {
+            grid-template-columns: 1fr;
+        }
+    
+        .timeline-item {
+            flex-direction: column !important;
+            text-align: center !important;
+        }
+    
+        .timeline-content {
+            width: 90%;
+        }
+    
+        .timeline-line {
+            display: none;
+        }
+    
+        .nav-links {
+            display: none;
+        }
+    
+        .back-button {
+            left: 1rem;
+            top: 1rem;
+        }
+    
+        /* Mobile responsive for journey */
+        .journey-step {
+            flex-direction: column !important;
+            text-align: center !important;
+            margin-bottom: 3rem;
+        }
+    
+        .journey-content,
+        .step-visual {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 2rem;
+        }
+    
+        .laptop-video, 
+        .video-horizontal {
+            height: 50px;
+            max-width: 100%;
+            border-radius: 20px !important;
+        }
+    
+        .step-video,
+        .video-placeholder {
+            height: 300px;
+        }
+    
+        .journey-line {
+            display: none;
+        }
+    
+        .step-connector {
+            display: none;
+        }
+    
+        .step-details {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    
+        /* Better mobile spacing and sizing for all detail/takeaway items */
+        .detail-item,
+        .detail-item-side,
+        .takeaway-side,
+        .takeaway-small,
+        .pain-item,
+        .solution-item,
+        .goal-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    
+        /* Pain points and solutions mobile specific */
+        .pain-item,
+        .solution-item {
+            margin-bottom: 1rem;
+        }
+    
+        .detail-label,
+        .takeaway-label,
+        .takeaway-s-label,
+        .goal-label {
+            font-size: 1rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    
+        .detail-value,
+        .takeaway-value,
+        .takeaway-s-value,
+        .goal-value {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    
+        /* Ensure detail items have proper width constraints */
+        .detail-item {
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+    
+        /* Mobile responsive for research section */
+        .research-timeline {
+            padding: 2rem 1.5rem;
+        }
+    
+        .research-step {
+            flex-direction: column !important;
+            text-align: center !important;
+            margin-bottom: 3rem;
+        }
+    
+        .research-content,
+        .research-visual {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 2rem;
+        }
+    
+        .research-image,
+        .image-placeholder-research {
+            height: 300px;
+        }
+    
+        .research-content {
+            padding: 1.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    
+        .research-title {
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+    
+        .research-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    
+        /* User journey mobile improvements */
+        .user-journey {
+            padding: 1rem 1rem;
+        }
+    
+        .journey-content {
+            padding: 1.5rem;
+        }
+    
+        .step-title {
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+    
+        .step-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    
+        /* Feedback cards mobile */
+        .feedback-cards {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    
+        .feedback-card {
+            padding: 1.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    
+        .feedback-card .quote {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    
+        /* Project meta mobile */
+        .project-meta {
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+    
+        .meta-item h4 {
+            font-size: 0.8rem;
+        }
+    
+        .meta-item p {
+            font-size: 0.9rem;
+        }
+    
+        /* Overview content mobile */
+        .overview-content {
+            padding: 1.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    
+        .overview-content h3 {
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+    
+        .overview-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    }
 }
