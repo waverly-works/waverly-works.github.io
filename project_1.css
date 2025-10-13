@@ -738,6 +738,8 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):active {
         position: relative;
     }
 
+
+    
     video::-webkit-media-controls-panel {
         display: none !important;
       }
