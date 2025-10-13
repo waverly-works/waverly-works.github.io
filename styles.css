@@ -175,7 +175,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
 
 .section {
     padding: 1.5rem 2rem;
-    max-width: 1500px;
+    max-width: 1700px;
     margin: 0 auto;
 }
 
@@ -185,7 +185,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     flex-direction: column;
     gap: 6rem;
     margin-top: 2rem;
-    max-width: 1800px;
+    max-width: 2000px;
     width: 100%;
     margin-left: 50%;
     transform: translateX(-50%);
