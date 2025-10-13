@@ -332,6 +332,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
 /* Mobile responsive */
 @media (max-width: 768px) {
     .content-section {
+        margin-top: 2rem;
         flex-direction: column;
         text-align: center;
         gap: 2rem;
