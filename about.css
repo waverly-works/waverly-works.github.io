@@ -245,9 +245,9 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
 
 .slides-container {
     display: flex;
-    width: 400%; /* 4 images = 400% */
+    width: 500%; /* 5 slides */
     height: 100%;
-    animation: slideHorizontal 16s infinite linear;
+    animation: slideHorizontal 20s infinite linear;
 }
 
 .slide {
@@ -329,7 +329,6 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
     transition: width 2s ease;
 }
 
-
 /* Mobile responsive */
 @media (max-width: 768px) {
     .content-section {
@@ -337,22 +336,38 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
         flex-direction: column;
         text-align: center;
         gap: 2rem;
+        padding: 0 1rem;
     }
     
     .carousel-container {
         max-width: 100%;
         width: 100%;
+        display: flex;
+        justify-content: center;
     }
     
     .profile-slideshow {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        max-width: 320px;
+        height: 320px;
+        margin: 0 auto;
     }
-    
+
     .slides-container {
         width: 500%;
         height: 100%;
         animation: slideHorizontal 20s infinite linear;
+    }
+    
+    .slide {
+        width: 20%;
+        height: 100%;
+    }
+    
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
     .text-content h2 {
@@ -383,22 +398,21 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
     }
     
     .carousel-container {
+        width: 100%;
         max-width: 100%;
-        width: 100%;
-    }
-    
-    .profile-slideshow {
-        width: 100%;
-        height: auto;
-        max-width: 320px;
-        margin: 0 auto;
-        aspect-ratio: 1;
+        padding: 0 1rem;
     }
 
-   .slides-container {
+    .profile-slideshow {
+        width: 100%;
+        max-width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
+
+    .slides-container {
         width: 500%;
         height: 100%;
-        animation: slideHorizontal 20s infinite linear;
     }
     
     .text-content h2 {
