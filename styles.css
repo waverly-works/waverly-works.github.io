@@ -173,9 +173,17 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     font-size: 1.2rem;
 }
 
+
+.section-hero {
+    padding: 1.5rem 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
 .section {
     padding: 1.5rem 2rem;
-    max-width: 1700px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -401,6 +409,24 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     color: rgb(213, 221, 234);
     text-decoration: underline;
 }
+
+
+.spacing-0 {
+    margin-bottom: 7rem;
+}
+
+.spacing-1 {
+    margin-bottom: 5rem;
+}
+
+.spacing-2 {
+    margin-bottom: 2.5rem;
+}
+
+.spacing-3 {
+    margin-bottom: 1.5rem;
+}
+
 
 /* Responsive Design */
 @media (max-width: 1200px) {
