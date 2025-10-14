@@ -1,3 +1,60 @@
+// Smooth continuous slideshow - scrolls forward then reverses back
+const slidesContainer = document.querySelector('.slides-container');
+const slides = document.querySelectorAll('.slide');
+
+if (slidesContainer && slides.length > 0) {
+    let position = 0;
+    let direction = 1; // 1 = forward, -1 = backward
+    const speed = 1.2; // pixels per frame (adjust for speed)
+    
+    function animateSlideshow() {
+        const slideWidth = slides[0].offsetWidth + 10; // Include margin
+        const totalSlides = slides.length;
+        const maxPosition = slideWidth * (totalSlides - 1);
+        
+        // Move in current direction
+        position += speed * direction;
+        
+        // Reverse direction at the ends
+        if (position >= maxPosition) {
+            position = maxPosition;
+            direction = -1; // Start going backward
+        } else if (position <= 0) {
+            position = 0;
+            direction = 1; // Start going forward
+        }
+        
+        slidesContainer.style.transform = `translateX(-${position}px)`;
+        slidesContainer.style.transition = 'none';
+        
+        requestAnimationFrame(animateSlideshow);
+    }
+    
+    // Wait for images to load
+    const allImages = slidesContainer.querySelectorAll('img');
+    let loadedImages = 0;
+    
+    function checkAllLoaded() {
+        loadedImages++;
+        if (loadedImages >= allImages.length) {
+            setTimeout(() => {
+                requestAnimationFrame(animateSlideshow);
+            }, 150);
+        }
+    }
+    
+    allImages.forEach(img => {
+        if (img.complete) {
+            checkAllLoaded();
+        } else {
+            img.addEventListener('load', checkAllLoaded);
+            img.addEventListener('error', checkAllLoaded);
+        }
+    });
+}
+
+// ===== EXISTING CODE BELOW =====
+
 // a single, comprehensive initialization function
 function initializePage() {
     // all images and resources are loaded before starting animations
@@ -72,23 +129,8 @@ function handleNavbarScroll() {
     }
 }
 
-// CSS Animation health check and restart if needed
-function ensureSlideshow() {
-    const slideshowElement = document.querySelector('.slideshow-container, .carousel-container, [class*="slide"]');
-    if (slideshowElement) {
-        // check if animation is running by looking for animation properties
-        const computedStyle = window.getComputedStyle(slideshowElement);
-        const animationName = computedStyle.animationName;
-        
-        // if no animation is detected, try to restart it
-        if (!animationName || animationName === 'none') {
-            console.log('Restarting slideshow animation');
-            slideshowElement.style.animation = 'none';
-            slideshowElement.offsetHeight; // Force reflow
-            slideshowElement.style.animation = ''; // Reset to CSS value
-        }
-    }
-}
+// scroll listener with throttling
+window.addEventListener('scroll', handleNavbarScroll, { passive: true });
 
 // comprehensive page initialization
 if (document.readyState === 'loading') {
@@ -106,25 +148,3 @@ if (document.readyState === 'loading') {
     // Everything is already loaded
     initializePage();
 }
-
-// scroll listener with throttling
-window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-
-// periodic slideshow health check (optional - remove if not needed)
-setInterval(ensureSlideshow, 10000); // Check every 10 seconds
-
-// page visibility changes to restart animations if needed
-document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-        setTimeout(ensureSlideshow, 500);
-    }
-});
-
-// window resize to ensure animations continue working
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        ensureSlideshow();
-    }, 250);
-});
