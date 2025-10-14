@@ -62,7 +62,7 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
     color: rgb(147, 163, 204)!important;
     text-decoration: underline !important;
 } 
-
+ 
 /* UNIFIED STYLING - applies to logo, nav links, and CTA buttons ONLY (excluding section nav) */
 .logo, .nav-links a, .cta-button {
     color: white !important;
@@ -1105,6 +1105,8 @@ img {
         gap: 2rem;
     }
 
+    
+
     .social-links {
         justify-content: center;
     }
@@ -1114,12 +1116,26 @@ img {
     }
     
     .text-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        text-align: center;
     }
     
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
+        align-content: center;
+        text-align: center;
     }
+
+    .text-content h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .text-content p {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
 }
 
 @media (max-width: 480px) {
@@ -1158,7 +1174,12 @@ img {
     .navbar {
         padding: 1rem 1.5rem;
     }
-
+    
+    .hero p {
+        color: #ced9e0;
+        font-size: 1rem;
+        text-align: center;
+    }
     nav {
         justify-content: center;
     }
@@ -1377,7 +1398,8 @@ img {
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
+        text-align: center;
     }
 
     .projects-grid {
@@ -1409,6 +1431,7 @@ img {
     .hero p {
         color: #ced9e0;
         font-size: 1rem;
+        text-align: center;
     }
 }
 
@@ -1467,7 +1490,7 @@ img {
     }
     
     .project-content p {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
 }
 
@@ -1523,7 +1546,7 @@ img {
     }
     
     .project-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 }
 
@@ -1558,7 +1581,7 @@ img {
     }
     
     .project-content p {
-        font-size: 1.05rem;
+        font-size: 1rem;
     }
 }
 
@@ -1634,6 +1657,6 @@ img {
     }
     
     .project-content p {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 }
