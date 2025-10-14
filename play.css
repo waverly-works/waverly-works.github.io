@@ -78,13 +78,6 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):hover{
 .logo {
     font-size: 1.2rem;
     font-weight: bold;
-    color: white !important;
-    text-decoration: none !important;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    line-height: 1.2;
 }
 
 .nav-links {
@@ -1114,6 +1107,18 @@ img {
 
     .social-links {
         justify-content: center;
+    }
+
+    .text-content h2 {
+        font-size: 2rem;
+    }
+    
+    .text-content p {
+        font-size: 1.1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
     }
 }
 
