@@ -297,14 +297,14 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):not(.case-st
     border-radius: 20px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
     z-index: 1; /* places it behind main thumbnail */
     pointer-events: none; 
 }
 
 .project-card:hover .project-image::before {
     opacity: 1;
-    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: bounceIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 1; /* Place this *behind* the main image */
 }
 
