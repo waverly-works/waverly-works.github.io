@@ -754,9 +754,9 @@ a:not(.logo):not(.nav-links a):not(.section-nav a):not(.cta-button):active {
       
     .step-video {
         width: 100%;
-        height: 800px;
+        height: 100%;
         object-fit: cover;
-        border-radius: 18px;
+        border-radius: 40px;
     }
 
     .visual-label {
