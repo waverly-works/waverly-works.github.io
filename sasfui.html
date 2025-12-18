@@ -1,338 +1,286 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAS Component & Document Tabs</title>
-    <link rel="stylesheet" href="project_1.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>SAS Component & Document Tabs - Waverly Huang</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
-    <nav class="section-nav">
-        <ul id="section-nav-list">
-            <li><a href="#hero" data-section="hero">Overview</a></li>
-            <li><a href="#design-preview" data-section="design-preview">Build</a></li>
-            <li><a href="#component-anatomy" data-section="component-anatomy">Specs</a></li>
-            <li><a href="#initial-models" data-section="initial-models">Tabs</a></li>
-            <li><a href="#user-feedback" data-section="user-feedback">Feedback</a></li>
+    <header>
+        <div class="logo">WH</div>
+        <nav>
+            <a href="index.html">SELECTED</a>
+            <a href="archive.html">ARCHIVE</a>
+            <a href="about.html">ABOUT</a>
+            <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">RESUME</a>
+        </nav>
+        <div class="nav-icons">
+            <span id="modeToggle" title="Toggle Dark Mode"></span>
+        </div>
+    </header>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="#overview" data-section="overview">Overview</a>
+        <a href="#build" data-section="build">Build</a>
+        <a href="#specs" data-section="specs">Specs</a>
+        <a href="#tabs" data-section="tabs">Tabs</a>
+        <a href="#reflection" data-section="reflection">Reflection</a>
     </nav>
 
-    <div class="navbar">
-        <nav>
-          <a class="logo" href="index.html">Waverly Huang</a>
-          <ul class="nav-links">
-            <li><a class="nav-button" href="index.html">Home</a></li>
-            <li><a class="nav-button" href="play.html">Play</a></li>
-            <li><a class="nav-button" href="about.html">About</a></li>
-            <li><a href="https://drive.google.com/file/d/1i9IUmrpgASbjVLabsSamCdezzKpntfi7/view?usp=sharing" target="_blank">Resume</a></li>
-            </ul>
-        </nav>
-      </div>
-
-
-    <div class="container">
+    <main>
         <!-- Hero Section -->
-        <div class="hero-section" id="hero"> 
-            <h1 class="project-title">Component & Documentation Tabs</h1>
-            <p class="project-subtitle">The creation of Zero State, all of its usage case variants, and documentation tabs for <a href="https://www.sas.com/en_us/home.html" target="_blank">SAS Institute's</a> Filament UI (FUI) Design System.</p>
-            
-            <div class="project-meta">
-                <div class="meta-item">
+        <section class="project-hero" id="overview">
+            <div class="hero-images">
+                <img src="sas_project/sas_fui_hero_img.png" alt="SAS Design System Components">
+            </div>
+
+            <div class="overview">
+                <h1 class="project-hero-title">Component & Documentation Tabs</h1>
+                <p class="project-hero-subtitle">The creation of Zero State, all of its usage case variants, and documentation tabs for <a href="https://www.sas.com/en_us/home.html" target="_blank">SAS Institute's</a> Filament UI (FUI) Design System.</p>
+            </div>
+
+            <div class="project-meta-grid">
+                <div class="meta-block">
                     <h4>Role</h4>
-                    <p>UIUX Design</p> 
-                    <p>& UX Writing</p>
+                    <p>UIUX Design & UX Writing</p>
                 </div>
-                <div class="meta-item">
+                <div class="meta-block">
                     <h4>Timeline</h4>
                     <p>1 Month</p>
                 </div>
-                <div class="meta-item">
+                <div class="meta-block">
                     <h4>Team</h4>
-                    <p>Anna Parnell</p>  <p>Abby Olaleye</p><p>Justin Pfeifer</p><p>Charlotte Tsui</p>
+                    <p>Anna Parnell, Abby Olaleye, Justin Pfeifer, Charlotte Tsui</p>
                 </div>
-                <div class="meta-item">
+                <div class="meta-block">
                     <h4>Tools</h4>
-                    <p>Figma</p>
-                    <p>Specs (Figma Plug-in)</p>
+                    <p>Figma, Specs (Plug-in)</p>
                 </div>
-            </div>
-
-            <div class="project-labels">
-                <span class="label">UI Documentation</span>
-                <span class="label">Components & Variants</span>
-                <span class="label">UX Writing</span>
-                <span class="label">UI Anatomy</span>
-            </div>
-
-            <div class="project-photos">
-                <img src="images/sas_project/sas_1.png" alt="Images of my app with five keyframes." class="photo">
-               
-            </div>
-            
-        </div>
-
-        <!-- Project Overview Section -->
-        <section class="section" id="overview">
-            <div class="goal-item">
-                <div class="goal-label">THE GOALS:</div>
-                <div class="goal-value"><p>📌 Understand components, variants, and what Zero State is meant to do</p>
-                    <p>📌 Create Zero State with multiple variants for each usage case</p>
-                    <p>📌 Create thorough documentation tabs for the component, including component anatomy, do's and don't's, and usage examples</p></div>
-            </div>
-                    <div class="spacing-1"></div> 
-            <div class="overview-grid">
-                <div class="overview-content">
-                    <h3>What are the different use cases for Zero State, and how can the documentation show them?</h3>
-                </div>
-                <div class="overview-content">
-                    <h3>What kinds of documentation are necessary for the best communication with developers?</h3>
-                </div> 
             </div>
         </section>
 
-    <!-- User Journey Section -->
-    <section class="section" id="design-preview">
-          <!--<div class="section-header">
-            <h2 class="section-title">User Journey</h2>
-            <p class="section-description">A step-by-step walkthrough of how the digital-physical products work</p>
-        </div> -->
-        <div class="section-header">
-                <h2 class="section-title">Component Build</h2>
-        </div>
+        <!-- Goals Section -->
+        <section class="content-section">
+            <p class="section-subtitle">00. OBJECTIVE</p>
+            <h2 class="section-heading">The Goals</h2>
+            <p class="section-thoughts"><b>📌 Understand components, variants, and what Zero State is meant to do</b></p>
+            <p class="section-thoughts"><b>📌 Create Zero State with multiple variants for each usage case</b></p>
+            <p class="section-thoughts"><b>📌 Create thorough documentation tabs for the component, including component anatomy, do's and don't's, and usage examples</b></p>
+        </section>
 
-        <div class="detail-item">
-            <div class="detail-label">What is Zero State?</div>
-            <div class="detail-value"><p>A customizable series of components used to represent empty states</p>
-                <p><i>EX: If there are no items available for a specific folder, Zero State will demonstrate this</i></p>
-            </div>
-        </div>
-                        <div class="spacing-3"> </div>
-        <div class="detail-item">
-            <div class="detail-label">Understanding Components</div>
-            <div class="detail-value"><p>→ What variants are needed for each Zero State usage case</p>
-                <p>→ The different ways to create a component in Figma</p>
-            </div>
-        </div>
-        <div class="vertical-image-grid">
-            <div class="project-photos">
-                <img src="images/sas_project/sas_2.png" alt="Images of my app with five keyframes." height="480" class="photo">
-            </div>
-            <div class="journey-content">
-                <h3 class="step-title">Multiple Ways of Making</h3>
-                
-                <div class="step-details">
-                    <div class="detail-item">
-                        <div class="detail-label">First Attempt</div>
-                        <div class="detail-value">My first attempt of creating the component had me making 18 separate variants for each usage case</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Final Version</div>
-                        <div class="detail-value">After review with Anna, I consolidated the 18 variants into three, with different properties for each (see video below)</div>
-                    </div>
+        <!-- Overview Questions -->
+        <section class="content-section">
+            <p class="section-subtitle">01. Understanding the Challenge</p>
+            <div class="question-grid">
+                <div class="question-card">
+                    <h3>What are the different use cases for Zero State, and how can the documentation show them?</h3>
+                </div>
+                <div class="question-card">
+                    <h3>What kinds of documentation are necessary for the best communication with developers?</h3>
                 </div>
             </div>
-        </div>
-                        <div class="spacing-3"> </div>
-                    <div class="video-horizontal">
-                        <video 
-                            controls="controls" 
-                            autoplay 
-                            loop 
-                            muted 
-                            playsinline
-                            class="laptop-video"
-                            name="Video Name"
-                            <source src="videos/sas_project/sas_1.mov" type="video/quicktime">
-                        </video>
-                    </div>   
-                        <div class="spacing-3"> </div>
-        <div class="takeaway-side">
-            <div class="takeaway-label">Component Takeaways</div>
-            <div class="takeaway-value"><p>💡 There isn't a wrong or right way to make a component</p>
-                <p>💡 My first attempt is successful in terms of having all the possible variants laid out in one space</p>
-                <p>💡 The final version is successful in terms of having the three main states laid out and smaller customizations for each</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
- <!-- Component Anatomy Section -->
- <section class="section" id="component-anatomy">
-    <!--<div class="section-header">
-      <h2 class="section-title">User Journey</h2>
-      <p class="section-description">A step-by-step walkthrough of how the digital-physical products work</p>
-  </div> -->
-    <div class="section-header">
-            <h2 class="section-title">Component Specs</h2>
-    </div>
-    <div class="detail-item">
-        <div class="detail-label">Why Build Specs?</div>
-        <div class="detail-value">
-            <p>Having a page with an explicit, detailed layout of the component helps developers quickly understand how to build it out</p>
-        </div>
-                    <div class="spacing-3"> </div>
-        <div class="detail-label">Building out Component Specs</div>
-        <div class="detail-value"><p>I used the Figma plug-in 'Specs' to generate initial spec pages, then manually made necessary edits</p>
-        </div>
-    </div>
-                        <div class="spacing-3"> </div>
-    <div class="detail-item">
-        <div class="detail-label">Spec Layout</div>
-        <div class="detail-value">
-        <p>→ Anatomy</p>
-        <p>→ Properties</p>
-        <p>→ Theme</p>
-        <p>→ Layout and spacing</p>
-        </div>
-    </div>
-                    <div class="spacing-3"> </div>
-    <div class="project-photos">
-        <img src="images/sas_project/sas_3.png" alt="Images of my app with five keyframes." class="photo">
-            <div class="spacing-3"> </div>
-        <img src="images/sas_project/sas_4.png" alt="Images of my app with five keyframes." class="photo">
-            <div class="spacing-3"> </div>
-        <img src="images/sas_project/sas_5.png" alt="Images of my app with five keyframes." class="photo">
-            <div class="spacing-3"> </div>
-        <img src="images/sas_project/sas_6.png" alt="Images of my app with five keyframes." class="photo">
-            <div class="spacing-3"> </div>
-    </div>
-    <div class="takeaway-side">
-        <div class="takeaway-label">Specs Takeaways</div>
-        <div class="takeaway-value"><p>💡 Charlotte (our front-end developer) said that having all of the different variations and specific spacing was extremely helpful</p>
-            <p>💡 For design work in my clubs, developers have mentioned wanting more documentation: now I know how to give them that</p>
-            <p>💡 Although components seem simple, there are a lot of elements and specific usage cases for them</p>
-        </div>
-    </div>
- </section>
-
-
-<!-- Doc Tabs Section -->
-<section class="section" id="initial-models">
-    <div class="section-header">
-        <h1 class="section-title">Documentation Tabs</h1>
-    </div>
-            <div class="spacing-2"> </div>
-    <div class="detail-item">
-        <div class="detail-label">Why Make Documentation Tabs?</div>
-        <div class="detail-value">
-            <p>Having a page with an explicit, detailed layout of the component helps developers quickly understand how to build it out</p>
-        </div>
-                    <div class="spacing-3"> </div>
-        <div class="detail-label">Building out Documentation Tabs</div>
-        <div class="detail-value"><p>I used the Figma plug-in 'Specs' to generate initial spec pages, then manually made edits</p>
-        </div>
-    </div>
-                        <div class="spacing-3"> </div>
-    <div class="detail-item">
-        <div class="detail-label">Documentation Tabs Layout</div>
-        <div class="detail-value">
-        <p>→ Tab One: Overview</p>
-        <p>→ Tab Two: Usage</p>
-        <p>→ Tab Three: Code (N/A)</p>
-        </div>
-    </div>
-                        <div class="spacing-2"> </div>
-
-
-    <div class="detail-item-side">
-        <div class="detail-label">Draft of Overview Page</div>
-        <div class="detail-value">Making multiple Zero State image overview cards to figure out which one best showcases Zero State (Shoutout to Anna for helping me contextualize image overview card examples!)</div>
-    </div>
-
-                    <div class="spacing-3"> </div>
-    <div class="project-photos">
-        <img src="images/sas_project/sas_7.png" alt="Images of my app with five keyframes." class="photo">
-                <div class="spacing-2"> </div>
-    </div>
-
-        <div class="detail-item-side">
-            <div class="detail-label">Final Version of Overview Page</div>
-            <div class="detail-value">Landing on the image below, which shows just enough detail to be generally applicable but still understandable</div>
-        </div>
+        <!-- Component Build -->
+        <section class="content-section" id="build">
+            <p class="section-subtitle">02. Component Build</p>
+            <h2 class="section-heading">Understanding Zero State</h2>
             
-        <img src="images/sas_project/sas_8.png" alt="Images of my app with five keyframes." class="photo">
-                <div class="spacing-2"> </div>
-        <div class="takeaway-side">
-            <div class="takeaway-label">Overview Page Takeaways</div>
-            <div class="takeaway-value"> <p>💡 Unnecessary detail for overview image examples can make them too specific, and unhelpful</p>
-                <p>💡 The idea of <b>first glance:</b> having information be clear with one simple look</p>
+            <div class="solutions-block">
+                <h3>What is Zero State?</h3>
+                <div class="solution-pair">
+                    <div class="problem">DEFINITION</div>
+                    <p>A customizable series of components used to represent empty states</p>
+                    <div class="solution">EXAMPLE</div>
+                    <p>If there are no items available for a specific folder, Zero State will demonstrate this</p>
+                </div>
             </div>
-        </div>
-                <div class="spacing-2"> </div>
-        <div class="detail-item-side">
-            <div class="detail-label">1st Draft of Version of Usage Page</div>
-            <div class="detail-value">
+
+            <div class="takeaway-box">
+                <strong>UNDERSTANDING COMPONENTS:</strong>
+                <p>📌 What variants are needed for each Zero State usage case</p>
+                <p>📌 The different ways to create a component in Figma</p>
+            </div>
+
+            <div class="process-step">
+                <h3>Multiple Ways of Making</h3>
+                <img src="sas_project/sas_2.png" alt="Component variants">
+            </div>
+
+            <div class="takeaway-box">
+                <strong>FIRST ATTEMPT:</strong>
+                <p>My first attempt of creating the component had me making 18 separate variants for each usage case</p>
+            </div>
+
+            <div class="takeaway-box">
+                <strong>FINAL VERSION:</strong>
+                <p>After review with Anna, I consolidated the 18 variants into three, with different properties for each (see video below)</p>
+            </div>
+
+            <div class="hero-images">
+                <video controls autoplay loop muted playsinline>
+                    <source src="videos/sas_project/sas_1.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="takeaway-box">
+                <strong>COMPONENT TAKEAWAYS:</strong>
+                <p>📌 There isn't a wrong or right way to make a component</p>
+                <p>📌 My first attempt is successful in terms of having all the possible variants laid out in one space</p>
+                <p>📌 The final version is successful in terms of having the three main states laid out and smaller customizations for each</p>
+            </div>
+        </section>
+
+        <!-- Component Specs -->
+        <section class="content-section" id="specs">
+            <p class="section-subtitle">03. Component Specs</p>
+            <h2 class="section-heading">Building Specifications</h2>
+
+            <div class="solutions-block">
+                <h3>Why Build Specs?</h3>
+                <div class="solution-pair">
+                    <p>Having a page with an explicit, detailed layout of the component helps developers quickly understand how to build it out</p>
+                </div>
+            </div>
+
+            <div class="takeaway-box">
+                <strong>BUILDING OUT COMPONENT SPECS:</strong>
+                <p>I used the Figma plug-in 'Specs' to generate initial spec pages, then manually made necessary edits</p>
+            </div>
+
+            <div class="takeaway-box">
+                <strong>SPEC LAYOUT:</strong>
+                <p>→ Anatomy</p>
+                <p>→ Properties</p>
+                <p>→ Theme</p>
+                <p>→ Layout and spacing</p>
+            </div>
+
+            <div class="process-step">
+                <img src="sas_project/sas_3.png" alt="Spec page anatomy">
+                <img src="sas_project/sas_4.png" alt="Spec page properties">
+                <img src="sas_project/sas_5.png" alt="Spec page theme">
+                <img src="sas_project/sas_6.png" alt="Spec page layout">
+            </div>
+
+            <div class="takeaway-box">
+                <strong>SPECS TAKEAWAYS:</strong>
+                <p>📌 Charlotte (our front-end developer) said that having all of the different variations and specific spacing was extremely helpful</p>
+                <p>📌 For design work in my clubs, developers have mentioned wanting more documentation: now I know how to give them that</p>
+                <p>📌 Although components seem simple, there are a lot of elements and specific usage cases for them</p>
+            </div>
+        </section>
+
+        <!-- Documentation Tabs -->
+        <section class="content-section" id="tabs">
+            <p class="section-subtitle">04. Documentation Tabs</p>
+            <h2 class="section-heading">Creating Documentation</h2>
+
+            <div class="solutions-block">
+                <h3>Why Make Documentation Tabs?</h3>
+                <div class="solution-pair">
+                    <p>Having a page with an explicit, detailed layout of the component helps developers quickly understand how to build it out</p>
+                </div>
+            </div>
+
+            <div class="takeaway-box">
+                <strong>BUILDING OUT DOCUMENTATION TABS:</strong>
+                <p>I used the Figma plug-in 'Specs' to generate initial spec pages, then manually made edits</p>
+            </div>
+
+            <div class="takeaway-box">
+                <strong>DOCUMENTATION TABS LAYOUT:</strong>
+                <p>→ Tab One: Overview</p>
+                <p>→ Tab Two: Usage</p>
+                <p>→ Tab Three: Code (N/A)</p>
+            </div>
+
+            <div class="process-step">
+                <h3>Draft of Overview Page</h3>
+                <p>Making multiple Zero State image overview cards to figure out which one best showcases Zero State (Shoutout to Anna for helping me contextualize image overview card examples!)</p>
+                <img src="sas_project/sas_7.png" alt="Overview page draft">
+            </div>
+
+            <div class="process-step">
+                <h3>Final Version of Overview Page</h3>
+                <p>Landing on the image below, which shows just enough detail to be generally applicable but still understandable</p>
+                <img src="sas_project/sas_8.png" alt="Overview page final">
+            </div>
+
+            <div class="takeaway-box">
+                <strong>OVERVIEW PAGE TAKEAWAYS:</strong>
+                <p>📌 Unnecessary detail for overview image examples can make them too specific, and unhelpful</p>
+                <p>📌 The idea of <b>first glance:</b> having information be clear with one simple look</p>
+            </div>
+
+            <div class="process-step">
+                <h3>1st Draft of Usage Page</h3>
                 <p>After writing the initial usage page information, Abby gave me great UX writing feedback:</p>
                 <p>↳ 'Zero State' wording and including an article before saying it</p>
                 <p>↳ What needs to be lowercase or uppercase, what needs to be more concise</p>
+                <img src="sas_project/sas_9.png" alt="Usage page first draft">
             </div>
-        </div>
-        <img src="images/sas_project/sas_9.png" alt="Images of my app with five keyframes." class="photo">
-                <div class="spacing-2"> </div>
 
-        <div class="detail-item-side">
-            <div class="detail-label">2nd Draft of Usage Page</div>
-            <div class="detail-value">After writing the initial usage page information, Justin gave me more significant UX writing feedback:
+            <div class="process-step">
+                <h3>2nd Draft of Usage Page</h3>
+                <p>After writing the initial usage page information, Justin gave me more significant UX writing feedback:</p>
                 <p>↳ <b>Concise, simple language</b> is key!</p>
                 <p>↳ What kinds of punctuation is necessary, and when to use it</p>
+                <img src="sas_project/sas_10.png" alt="Usage page second draft">
             </div>
-        </div>
-        <img src="images/sas_project/sas_10.png" alt="Images of my app with five keyframes." class="photo">
-                <div class="spacing-2"> </div>
 
-        <div class="detail-item-side">
-            <div class="detail-label">Final Version of Usage Page</div>
-            <div class="detail-value">After making those edits and some additional tinkering, I landed on this version of the usage page</div>
-        </div>
-        <img src="images/sas_project/sas_11.png" alt="Images of my app with five keyframes." class="photo">
-                <div class="spacing-3"> </div>
-            
-        <div class="takeaway-side">
-            <div class="takeaway-label">Usage Page Takeaways</div>
-            <div class="takeaway-value"><p>💡 Purposeful, concise language is very important</p>
-                <p>💡 Anna taught me something new and crucial: the word 'user' was nixed from the pages due to <b>possible negative connotations</b></p>
+            <div class="process-step">
+                <h3>Final Version of Usage Page</h3>
+                <p>After making those edits and some additional tinkering, I landed on this version of the usage page</p>
+                <img src="sas_project/sas_11.png" alt="Usage page final">
             </div>
-        </div>
-    </div>
-</section>
 
-
-        <!-- User Feedback Section -->
-<section class="section" id="user-feedback">
-            <div class="section-header">
-                <h2 class="section-title">Feedback & Lessons</h2>
-               
-            </div>
-            
-            <div class="feedback-cards">
-                <div class="feedback-card">
-                    <p class="quote">"I loved having Waverly this summer! She produced some incredible projects and was so fun to work with in the process. [I] can’t wait to see what the future holds for [Waverly]!"</p>
-                    <p class="author">— Anna Parnell | Mentor</p>
-                </div>
-                <div class="detail-item-side">
-                    <div class="detail-label">Main Lessons:</div>
-                    <div class="detail-value">
-                        <p>↳ Instructions need careful wording and multiple people's review from different areas and roles to ensure <b>clarity</b></p>
-                        <p>↳ Focus is key: must split information-heavy work like this</p>
-                    </div>
-                </div>
-            </div>
-            <div class="overview-content">
-                <h3>Special Thank You:</h3>
-                <p>Thank you to my mentor and buddy Anna for helping me with any questions and obstacles I ran into, my manager Jacquie for supporting me throughout, and Abby and Justin for all of their execellent feedback! 🌟</p>
-                <p>I'm certainly taking everything I learned throughout this process and transferring it to my practices in and outside of school.</p>
+            <div class="takeaway-box">
+                <strong>USAGE PAGE TAKEAWAYS:</strong>
+                <p>📌 Purposeful, concise language is very important</p>
+                <p>📌 Anna taught me something new and crucial: the word 'user' was nixed from the pages due to <b>possible negative connotations</b></p>
             </div>
         </section>
-        <div class="spacing-1"> </div>
-    </div>
-     <!-- Footer -->
-     <footer class="footer">
+
+        <!-- Feedback -->
+        <section class="content-section" id="reflection">
+            <p class="section-subtitle">05. Feedback & Lessons</p>
+            <h2 class="section-heading">What I Learned</h2>
+
+            <div class="feedback-grid">
+                <div class="feedback-quote">
+                    <p>"I loved having Waverly this summer! She produced some incredible projects and was so fun to work with in the process. [I] can't wait to see what the future holds for [Waverly]!"</p>
+                    <span>— Anna Parnell | Mentor</span>
+                </div>
+            </div>
+
+            <div class="takeaway-box">
+                <strong>MAIN LESSONS:</strong>
+                <p>↳ Instructions need careful wording and multiple people's review from different areas and roles to ensure <b>clarity</b></p>
+                <p>↳ Focus is key: must split information-heavy work like this</p>
+            </div>
+
+            <div class="learning-block">
+                <h3>Special Thank You</h3>
+                <p>Thank you to my mentor and buddy Anna for helping me with any questions and obstacles I ran into, my manager Jacquie for supporting me throughout, and Abby and Justin for all of their excellent feedback! 🌟
+                    I'm certainly taking everything I learned throughout this process and transferring it to my practices in and outside of school.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="footer-content">
-            <p>&copy; Waverly Huang 2025 — Made with Love 🫶 and Strawberry Matcha 🍓🍵</p> 
+            <p>&copy; Waverly Huang 2025 — Made with Love 🫶 and Strawberry Matcha 🍓🍵</p>
             <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> — 
             <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></p>
         </div>
     </footer>
+
     <script src="script.js"></script>
+    <script src="sidebar.js"></script>
 </body>
 </html>

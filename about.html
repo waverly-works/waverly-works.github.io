@@ -1,152 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Waverly Huang Portfolio</title>
-    <link rel="stylesheet" href="about.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Waverly Huang</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="about.css">
 </head>
-<body>  
-    <div class="navbar">
+<body>
+    <header>
+        <div class="logo">WH</div>
         <nav>
-          <a class="logo" href="index.html">Waverly Huang</a>
-          <ul class="nav-links">
-            <li><a class="nav-button" href="index.html">Home</a></li>
-            <li><a class="nav-button" href="play.html">Play</a></li>
-            <li><a class="nav-button" href="about.html">About</a></li>
-            <li><a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></li>
-            </ul>
+            <a href="index.html">SELECTED</a>
+            <a href="archive.html">ARCHIVE</a>
+            <a href="about.html" class="active">ABOUT</a>
+            <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">RESUME</a>
         </nav>
-      </div>
+        <div class="nav-icons">
+            <span id="modeToggle" title="Toggle Dark Mode"></span>
+        </div>
+    </header>
 
-    <!-- Horizontal flexbox layout -->
-    <div class="content-section">
-        <div class="text-content">
-               
-            <h1 class="gradient-text">Hey, I'm Waverly!</h1>
-            <p>
-                🌊 But most people call me Waves. I'm a student at the <strong>Rhode Island School of Design</strong>, majoring in <a href="https://www.risd.edu/academics/industrial-design/bachelors-program" target="_blank" class="about-link">Industrial Design,</a> minoring in Computation and Sustainability. 
-                I strive to learn and develop my skills to create designs with <strong>innovation</strong>, <strong>humanity</strong>, and <strong>reality</strong>. 
-            </p>
-            <p>
-                I have an emphasis on <strong>user needs 🤝</strong> and <strong>accessibility 🤲</strong>, and I hope to genuinely connect with people through my designs. 
-                Here's to making our corners of the world a more <strong>accessible</strong> and <strong>uncomplicated</strong> place — one design at a time! ✨
-            </p>
+    <main>
+        <div class="about-header">
+            <h1 class="about-title">I'M WAVERLY,</h1>
+            <div class="about-intro">
+               <!-- <p>But most people call me Waves.</p>-->
+                <p></p> A student @ Rhode Island School of Design, I major in Industrial Design & double-minor in Computation & Sustainability. <b>I strive to develop my skills to create designs with innovation, humanity, & reality.</b></p>
+                <br>
+                <p>
+                    Within an ever-evolving digitalscape filled with new possibilities due to AI, I want to keep the human touch and research that allows technology to serve us.
+                    My emphasis is on iterative processes, accessibility, & gamifying features for extra motivating user experiences. </p>
+                <br>
+                <p>Here's to making our corners of the world a <b>supportive & uncomplicated</b> place — one design at a time!</p>
+            </div>
         </div>
 
-        <div class="carousel-container">
-            <div class="profile-slideshow" id="profileSlideshow">
-                <div class="slides-container">
-                    <div class="slide">
-                        <img src="images/Waverly_Huang_Headshot_.jpg" alt="Profile Photo 5"> 
-                    </div>
-                    <div class="slide">
-                        <img src="images/painting_me.jpeg" alt="Profile Photo 3">
-                    </div>
-                    <div class="slide">
-                        <img src="images/about_me_picture_cake.JPG" alt="Profile Photo 1"> 
-                    </div>
-                    <div class="slide">
-                        <img src="images/cooking_me.jpeg" alt="Profile Photo 2"> 
-                    </div>
-                    <div class="slide">
-                        <img src="images/woodshop_me.jpeg" alt="Profile Photo 4"> 
-                    </div>
-                    
+        <div class="draggable-section">
+            <div class="drag-container" id="dragContainer">
+                <div class="drag-item" draggable="true">
+                    <img src="Images/about_page/painting_me.jpeg" alt="Photo 1">
+                </div>
+                <div class="drag-item" draggable="true">
+                    <img src="Images/about_page/Waverly_Huang_Headshot.jpg" alt="Photo 2">
+                </div>
+                <div class="drag-item" draggable="true">
+                    <img src="Images/about_page/cooking_me.jpeg" alt="Photo 3">
+                </div>
+                <div class="drag-item" draggable="true">
+                    <img src="Images/about_page/woodshop_me.jpeg" alt="Photo 4">
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-    <!--<section id="skills" class="section">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card" data-skill="95">
-                <h3>Teamwork</h3>
-                <p>Interpersonal Connection, Active Listening, Club Design Lead</p>
-                <div class="skill-level">
-                    <div class="skill-progress"></div>
-                </div>
-            </div>
-            <div class="skill-card" data-skill="85">
-                <h3>UIUX Design</h3>
-                <p>Figma, Adobe Suite, User Testing & Research</p>
-                <div class="skill-level">
-                    <div class="skill-progress"></div>
-                </div>
-            </div>
-            <div class="skill-card" data-skill="95">
-                <h3>Leadership & Management</h3>
-                <p>Figma Campus Leader, Club Project Manager</p>
-                <div class="skill-level">
-                    <div class="skill-progress"></div>
-                </div>
-            </div>
-            <div class="skill-card" data-skill="65">
-                <h3>Front End Development</h3>
-                <p>HTML, CSS, JavaScript</p>
-                <div class="skill-level">
-                    <div class="skill-progress"></div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <section class="section">
-        <div class="detail-item">
-            <div class="detail-label">My life behind the scenes:</div>
-        </div>
-        <div class="image-grid">
-            <div class="image-card">
-                <img src="images/about_page/grid1.jpg" alt="Grid Image 1" height="200">
-                <div class="image-description">Strawberry matcha = fuel 🍵</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid2.jpg" alt="Grid Image 2"  height="200">
-                <div class="image-description">Dimensions for a foam shelf 🚧</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid3.jpg" alt="Grid Image 3" height="200">
-                <div class="image-description">ConFig SF 2025! 💡</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid4.jpg" alt="Grid Image 4">
-                <div class="image-description">Dancing 🌊</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid5.jpg" alt="Grid Image 5">
-                <div class="image-description">Leading a RISD x NASA intro meeting 🚀</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid6.jpg" alt="Grid Image 6">
-                <div class="image-description">Visiting the ocean 🐚</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid7.jpg" alt="Grid Image 6">
-                <div class="image-description">Walking through fun parks ⛅</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid8.jpg" alt="Grid Image 6">
-                <div class="image-description">Going to aquariums 🐠</div>
-            </div>
-            <div class="image-card">
-                <img src="images/about_page/grid9.jpg" alt="Grid Image 6">
-                <div class="image-description">Taking pictures of constellations 🌌</div>
-            </div>
-    </section>
-    
-
- <!-- Footer -->
- <footer class="footer">
-    <div class="footer-content">
-        <p>&copy; Waverly Huang 2025 — Made with Love 🫶 and Strawberry Matcha 🍓🍵</p> 
-        <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> — 
-        <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></p>
-    </div>
-</footer>
         
-    <script src="about.js"></script>
+        
+        <div class="life-section">
+            <div class="life-title-container">
+                <h2 class="life-title">MY LIFE BEHIND THE SCENES</h2>
+            </div>
+            <div class="life-gallery">
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid1.jpg" alt="Coffee shop" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Strawberry matcha = fuel 🍵</div>
+                </div>
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid2.jpg" alt="Studio" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Dimensions for a foam shelf 🚧</div>
+                </div>
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid3.jpg" alt="Mountains" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">ConFig SF 2025! 💡</div>
+                </div>
+            </div>
+            <div class="life-gallery">
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid4.jpg" alt="Camera" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Dancing 🌊</div>
+                </div>
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid5.jpg" alt="Art supplies" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Leading a RISD x NASA intro meeting 🚀</div>
+                </div>
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid6.jpg" alt="Nature" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Visiting the ocean 🐚</div>
+                </div>
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid7.jpg" alt="Nature" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Walking through fun parks ⛅</div>
+                </div>
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid8.jpg" alt="Nature" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Going to aquariums 🐠</div>
+                </div>
+                <div class="life-gallery-item">
+                    <img src="Images/about_page/grid9.jpg" alt="Nature" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="life-caption">Taking pictures of constellations 🌌</div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; Waverly Huang 2025 ✦ Made with Love 🫶 & Strawberry Matcha 🍓🍵</p> 
+                <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> ✦ 
+                <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></p>
+            </div>
+        </footer>
+    </main>
+    <script src="archive.js"></script>
 </body>
 </html>

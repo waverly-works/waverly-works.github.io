@@ -3,611 +3,456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Tone</title>
-    <link rel="stylesheet" href="project_1.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Task Tone - Waverly Huang</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
-    <nav class="section-nav">
-        <ul id="section-nav-list">
-            <li><a href="#hero" data-section="hero">Overview</a></li>
-            <a href="#design-preview" data-section="design-preview">Features</a></li>
-             <li><a href="#pain-points" data-section="pain-points">Pain Points</a></li>
-            <li><a href="#survey-results" data-section="survey-results">Survey Results</a></li>
-            <li><a href="#initial-models" data-section="initial-models">Physical Models</a></li>
-            <!-- <li><a href="#final-models" data-section="final-models">Final Models</a></li>-->
-            <li><a href="#wireframes" data-section="wireframes">Wireframes</a></li>
-            <li><a href="#user-feedback" data-section="user-feedback">Feedback</a></li>
-             <!-- <li><a href="#key-learnings" data-section="key-learnings">Key Learnings</a></li>-->
-        </ul>
-    </nav>
- 
-    <div class="navbar">
+    <header>
+        <div class="logo">WH</div>
         <nav>
-          <a class="logo" href="index.html">Waverly Huang</a>
-          <ul class="nav-links">
-            <li><a class="nav-button" href="index.html">Home</a></li>
-            <li><a class="nav-button" href="play.html">Play</a></li>
-            <li><a class="nav-button" href="about.html">About</a></li>
-            <li><a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></li>
-            </ul>
+            <a href="index.html">SELECTED</a>
+            <a href="archive.html">ARCHIVE</a>
+            <a href="about.html">ABOUT</a>
+            <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">RESUME</a>
         </nav>
-      </div>
+        <div class="nav-icons">
+            <span id="modeToggle" title="Toggle Dark Mode"></span>
+        </div>
+    </header>
 
-    <div class="container">
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="#overview" data-section="overview">Overview</a>
+        <a href="#features" data-section="discover">Features</a>
+        <a href="#empathize" data-section="empathize">Empathize</a>
+        <a href="#prototype" data-section="prototype"> PROCESS</a>
+        <a href="#evolution" data-section="evolution"> Evolution</a>
+        <a href="#reflection" data-section="reflection">Reflection</a>
+    </nav>
+
+    <main>
         <!-- Hero Section -->
-        <div class="hero-section" id="hero"> 
-            <h1 class="project-title">Task Tone</h1>
-            <p class="project-subtitle">A specialized digital-physical duo who will always gently nudge you using auditory, visual, and tactile reminders based on your schedule and needs. </p>
-            
-            <div class="project-meta">
-                <div class="meta-item">
+        <section class="project-hero"  id="overview">
+            <div class="hero-images">
+                <img src="tasktone_project/tasktone_img1.png" alt="Task Tone app interface">
+                <img src="tasktone_project/tasktone_img2.png" alt="Task Tone app interface">
+            </div>
+
+            <div class="overview1">
+                <h1 class="project-hero-title">Task Tone</h1> 
+                <p class="project-hero-subtitle">A specialized digital-physical duo who will always gently nudge you using auditory, visual, and tactile reminders based on your schedule and needs.</p>
+            </div>
+
+            <div class="project-meta-grid">
+                <div class="meta-block">
                     <h4>Role</h4>
                     <p>Product Designer</p>
                 </div>
-                <div class="meta-item">
+                <div class="meta-block">
                     <h4>Timeline</h4>
                     <p>3 Weeks</p>
                 </div>
-                <div class="meta-item">
+                <div class="meta-block">
                     <h4>Team</h4>
                     <p>Independent Project</p>
                 </div>
-                <div class="meta-item">
+                <div class="meta-block">
                     <h4>Tools</h4>
-                    <p> Adobe Suite</p>
-                    <p>Figma</p>
-                    <p>Clay</p>
+                    <p>Adobe Suite, Figma, Clay</p>
                 </div>
             </div>
 
-            <div class="project-labels">
-                <span class="label">Healthcare</span>
-                <span class="label">User Research</span>
-                <span class="label">Iterative Prototyping</span>
-                <span class="label">User Testing</span>
-                <span class="label">Physical Model Making</span>
-            </div>
+            <!--<div class="project-tags-list">
+                <span class="tag">Healthcare</span>
+                <span class="tag">User Research</span>
+                <span class="tag">Iterative Prototyping</span>
+                <span class="tag">User Testing</span>
+                <span class="tag">Physical Model Making</span>
+            </div>-->
+        </section>
 
-            <div class="project-photos">
-                <img src="images/tasktone_project/tasktone_img1.png" alt="Images of my app with five keyframes." class="photo">
-                <div class="spacing-2"></div>
-                <img src="images/tasktone_project/tasktone_img2.png" alt="Images of my app with five keyframes." class="photo">
+        <section class="content-section">
+            <p class="section-subtitle">00. Initial thoughts...</p>
+            <h2 class="section-heading">Everyone is forgetful to a degree</h2>
+            <div class="question-grid">
+                <p class="section-thoughts"><b>This project was inspired by the needs of my mother,</b> who has hearing and memory loss. 
+                    However, everyone can <b>benefit from extra nudges and motivation</b> to complete tasks on time. </p>
+                  <!--  Sometimes I forget something even if I set an alarm. <b>After clicking stop, the reminder also ceases to exist.</b>
+                </p>-->
+    
+                <img class="section-video" src="videos/task_tone_project/phone_alarm.gif" alt="Hero background animation">
             </div>
             
-        </div>
+        </section>
 
-        <!-- Project Overview Section -->
-        <section class="section" id="overview">
-            <div class="overview-grid">
-                <div class="overview-content">
+        <!-- Overview Questions -->
+        <section class="content-section" id="overview">
+            <p class="section-subtitle">01. Understanding the Challenge</p>
+            <div class="question-grid">
+                <div class="question-card">
                     <h3>How can I create easily accessible auditory and visual reminders?</h3>
                 </div>
-                <div class="overview-content">
+                <div class="question-card">
                     <h3>What kinds of reminders do work, and how do they fit into daily life?</h3>
                 </div>
-                <div class="overview-content">
+                <div class="question-card">
                     <h3>How can I create a reminder app that is different from existing ones?</h3>
                 </div>
-                <div class="overview-content">
+                <div class="question-card">
                     <h3>How can I create a physical product which also gives effective reminders?</h3>
                 </div>
-            </div> 
+            </div>
         </section>
 
-    <!-- User Journey Section -->
-    <section class="section" id="design-preview">
-          <!--<div class="section-header">
-            <h2 class="section-title">User Journey</h2>
-            <p class="section-description">A step-by-step walkthrough of how the digital-physical products work</p>
-        </div> -->
-        <div class="section-header">
-                <h2 class="section-title">Feature Overview</h2>
-        </div>
-
-        <div class="user-journey">
-            <div class="journey-step">
-                <div class="step-visual">
-                    <div class="video-placeholder">
-                        <video 
-                            controls="controls" 
-                            autoplay 
-                            loop 
-                            muted 
-                            playsinline
-                            class="step-video"
-                            name="Video Name"
-                            <source src="videos/task_tone_project/Banner_Flow.mov" type="video/quicktime">
-                        </video>
-                    </div>
+        <!-- Features -->
+        <section class="content-section-dark"id="features">
+            <p class="section-subtitle">02. Task Tone Feature Showcase</p>
+            <h2 class="section-heading">Key Features</h2>
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <video controls autoplay loop muted playsinline>
+                        <source src="videos/task_tone_project/Banner_Flow copy.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-                
-                <div class="journey-content">
-                    <h3 class="step-title">Banner & App Notification</h3>
-                    <!-- <p class="step-description">This map will show multiple ways to get to one location, the elevators and stairs in buildings, as well as label every relevant RISD building by what students know them as.</p> -->
-                    
-                    <div class="detail-item">
-                        <div class="detail-label">Incomplete UI Change</div>
-                        <div class="detail-value">When a task is incomplete, the app border becomes a warning color and the icon from a happy face to sad</div>
-                    </div>
-                            <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">Proven Strategy</div>
-                        <div class="detail-value">
+                <div class="feature-text">
+                    <h3>Banner & App Notification</h3>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Incomplete UI Change</strong>
+                            <p>When a task is incomplete, the app border becomes a warning color and the icon changes from a happy face to sad</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Proven Strategy</strong>
                             <p>Duolingo has multiple owl icons: one with X's over its eyes, or sick-looking, to get an influx of user attention</p>
-                            <p><div class="detail-value"> <a href="https://www.inc.com/robin-landa/duolingos-latest-stunt-reveals-an-innovative-marketing-strategy/91155144" target="_blank">[Article - Duolingo’s Innovative Marketing Strategy]</a></div></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="journey-step">
-                <div class="step-visual">
-                    <div class="video-placeholder">
-                        <video 
-                            controls="controls" 
-                            autoplay 
-                            loop 
-                            muted 
-                            playsinline
-                            class="step-video"
-                            name="Video Name"
-                            <source src="videos/task_tone_project/CreateReminder.mov" type="video/quicktime">
-                        </video>
-                    </div> 
-                </div>
-        
-                <div class="journey-content">
-                    <h3 class="step-title">Creating Reminders</h3>
-                    <div class="detail-item">
-                        <div class="detail-label">Vibrate Alerts</div>
-                        <div class="detail-value">This determines how often the physical Task Tone product will vibrate in reminder</div>
-                    </div>
-                            <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">App Alerts</div>
-                        <div class="detail-value">This determines how often the digital Task Tone app will push notifications</div>
-                    </div>
-                            <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">Streak Goal</div>
-                        <div class="detail-value">Including a 'Streak Goal' option lets users decide if the reminder has a streak, <b>motivating them to complete possible tasks</b></div>
-                    </div>
-                            <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">Time Interactions</div>
-                        <div class="detail-value">Based on feedback, setting a times via dropdowns can be frustrating, so I added a typing feature</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="journey-step">
-                <div class="step-visual">
-                    <div class="video-placeholder">
-                        <video 
-                            controls="controls" 
-                            autoplay 
-                            loop 
-                            muted 
-                            playsinline
-                            class="step-video"
-                            name="Video Name"
-                            <source src="videos/task_tone_project/CalendarView.mov" type="video/quicktime">
-                        </video>
-                    </div>
-                </div>
-                
-                <div class="journey-content">
-                    <h3 class="step-title">Calendar & View Reminder</h3>
-                  
-                    <div class="detail-item">
-                        <div class="detail-label">View & Create Reminders</div>
-                        <div class="detail-value">After creating a reminder, it will appear in the calender beneath 'View Reminders.' Clicking on a day will show the reminders for that day</div>
-                    </div>
-                    <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">Press & Hold</div>
-                        <div class="detail-value">If you press and hold on a day, a smaller dialog will pop up asking if you want to add to or delete that day's reminders</div>
-                    </div>
-                    <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">Press</div>
-                        <div class="detail-value">Clicking on a day will expand that day and show you all of that day's reminders</div>
-                    </div>
-        
-                </div>
-            </div>
-
-             <div class="journey-step">
-                <div class="step-visual">
-                    <div class="video-placeholder">
-                        <video 
-                            controls="controls" 
-                            autoplay 
-                            loop 
-                            muted 
-                            playsinline
-                            class="step-video"
-                            name="Video Name"
-                            <source src="videos/task_tone_project/Teardrop_Anger.mov" type="video/quicktime">
-                        </video>
-                    </div>
-                </div>
-                
-                <div class="journey-content">
-                    <h3 class="step-title">Task Tone Warning Faces</h3>
-                  
-                    <div class="detail-item">
-                        <div class="detail-label">Three Stages</div>
-                        <div class="detail-value">
-                            <p>1.) Normal, smiling face: not incomplete task</p>
-                            <p>2.) Yellow, sad face: 5 minutes over task</p>
-                            <p>3.) Orange, sad face: 10 minutes over task</p>
-                        </div>
-                    </div>
-                    <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">Extra Push</div>
-                        <div class="detail-value">Having <b>two additional push notifications</b> for a reminder once it remains incompleted is the <b>extra nudge people need</b> to complete it</div>
-                    </div>
-                    <div class="spacing-3"></div>
-                    <div class="detail-item">
-                        <div class="detail-label">Extra Motivation</div>
-                        <div class="detail-value">Because users reported struggling with motivation, the personification of the app will help motivate</div>
-                    </div>
-        
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-         <!-- Research & Takeaways Section -->
-         <section class="section" id="pain-points">
-            <div class="section-header">
-                <h2 class="section-title">Pain Points & Inspiration</h2>
-            </div>
-           
-            
-            <div class="research-timeline">
-                <div class="research-step">
-                    <div class="pain-item">
-                        <h3 class="research-title">Phone Reminders = Unreliable</h3>
-                        <p class="research-description">Auditory alerts aren't always effective.</p>
-                        <div class="project-photos">
-                            <img src="images/tasktone_project/task_tone_user_scenario_1 copy.jpg" alt="Images of my app with five keyframes." height="600">
-                        </div>
-                    </div>
-                    <div class="solution-item">
-                        <h3 class="research-title">Task Tone = Tactile & Reliable!</h3>
-                        <p class="research-description">With Task Tone, you can have a tactile reminder on your clothes.</p>
-                        <div class="project-photos">
-                            <img src="images/tasktone_project/task_tone_user_scenario_2 copy.jpg" alt="Images of my app with five keyframes."  height="600">
+                            <p><a href="https://www.inc.com/robin-landa/duolingos-latest-stunt-reveals-an-innovative-marketing-strategy/91155144" target="_blank">Article - Duolingo's Innovative Marketing Strategy</a></p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="research-timeline">
-                <div class="research-step">
-                    <div class="research-content">
-                        <h3 class="research-title">Mom - Hearing Loss 👂</h3>
-                        <p class="research-description">My mom sometimes forgets to take her insulin shot every night. Due to her being <b>deaf in one ear, auditory alerts don't work</b> for her because she finds them more troublesome. Additionally, she often can't find her phone, much less hear auditory reminders.</p>
-                    </div>
-                    <div class="research-content">
-                        <h3 class="research-title">Dad - Easy to Ignore 💤</h3>
-                        <p class="research-description">My dad often ignores alarms on his phone, as they're easy to not hear or click stop. He also mentions how <b>snoozing an alarm is kind of like having a 'second' reminder, so to add onto that feature:</b> could there be a feature that pushes reminders after the initial time?</p>
-                    </div>
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <video controls autoplay loop muted playsinline>
+                        <source src="videos/task_tone_project/CreateReminder copy.mov" type="video/mp4">
+                    </video>
                 </div>
-                
-                
-
-                <div class="research-step">
-                    <div class="research-content">
-                        <h3 class="research-title">Friend - Lack of Motivation 😪</h3>
-                        <p class="research-description">A friend I interviewed emphasized how it can be easy to ignore reminders if there's <b>no true motivation</b> to keep up the task it wants you to complete.</p>
-                    </div>
-                    
-                    <div class="research-content">
-                        <h3 class="research-title">Friend - Lack of Phone 📱</h3>
-                        <p class="research-description">A friend I interviewed also mentioned how she <b>doesn't have her phone on her constantly,</b> so reminders that are purely cellular are not as useful as they could be.</p>
-                    </div>
-                </div>
-                
-                <div class="research-step">
-                    <div class="research-content">
-                        <h3 class="research-title">Problems & Solutions</h3>
-                        <div class="step-details">
-                            <div class="pain-item">
-                                <div class="detail-label">💤 EASY TO IGNORE OR SNOOZE</div>
-                                <div class="detail-value">With one press or swipe, a reminder notification can be ignored (snoozed, or stopped) </div>
-                            </div> 
-                            <div class="solution-item">
-                                <div class="detail-label">✅ PERSISTENT REMINDERS</div>
-                                <div class="detail-value">Users cannot snooze or stop a reminder with one motion </div>
-                            </div>
-                            <div class="pain-item">
-                                <div class="detail-label">😪 NO MOTIVATION</div>
-                                <div class="detail-value">With easy-to-ignore reminders, comes a lack of motivation and deadline sensitivity</div>
-                            </div>
-                            <div class="solution-item">
-                                <div class="detail-label">✅ ALERT CUSTOMIZATION</div>
-                                <div class="detail-value">Users can customize how 'easy' it is to ignore a reminder</div>
-                            </div>
-                            <div class="pain-item">
-                                <div class="detail-label">👂 INACCESSIBLE CUES</div>
-                                <div class="detail-value">Reminders often rely on auditory cues, which are not accessible for broader audiences</div>
-                            </div>
-                            <div class="solution-item">
-                                <div class="detail-label">✅ MULTIPLE ALERT TYPES</div>
-                                <div class="detail-value">Reminders can have both auditory and visual cues</div>
-                            </div>
-                            <div class="pain-item">
-                                <div class="detail-label">📱 INACCESSIBLE FORMS</div>
-                                <div class="detail-value">For reminders to have more access, they must take on forms outside of only cellphones</div>
-                            </div>
-                            <div class="solution-item">
-                                <div class="detail-label">✅ PHYSICAL & DIGITAL FORM</div>
-                                <div class="detail-value">This product will have a mobile app and portable physical form</div>
-                            </div>
-                        
+                <div class="feature-text">
+                    <h3>Create Reminder</h3>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Vibrate Alerts</strong>
+                            <p>This determines how often the physical Task Tone product will vibrate in reminder</p>
+                        </div>
+                        <div class="detail">
+                            <strong>App Alerts</strong>
+                            <p>This determines how often the digital Task Tone app will push notifications</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Streak Goal</strong>
+                            <p>Including a 'Streak Goal' option lets users decide if the reminder has a streak, motivating them to complete possible tasks</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Time Interactions</strong>
+                            <p>Based on feedback, setting times via dropdowns can be frustrating, so I added a typing feature</p>
                         </div>
                     </div>
-                
+                </div>
+            </div>
+
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <video controls autoplay loop muted playsinline>
+                        <source src="videos/task_tone_project/CalendarView copy.mov" type="video/mp4">
+                    </video>
+                </div>
+                <div class="feature-text">
+                    <h3>Calendar View</h3>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Customizable & Easy</strong>
+                            <p>Easier to see, create, and customize reminders</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Edit Reminders</strong>
+                            <p>Editing reminders is streamlined</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <video controls autoplay loop muted playsinline>
+                        <source src="videos/task_tone_project/Teardrop_Anger copy.mov" type="video/mp4">
+                    </video>
+                </div>
+                <div class="feature-text">
+                    <h3>Task Tone Warning Faces</h3>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Three Stages</strong>
+                            <p>1.) Normal, smiling face: not incomplete task<br>
+                            2.) Yellow, sad face: 5 minutes over task<br>
+                            3.) Orange, sad face: 10 minutes over task</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Extra Push</strong>
+                            <p>Having two additional push notifications for an incompleted reminder is the <b>extra nudge</b> people need to complete it</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Extra Motivation</strong>
+                            <p>Because users reported struggling with motivation, the personification of the app will help motivate</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Surveys Section -->
-        <section class="section" id="survey-results">
-            <div class="section-header">
-                <h2 class="section-title">Survey Results</h2>
-            </div>
-            
-            <div class="research-step">
-                <div class="research-content">
-                    <h3 class="research-title">Survey One: Is Your Form of Reminders Less than 50% Effective?</h3>
-                    <h4 class="research-subtitle">115 Total Answers</h4>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <div class="detail-label">📅 (11.4%) Google Calendar</div>
-                            <div class="detail-value">11.4% of Google Calendar users said G-Cal is less than half effective</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">⏰ (20.6%) Phone Alarms</div>
-                            <div class="detail-value">Almost a fifth of of Phone Alarm users said they are less than half effective</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">📝 (17.5%) To-Do List</div>
-                            <div class="detail-value">17.5% of To-Do List users said they are less than half effective</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">🔔 (23.5%) Task/Reminder Apps</div>
-                            <div class="detail-value">Almost a quarter of people said task/reminder apps are less than half effective</div>
-                        </div>
-                    </div>
-                    
+        <!-- Pain Points -->
+        <section class="content-section"id="empathize">
+            <p class="section-subtitle">03. Pain Points</p>
+            <h2 class="section-heading">PROJECT INSPIRATION</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <h2>👂</h2>
+                    <h3>Hearing Loss</h3>
+                    <p>My mom sometimes forgets to take her insulin shot every night. Due to her being deaf in one ear, auditory alerts don't work for her. Additionally, she often can't find her phone, much less hear auditory reminders.</p>
+                </div>
+                <div class="insight-card">
+                    <h2>💤</h2>
+                    <h3>Easily Ignored</h3>
+                    <p>My dad often ignores alarms on his phone, as they're easy to click stop. He also mentions how snoozing an alarm is kind of like having a 'second' reminder, so to add onto that feature: could there be a feature that pushes reminders after the initial time?</p>
+                </div>
+                <div class="insight-card">
+                    <h2>😪</h2>
+                    <h3>Lack of Motivation</h3>
+                    <p>A friend I interviewed emphasized how it can be easy to ignore reminders if there's no true motivation to keep up the task it wants you to complete.</p>
+                </div>
+                <div class="insight-card">
+                    <h2>📱</h2>
+                    <h3>Lack of Phone</h3>
+                    <p>A friend I interviewed mentioned how she doesn't have her phone on her constantly, so reminders that are purely cellular are not as useful as they could be.</p>
                 </div>
             </div>
-            <div class="research-step">
-                <div class="research-content">
-                    <h3 class="research-title">Survey Two: What Kind of Reminders are Most Effective for You?</h3>
-                    <h4 class="research-subtitle">78 Total Answers</h4>
-                    <div class="step-details">
-                        <div class="detail-item">
-                            <div class="detail-label">👁 (53.8%) Visual Reminders</div>
-                            <div class="detail-value">Over half of the respondents said Visual Reminders are most effective</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">👂 (9%) Auditory Reminders</div>
-                            <div class="detail-value">Less than 10 percent of respondents said Auditory Reminders are most effective</div>
-                        </div>
-                       
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">🦉 (37.2%) Both Visual and Auditory Reminders</div>
-                        <div class="detail-value">37.2% of respondents said both kinds of reminders are most effective</div>
-                    </div>
+
+            <div class="solutions-block">
+                <h3>Problems & Solutions</h3>
+                <div class="solution-pair">
+                    <div class="problem">🚫 EASY TO IGNORE OR SNOOZE</div>
+                    <p>With one press or swipe, a reminder notification can be ignored (snoozed, or stopped)</p>
+                    <div class="solution">✅ PERSISTENT REMINDERS</div>
+                    <p>Users cannot snooze or stop a reminder with one motion</p>
                 </div>
-            </div>
-            <div class="takeaway-side">
-                <div class="takeaway-label">SURVEY TAKEAWAYS:</div>
-                <div class="takeaway-value">
-                    <p>💡 Visual reminders are the most effective</p>
+                <div class="solution-pair">
+                    <div class="problem">🚫 NO MOTIVATION</div>
+                    <p>With easy-to-ignore reminders, comes a lack of motivation and deadline sensitivity</p>
+                    <div class="solution">✅ ALERT CUSTOMIZATION</div>
+                    <p>Users can customize how 'easy' it is to ignore a reminder</p>
                 </div>
-                <div class="takeaway-value">
-                    <p>💡 Existing task and reminder apps were the least effective for people who used them</p>
+                <div class="solution-pair">
+                    <div class="problem">🚫 INACCESSIBLE CUES</div>
+                    <p>Reminders often rely on auditory cues, which are not accessible for broader audiences</p>
+                    <div class="solution">✅ MULTIPLE ALERT TYPES</div>
+                    <p>Reminders can have both auditory and visual cues</p>
                 </div>
-                <div class="takeaway-value">
-                    <p>💡 Google Calendar was the most effective for people who used it</p>
+                <div class="solution-pair">
+                    <div class="problem">🚫 INACCESSIBLE FORMS</div>
+                    <p>For reminders to have more access, they must take on forms outside of only cellphones</p>
+                    <div class="solution">✅ PHYSICAL & DIGITAL FORM</div>
+                    <p>This product will have a mobile app and portable physical form</p>
                 </div>
             </div>
         </section>
 
-        <!-- Sketch Photo Section -->
-        <section class="section" id="initial-models">
-            <div class="section-header">
-                <h2 class="section-title">Initial Product Model Making & Process</h2>
-                <!--<p class="section-description">Each step of making the physical product</p>-->
+        <!-- Survey Results -->
+        <section class="content-section">
+            <p class="section-subtitle">04. Quantitative Data</p>
+            <h2 class="section-heading">Survey Results</h2>
+            <div class="survey-block">
+                <h3>Survey One: Is Your Form of Reminders Less than 50% Effective?</h3>
+                <p class="survey-subtitle">115 Total Answers</p>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <strong>11.4% 📅</strong>
+                        <p>of Google Calendar users said G-Cal is less than half effective</p>
+                    </div>
+                    <div class="stat">
+                        <strong>20.6% ⏰</strong>
+                        <p>of Phone Alarm users said they are less than half effective</p>
+                    </div>
+                    <div class="stat">
+                        <strong>17.5% 📝</strong>
+                        <p>of To-Do List users said they are less than half effective</p>
+                    </div>
+                    <div class="stat">
+                        <strong>23.5% 🔔</strong>
+                        <p>of people said task/reminder apps are less than half effective</p>
+                    </div>
+                </div>
             </div>
-                    <div class="detail-item">
-                        <div class="detail-label">First Round of Sketches</div>
-                        <div class="detail-value">Trying to think about what shape and form the speaker should take. At this point, unsure how portable it should be</div>
-                    </div>
-                            <div class="spacing-3"> </div>
-                        <div class="project-photos">
-                            <img src="images/tasktone_project/tasktone_img13.png" alt="Images of my app with five keyframes." class="photo">
-                        </div>
-                            <div class="spacing-2"> </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Second Round of Sketches</div>
-                        <div class="detail-value">After review, I decide to go for a less traditional speaker shape, something handheld and friendly to interact with</div>
-                    </div>
-                            <div class="spacing-3"> </div>
-                        <div class="project-photos">
-                            <img src="images/tasktone_project/tasktone_img14.png" alt="Images of my app with five keyframes." class="photo">
-                        </div>
-                            <div class="spacing-2"> </div>
-                            <div class="takeaway-small">
-                                <div class="takeaway-s-label">SKETCH TAKEAWAYS:</div>
-                                <div class="takeaway-s-value">
-                                    <p>💡 People want something friendly to use, not another piece of useless plastic</p>
-                                </div>
-                                <div class="takeaway-s-value">
-                                    <p>💡 Enjoyable <b>tactile sensations</b> add the most 'friendliness'</p>
-                                </div>
-                            </div>
 
-                            <div class="spacing-huge"> </div>
-
-                    <div class="detail-item">
-                        <div class="detail-label">First Round of Sketch Models</div>
-                        <div class="detail-value">Thinking about the ‘squish’ factor of each model, and having it be comfortable to hold in either your left or right hand
-                        </div>
+            <div class="survey-block">
+                <h3>Survey Two: What Kind of Reminders are Most Effective for You?</h3>
+                <p class="survey-subtitle">78 Total Answers</p>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <strong>53.8% 👁</strong>
+                        <p>of the respondents said Visual Reminders are most effective</p>
                     </div>
-                    <div class="spacing-3"> </div>
-                        <div class="project-photos">
-                            <img src="images/tasktone_project/tasktone_img15.png" alt="Images of my app with five keyframes." class="photo">
-                                <div class="spacing-3"> </div>
-                            <img src="images/tasktone_project/tasktone_img16.png" alt="Images of my app with five keyframes." class="photo">
-                        </div>
-                                <div class="spacing-2"> </div>
-                            
-                            <div class="takeaway-small">
-                                <div class="takeaway-s-label">FIRST ROUND MODEL TAKEAWAYS:</div>
-                                <div class="takeaway-s-value">
-                                    <p>💡 If this physical product is meant to remind you of tasks, it should be <b>smaller and less obstructive</b></p>
-                                </div>
-                                <div class="takeaway-s-value">
-                                    <p>💡 When I asked people if I should add a friendly face to add to the 'friendliness' of the product, they said it seemed unnecessary</p>
-                                </div>
-                            </div>
-                                <div class="spacing-huge"> </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Second Round of Sketch Models</div>
-                        <div class="detail-value"><p>After review, I follow the takeaways and decide to create a physical model that's much smaller and more portable</p>
-                        </div>
-                        <div class="detail-value"><p>I made a medium-small version (left) and a small version (right)</p>
-                        </div>
+                    <div class="stat">
+                        <strong>9% 👂</strong>
+                        <p>of respondents said Auditory Reminders are most effective</p>
                     </div>
-                                <div class="spacing-3"> </div>
-                        <div class="project-photos">
-                            <img src="images/tasktone_project/tasktone_img17.png" alt="Images of my app with five keyframes." class="photo">
-                        </div>
-                                <div class="spacing-2"> </div>
-                        <div class="takeaway-small">
-                            <div class="takeaway-s-label">SECOND ROUND MODEL TAKEAWAYS:</div>
-                            <div class="takeaway-s-value">
-                                <p>💡 People really liked how both of these felt: you could be right or left-handed, and these were much easier to carry around</b></p>
-                            </div>
-                            <div class="takeaway-s-value">
-                                <p>💡 "The smaller, the better, the more portable" - My classmate</p>
-                            </div>
-                        </div>
-        </section>
-
-        <!-- Product Model Making Section -->
-        <section class="section" id="final-models">
-            <div class="section-header">
-                <h2 class="section-title">Final Product Model Making & Process</h2>
-                <!--<p class="section-description">Each step of making the physical product</p>-->
-            </div>
-            <div class="image-grid">
-                    <div class="project-photos">
-                        <img src="images/tasktone_project/tasktone_img18.png" alt="Images of my app with five keyframes." class="photo">
+                    <div class="stat">
+                        <strong>37.2% 🦉</strong>
+                        <p>of users said both Visual and Auditory Reminders are most effective</p>
                     </div>
-                    <div class="project-photos">
-                        <img src="images/tasktone_project/tasktone_img19.png" alt="Images of my app with five keyframes." class="photo">
+                    <div class="stat">
+                        <strong>In conclusion,</strong>
+                        <p>I need to utilize every form of reminder and make it customizable</p>
                     </div>
-                    <div class="project-photos">
-                        <img src="images/tasktone_project/tasktone_img20.png" alt="Images of my app with five keyframes." class="photo">
-                    </div>
-                    <div class="project-photos">
-                        <img src="images/tasktone_project/tasktone_img21.png" alt="Images of my app with five keyframes." class="photo">
-                    </div>
+                </div>
                 
             </div>
-            <div class="takeaway-small">
-                <div class="takeaway-s-label">FINAL MODEL TAKEAWAYS:</div>
-                <div class="takeaway-s-value">
-                    <p>💡 With this small teardrop shape, it is both friendly to touch and carry around</b></p>
+
+            <div class="takeaway-box">
+                <strong>SURVEY TAKEAWAYS:</strong>
+                <p>📌 Visual reminders are the most effective</p>
+                <p>📌 Existing task and reminder apps were the least effective for people who used them</p>
+                <p>📌 Google Calendar was the most effective for people who used it</p>
+            </div>
+        </section>
+
+        <!-- Physical Models -->
+        <section class="content-section"id="prototype">
+            <p class="section-subtitle">05. Physical Form</p>
+            <h2 class="section-heading">Initial Product Model Making & Process</h2>
+
+            <div class="process-step">
+                <h3>First Round of Sketches</h3>
+                <p>Trying to think about what shape and form the speaker should take. At this point, unsure how portable it should be</p>
+                <img src="tasktone_project/tasktone_img13.png   " alt="First round sketches">
+            </div>
+
+            <div class="process-step">
+                <h3>Second Round of Sketches</h3>
+                <p>After review, I decide to go for a less traditional speaker shape, something handheld and friendly to interact with</p>
+                <img src="tasktone_project/tasktone_img14.png" alt="Second round sketches">
+                <div class="takeaway-box">
+                    <strong>SKETCH TAKEAWAYS:</strong>
+                    <p>📌 People want something friendly to use, not another piece of useless plastic</p>
+                    <p>📌 Enjoyable tactile sensations add the most 'friendliness'</p>
                 </div>
-                <div class="takeaway-s-value">
-                    <p>💡 Attachable to a lanyard or clip, making it convenient to keep on your person</p>
+            </div>
+
+            <div class="process-step">
+                <h3>First Round of Sketch Models</h3>
+                <p>Thinking about the 'squish' factor of each model, and having it be comfortable to hold in either your left or right hand</p>
+                <div class="image-pair">
+                    <img src="tasktone_project/tasktone_img15.png" alt="First model">
+                    <img src="tasktone_project/tasktone_img16.png" alt="First model variation">
+                </div>
+                <div class="takeaway-box">
+                    <strong>FIRST ROUND MODEL TAKEAWAYS:</strong>
+                    <p>📌 If this physical product is meant to remind you of tasks, it should be smaller and less obstructive</p>
+                    <p>📌 When I asked people if I should add a friendly face to add to the 'friendliness' of the product, they said it seemed unnecessary</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <h3>Second Round of Sketch Models</h3>
+                <p>After review, I follow the takeaways and decide to create a physical model that's much smaller and more portable. I made a medium-small version (left) and a small version (right)</p>
+                <img src="tasktone_project/tasktone_img17.png" alt="Second model round">
+                <div class="takeaway-box">
+                    <strong>SECOND ROUND MODEL TAKEAWAYS:</strong>
+                    <p>📌 People really liked how both of these felt: you could be right or left-handed, and these were much easier to carry around</p>
+                    <p>📌 "The smaller, the better, the more portable" - My classmate</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <h3>Final Product Model Making & Process</h3>
+                <div class="final-models">
+                    <img src="tasktone_project/tasktone_img18.png" alt="Final model 1">
+                    <img src="tasktone_project/tasktone_img19.png" alt="Final model 2">
+                    <img src="tasktone_project/tasktone_img20.png" alt="Final model 3">
+                    <img src="tasktone_project/tasktone_img21.png" alt="Final model 4">
+                </div>
+                <div class="takeaway-box">
+                    <strong>FINAL MODEL TAKEAWAYS:</strong>
+                    <p>📌 With this small teardrop shape, it is both friendly to touch and carry around</p>
+                    <p>📌 Attachable to a lanyard or clip, making it convenient to keep on your person</p>
                 </div>
             </div>
         </section>
 
- <!-- Product Model Making Section -->
- <section class="section" id="wireframes">
-    <div class="section-header">
-        <h2 class="section-title">Sketches & Wireframe Process</h2>
-        <!--<p class="section-description">Each step of making the physical product</p>-->
-    </div>
-   
-    <div class="vertical-image-grid">
-        <div class="project-photos">
-            <img src="images/tasktone_project/tasktone_uiux_1.png" alt="Images of my app with five keyframes."  class="photo">
-        </div>
-        <div class="project-photos">
-            <img src="images/tasktone_project/tasktone_uiux_2.png" alt="Images of my app with five keyframes." class="photo">
-        </div>
-    </div> 
+        <!-- Wireframes -->
+        <section class="content-section"id="evolution">
+            <p class="section-subtitle">06. Task Tone Evolution</p>
+            <h2 class="section-heading">Wireframes & Sketches</h2>
 
-    <div class="detail-item">
-        <div class="detail-label">Mid Fidelity Wireframes</div>
-    </div>
-    <div class="project-photos">
-        <img src="images/tasktone_project/tasktone_uiux_3.png" alt="Images of my app with five keyframes." class="photo">
-            <div class="spacing-2"> </div>
-    </div>
-
-    <div class="detail-item">
-      <div class="detail-label">High Fidelity Wireframes</div>
-    </div>
-    <div class="project-photos">
-        <img src="images/tasktone_project/tasktone_uiux_4.png" alt="Images of my app with five keyframes." class="photo">
-    </div>
-</section>
-
-
-        <!-- User Feedback Section -->
-<section class="section" id="user-feedback">
-            <div class="section-header">
-                <h2 class="section-title">Feedback</h2>
-            </div>
-            
-            <div class="feedback-cards">
-                <div class="feedback-card">
-                    <p class="quote">"I would really love for this product to actually exist. Especially since my hearing is starting to detoriate, I feel like it would help me."</p>
-                    <p class="author">— My Mom | The Initial Project Inspiration</p>
-                </div>
-                <div class="feedback-card">
-                    <p class="quote">"Super cool how I can interact with an app and a physical product. I can use both or just one. I could see the <b>physical product living on my purse</b> because of the size."</p>
-                    <p class="author">— Classmate S</p>
-                </div>
-                <div class="feedback-card">
-                    <p class="quote">"I liked seeing the process for both the digital and physical part, that was successful. This project makes it obvious that you really care about who could be using it."</p>
-                    <p class="author">— Classmate J</p>
+            <div class="process-step">
+                <h3>Initial Planning</h3>
+                <div class="image-pair">
+                    <img src="tasktone_project/tasktone_uiux_1.png" alt="UI sketches 1">
+                    <img src="tasktone_project/tasktone_uiux_2.png" alt="UI sketches 2">
                 </div>
             </div>
-            <div class="overview-content">
+
+            <div class="process-step">
+                <h3>Mid Fidelity Wireframes</h3>
+                <img src="tasktone_project/tasktone_uiux_3.png" alt="Mid fidelity wireframes">
+            </div>
+
+            <div class="process-step">
+                <h3>First Version: High Fidelity Wireframes</h3>
+                <img src="tasktone_project/tasktone_uiux_4.png" alt="High fidelity wireframes">
+            </div>
+
+            <div class="process-step">
+                <h3>Final Version: High Fidelity Wireframes</h3>
+                <img src="tasktone_project/tasktone_uiux_5.jpg" alt="High fidelity wireframes">
+            </div>
+        </section>
+
+        <!-- Feedback -->
+        <section class="content-section"id="reflection">
+            <p class="section-subtitle">07. Interviews & Lessons </p>
+            <h2 class="section-heading">User Feedback</h2>
+
+            <div class="feedback-grid">
+                <div class="feedback-quote">
+                    <p>"I would really love for this product to actually exist. Especially since my hearing is starting to deteriorate, I feel like it would help me."</p>
+                    <span>— My Mom | The Initial Project Inspiration</span>
+                </div>
+                <div class="feedback-quote">
+                    <p>"Super cool how I can interact with an app and a physical product. I can use both or just one. I could see the physical product living on my purse because of the size."</p>
+                    <span>— Classmate S</span>
+                </div>
+                <div class="feedback-quote">
+                    <p>"I liked seeing the process for both the digital and physical part, that was successful. This project makes it obvious that you really care about who could be using it."</p>
+                    <span>— Classmate J</span>
+                </div>
+            </div>
+
+            <div class="learning-block">
                 <h3>What I Learned</h3>
-                <p><b>People are at the core of product design, whether it be digital or physical.</b> I really enjoyed getting feedback from people about what would make the app or speaker successful, and it was heartwarming to hear how my mom said this would make her life easier.</p>
+                <p>People are at the core of product design, whether it be digital or physical. I really enjoyed getting feedback from people about what would make the app or speaker successful, and it was heartwarming to hear how my mom said this would make her life easier.</p>
             </div>
         </section>
-        <div class="spacing-1"> </div>
-        <!-- Footer -->
-</div>
+    </main>
 
- <script src="script.js"></script>
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; Waverly Huang 2025 — Made with Love 🫶 and Strawberry Matcha 🍓🍵</p> 
+            <p>&copy; Waverly Huang 2025 — Made with Love 🫶 and Strawberry Matcha 🍓🍵</p>
             <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> — 
             <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></p>
         </div>
     </footer>
-    
+
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
 </body>
 </html>

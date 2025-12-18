@@ -1,227 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Waverly Huang Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="footer.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Waverly Huang</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="cursor-glow"></div>
-    <div class="navbar">
+    <header>
+        <div class="logo">WH</div>
         <nav>
-          <a class="logo" href="index.html">Waverly Huang</a>
-          <ul class="nav-links">
-            <li><a class="nav-button" href="index.html">Home</a></li>
-            <li><a class="nav-button" href="play.html">Play</a></li>
-            <li><a class="nav-button" href="about.html">About</a></li>
-            <li><a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></li>
-            </ul>
+            <a href="index.html" class="active">SELECTED</a>
+            <a href="archive.html">ARCHIVE</a>
+            <a href="about.html">ABOUT</a>
+            <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">RESUME</a>
         </nav>
-      </div>
-      
-
-      
-    <section-home id="home" class="hero">
-        <div class="hero-content">
-            <video autoplay loop muted playsinline>
-                <source src="images/about me/about_me.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <h1 class="gradient-text">Waverly Huang</h1>
-            <p>Product Designer who creates with empathy, simplicity, & touches of gamification.</p>
-            <!-- word carousel 
-            <div class="word-section">
-                <div class="container">
-                    <div class="sentence">
-                        <span class="first-part">My work aspires to be...</span>
-                        <div class="carousel-container">
-                            <div class="carousel">
-                                <div class="carousel-item">creative</div>
-                                <div class="carousel-item">innovative</div>
-                                <div class="carousel-item">accessible</div>
-                                <div class="carousel-item">human-centered</div>
-                            </div>
-                        </div> 
-                    </div>
-                </div> -->
-            </div>
-            <!--<a href="#projects" class="cta-button">View My Work</a>-->
+        <div class="nav-icons">
+            <span id="modeToggle" title="Toggle Dark Mode"></span>
         </div>
-    </section-home>
-    
-    <div class="spacing-1"> </div>
+    </header>
 
-    <section id="projects" class="section-hero">
-        <div class="projects-grid">
-            <div class="project-card" onclick="window.location.href='tasktone.html'">
-                <div class="project-image" 
-                    style="--secondary-image: url('images/project_thumbnails/tasktone_thumbnail_2.png');">
-                    <img src="images/project_thumbnails/tasktone_thumbnail.png" alt="TaskTone Project Thumbnail">
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <img class="hero-video" src="Images/bus_china_trim.gif" alt="Hero background animation">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-name">Waverly Huang</h1>
+                <p class="hero-description">Product Designer who creates with empathy, simplicity, imagination, & touches of gamification.</p>
+            </div>
+            <div class="scroll-indicator" id="scrollDown">
+                <div class="shooting-star"></div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <div class="projects-section" id="projects">
+        <section class="project-section" data-project="tasktone.html">
+            <div class="project-info">
+                <div class="project-header">
+                    <div class="project-title">2024</div>
+                    <div class="project-subtitle">Task Tone</div>
                 </div>
-                <div class="project-content">
-                    <h4>Task Tone</h4>
-                    <h3>Forgetful? Forget About It</h3>
-                    <div class="project-labels-in">
-                        <span class="label-in">Physical Product & App</span>
-                        <span class="label-in">Healthcare</span>
-                        <span class="label-in">User Testing & Research</span>
-                        <span class="label-in">Iterative Process</span>
-                        <span class="label-in">Accessibility</span>
-                        <span class="label-in">Quantitative Data</span>
-                    </div>
+                <div class="project-tags">
+                    Physical Product & App • Healthcare<br>
+                    User Testing & Research • Iterative Process
+                </div>
+                <div class="project-jingle">[ Forgetful? Forget About It ]</div>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Images/project_thumbnails/tasktone_thumbnail.png" alt="Project Image">
                 </div>
             </div>
- 
-            <div class="project-card" onclick="window.location.href='sasfui.html'">
-                <div class="project-image" 
-                    style="--secondary-image: url('images/project_thumbnails/sas_thumbnail_2.png');">
-                    <img src="images/project_thumbnails/sas_thumbnail.png" alt="SAS Project Thumbnail">
+        </section>
+
+        <section class="project-section" data-project="sasfui.html">
+            <div class="project-info">
+                <div class="project-header">
+                    <div class="project-title">2025</div>
+                    <div class="project-subtitle">Component & Documentation Tabs</div>
                 </div>
-                <div class="project-content">
-                    <h4-2>SAS Filament UI System</h4-2>
-                    <h3>Component & Documentation Tabs</h3>
-                    <div class="project-labels-in">
-                        <span class="label-in">Component & Variants</span>
-                        <span class="label-in">Summer Internship</span>
-                        <span class="label-in">UX Writing</span>
-                        <span class="label-in">UI Documentation</span>
-                        <span class="label-in">Iterative Feedback</span>
-                        <span class="label-in">Design System</span>
-                    </div>
+                <div class="project-tags">
+                    Summer Internship • Components & Variants<br>
+                    UX Writing • Design System
+                </div>
+                <div class="project-jingle">[ SAS Filament UI Design System ]</div>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Images/project_thumbnails/sas_thumbnail.png" alt="Project Image">
                 </div>
             </div>
+        </section>
 
-            <div class="project-card" onclick="window.location.href='navi.html'">
-                <div class="project-image" 
-                style="--secondary-image: url('images/project_thumbnails/navi_thumbnail_2.png');">
-                    <img src="images/project_thumbnails/navi_thumbnail.png" alt="Navi Project Thumbnail">
+        <section class="project-section" data-project="navi.html">
+            <div class="project-info">
+                <div class="project-header">
+                    <div class="project-title">2023</div>
+                    <div class="project-subtitle">Navi</div>
                 </div>
-                <div class="project-content">
-                    <h4-2>RISD Navi</h4-2>
-                    <h3>Lost on Campus</h3>
-                    <div class="project-labels-in">
-                        <span class="label-in">Award-winning App</span>
-                        <span class="label-in">AI Integration</span>
-                        <span class="label-in">1 Day Design Sprint</span>
-                        <span class="label-in">Teamwork</span>
-                        <span class="label-in">Accessibility</span>
-                    </div>
+                <div class="project-tags">
+                    Award-winning App • AI Integration<br>
+                    1 Day Design Sprint • Accessibility
+                </div>
+                <div class="project-jingle">[ Campus Wayfinding & Resources ]</div>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Images/project_thumbnails/navi_thumbnail.png" alt="Project Image">
                 </div>
             </div>
+        </section>
 
-            <div class="project-card" onclick="window.location.href='waddle.html'">
-                <div class="project-image" 
-                    style="--secondary-image: url('images/project_thumbnails/waddle_thumbnail_2.png');">
-                    <img src="images/project_thumbnails/waddle_thumbnail.png" alt="Waddle Project Thumbnail">
+        <section class="project-section" data-project="waddle.html">
+            <div class="project-info">
+                <div class="project-header">
+                    <div class="project-title">2024</div>
+                    <div class="project-subtitle">Waddle</div>
                 </div>
-                <div class="project-content">
-                    <h4-3>Waddle</h4-3>
-                    <h3>No More Lonely Students</h3>
-                    <div class="project-labels-in">
-                        <span class="label-in">On & Off Campus Events</span>
-                        <span class="label-in">Teamwork</span>
-                        <span class="label-in">User Testing</span>
-                        <span class="label-in">Quantitative Data</span>
-                        <span class="label-in">2 Day Design Sprint</span>
-                        <span class="label-in">Ideation</span>
-                    </div>
+                <div class="project-tags">
+                    Teamwork • On & Off Campus Events<br>
+                    2 Day Design Sprint • Quantitative Data
+                </div>
+                <div class="project-jingle">[ No More Lonely Students ]</div>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Images/project_thumbnails/waddle_thumbnail.png" alt="Project Image">
                 </div>
             </div>
-
-            <div class="project-card-soon">
-                <div class="project-image" data-secondary-image="images/project_thumbnails/blobquiz_soon_thumbnail.png">
-                    <img src="images/project_thumbnails/blobquiz_thumbnail.png" alt="Blobs Project Thumbnail">
-                </div>
-                <div class="project-content">
-                    <h4-3>The Blobs We Are</h4-3>
-                    <h3>Understanding Mental Health</h3>
-                    <div class="project-labels-in">
-                        <span class="label-in-soon">COMING SOON</span>
-                        <span class="label-in">Healthcare</span>
-                        <span class="label-in">Video Game</span>
-                        <span class="label-in">Teens & Children</span>
-                        <span class="label-in">User Testing & Research</span>
-                        <span class="label-in">Coding</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card-soon">
-                <div class="project-image" data-secondary-image="images/project_thumbnails/sas_site_thumbnail.png">
-                    <img src="images/project_thumbnails/sas_site_thumbnail.png" alt="SAS Site Project Thumbnail">
-                </div>
-                <div class="project-content">
-                    <h4-2>SAS Filament UI System</h4-2>
-                    <h3>Website Concept Proposals</h3>
-                    <div class="project-labels-in">
-                        <span class="label-in-soon">COMING SOON</span>
-                        <span class="label-in">Website Design</span>
-                        <span class="label-in">Summer Internship</span>
-                        <span class="label-in">Quantitative Data</span>
-                        <span class="label-in">Iterative Feedback</span>
-                        <span class="label-in">User Research</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!--<section id="resume" class="section">
-        <div style="text-align: center;">
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 550px; margin-left: auto; margin-right: auto;">
-                Want to know more or get in contact? Click a button below!
-            </p>
-            <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank" class="cta-button">
-                Resume 📝
-            </a>
-            <a href="https://www.linkedin.com/in/waverly-huang-66930622a/" target="_blank" class="cta-button">
-                LinkedIn 🤝
-            </a>
-        </div>
-    </section>-->
-    <!-- Footer -->
-    <footer class="footer">
-        <!--<div class="footer-content">
-
-            <div class="footer-section">
-                <img src="images/footer.png" alt="TaskTone Project Thumbnail" height="100" class="photo">
-            </div>
-
-            <div class="footer-section">
-                <h3>Waverly Huang</h3>
-                <p>&copy; 2025 Waverly Huang.</p>
-                <p>Made with love 🫶</p>
-                <p>(& Strawberry Matcha 🍓)</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Navigation</h3>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="play.html">Play</a>
-                    <a href="about.html">About</a>
-            
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <div class="footer-links">
-                    <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a>
-                    <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a>
-                </div>
-            </div> -->
-        <div class="footer-content">
-                <p>&copy; Waverly Huang 2025 — Made with Love 🫶 and Strawberry Matcha 🍓🍵</p> 
-                <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> — 
-                <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></p>
-        </div>
-    </footer>
+        </section>
+    </div>
         
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; Waverly Huang 2025 ✦ Made with Love 🫶 & Strawberry Matcha 🍓🍵</p> 
+                <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> ✦ 
+                <a href="https://drive.google.com/file/d/1236RrDI5r8j9uUWlUom65y_OufqsEKh_/view?usp=sharing" target="_blank">Resume</a></p>
+            </div>
+        </footer>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
