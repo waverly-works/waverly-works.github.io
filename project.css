@@ -1014,7 +1014,9 @@ body.dark-mode .footer-content a {
     }
 
     .feature-block {
+        display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 30px;
         overflow: visible;
     }
@@ -1023,18 +1025,20 @@ body.dark-mode .footer-content a {
     .feature-visual-tt,
     .feature-visual-custom {
         width: 100%;
-        max-width: 280px;
+        max-width: 250px;
         padding: 1rem;
         margin: 0 auto;
+        flex-shrink: 0;
     }
 
     body.dark-mode .feature-visual,
     body.dark-mode .feature-visual-tt,
     body.dark-mode .feature-visual-custom {
         width: 100%;
-        max-width: 280px;
+        max-width: 250px;
         padding: 1rem;
         margin: 0 auto;
+        flex-shrink: 0;
     }
 
     .feature-visual video,
@@ -1044,11 +1048,14 @@ body.dark-mode .footer-content a {
         width: 100%;
         height: auto;
         max-width: 100%;
+        display: block;
     }
 
     .feature-text {
         width: 100%;
         max-width: 100%;
+        text-align: left;
+        order: 2;
     }
 
     .feature-text h3 {
@@ -1104,14 +1111,14 @@ body.dark-mode .footer-content a {
     .feature-visual,
     .feature-visual-tt,
     .feature-visual-custom {
-        max-width: 240px;
+        max-width: 220px;
         padding: 0.75rem;
     }
 
     body.dark-mode .feature-visual,
     body.dark-mode .feature-visual-tt,
     body.dark-mode .feature-visual-custom {
-        max-width: 240px;
+        max-width: 220px;
         padding: 0.75rem;
     }
 
