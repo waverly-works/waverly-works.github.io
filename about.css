@@ -258,7 +258,6 @@ body.dark-mode .life-title-container {
 
 .life-gallery-item {
     aspect-ratio: 1;
-    background: #fff;
     overflow: hidden;
     position: relative;
     cursor: pointer;
