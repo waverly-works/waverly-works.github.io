@@ -377,7 +377,7 @@ body.dark-mode .question-card {
 
 .feature-visual {
     flex: 0 0 auto;
-    width: 560px;
+    width: 510px;
     padding: 2rem;
     background-color: #1a1919;
     border-radius: 20px;
@@ -389,7 +389,7 @@ body.dark-mode .question-card {
 
 body.dark-mode .feature-visual {
     flex: 0 0 auto;
-    width: 560px;
+    width: 530px;
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.041);
     border-radius: 20px;
