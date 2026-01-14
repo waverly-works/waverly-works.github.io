@@ -29,11 +29,21 @@ header {
 }
 
 .logo {
-    font-size: 30px;
-    font-weight: 900;
-    letter-spacing: -1px;
     position: absolute;
     left: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo video {
+    width: 140%;
+    height: 140%;
+    object-fit: cover;
 }
 
 nav {
