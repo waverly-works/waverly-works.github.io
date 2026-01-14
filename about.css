@@ -189,12 +189,12 @@ main {
 
 .drag-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
 }
 
 .drag-item {
-    aspect-ratio: 4/4;
+    aspect-ratio: 4/4.5;
     cursor: move;
     cursor: grab;
     border-radius: 8px;
