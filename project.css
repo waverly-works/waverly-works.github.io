@@ -598,7 +598,7 @@ body.dark-mode .solutions-block {
 
 .solution-pair {
     margin-bottom: 40px;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px;*/
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -608,13 +608,11 @@ body.dark-mode .solution-pair {
 
 .solution-pair:last-child {
     border-bottom: none;
-    padding-bottom: 40px;
     margin-bottom: 0;
 }
 
 body.dark-mode .solution-pair:last-child {
     border-bottom: none;
-    padding-bottom: 40px;
     margin-bottom: 0;
 }
 
