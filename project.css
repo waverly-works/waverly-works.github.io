@@ -1186,6 +1186,12 @@ body.dark-mode .footer-content a {
         padding: 40px 30px;
     }
 
+    .evolution-block,
+    .learning-block {
+        padding: 40px 30px;
+    }
+
+
     .image-pair {
         grid-template-columns: 1fr;
     }
