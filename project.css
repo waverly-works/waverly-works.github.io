@@ -697,7 +697,6 @@ body.dark-mode .evolution-pair:last-child {
     line-height: 1.7;
     opacity: 0.9;
 }
-
 /* New flexbox container for videos */
 .evolution-pair .hero-images-container {
     display: flex;
@@ -712,12 +711,27 @@ body.dark-mode .evolution-pair:last-child {
     min-width: 300px;
 }
 
-/* Add border radius to videos */
+/* Add border radius to videos 
 .evolution-pair .hero-images video {
     border-radius: 12px;
     width: 100%;
     height: auto;
     display: block;
+}*/
+
+/* Image pair within evolution block */
+.evolution-pair .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.evolution-pair .image-pair img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 /* Survey Block */
