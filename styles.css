@@ -27,7 +27,7 @@ header {
     z-index: 1000;  
     border-bottom: 1px solid #e0e0e0;
 }
-
+ 
 .logo {
     position: absolute;
     left: 40px;
@@ -249,35 +249,22 @@ body.dark-mode .project-count {
     opacity: 0.8;
 }
 
-.shooting-star {
-    width: 2px;
-    height: 120px;
-    background: #fff;
-    position: relative;
-    animation: pulse 3s ease-in-out infinite;
+.arrow-down {
+    font-size: 3rem;
+    color: #fff;
+    display: block;
+    animation: bounce 2s ease-in-out infinite;
 }
 
-.shooting-star::before {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%
-    );
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.6;
+    }
 }
 
 @keyframes pulse {
