@@ -274,20 +274,28 @@ body.dark-mode nav a {
 
 /* Projects Section */
 .projects-section {
-    padding-top: 80px;
     padding-bottom: 40px;
+    padding-top: 80px;
 }
 
 main {
-    margin-top: 0;
-    padding: 0 40px 0;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
 .projects-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     margin-bottom: 50px;
 }
+
+.project-card {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 300px;
+}
+
 
 .project-card {
     flex: 1;
