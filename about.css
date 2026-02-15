@@ -167,75 +167,275 @@ main {
     padding: 0 40px;
 }
 
-.about-header {
-    text-align: center;
-    margin-bottom: 60px;
+/* Top Section: Stacked Images + Bio */
+.top-section {
+    display: flex;
+    gap: 120px;
+    margin-bottom: 100px;
+    align-items: flex-start;
 }
 
-.about-title {
-    font-size: 4rem;
-    font-weight: 900;
-    letter-spacing: -2px;
-    text-transform: uppercase;
-    margin-bottom: 40px;
+.stacked-images {
+    position: relative;
+    width: 400px;
+    height: 450px;
+    flex-shrink: 0;
+    align-items: left;
 }
 
-.about-intro {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.about-intro em {
-    font-style: italic;
-    opacity: 0.9;
-}
-
-.draggable-section {
-    margin: 4rem 0;
-    padding: 2rem 0;
-}
-
-.drag-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
-}
-
-.drag-item {
-    aspect-ratio: 4/4.5;
-    cursor: move;
-    cursor: grab;
+.stack-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.2s;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.drag-item:active {
-    cursor: grabbing;
-}
-
-.drag-item.dragging {
-    opacity: 0.5;
-    transform: scale(0.95);
-}
-
-.drag-item.drag-over {
+.stack-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease,
 }
 
-.drag-item img {
+.stack-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    pointer-events: none;
     user-select: none;
+    pointer-events: none;
 }
 
+.stack-item[data-index="0"] {
+    z-index: 5;
+    transform: translate(0, 0);
+}
+
+.stack-item[data-index="1"] {
+    z-index: 4;
+    transform: translate(22px, 22px);
+}
+
+.stack-item[data-index="2"] {
+    z-index: 3;
+    transform: translate(44px, 44px);
+}
+
+.stack-item[data-index="3"] {
+    z-index: 2;
+    transform: translate(66px, 66px);
+}
+
+.stack-item[data-index="4"] {
+    z-index: 1;
+    transform: translate(88px, 88px);
+}
+.bio-info {
+    flex: 1;
+}
+
+.bio-name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+
+}
+
+.bio-subtitle {
+    font-size: 1.2rem;
+    font-weight: 200;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #404040;
+    text-transform: uppercase;
+}
+
+body.dark-mode .bio-subtitle {
+    color: #909090;
+}
+
+.bio-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #181616;
+}
+
+body.dark-mode .bio-description {
+    color: #dadada;
+}
+
+/* Bottom Section: Experience + Leadership */
+.bottom-section {
+    display: flex;
+    gap: 80px;
+    margin-bottom: 100px;
+}
+
+.leadership-details a {
+    color: #0041cc;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+.leadership-details a:hover {
+    opacity: 0.6;
+}
+
+body.dark-mode .leadership-details {
+    border-top: 1px solid #333;
+}
+
+body.dark-mode .leadership-details a {
+    color: #8dd0ff;
+}
+
+.experience-section,
+.leadership-section {
+    flex: 1;
+}
+
+.section-label {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.experience-list,
+.leadership-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.experience-item {
+    display: flex;
+    justify-content: space-between;  /* CHANGED from flex-direction: column */
+    align-items: center;              /* ADDED */
+    gap: 20px;  
+}
+
+.experience-title {
+    font-size: .9rem;
+    font-weight: 300;                 /* CHANGED from 400 */
+    letter-spacing: 0.5px;            /* ADDED */
+    line-height: 1.4;
+    flex-shrink: 0;                   /* ADDED */
+}
+
+.experience-meta {
+    font-size: .9rem;
+    display: flex;
+    align-items: center;              /* KEPT */
+    gap: 20px;                        /* ADDED */
+    flex: 1;  
+}
+
+.company {
+    font-size: .9rem;
+    font-weight: 500;
+    flex: 1;  
+}
+
+.year {
+    opacity: 0.5;
+    font-size: 0.95rem;
+    flex-shrink: 0;  
+}
+
+/* Leadership with Dropdown */
+.leadership-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 20px;
+}
+
+body.dark-mode .leadership-item {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.leadership-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;   /* CHANGED from flex-direction: column */
+    align-items: center;              /* ADDED */
+    gap: 20px;                        /* CHANGED from 5px */
+    transition: opacity 0.2s;
+}
+
+.leadership-header:hover {
+    opacity: 0.7;
+}
+
+.leadership-main {
+    display: flex;
+    align-items: center;              /* KEPT */
+    gap: 10px;                        /* ADDED */
+    flex-shrink: 0;        
+}
+
+.leadership-title {
+    font-size: .9rem;
+    font-weight: 300;                 /* CHANGED from 400 */
+    letter-spacing: 0.5px;            /* ADDED */
+    line-height: 1.4;
+}
+
+.dropdown-icon {
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+    opacity: 0.6;
+}
+
+.leadership-header.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.leadership-meta {
+    display: flex;
+    align-items: center;              /* KEPT */
+    gap: 20px;                        /* ADDED */
+    flex: 1;      
+}
+
+.leadership-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.leadership-content.active {
+    max-height: 500px;
+    padding-top: 20px;
+}
+
+.leadership-details p {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.leadership-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.leadership-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Life Section */
 .life-section {
     margin-bottom: 80px;
 }
@@ -253,7 +453,7 @@ body.dark-mode .life-title-container {
 }
 
 .life-title {
-    font-size: 2rem;
+    font-size: .2rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -304,6 +504,7 @@ body.dark-mode .life-title-container {
     transform: translateY(0);
 }
 
+/* Footer */
 .footer {
     margin-top: 80px;
     margin-left: -40px;
@@ -346,6 +547,7 @@ body.dark-mode .footer-content a {
     color: #fff;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     header {
         padding: 15px 20px;
@@ -373,28 +575,73 @@ body.dark-mode .footer-content a {
         padding: 0 20px;
     }
 
-    .about-title {
+    .top-section {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .stacked-images {
+        width: 100%;
+        max-width: 350px;
+        height: 400px;
+        margin: 0 auto;
+        align-items: left;
+    }
+
+    .bio-info {
+        flex: 1;
+        padding-top: 6rem;
+    }
+    
+    .bio-name {
         font-size: 2.5rem;
     }
 
-    .about-intro {
+    .bio-subtitle {
+        font-size: 1.6rem;
+    }
+
+
+    .bio-description {
         font-size: 1rem;
     }
 
-    .drag-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
+    .bottom-section {
+        flex-direction: column;
+        gap: 60px;
     }
 
-    .drag-item {
-        width: calc(50% - 0.5rem);
+    .leadership-images {
+        gap: 15px;
     }
-
-    .drag-item:last-child:nth-child(odd) {
+    
+    .leadership-images img {
         width: 100%;
+        height: auto;
+        aspect-ratio: 1;
     }
 
+/* ADDED these 3 blocks: */
+.experience-item {
+    flex-wrap: wrap;
+}
+
+.experience-title {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.leadership-header {
+    flex-wrap: wrap;
+}
+
+.leadership-main {
+    width: 100%;
+    margin-bottom: 5px;
+}
     .life-title-container {
         margin-left: -20px;
         margin-right: -20px;
