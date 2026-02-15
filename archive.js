@@ -38,6 +38,103 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+// Lightbox functionality with navigation
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
+const galleryImages = document.querySelectorAll('.gallery-item-horizontal img, .gallery-item-vertical img');
+
+let currentImageIndex = 0;
+const imageArray = Array.from(galleryImages);
+
+// Open lightbox when clicking on any gallery image
+galleryImages.forEach((img, index) => {
+    img.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentImageIndex = index;
+        showImage(currentImageIndex);
+        lightbox.classList.add('active');
+        body.style.overflow = 'hidden';
+    });
+});
+
+// Show image at specific index
+function showImage(index) {
+    if (index >= 0 && index < imageArray.length) {
+        lightboxImg.src = imageArray[index].src;
+        currentImageIndex = index;
+    }
+}
+
+// Navigate to previous image
+function showPreviousImage() {
+    currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
+    showImage(currentImageIndex);
+}
+
+// Navigate to next image
+function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+    showImage(currentImageIndex);
+}
+
+// Click handlers for navigation buttons
+if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPreviousImage();
+    });
+}
+
+if (lightboxNext) {
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNextImage();
+    });
+}
+
+// Close lightbox with close button
+if (lightboxClose) {
+    lightboxClose.addEventListener('click', () => {
+        closeLightbox();
+    });
+}
+ 
+// Close lightbox when clicking outside the image
+if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (lightbox && lightbox.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            showPreviousImage();
+        } else if (e.key === 'ArrowRight') {
+            showNextImage();
+        }
+    }
+});
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    body.style.overflow = 'auto';
+    setTimeout(() => {
+        lightboxImg.src = '';
+    }, 300);
+}
+
+
+
   /* =========================
      PROJECT CARD NAVIGATION
   ========================== */
