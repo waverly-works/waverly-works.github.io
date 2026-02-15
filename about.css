@@ -286,9 +286,9 @@ body.dark-mode .bio-description {
     opacity: 0.6;
 }
 
-body.dark-mode .leadership-details {
+/*body.dark-mode .leadership-details {
     border-top: 1px solid #333;
-}
+}*/
 
 body.dark-mode .leadership-details a {
     color: #8dd0ff;
@@ -415,7 +415,6 @@ body.dark-mode .leadership-item {
 }
 
 .leadership-details p {
-    margin-top: 20px;
     font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 15px;
