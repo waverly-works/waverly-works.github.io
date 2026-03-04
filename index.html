@@ -1,139 +1,171 @@
 <!doctype html>
 <html lang="en">
 <head>
+  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio — Waverly Huang</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">
-            <video autoplay loop muted playsinline>
-                <source src="Images/about me/about_me.mp4" type="video/mp4">
-            </video>
-        </a>
-        <nav>
-            <a href="index.html" class="active">SELECTED</a>
-            <a href="archive.html">ARCHIVE</a>
-            <a href="about.html">ABOUT</a>
-            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">RESUME</a>
-        </nav>
-        <div class="nav-icons">
-            <span id="modeToggle" title="Toggle Dark Mode"></span>
+
+  <main>
+    <nav class="tab-nav">
+        <a href="index.html" class="tab active">Work</a>
+        <a href="archive.html" class="tab">Archive</a>
+        <a href="about.html" class="tab">About</a>
+      </nav>
+    
+      <div class="name-tiles" id="nameTiles">
+        <div class="tile" data-letter="w" style="--tile-color:#3bb8c3; --tile-top:26px;"></div>
+        <div class="tile" data-letter="a" style="--tile-color:#4cc9d4; --tile-top:3px;"></div>
+        <div class="tile" data-letter="v" style="--tile-color:#5ad4dc; --tile-top:30px;"></div>
+        <div class="tile" data-letter="e" style="--tile-color:#6bcbe3; --tile-top:0px;"></div>
+        <div class="tile" data-letter="r" style="--tile-color:#7ab8e8; --tile-top:25px;"></div>
+        <div class="tile" data-letter="l" style="--tile-color:#8aaaf0; --tile-top:6px;"></div>
+        <div class="tile" data-letter="y" style="--tile-color:#9b9de8; --tile-top:27px;"></div>
+      </div>
+    
+      <div class="bio-section">
+        <p class="bio-text">
+          <!--<span class="bio-tag expandable" data-expanded="false">
+            <strong>Waverly Huang ❖</strong>
+            <span class="bio-tag-extra-wrap">
+              <span class="bio-tag-extra-inner">
+                <span class="bio-tag-extra">&nbsp;(loves spicy food & making vlogs)</span>
+              </span>
+            </span>
+          </span>-->
+    
+          Waverly Huang is a
+    
+          <span class="bio-tag expandable" data-expanded="false">
+            <strong>Product Designer ✸</strong>
+            <span class="bio-tag-extra-wrap">
+              <span class="bio-tag-extra-inner">
+                <span class="bio-tag-extra">&nbsp;who creates with scalable systems &amp; touches of play</span>
+              </span>
+            </span>
+          </span>
+    
+          from Pennsylvania &amp; New York. Currently studying @
+          
+          <span class="bio-tag expandable" data-expanded="false">
+            <strong>Rhode Island School of Design ❋</strong>
+            <span class="bio-tag-extra-wrap">
+              <span class="bio-tag-extra-inner">
+                <span class="bio-tag-extra">&nbsp;Industrial Design major + Computation &amp; Sustainability minors</span>
+              </span>
+            </span>
+          </span>
+        </p>
+      </div>
+    <div class="projects-section" id="projects">
+
+      <div class="projects-row">
+        <div class="project-card">
+          <a href="https://fountainhead.site/" target="_blank" class="project-link">
+            <div class="project-image">
+              <img src="Images/project_thumbnails/Fountainhead_Thumbnail.png" alt="Fountainhead">
+            </div>
+            <div class="project-info">
+              <h3 class="project-name">Fountainhead</h3>
+              <p class="project-description">Screenwriting Website • Founding Designer • Start Up Contractor</p>
+            </div>
+          </a>
         </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <img class="hero-video" src="Images/bus_china_trim.gif" alt="Hero background animation">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-name">Waverly Huang</h1>
-                <p class="hero-description">Product Designer who creates with empathy, simplicity, imagination, & touches of play.</p>
-            </div>
-            <div class="scroll-indicator" id="scrollDown">
-                <span class="arrow-down">↓</span>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <div class="projects-section" id="projects">
-            <!-- Row 1 -->
-            <div class="projects-row">
-               
-                       <!-- <div class="project-card" data-project="fountainhead.html">
-                    <div class="project-image">
-                        <img src="images/project_thumbnails/Fountainhead_Thumbnail.png" alt="Task Tone Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Fountainhead</h3>
-                        <p class="project-description">Screenwriting Website • Founding Designer • Start Up Contractor</p>
-                    </div>-->
-
-                 <div class="project-card">
-                    <a href="https://fountainhead.site/" target="_blank" class="project-link">
-                        <div class="project-image">
-                            <img src="Images/project_thumbnails/Fountainhead_Thumbnail.png" alt="Fountainhead Screenwriting Website Project">
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-name">Fountainhead</h3>
-                            <p class="project-description">Screenwriting Website • Founding Designer • Start Up Contractor</p>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="project-card" data-project="tasktone.html">
-                    <div class="project-image">
-                        <img src="images/project_thumbnails/tasktone_thumbnail.png" alt="Task Tone Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Task Tone</h3>
-                        <p class="project-description">Physical Product & App • Healthcare • Accessibility</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="projects-row">
-                <div class="project-card" data-project="sasfui.html">
-                    <div class="project-image">
-                        <img src="images/project_thumbnails/sas_thumbnail.png" alt="SAS Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Component & Documentation Tabs</h3>
-                        <p class="project-description">Summer Internship • Design System • UX Writing</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-project="navi.html">
-                    <div class="project-image">
-                        <img src="images/project_thumbnails/navi_thumbnail.png" alt="Navi Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Navi</h3>
-                        <p class="project-description">Award-winning App • Accessibility • AI Integration</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Row 3 -->
-            <div class="projects-row">
-               
-                <div class="project-card" data-project="waddle.html">
-                    <div class="project-image">
-                        <img src="Images/project_thumbnails/waddle_thumbnail_old.png" alt="Waddle Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Waddle</h3>
-                        <p class="project-description">Community • 3 Day Design Sprint • On & Off Campus Events</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <a href="https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/view?usp=sharing" target="_blank" class="project-link">
-                        <div class="project-image">
-                            <img src="Images/project_thumbnails/GardeningTool_thumbnail.png" alt="Gardening Tool Project">
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-name">Ergonomic Gardening Tool</h3>
-                            <p class="project-description">Physical Product Design • Accessibility</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        <div class="project-card" data-project="tasktone.html">
+          <div class="project-image">
+            <img src="images/project_thumbnails/tasktone_thumbnail.png" alt="Task Tone">
+          </div>
+          <div class="project-info">
+            <h3 class="project-name">Task Tone</h3>
+            <p class="project-description">Physical Product &amp; App • Healthcare • Accessibility</p>
+          </div>
         </div>
-        
-        <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; Waverly Huang 2026 ✩ Coded carefully, made with 🫶 & sips of 🍵</p> 
-                <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> ✦ 
-                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a></p>
+      </div>
+
+      <div class="projects-row">
+        <div class="project-card" data-project="sasfui.html">
+          <div class="project-image">
+            <img src="images/project_thumbnails/sas_thumbnail.png" alt="Zero State">
+          </div>
+          <div class="project-info">
+            <h3 class="project-name">Zero State</h3>
+            <p class="project-description">Summer Internship • Design System • UX Writing</p>
+          </div>
+        </div>
+        <div class="project-card" data-project="navi.html">
+          <div class="project-image">
+            <img src="images/project_thumbnails/navi_thumbnail.png" alt="Navi">
+          </div>
+          <div class="project-info">
+            <h3 class="project-name">Navi</h3>
+            <p class="project-description">Award-winning App • Accessibility • AI Integration</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-row">
+        <div class="project-card" data-project="waddle.html">
+          <div class="project-image">
+            <img src="Images/project_thumbnails/waddle_thumbnail_old.png" alt="Waddle">
+          </div>
+          <div class="project-info">
+            <h3 class="project-name">Waddle</h3>
+            <p class="project-description">Community • 3 Day Design Sprint • On and Off Campus Events</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <a href="https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/view?usp=sharing" target="_blank" class="project-link">
+            <div class="project-image">
+              <img src="Images/project_thumbnails/GardeningTool_thumbnail.png" alt="Gardening Tool">
             </div>
-        </footer>
-    </main>
-    <script src="script.js"></script>
+            <div class="project-info">
+              <h3 class="project-name">Ergonomic Gardening Tool</h3>
+              <p class="project-description">Physical Product Design • Accessibility</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="spacer"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="mode-toggle-bar">
+        <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">&#9728;</button>
+        <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">&#9790;</button>
+      </div>
+      <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
+      <div class="footer-right">
+        <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
+        <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Project detail">
+    <div id="lightbox-window">
+      <div id="lightbox-loading">Loading...</div>
+      <button id="lightbox-close" aria-label="Close project">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#333" stroke-width="1.5"/>
+          <path d="M15 9L9 15M9 9l6 6" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <nav id="lightbox-sidebar" aria-label="Project sections"></nav>
+      <div id="lightbox-content">
+        <iframe id="lightbox-iframe" title="Project content"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="sidebar.js"></script>
+
 </body>
 </html>

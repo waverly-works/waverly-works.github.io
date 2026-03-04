@@ -5,42 +5,61 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Archive — Waverly Huang</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="archive.css">
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">
-            <video autoplay loop muted playsinline>
-                <source src="Images/about me/about_me.mp4" type="video/mp4">
-            </video>
-        </a>
-        <nav>
-            <a href="index.html" class="inactive">SELECTED</a>
-            <a href="archive.html"class="active">ARCHIVE</a>
-            <a href="about.html">ABOUT</a>
-            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">RESUME</a>
-        </nav>
-        <div class="nav-icons">
-            <span id="modeToggle" title="Toggle Dark Mode"></span>
-        </div>
-    </header>
-
     <main>
-      <div class="archive-header" id="archiveHeader">
-            <h1 class="archive-title">Archive</h1>
-            <div class="archive-description">
-                A gallery archive of my explorations across mediums! <br><em>ft. 3D modeling, illustration, poetry, & photography.</em><br>
-            </div>
-        </div>
+        <nav class="tab-nav">
+            <a href="index.html" class="tab">Work</a>
+            <a href="archive.html" class="tab active">Archive</a>
+            <a href="about.html" class="tab">About</a>
+          </nav>
+        
+          <div class="name-tiles" id="nameTiles">
+            <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
+            <div class="tile" data-letter="r" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
+            <div class="tile" data-letter="c" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
+            <div class="tile" data-letter="h" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
+            <div class="tile" data-letter="i" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
+            <div class="tile" data-letter="v" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
+            <div class="tile" data-letter="e" style="--tile-color:#9b9de8; --tile-top:8px;"></div>
+          </div>
+        
+          <div class="bio-section">
+            <p class="bio-text">
+                I enjoy creating across
+        
+              <span class="bio-tag expandable" data-expanded="false">
+                <strong>different mediums ✦</strong>
+                <span class="bio-tag-extra-wrap">
+                  <span class="bio-tag-extra-inner">
+                    <span class="bio-tag-extra">&nbsp;ft. illustration, 3D modeling, poetry, & more</span>
+                  </span>
+                </span>
+              </span>
+        
+              with deep love & appreciation for all, originating from 
+              
+              <span class="bio-tag expandable" data-expanded="false">
+                <strong>living room walls ❏</strong>
+                <span class="bio-tag-extra-wrap">
+                  <span class="bio-tag-extra-inner">
+                    <span class="bio-tag-extra">&nbsp;my first canvas was my house. sorry mom!</span>
+                  </span>
+                </span>
+              </span>
+            </p>
+          </div>
 
         <div class="gallery-container">
             <!-- Horizontal Row 1 -->
             <div class="gallery-row gallery-row-horizontal">
                 <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/3D_Modeling/Screenshot 2025-09-22 at 4.08.57 PM.png" alt="Archive image">
+                    <img src="Archive_Page/3D_Modeling/headphones_cad.png" alt="Archive image">
                 </div>
                 <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/3D_Modeling/Screenshot 2025-09-22 at 4.09.43 PM.png" alt="Archive image">
+                    <img src="Archive_Page/3D_Modeling/pot_cad.png" alt="Archive image">
                 </div>
                 <div class="gallery-item-horizontal">
                     <img src="Archive_Page/3D_Modeling/shark_slippers.png" alt="Archive image">
@@ -67,7 +86,6 @@
                 <div class="gallery-item-vertical">
                     <img src="Archive_Page/painting/exit_painting.JPG" alt="Archive image">
                 </div>
-            
             </div>
 
             <!-- Horizontal Row 2 -->
@@ -100,23 +118,37 @@
             </div>
         </div>
 
-        <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; Waverly Huang 2026 ✩ Coded carefully, made with 🫶 & sips of 🍵</p> 
-                <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> ✦ 
-                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a></p>
-            </div>
-        </footer>
+        <div class="spacer"></div>
     </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="mode-toggle-bar">
+                <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">&#9728;</button>
+                <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">&#9790;</button>
+            </div>
+            <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
+                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <div class="lightbox-close" id="lightboxClose"></div>
+        <button class="lightbox-close" id="lightboxClose">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
+                <path d="M15 9L9 15M9 9l6 6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+        </button>
         <div class="lightbox-content">
             <img id="lightboxImg" src="" alt="Expanded view">
         </div>
     </div>
 
     <script src="archive.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
