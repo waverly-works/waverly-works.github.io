@@ -655,6 +655,7 @@ align-items: flex-end;
 gap: 6px;
 pointer-events: auto;
 }
+
 #lightbox-sidebar a {
 font-size: 13px;
 font-weight: 500;
@@ -668,6 +669,7 @@ transition: color 0.15s, border-color 0.15s;
 text-align: right;
 white-space: nowrap;
 }
+
 #lightbox-sidebar a:hover,
 #lightbox-sidebar a.active {
 color: #111;
