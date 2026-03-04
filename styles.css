@@ -171,13 +171,14 @@ body.dark-mode .tab:not(.active):hover {
   /* Animated gradient cycling through all tile colors */
   background: linear-gradient(
     135deg,
-    #3bb8c3,
+    #32c7d5,
     #4cc9d4,
     #5ad4dc,
     #6bcbe3,
     #7ab8e8,
     #8aaaf0,
     #9b9de8,
+    #9194ea,
     #8aaaf0,
     #7ab8e8,
     #6bcbe3,
@@ -425,7 +426,7 @@ main {
 }
 
 body.dark-mode .mode-toggle-bar {
-  background: rgba(60, 60, 60, 0.45);
+  background: rgba(122, 122, 122, 0.45);
 }
 
 .mode-btn {
@@ -655,7 +656,7 @@ gap: 6px;
 pointer-events: auto;
 }
 #lightbox-sidebar a {
-font-size: 13px;
+font-size: 1px;
 font-weight: 500;
 letter-spacing: 0.06em;
 text-transform: uppercase;
