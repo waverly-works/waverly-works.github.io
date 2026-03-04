@@ -196,17 +196,17 @@ body.dark-mode p a:hover {
 
 /* Main content */
 main {
-    padding-left: 8rem;
-    padding-right: 8rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
     max-width: 100%;
 }
 
 /* Project Hero */
 .project-hero {
     text-align: center;
-    padding-left: 8rem;
-    padding-right: 8rem;
-    margin-bottom: 8rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    margin-bottom: 6rem;
 }
 
 .project-hero-title {
@@ -218,7 +218,7 @@ main {
     letter-spacing: -2px;
     text-transform: uppercase;
     margin-bottom: 30px;
-    margin-top: 8rem;
+    margin-top: 6rem;
 }
 
 .project-hero-subtitle {
@@ -281,15 +281,15 @@ body.dark-mode .project-meta-grid {
 
 /* Content Sections */
 .content-section {
-    margin-bottom: 8rem;
-    padding-left: 8rem;
-    padding-right: 8rem;
+    margin-bottom: 6rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
 }
 
 .content-section-dark {
-    margin-bottom: 8rem;
-    padding-left: 8rem;
-    padding-right: 8rem;
+    margin-bottom: 6rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
     padding-top: 5rem;
     padding-bottom: 5rem;
     width: 100%;
@@ -1033,12 +1033,12 @@ body.dark-mode .footer-content a {
     }
 
     .project-hero {
-        margin-bottom: 8rem;
+        margin-bottom: 6rem;
     }
 
     .content-section,
     .content-section-dark {
-        margin-bottom: 8rem;
+        margin-bottom: 6rem;
     }
 
     .project-hero-title {
