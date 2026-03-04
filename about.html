@@ -1,52 +1,103 @@
 <!doctype html>
 <html lang="en">
 <head>
+    
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Waverly Huang</title>
+  <title>Archive — Waverly Huang</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="about.css">
+ 
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">
-            <video autoplay loop muted playsinline>
-                <source src="Images/about me/about_me.mp4" type="video/mp4">
-            </video>
-        </a>
-        <nav>
-            <a href="index.html">SELECTED</a>
-            <a href="archive.html">ARCHIVE</a>
-            <a href="about.html" class="active">ABOUT</a>
-            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">RESUME</a>
-        </nav>
-        <div class="nav-icons">
-            <span id="modeToggle" title="Toggle Dark Mode"></span>
-        </div>
-    </header>
-
     <main>
+        <nav class="tab-nav">
+            <a href="index.html" class="tab">Work</a>
+            <a href="archive.html" class="tab">Archive</a>
+            <a href="about.html" class="tab active">About</a>
+          </nav>
+        
+          <div class="name-tiles" id="nameTiles">
+            <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:24px;"></div>
+            <div class="tile" data-letter="b" style="--tile-color:#4cc9d4; --tile-top:8px;"></div>
+            <div class="tile" data-letter="o" style="--tile-color:#5abcdc; --tile-top:30px;"></div>
+            <div class="tile" data-letter="u" style="--tile-color:rgb(107, 169, 227); --tile-top:0px;"></div>
+            <div class="tile" data-letter="t" style="--tile-color:rgb(107, 148, 236); --tile-top:26px;"></div>
+          </div>
+        
+          <div class="bio-section">
+            <p class="bio-text">
+        
+              <span class="bio-tag expandable" data-expanded="false">
+                <strong>Waverly Huang ❖</strong>
+                <span class="bio-tag-extra-wrap">
+                  <span class="bio-tag-extra-inner">
+                    <span class="bio-tag-extra">&nbsp;named after the new york street, not the disney show</span>
+                  </span>
+                </span>
+              </span>
+        
+              is a designer, artist, writer, & matcha connoisseur with a penchant for birdwatching.  
+              I create with
+              <span class="bio-tag expandable" data-expanded="false">
+                  <strong>speed & intention ⛟</strong>
+                  <span class="bio-tag-extra-wrap">
+                  <span class="bio-tag-extra-inner">
+                      <span class="bio-tag-extra">&nbsp;i'm no stranger to 1-2 day turnarounds</span>
+                  </span>
+                  </span>
+              </span>
+              often working
+              <span class="bio-tag expandable" data-expanded="false">
+                  <strong>for people, with people ⭓</strong>
+                  <span class="bio-tag-extra-wrap">
+                  <span class="bio-tag-extra-inner">
+                      <span class="bio-tag-extra">&nbsp;i work with Project Managers, Developers, Engineers, & more to make it happen!</span>
+                  </span>
+                  </span>
+              </span>
+            
+            </p>
+            <p class="bio-text">
+               I steadily believe the world will always
+                <span class="bio-tag expandable" data-expanded="false">
+                    <strong>need designers ✱</strong>
+                    <span class="bio-tag-extra-wrap">
+                    <span class="bio-tag-extra-inner">
+                        <span class="bio-tag-extra">&nbsp;i aim to explore areas between human/artifical intelligence 🤖</span>
+                    </span>
+                    </span>
+                </span>
+                because even as our digitalscape evolves, the human touch in design will never go away.
+            </p>
+          </div>
+          <div class="stacked-images" id="stackedImages">
+            <div class="stack-item" data-index="1">
+                <img src="Images/painting_me.jpeg" alt="Photo 2">
+            </div>
+            <div class="stack-item" data-index="2">
+                <img src="Images/nz_me.jpeg" alt="Photo 3"> 
+            </div>
+            <div class="stack-item" data-index="0">
+                <img src="Images/Waverly_Huang_Headshot_.jpg" alt="Photo 1">
+            </div>
+
+            <div class="stack-item" data-index="6">
+                <img src="Images/about_page/grid5.jpg" alt="Photo 5">
+            </div>
+            <div class="stack-item" data-index="3">
+                <img src="Images/woodshop_me.jpeg" alt="Photo 4">
+            </div>
+            <div class="stack-item" data-index="4">
+                <img src="Images/nz_me2.jpeg" alt="Photo 5">
+            </div>
+        </div>
         <!-- Top Section: Stacked Images + Bio Info -->
         <div class="top-section">
-            <div class="stacked-images" id="stackedImages">
-                <div class="stack-item" data-index="0">
-                    <img src="Images/Waverly_Huang_Headshot_.jpg" alt="Photo 1">
-                </div>
-                <div class="stack-item" data-index="1">
-                    <img src="Images/painting_me.jpeg" alt="Photo 2">
-                </div>
-                <div class="stack-item" data-index="2">
-                    <img src="Images/nz_me.jpeg" alt="Photo 3">
-                </div>
-                <div class="stack-item" data-index="3">
-                    <img src="Images/woodshop_me.jpeg" alt="Photo 4">
-                </div>
-                <div class="stack-item" data-index="4">
-                    <img src="Images/nz_me2.jpeg" alt="Photo 5">
-                </div>
-            </div>
+    
             
-            <div class="bio-info">
+            <!--<div class="bio-info">
                 <h1 class="bio-name">I'M WAVERLY 🌠</h1>
                 <h1 class="bio-subtitle">DESIGNER  ✩  WRITER  ✩  MATCHA connoisseur</h1>
                 <p class="bio-description">
@@ -73,7 +124,7 @@
                 <br>
                 <p class="bio-description">
                     When I'm not at my computer, you can find me staring at birds or laughing with loved ones.
-                </p>
+                </p>-->
                    <!--
                 <h2 class="bio-subtitle">✦</h2>
                 <div class="experience-section">
@@ -134,7 +185,7 @@
         <!-- Bottom Section: Experience + Leadership -->
         <div class="bottom-section">
             <div class="experience-section">
-                <h2 class="section-label">experience  💼</h2>
+                <h2 class="section-label">experience ✲</h2>
                 <div class="experience-list">
                     <div class="experience-item">
                         <div class="experience-title">Co-Project Manager | Prev. UIUX Team Lead & Designer</div>
@@ -158,7 +209,7 @@
                         </div>
                     </div>
                     <div class="experience-item">
-                        <div class="experience-title">User Experience Design Intern</div>
+                        <div class="experience-title">UIUX Design Intern</div>
                         <div class="experience-meta">
                             <span class="company">Quant Unicorn</span>
                             <span class="year">2024 - 2025</span>
@@ -171,11 +222,25 @@
                             <span class="year">2023 - 2024</span>
                         </div>
                     </div>
+                    <div class="experience-item">
+                        <div class="experience-title">UIUX Designer</div>
+                        <div class="experience-meta">
+                            <span class="company">Brown RISD Game Developers</span>
+                            <span class="year">2024</span>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-title">Content Team Member</div>
+                        <div class="experience-meta">
+                            <span class="company">Better World by Design</span>
+                            <span class="year">2023 - 2024</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="leadership-section">
-                <h2 class="section-label">community  💞</h2>
+                <h2 class="section-label">community ☻</h2>
                 <div class="leadership-list">
                     <div class="leadership-item">
                         <div class="leadership-header" data-leadership="campus-leader">
@@ -323,14 +388,20 @@
                 </div>
             </div>
         </div>-->
-        <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; Waverly Huang 2026 ✩ Coded carefully, made with 🫶 & sips of 🍵</p> 
-                <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> ✦ 
-                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a></p>
-            </div>
-        </footer>
     </main>
-    <script src="archive.js"></script>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="mode-toggle-bar">
+                <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">&#9728;</button>
+                <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">&#9790;</button>
+            </div>
+            <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
+                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>

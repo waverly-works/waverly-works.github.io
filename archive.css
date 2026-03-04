@@ -4,18 +4,48 @@
     box-sizing: border-box;
 }
 
+/* ── CSS variables (light mode) ───────────────────────────────────── */
+:root {
+    --bg: #e8e8e8;
+    --text: #1a1919;
+    --text-muted: #555;
+    --card-bg: #f0f0f0;
+    --footer-bg: rgba(232, 232, 232, 0.7);
+    --border: rgba(0, 0, 0, 0.08);
+    --tag-bg: rgba(255, 255, 255, 0.7);
+    --header-bg: rgba(232, 232, 232, 0.62);
+    --nav-active-bg: #fff;
+    --nav-inactive: #888;
+}
+
+/* ── Dark mode overrides ──────────────────────────────────────────── */
+body.dark-mode {
+    --bg: #1a1919;
+    --text: #f0f0f0;
+    --text-muted: #aaa;
+    --card-bg: #252525;
+    --footer-bg: rgba(20, 20, 20, 0.75);
+    --border: rgba(255, 255, 255, 0.07);
+    --tag-bg: rgba(60, 60, 60, 0.7);
+    --header-bg: rgba(26, 25, 25, 0.6);
+    --nav-active-bg: #333;
+    --nav-inactive: #888;
+}
+
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: #e9edee;
-    color: #000;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
     overflow-x: hidden;
     transition: background 0.3s, color 0.3s;
 }
 
+/* ── Header ───────────────────────────────────────────────────────── */
 header {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     position: fixed;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     top: 0;
     left: 0;
     right: 0;
@@ -23,9 +53,9 @@ header {
     justify-content: center;
     align-items: center;
     padding: 20px 40px;
-    background: #f0f3f49f;
-    z-index: 1000;  
-    border-bottom: 1px solid #e0e0e0;
+    background: var(--header-bg);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -46,48 +76,8 @@ header {
     object-fit: cover;
 }
 
-nav {
-    display: flex;
-    gap: 60px;
-    align-items: center;
-}
 
-nav a {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    text-decoration: none;
-    color: #000;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
-    position: relative;
-    transition: opacity 0.3s, color 0.3s;
-}
-
-nav a:hover {
-    opacity: 0.6;
-}
-
-nav a.active {
-    position: relative;
-}
-
-nav a.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 2px;
-    background: #000;
-    transform: translateY(-50%);
-    transition: background 0.3s;
-}
-
-body.dark-mode nav a.active::after {
-    background: #fff;
-}
-
+/* ── Nav icons ────────────────────────────────────────────────────── */
 .nav-icons {
     display: flex;
     gap: 20px;
@@ -112,7 +102,7 @@ body.dark-mode nav a.active::after {
 #modeToggle {
     font-size: 20px;
     line-height: 1;
-    color: #000;
+    color: var(--text);
     width: auto;
     height: auto;
     transition: all 0.3s;
@@ -120,7 +110,7 @@ body.dark-mode nav a.active::after {
 
 #modeToggle::before {
     content: '☼';
-    -webkit-text-stroke: 1.2px #000;
+    -webkit-text-stroke: 1.2px var(--text);
     transition: all 0.3s;
 }
 
@@ -142,88 +132,60 @@ body.dark-mode #modeToggle::before {
     height: 18px;
     border-radius: 50%;
     border: 2px solid #fff;
-    background: #1a1919;
+    background: var(--bg);
 }
 
-body.dark-mode {
-    background: #1a1919;
-    color: #fff;
-}
-
-body.dark-mode header {
-    background: #1a19199a;
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid #333;
-}
-
-body.dark-mode nav a {
-    color: #fff;
-}
-
+/* ── Main content ─────────────────────────────────────────────────── */
 main {
-    margin-top: 100px;
-    padding: 0 40px;
-    position: relative;
+    padding: 22px 22px 0;
 }
 
+/* ── Archive header ───────────────────────────────────────────────── */
 .archive-header {
     text-align: center;
     margin-bottom: 60px;
-    position: sticky;
-    top: 100px;
-    z-index: 100;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    pointer-events: none;
-}
-
-.archive-header.hidden {
-    opacity: 0;
-    transform: translateY(-20px);
 }
 
 .archive-title {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 3.5rem;
     font-weight: 900;
     letter-spacing: -2px;
     text-transform: uppercase;
     margin-bottom: 40px;
+    color: var(--text);
 }
 
 .archive-description {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
     max-width: 900px;
     margin: 0 auto;
+    color: var(--text-muted);
 }
 
 .archive-description em {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-style: italic;
     opacity: 0.8;
 }
 
-.gallery-container {
-    position: relative;
-    z-index: 200;
-}
-
+/* ── Gallery rows ─────────────────────────────────────────────────── */
 .gallery-row {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     width: 100%;
 }
 
 .gallery-row-horizontal {
     display: flex;
-    gap: 20px;
+    gap: 14px;
     width: 100%;
     height: 400px;
 }
 
 .gallery-row-vertical {
     display: flex;
-    gap: 20px;
+    gap: 14px;
     width: 100%;
     height: 500px;
 }
@@ -233,7 +195,9 @@ main {
     height: 100%;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
+    background: var(--card-bg);
+    border-radius: 16px;
 }
 
 .gallery-item-horizontal:hover {
@@ -244,15 +208,12 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px;
-    filter: grayscale(100%);
-    transform: scale(0.85);
-    transition: filter 0.5s ease, transform 0.5s ease;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
 }
 
-.gallery-item-horizontal img.color {
-    filter: grayscale(0%);
-    transform: scale(1);
+.gallery-item-horizontal:hover img {
+    transform: scale(1.05);
 }
 
 .gallery-item-vertical {
@@ -260,7 +221,9 @@ main {
     height: 100%;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
+    background: var(--card-bg);
+    border-radius: 16px;
 }
 
 .gallery-item-vertical:hover {
@@ -271,29 +234,31 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px;
-    filter: grayscale(100%);
-    transform: scale(0.85);
-    transition: filter 0.5s ease, transform 0.5s ease;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
 }
 
-.gallery-item-vertical img.color {
-    filter: grayscale(0%);
-    transform: scale(1);
+.gallery-item-vertical:hover img {
+    transform: scale(1.05);
 }
 
-/* Lightbox styles */
+/* ── Spacer above fixed footer ────────────────────────────────────── */
+.spacer {
+    height: 80px;
+}
+
+/* ── Lightbox ─────────────────────────────────────────────────────── */
 .lightbox {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    inset: 0;
     z-index: 2000;
+    background: rgba(0, 0, 0, 0.714);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     justify-content: center;
     align-items: center;
+    padding: 16px;
     animation: fadeIn 0.3s ease;
 }
 
@@ -302,28 +267,24 @@ main {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .lightbox-content {
     position: relative;
+    background: var(--nav-active-bg);
+    border-radius: 20px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
     max-width: 90%;
     max-height: 90%;
-    animation: zoomIn 0.3s ease;
+    animation: lb-in 0.28s cubic-bezier(.22, .68, 0, 1.2);
 }
 
-@keyframes zoomIn {
-    from {
-        transform: scale(0.8);
-    }
-    to {
-        transform: scale(1);
-    }
+@keyframes lb-in {
+    from { opacity: 0; transform: scale(0.93) translateY(16px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0);    }
 }
 
 .lightbox-content img {
@@ -331,97 +292,79 @@ main {
     max-height: 90vh;
     object-fit: contain;
     display: block;
-    border-radius: 20px;
 }
 
+/* ── Close button — matches #lightbox-close in styles.css ── */
 .lightbox-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: transparent;
+    top: 16px;
+    left: 16px;
+    z-index: 2001;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
     border: none;
+    background: transparent;
     cursor: pointer;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 40px;
-    color: #fff;
-    transition: all 0.3s;
-    z-index: 2001;
-    line-height: 1;
+    justify-content: center;
+    opacity: 0.9;
+    transition: opacity 0.15s;
+    padding: 0;
+    color: #d0d0d0e5;
 }
 
 .lightbox-close:hover {
-    transform: rotate(90deg);
-    opacity: 0.7;
-}
-
-.lightbox-close::before {
-    content: '×';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer {
-    margin-top: 80px;
-    margin-left: -40px;
-    margin-right: -40px;
-    margin-bottom: 0;
-    padding: 30px 40px;
-    border-top: 1px solid #e0e0e0;
-    text-align: center;
-    transition: border-color 0.3s;
-}
-
-.footer-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.footer-content p {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.footer-content a {
-    color: #000;
-    text-decoration: underline;
-    transition: opacity 0.3s, color 0.3s;
-}
-
-.footer-content a:hover {
     opacity: 0.6;
 }
 
-body.dark-mode .footer {
-    border-top: 1px solid #333;
+.lightbox-close svg {
+    width: 36px;
+    height: 36px;
+    color: #d0d0d0e5;
 }
 
-body.dark-mode .footer-content a {
-    color: #fff;
+/* Dark mode SVG strokes */
+body.dark-mode .lightbox-close svg circle,
+body.dark-mode .lightbox-close svg path {
+    stroke: #ccc;
 }
 
+/* ── Lightbox scrollbar — light mode ── */
+.lightbox-content ::-webkit-scrollbar { width: 8px; height: 8px; }
+.lightbox-content ::-webkit-scrollbar-track { background: transparent; }
+.lightbox-content ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 999px;
+}
+.lightbox-content ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.30); }
+
+/* ── Lightbox scrollbar — dark mode ── */
+body.dark-mode .lightbox-content ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+}
+body.dark-mode .lightbox-content ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.30);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tablet (≤ 768px) ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
     header {
         padding: 15px 20px;
     }
 
     .logo {
-        font-size: 24px;
         left: 20px;
     }
 
-    nav {
-        gap: 30px;
-    }
-
     nav a {
-        font-size: 9px;
+        font-size: 12px;
+        padding: 4px 11px;
     }
 
     .nav-icons {
@@ -430,7 +373,7 @@ body.dark-mode .footer-content a {
 
     main {
         margin-top: 80px;
-        padding: 0 20px;
+        padding: 16px 16px 0;
     }
 
     .archive-title {
@@ -445,7 +388,7 @@ body.dark-mode .footer-content a {
     .gallery-row-vertical {
         flex-direction: column;
         height: auto;
-        gap: 20px;
+        gap: 10px;
     }
 
     .gallery-item-horizontal,
@@ -455,28 +398,27 @@ body.dark-mode .footer-content a {
         flex: none;
     }
 
-    .lightbox-content {
-        padding: 100px 20px;
-    }
-
-    .footer {
-        margin-top: 60px;
-        margin-left: -20px;
-        margin-right: -20px;
-        padding: 30px 20px;
-    }
-
-    .footer-content p {
-        font-size: 0.85rem;
+    .gallery-row {
+        margin-bottom: 10px;
     }
 }
 
+/* ── Mobile (≤ 480px) ─────────────────────────────────────────────── */
 @media (max-width: 480px) {
     nav a {
-        font-size: 9px;
+        font-size: 11px;
+        padding: 4px 9px;
     }
 
-    .footer-content p {
-        font-size: 0.8rem;
+    main {
+        padding: 12px 12px 0;
+    }
+
+    .lightbox-content {
+        padding: 60px 12px 12px;
+    }
+
+    .spacer {
+        height: 64px;
     }
 }
