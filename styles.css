@@ -633,6 +633,7 @@ opacity: 40%;
 transition: opacity 0.15s;
 padding: 0;
 }
+
 #lightbox-close:hover {
 opacity: 0.6;
 }
@@ -654,11 +655,11 @@ gap: 6px;
 pointer-events: auto;
 }
 #lightbox-sidebar a {
-font-size: 10.5px;
+font-size: 13px;
 font-weight: 500;
 letter-spacing: 0.06em;
 text-transform: uppercase;
-color: #aaa;
+color: #969595;
 text-decoration: none;
 padding: 4px 6px 4px 0;
 border-right: 2px solid transparent;
@@ -712,11 +713,11 @@ background: #1e1e1e;
 
 body.dark-mode #lightbox-loading {
 background: #1e1e1e;
-color: #666;
+color: #b3b3b3;
 }
 
 body.dark-mode #lightbox-sidebar a {
-color: #555;
+color: #777777;
 }
 
 body.dark-mode #lightbox-sidebar a:hover,
