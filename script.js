@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
      STACKED IMAGES FUNCTIONALITY
   ========================== */
 
-  const stackedImages = document.getElementById('stackedImages');
+  /*const stackedImages = document.getElementById('stackedImages');
 
   if (stackedImages) {
     const stackItems = stackedImages.querySelectorAll('.stack-item');
@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item.style.transform = `translate(${offset}px, ${offset}px)`;
       });
     }
-  }
+  }*/
 
 
   /* =========================
