@@ -43,7 +43,6 @@ main {
     position: relative;
     width: 280px;
     height: 300px;
-    cursor: pointer;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
@@ -56,7 +55,6 @@ main {
     height: 100%;
     object-fit: cover;
     user-select: none;
-    pointer-events: none;
 }
 
 /* unique tilt per photo */
