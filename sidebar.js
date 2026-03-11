@@ -1,16 +1,14 @@
 // sidebar.js
 // Scroll-spy for the lightbox sidebar navigation.
-// Uses getBoundingClientRect() so it works regardless of which element
-// is actually scrolling inside the iframe (window vs <main>).
 
 (function () {
   "use strict";
 
   const projectSidebars = {
-    "tasktone.html": ["#overview", "#features", "#empathize", "#prototype", "#evolution", "#reflection"],
+    "tasktone.html": ["#overview", "#mission", "#painpoints", "#decisions", "#process", "#reflection"],
     "sasfui.html":   ["#overview", "#build",     "#specs",     "#tabs",      "#reflection"],
-    "navi.html":     ["#overview", "#features",  "#pain-points",   "#chatbot",  "#wireframes", "#reflection"],
-    "waddle.html":   ["#overview", "#features",  "#pain-points",   "#wireframes",   "#reflection"],
+    "navi.html":     ["#overview", "#mission",  "#decisions",  "#solution",  "#process",  "#reflection"],
+    "waddle.html":   ["#overview", "#mission",  "#solution",   "#process",   "#reflection"],
   };
 
   const overlay   = document.getElementById("lightbox-overlay");
@@ -25,9 +23,10 @@
   }
 
   function updateActiveSidebarLink() {
-    let iDoc;
+    let iWin, iDoc;
     try {
-      iDoc = lbIframe.contentDocument || lbIframe.contentWindow.document;
+      iWin = lbIframe.contentWindow;
+      iDoc = lbIframe.contentDocument || iWin.document;
     } catch (e) { return; }
 
     const project = currentProject();
@@ -39,15 +38,15 @@
 
     if (!sections.length || !links.length) return;
 
-    // getBoundingClientRect() is relative to the iframe's own viewport,
-    // so it correctly reflects whichever element is scrolling.
-    // A section is "active" once its top edge has passed 30% down the viewport.
-    const iframeHeight = lbIframe.clientHeight || 800;
-    const threshold = iframeHeight * 0.3;
+    // Use scrollY from inside the iframe's window, not getBoundingClientRect,
+    // so it works even when the scroll container is the iframe's own window.
+    const scrollY = iWin.scrollY || iWin.pageYOffset || iDoc.documentElement.scrollTop || 0;
+    const trigger = scrollY + (iWin.innerHeight || 600) * 0.3;
 
     let activeIndex = 0;
     sections.forEach((sec, i) => {
-      if (sec.getBoundingClientRect().top <= threshold) {
+      // offsetTop is relative to the document, not the viewport — reliable for scroll-spy
+      if (sec.offsetTop <= trigger) {
         activeIndex = i;
       }
     });
@@ -55,10 +54,32 @@
     links.forEach((a, i) => a.classList.toggle("active", i === activeIndex));
   }
 
+  function attachScrollListener() {
+    let iWin, iDoc;
+    try {
+      iWin = lbIframe.contentWindow;
+      iDoc = lbIframe.contentDocument || iWin.document;
+    } catch (e) { return; }
+
+    // Remove any old listeners by cloning — instead just use a named ref
+    const scrollTargets = [
+      iWin,
+      iDoc.querySelector("main"),
+      iDoc.querySelector("body"),
+      iDoc.documentElement,
+    ].filter(Boolean);
+
+    scrollTargets.forEach(t => {
+      t.addEventListener("scroll", updateActiveSidebarLink, { passive: true });
+    });
+
+    // Run immediately after attaching
+    updateActiveSidebarLink();
+  }
+
   function injectScrollbarStyles() {
     try {
       const iDoc = lbIframe.contentDocument || lbIframe.contentWindow.document;
-      // Remove any previously injected styles (e.g. on re-open)
       const existing = iDoc.getElementById("injected-scrollbar-styles");
       if (existing) existing.remove();
 
@@ -80,28 +101,8 @@
   }
 
   lbIframe.addEventListener("load", () => {
-    try {
-      const iWin = lbIframe.contentWindow;
-      const iDoc = lbIframe.contentDocument || iWin.document;
-
-      // Inject scrollbar styles matched to current light/dark mode
-      injectScrollbarStyles();
-
-      // Attach to every plausible scroll container
-      const scrollTargets = [
-        iWin,
-        iDoc.querySelector("main"),
-        iDoc.querySelector("body"),
-        iDoc.documentElement,
-      ].filter(Boolean);
-
-      scrollTargets.forEach(t =>
-        t.addEventListener("scroll", updateActiveSidebarLink, { passive: true })
-      );
-
-      // Set first link active immediately on open
-      updateActiveSidebarLink();
-    } catch (e) { /* cross-origin */ }
+    injectScrollbarStyles();
+    attachScrollListener();
   });
 
   // Reset when lightbox closes
