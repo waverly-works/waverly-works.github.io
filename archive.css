@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,63 +8,74 @@
 
 /* ── CSS variables (light mode) ───────────────────────────────────── */
 :root {
-    --bg: #e8e8e8;
-    --text: #1a1919;
-    --text-muted: #555;
-    --card-bg: #f0f0f0;
-    --footer-bg: rgba(232, 232, 232, 0.7);
-    --border: rgba(0, 0, 0, 0.08);
+    --bg: #eeece8;
+    --ink: #111110;
+    --ink-muted: rgba(17, 17, 16, 0.62);
+    --ink-light: #f0eee9;
+    --text: #111110;
+    --text-muted: rgba(17, 17, 16, 0.62);
+    --card-bg: rgba(17, 17, 16, 0.04);
+    --footer-bg: rgba(238, 236, 232, 0.7);
+    --border: rgba(17, 17, 16, 0.12);
+    --rule: rgba(17, 17, 16, 0.12);
     --tag-bg: rgba(255, 255, 255, 0.7);
-    --header-bg: rgba(232, 232, 232, 0.62);
+    --header-bg: rgba(238, 236, 232, 0.88);
     --nav-active-bg: #fff;
-    --nav-inactive: #888;
+    --nav-inactive: rgba(17, 17, 16, 0.45);
+    --sans: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    --serif: 'DM Serif Display', Georgia, serif;
 }
 
 /* ── Dark mode overrides ──────────────────────────────────────────── */
 body.dark-mode {
-    --bg: #1a1919;
-    --text: #f0f0f0;
-    --text-muted: #aaa;
-    --card-bg: #252525;
-    --footer-bg: rgba(20, 20, 20, 0.75);
-    --border: rgba(255, 255, 255, 0.07);
+    --bg: #111110;
+    --ink: #111110;
+    --ink-muted: rgba(240, 238, 233, 0.65);
+    --text: #f0eee9;
+    --text-muted: rgba(240, 238, 233, 0.65);
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --footer-bg: rgba(17, 17, 16, 0.75);
+    --border: rgba(255, 255, 255, 0.1);
+    --rule: rgba(255, 255, 255, 0.1);
     --tag-bg: rgba(60, 60, 60, 0.7);
-    --header-bg: rgba(26, 25, 25, 0.6);
+    --header-bg: rgba(17, 17, 16, 0.88);
     --nav-active-bg: #333;
-    --nav-inactive: #888;
+    --nav-inactive: rgba(240, 238, 233, 0.45);
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sans);
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
     transition: background 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* ── Header ───────────────────────────────────────────────────────── */
 header {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sans);
     position: fixed;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     top: 0;
     left: 0;
     right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 40px;
+    padding: 18px 40px;
     background: var(--header-bg);
     z-index: 1000;
     border-bottom: 1px solid var(--border);
+    transition: background 0.3s, border-color 0.3s;
 }
 
 .logo {
     position: absolute;
     left: 40px;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -75,7 +88,6 @@ header {
     height: 140%;
     object-fit: cover;
 }
-
 
 /* ── Nav icons ────────────────────────────────────────────────────── */
 .nav-icons {
@@ -100,26 +112,27 @@ header {
 }
 
 #modeToggle {
-    font-size: 20px;
-    line-height: 1;
-    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s;
     width: auto;
     height: auto;
-    transition: all 0.3s;
+    color: var(--text);
 }
 
 #modeToggle::before {
     content: '☼';
-    -webkit-text-stroke: 1.2px var(--text);
-    transition: all 0.3s;
+    -webkit-text-stroke: 1px var(--text);
 }
 
+#modeToggle:hover { transform: scale(1.15); }
+
 body.dark-mode #modeToggle {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: transparent;
-    border: 2px solid #fff;
+    border: 1.5px solid #aaa;
     overflow: hidden;
 }
 
@@ -128,10 +141,10 @@ body.dark-mode #modeToggle::before {
     position: absolute;
     top: -2px;
     left: 4px;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 1.5px solid #aaa;
     background: var(--bg);
 }
 
@@ -147,18 +160,17 @@ main {
 }
 
 .archive-title {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--serif);
     font-size: 3.5rem;
-    font-weight: 900;
-    letter-spacing: -2px;
-    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: -0.02em;
     margin-bottom: 40px;
     color: var(--text);
 }
 
 .archive-description {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
+    font-family: var(--sans);
+    font-size: 1.05rem;
     line-height: 1.8;
     max-width: 900px;
     margin: 0 auto;
@@ -294,7 +306,6 @@ main {
     display: block;
 }
 
-/* ── Close button — matches #lightbox-close in styles.css ── */
 .lightbox-close {
     position: absolute;
     top: 16px;
@@ -315,9 +326,7 @@ main {
     color: #d0d0d0e5;
 }
 
-.lightbox-close:hover {
-    opacity: 0.6;
-}
+.lightbox-close:hover { opacity: 0.6; }
 
 .lightbox-close svg {
     width: 36px;
@@ -325,64 +334,32 @@ main {
     color: #d0d0d0e5;
 }
 
-/* Dark mode SVG strokes */
 body.dark-mode .lightbox-close svg circle,
-body.dark-mode .lightbox-close svg path {
-    stroke: #ccc;
-}
+body.dark-mode .lightbox-close svg path { stroke: #ccc; }
 
-/* ── Lightbox scrollbar — light mode ── */
-.lightbox-content ::-webkit-scrollbar { width: 8px; height: 8px; }
-.lightbox-content ::-webkit-scrollbar-track { background: transparent; }
-.lightbox-content ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.18);
-    border-radius: 999px;
-}
-.lightbox-content ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.30); }
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(17,17,16,0.2); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(17,17,16,0.35); }
+body.dark-mode ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+body.dark-mode ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+* { scrollbar-width: thin; scrollbar-color: rgba(17,17,16,0.2) transparent; }
+body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
 
-/* ── Lightbox scrollbar — dark mode ── */
-body.dark-mode .lightbox-content ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.18);
-}
-body.dark-mode .lightbox-content ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.30);
-}
-
-/* ════════════════════════════════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-   ════════════════════════════════════════════════════════════════════ */
-
-/* ── Tablet (≤ 768px) ─────────────────────────────────────────────── */
+/* ── Responsive ─────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    header {
-        padding: 15px 20px;
-    }
-
-    .logo {
-        left: 20px;
-    }
-
-    nav a {
-        font-size: 12px;
-        padding: 4px 11px;
-    }
-
-    .nav-icons {
-        right: 20px;
-    }
+    header { padding: 15px 24px; }
+    .logo { left: 24px; }
+    .nav-icons { right: 24px; }
 
     main {
         margin-top: 80px;
         padding: 16px 16px 0;
     }
 
-    .archive-title {
-        font-size: 2.5rem;
-    }
-
-    .archive-description {
-        font-size: 1rem;
-    }
+    .archive-title { font-size: 2.5rem; }
+    .archive-description { font-size: 1rem; }
 
     .gallery-row-horizontal,
     .gallery-row-vertical {
@@ -398,27 +375,11 @@ body.dark-mode .lightbox-content ::-webkit-scrollbar-thumb:hover {
         flex: none;
     }
 
-    .gallery-row {
-        margin-bottom: 10px;
-    }
+    .gallery-row { margin-bottom: 10px; }
 }
 
-/* ── Mobile (≤ 480px) ─────────────────────────────────────────────── */
 @media (max-width: 480px) {
-    nav a {
-        font-size: 11px;
-        padding: 4px 9px;
-    }
-
-    main {
-        padding: 12px 12px 0;
-    }
-
-    .lightbox-content {
-        padding: 60px 12px 12px;
-    }
-
-    .spacer {
-        height: 64px;
-    }
+    main { padding: 12px 12px 0; }
+    .lightbox-content { padding: 60px 12px 12px; }
+    .spacer { height: 64px; }
 }
