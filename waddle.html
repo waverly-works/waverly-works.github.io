@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waddle - Waverly Huang</title>
+    <title>Waddle — Waverly Huang</title>
     <link rel="stylesheet" href="project.css">
     <link rel="stylesheet" href="sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -15,147 +18,174 @@
             </video>
         </a>
         <nav>
-            <a href="index.html">SELECTED</a>
-            <a href="archive.html">ARCHIVE</a>
-            <a href="about.html">ABOUT</a>
-            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">RESUME</a>
+            <a href="index.html">Selected</a>
+            <a href="archive.html">Archive</a>
+            <a href="about.html">About</a>
+            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
         </nav>
         <div class="nav-icons">
             <span id="modeToggle" title="Toggle Dark Mode"></span>
         </div>
     </header>
 
-    <!-- Side Navigation -->
     <nav class="side-nav">
         <a href="#overview" data-section="overview">Overview</a>
-        <a href="#features" data-section="features">Features</a>
-        <a href="#pain-points" data-section="pain-points">Empathize</a>
-        <a href="#wireframes" data-section="wireframes">Wireframes</a>
+        <a href="#mission" data-section="mission">Mission</a>
+        <a href="#solution" data-section="solution">Solution</a>
+        <a href="#process" data-section="process">Process</a>
         <a href="#reflection" data-section="reflection">Reflection</a>
     </nav>
 
     <main>
-        <!-- Hero Section -->
-        <section class="project-hero" id="overview">
-            <div class="hero-images">
-                <img src="waddle_project/waddle_hero.png" alt="Waddle app interface">
-            </div>
 
-            <div class="overview">
-                <h1 class="project-hero-title">Waddle 🐧</h1>
-                <p class="project-hero-subtitle">An app which connects students with their peers via easy access to on/off campus community events, and the ability to create events themselves.</p>
-            </div>
+        <!-- ── 00. OVERVIEW ─────────────────────────────────── -->
+        <section class="project-hero" id="overview">
+
+            <div class="hero-label">Product Design · HackAThing 2024</div>
+            <h1 class="project-hero-title">Waddle 🐧</h1>
+            <p class="project-hero-subtitle">An app that connects students with their peers via easy access to on and off-campus community events — and the ability to create their own.</p>
 
             <div class="project-meta-grid">
                 <div class="meta-block">
-                    <h4>Role</h4>
-                    <p>UIUX Design & Research</p>
+                    <h4><strong>Role</strong></h4>
+                    <p>UI/UX Design & Research</p>
                 </div>
                 <div class="meta-block">
-                    <h4>Timeline</h4>
-                    <p>48 Hours (Hack-a-Thon)</p>
+                    <h4><strong>Timeline</strong></h4>
+                    <p>48 Hours</p>
                 </div>
                 <div class="meta-block">
-                    <h4>Team</h4>
+                    <h4><strong>Team</strong></h4>
                     <p>Catherine Huang, Waverly Huang, Elaine Zhang, Jenny Zhuang</p>
                 </div>
                 <div class="meta-block">
-                    <h4>Tools</h4>
+                    <h4><strong>Tools</strong></h4>
                     <p>Figma, Adobe Suite</p>
                 </div>
             </div>
+
+            <div class="hero-images">
+                <img src="waddle_project/waddle_hero.png" alt="Waddle app interface overview">
+            </div>
         </section>
 
-        <!-- Challenge Section -->
-        <section class="content-section">
-            <p class="section-subtitle">00. The Challenge</p>
-            <h2 class="section-heading">Create something innovative which solves a problem for students</h2>
+        <!-- ── 01. MISSION ──────────────────────────────────── -->
+        <section class="content-section" id="mission">
+            <span class="section-label">01 — Mission</span>
+            <div class="two-col-intro">
+                <h2 class="section-heading">Students are disconnected — even on campus</h2>
+                <div class="intro-body">
+                    <p>The HackAThing prompt asked us to solve a real problem for students. We kept landing on the same one: loneliness. Not just social isolation, but the structural kind — events scattered across platforms, off-campus opportunities invisible to most, and no easy way to create your own gathering unless you were already part of a club.</p>
+                    <p>We surveyed 93 students and heard the same frustrations over and over. Waddle is our answer to all of them.</p>
+                </div>
+            </div>
+
             <div class="question-grid">
                 <div class="question-card">
-                    <h3>Loneliness is a huge issue students face: how can we create something that connects them?</h3>
+                    <span class="card-num">01</span>
+                    <h3>Loneliness is a huge issue students face — how can design help them connect?</h3>
                 </div>
                 <div class="question-card">
-                    <h3>What sort of features connect students who live on and off campus, as well as students not in specific clubs?</h3>
+                    <span class="card-num">02</span>
+                    <h3>What features serve students who live off-campus or aren't part of any club?</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">03</span>
+                    <h3>How do we lower the barrier to hosting events, not just finding them?</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">04</span>
+                    <h3>What would actually motivate a student to show up — and come back?</h3>
+                </div>
+            </div>
+
+            <div style="margin-top: 56px;">
+                <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 6px; line-height: 1.5;">Survey — Off-campus disconnect</h3>
+                <p class="survey-meta">93 respondents</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="stat">
+                        <strong>89.3%</strong>
+                        <p>of students felt disconnected from off-campus events in their community</p>
+                    </div>
+                    <div class="stat">
+                        <strong>63%</strong>
+                        <p>aren't maximizing campus resources because they don't know what exists</p>
+                    </div>
+                    <div class="stat highlight-stat" style="grid-column: 1 / -1;">
+                        <strong>Takeaway →</strong>
+                        <p>Students want to be involved — they just don't have the access or visibility to do it</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-grid" style="margin-top: 40px;">
+                <div class="insight-card">
+                    <span class="insight-icon">😤</span>
+                    <h3>Information overload</h3>
+                    <p>"I get overwhelmed. I don't know what I'm looking for. I wish it was easier for students to be directly involved."</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-icon">🔍</span>
+                    <h3>No visibility</h3>
+                    <p>"I wish I knew about events in general. I usually don't even know when or where they're happening — I just run into them."</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-icon">😰</span>
+                    <h3>Intimidation</h3>
+                    <p>"I get intimidated by bigger events. If there were smaller ones hosted by students, I would feel comfortable attending more."</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-icon">⏱️</span>
+                    <h3>Not enough context</h3>
+                    <p>"They don't give me enough information to attend. I have no time to go to something I'm not sure about."</p>
                 </div>
             </div>
         </section>
 
-        <!-- Features -->
-        <section class="content-section" id="features">
-            <p class="section-subtitle">01. Feature Overview</p>
-            <h2 class="section-heading">Key Features</h2>
+        <!-- ── 02. SOLUTION ─────────────────────────────────── -->
+        <section class="content-section-dark" id="solution">
+            <span class="section-label light">02 — Solution</span>
+            <h2 class="section-heading light">Key features</h2>
 
             <div class="feature-block">
                 <div class="feature-visual">
-                    <video controls autoplay loop muted playsinline>
+                    <video autoplay loop muted playsinline>
                         <source src="videos/waddle_project/Find_Events.mov" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="feature-text">
-                    <h3>Hosting Events</h3>
+                    <h3>Host an Event</h3>
+                    <p class="feature-summary">Any student can create a gathering — no club membership required.</p>
                     <div class="detail-list">
                         <div class="detail">
-                            <strong>Beginner Friendly</strong>
-                            <p>Friendly, fun UI to encourage students to sign up</p>
+                            <strong>Individual or group hosting</strong>
+                            <p>Create an event solo to find like-minded peers, or co-host with others to form an unofficial group</p>
                         </div>
                         <div class="detail">
-                            <strong>Easy Access</strong>
-                            <p>Students can create any event they want!</p>
-                        </div>
-                        <div class="detail">
-                            <strong>Find Events</strong>
-                            <p>Students can make events as an individual to find likeminded peers</p>
-                        </div>
-                        <div class="detail">
-                            <strong>Group Hosting</strong>
-                            <p>Students can make events as a group with other students to form their own unofficial club</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-block">
-                <div class="feature-visual">
-                    <video controls autoplay loop muted playsinline>
-                        <source src="videos/waddle_project/Profile_Page.mov" type="video/mp4">
-                    </video>
-                </div>
-                <div class="feature-text">
-                    <h3>Profile Page</h3>
-                    <div class="detail-list">
-                        <div class="detail">
-                            <strong>Gamifying Feature</strong>
-                            <p>To motivate students to create and attend events, they can earn badges or achievements for:</p>
-                            <p>💜 <i>Hosting or attending events</i></p>
-                            <p>💜 <i>Leaving reviews</i></p>
-                            <p>💜 <i>Joining new groups/clubs</i></p>
-                        </div>
-                        <div class="detail">
-                            <strong>Event Archives</strong>
-                            <p>Easy to see what events you've attended or hosted</p>
+                            <strong>Low barrier to entry</strong>
+                            <p>Friendly UI keeps the process approachable — making an event shouldn't feel like a bureaucratic task</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="feature-block">
+            <div class="feature-block reverse">
                 <div class="feature-visual">
-                    <video controls autoplay loop muted playsinline>
+                    <video autoplay loop muted playsinline>
                         <source src="videos/waddle_project/Hosted_Events.mov" type="video/mp4">
                     </video>
                 </div>
                 <div class="feature-text">
                     <h3>Find Events</h3>
+                    <p class="feature-summary">Everything in one place, filtered exactly the way you need it.</p>
                     <div class="detail-list">
                         <div class="detail">
-                            <strong>Consolidated Information</strong>
-                            <p>All active events are in one place, students no longer have to check multiple platforms</p>
+                            <strong>Consolidated feed</strong>
+                            <p>All active events — on and off campus — in a single view, no platform-hopping required</p>
                         </div>
                         <div class="detail">
-                            <strong>Easy Search</strong>
-                            <p>Students can sort events via tags at the top, streamlining the search experience</p>
+                            <strong>Tag-based filtering</strong>
+                            <p>Students can narrow down by interest or event type without digging through unrelated results</p>
                         </div>
                     </div>
                 </div>
@@ -163,148 +193,167 @@
 
             <div class="feature-block">
                 <div class="feature-visual">
-                    <video controls autoplay loop muted playsinline>
+                    <video autoplay loop muted playsinline>
                         <source src="videos/waddle_project/Event_Details.mov" type="video/mp4">
                     </video>
                 </div>
                 <div class="feature-text">
                     <h3>Event Details</h3>
+                    <p class="feature-summary">Enough information upfront that showing up doesn't feel like a gamble.</p>
                     <div class="detail-list">
                         <div class="detail">
-                            <strong>Firsthand Reviews</strong>
-                            <p>Students can see reviews of events and hosts from their peers (less intimidation!)</p>
+                            <strong>Peer reviews</strong>
+                            <p>Students can read firsthand accounts from classmates — reducing the intimidation of unfamiliar events</p>
                         </div>
                         <div class="detail">
-                            <strong>Video & Picture Gallery</strong>
-                            <p>Viewing not only pictures, but also videos, of events will let students see what they're really like</p>
+                            <strong>Photo & video gallery</strong>
+                            <p>A visual look at what an event is actually like, not just what the host says it is</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-block reverse">
+                <div class="feature-visual">
+                    <video autoplay loop muted playsinline>
+                        <source src="videos/waddle_project/Profile_Page.mov" type="video/mp4">
+                    </video>
+                </div>
+                <div class="feature-text">
+                    <h3>Profile & Memories</h3>
+                    <p class="feature-summary">A reason to keep showing up — built into the experience.</p>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Badges & achievements</strong>
+                            <p>Earned by hosting events, attending gatherings, leaving reviews, or joining new groups — motivation that scales with engagement</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Event archive</strong>
+                            <p>A personal record of everything you've attended or hosted — the social history that makes the app worth coming back to</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pain Points & Data -->
-        <section class="content-section" id="pain-points">
-            <p class="section-subtitle">02. Pain Points & Data</p>
-            <h2 class="section-heading">Survey Highlights</h2>
+        <!-- ── 03. DECISIONS ────────────────────────────────── -->
+        <section class="content-section" id="decisions">
+            <span class="section-label">03 — Decisions</span>
+            <h2 class="section-heading">Problems → design choices</h2>
 
-            <div class="survey-block">
-                <h3>Survey Data Highlights & Answers</h3>
-                <p class="survey-subtitle">93 Total Answers</p>
-                <div class="stat-grid">
-                    <div class="stat">
-                        <strong>89.3% 🧐</strong>
-                        <p>Experience off-campus disconnect - Only 10.7% of students felt that they knew about off-campus events in their surrounding community</p>
+            <div class="decisions-grid">
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Problem</span>
+                        <p>Students are intimidated by bigger events and don't have enough information to decide whether to attend</p>
                     </div>
-                    <div class="stat">
-                        <strong>63% 📚</strong>
-                        <p>Aren't maximizing campus resources because they lack in specific areas</p>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Decision</span>
+                        <p>Event detail pages include peer reviews and a photo/video gallery — giving real context before committing to showing up</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="insight-grid">
-                <div class="persona-card">
-                    <strong>👤 Student, 19</strong>
-                    <p>"I have no time to go these events, and I'm not super interested. They don't give me enough information to attend."</p>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Problem</span>
+                        <p>Students don't know how to get involved unless they're already in a club or organization</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Decision</span>
+                        <p>Any student can host — individually or as a group — without needing institutional backing or a pre-existing org</p>
+                    </div>
                 </div>
-                <div class="persona-card">
-                    <strong>👤 Student, 19</strong>
-                    <p>"I feel like I get overwhelmed, I don't know what I'm looking for. I wish it was easier for students to be directly involved."</p>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Problem</span>
+                        <p>Events are spread across email, Instagram, physical flyers, and word of mouth — no single place to look</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Decision</span>
+                        <p>Waddle consolidates all on and off-campus events into one filterable feed, eliminating the need to cross-reference platforms</p>
+                    </div>
                 </div>
-                <div class="persona-card">
-                    <strong>👤 Student, 20</strong>
-                    <p>"I wish I knew about events in general, I usually don't even know when/where they're happening. I just run into them."</p>
-                </div>
-                <div class="persona-card">
-                    <strong>👤 Student, 19</strong>
-                    <p>"I get intimidated by bigger events. If there were smaller ones hosted by students, I would be comfortable attending more."</p>
-                </div>
-            </div>
-
-            <div class="solutions-block">
-                <h3>Problems & Solutions</h3>
-                <div class="solution-pair">
-                    <div class="problem">😵‍💫 CONFUSION & INTIMIDATION</div>
-                    <p>❌ Students are intimidated by larger or confusing events</p>
-                    <p>❌ There isn't enough information about events or the hosts</p>
-                    <p>❌ Students don't know about events at all</p>
-                    <div class="solution">✅ GALLERY & EVENT FEATURES</div>
-                    <p>The Waddle 'Gallery' feature offers both videos and pictures of the event, giving a more intimate look</p>
-                    <p>'Event Details & Reviews' lets students see their peers' firsthand experiences of the event and host</p>
-                </div>
-                <div class="solution-pair">
-                    <div class="problem">⛓️‍💥 LACK OF CONNECTION</div>
-                    <p>❌ Students don't know how to be more involved on/off campus</p>
-                    <p>❌ Students are unsure of how to create community events</p>
-                    <div class="solution">✅ HOSTED EVENTS FEATURE</div>
-                    <p>'Hosted Events' allows students to create any event they want, this ensures students can be directly involved</p>
-                </div>
-                <div class="solution-pair">
-                    <div class="problem">😰 LACK OF MOTIVATION</div>
-                    <p>❌ Students aren't motivated to attend or create events</p>
-                    <p>❌ No incentive because of the lack of information or access</p>
-                    <div class="solution">✅ 'MEMORIES' FEATURE = GAMIFY</div>
-                    <p>'Memories' motivates students to leave reviews because you can level-up in the app by creating more memories through attending or hosting events</p>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Problem</span>
+                        <p>No existing app gives students a reason to keep engaging once the novelty wears off</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Decision</span>
+                        <p>A gamified profile with badges and an event archive creates personal stakes and a social record worth maintaining</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Wireframes -->
-        <section class="content-section" id="wireframes">
-            <p class="section-subtitle">03. Wireframes & Process</p>
-            <h2 class="section-heading">Design Evolution</h2>
+        <!-- ── 04. PROCESS ──────────────────────────────────── -->
+        <section class="content-section" id="process">
+            <span class="section-label">04 — Process</span>
+            <h2 class="section-heading">From sketch to prototype in 48 hours</h2>
 
-            <div class="process-step">
-                <h3>Final Wireframes</h3>
-                <img src="waddle_project/waddle_wf.png" alt="Final wireframes">
-            </div>
+            <div class="subsection" style="margin-top: 0; padding-top: 0; border-top: none;">
 
-            <div class="process-step">
-                <h3>Low Fidelity Wireframes</h3>
-                <img src="waddle_project/waddle_wf2_f.png" alt="Low fidelity wireframes">
-            </div>
+                <div class="process-step">
+                    <div class="step-meta">Ideation & user flow</div>
+                    <p>Getting the structure and core flows onto paper before opening Figma — mapping how a student moves from finding an event to actually showing up.</p>
+                    <img src="waddle_project/waddle_id.png" alt="Ideation sketches">
+                    <img src="waddle_project/waddle_tf.png" alt="User flow diagram">
+                </div>
 
-            <div class="process-step">
-                <h3>Ideation & User Flow</h3>
-                <img src="waddle_project/waddle_id.png" alt="Ideation sketches">
-                <img src="waddle_project/waddle_tf.png" alt="User flow diagram">
+                <div class="process-step">
+                    <div class="step-meta">Low-fidelity wireframes</div>
+                    <p>Rough screens to validate the information hierarchy and flow before investing in visual design.</p>
+                    <img src="waddle_project/waddle_wf2_f.png" alt="Low fidelity wireframes">
+                </div>
+
+                <div class="process-step">
+                    <div class="step-meta">Final wireframes</div>
+                    <p>High-fidelity screens built in Figma — balancing the 48-hour constraint with a visual identity that felt fun, friendly, and worth using.</p>
+                    <img src="waddle_project/waddle_wf.png" alt="Final wireframes">
+                </div>
+
             </div>
         </section>
 
-        <!-- Feedback -->
+        <!-- ── 05. REFLECTION ───────────────────────────────── -->
         <section class="content-section" id="reflection">
-            <p class="section-subtitle">04. Feedback & Lessons</p>
-            <h2 class="section-heading">User Feedback</h2>
+            <span class="section-label">05 — Reflection</span>
+            <h2 class="section-heading">What this project taught me</h2>
 
             <div class="feedback-grid">
                 <div class="feedback-quote">
-                    <p>"I really like the UI and branding, fun colors and cute penguin. [...] I would totally use this app to get more visibility on fun things I want to do with other students. That's why the group option is cool."</p>
-                    <span>— Classmate F</span>
+                    <p>"I really like the UI and branding — fun colors and a cute penguin. I would totally use this app to get more visibility on things I want to do with other students. The group option is especially cool."</p>
+                    <span>Classmate F</span>
                 </div>
                 <div class="feedback-quote">
-                    <p>"Maybe in a future iteration you could think about integrating the penguin more? I really like the branding of the app, it's super fun! I'd totally use it."</p>
-                    <span>— Classmate A</span>
+                    <p>"I think your app successfully achieves what you wanted it to. It's different from existing event apps because it's focused on connecting students and making it easier to find friends."</p>
+                    <span>Classmate G</span>
                 </div>
                 <div class="feedback-quote">
-                    <p>"I think your app successfully achieves what you wanted it to. It's different from existing invite or party apps because it's focused on connecting students, and make it easier to find friends."</p>
-                    <span>— Classmate G</span>
+                    <p>"Maybe in a future iteration you could integrate the penguin more? The branding is super fun — I'd totally use it."</p>
+                    <span>Classmate A</span>
                 </div>
             </div>
 
             <div class="learning-block">
-                <h3>What I Learned</h3>
-                <p>This project really highlighted how existing school event apps, or non-school event apps, are missing key features and values from both. 
-            I hope to be able to connect with my peers more, and try to promote events on both RISD and Brown University campus, so more students from both campuses can come together. We don't really do that despite being a walk away from each other.</p>
+                <h3>Takeaway</h3>
+                <p>This project showed me how much existing event apps miss by only solving half the problem — they help you find events, but they don't help you feel like you belong. Waddle was about closing that gap. We built it in 48 hours, but the problem it addresses is real: RISD and Brown are a five-minute walk apart, and students from both campuses rarely cross that distance. I'd love to keep pushing this idea further. 💌</p>
             </div>
         </section>
+
     </main>
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; Waverly Huang 2026 ✩ Coded carefully, made with 🫶 & sips of 🍵</p> 
-                <p><a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> ✦ 
-                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a></p>
+            <p>&copy; Waverly Huang 2026 &nbsp;·&nbsp; Coded carefully, made with 🫶 & sips of 🍵</p>
+            <p>
+                <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a>
+                &nbsp;·&nbsp;
+                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+            </p>
         </div>
     </footer>
 
