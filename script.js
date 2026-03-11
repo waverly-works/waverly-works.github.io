@@ -142,10 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectSidebars = {
     'tasktone.html': [
       { label: 'Overview',   href: '#overview'   },
-      { label: 'Features',   href: '#features'   },
-      { label: 'Empathize',  href: '#empathize'  },
-      { label: 'Process',    href: '#prototype'  },
-      { label: 'Evolution',  href: '#evolution'  },
+      { label: 'Mission',   href: '#mission'   },
+      { label: 'Pain Points',  href: '#painpoints'  },
+      { label: 'Decisions',    href: '#decisions'  },
+      { label: 'Process',    href: '#process'  },
       { label: 'Reflection', href: '#reflection' },
     ],
     'sasfui.html': [
@@ -157,17 +157,17 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
     'navi.html': [
       { label: 'Overview',   href: '#overview'   },
-      { label: 'Features',   href: '#features'   },
-      { label: 'Pain Points',    href: '#pain-points'    },
-      { label: 'Chatbot',   href: '#chatbot'   },
-      { label: 'Wireframes', href: '#wireframes' },
+      { label: 'Mission',   href: '#mission'   },
+      { label: 'Decisions',    href: '#decisions'  },
+      { label: 'Solution',  href: '#solution'  },
+      { label: 'Process',  href: '#process'  },
       { label: 'Reflection', href: '#reflection' },
     ],
     'waddle.html': [
       { label: 'Overview',   href: '#overview'   },
-      { label: 'Features',   href: '#features'   },
-      { label: 'Pain Points',    href: '#pain-points'    },
-      { label: 'Wireframes',    href: '#wireframes'    },
+      { label: 'Mission',   href: '#mission'   },
+      { label: 'Solution',    href: '#solution'    },
+      { label: 'Process',    href: '#process'    },
       { label: 'Reflection', href: '#reflection' },
     ],
   };
