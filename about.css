@@ -16,7 +16,7 @@ body {
     transition: background 0.3s, color 0.3s;
     -webkit-font-smoothing: antialiased;
 }
-
+ 
 main {
     padding: 22px 22px;
     margin-bottom: 4rem;
@@ -42,12 +42,13 @@ main {
     height: auto;
     padding: 2rem 0 2rem;
     flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 .stack-item {
     position: relative;
-    width: 280px;
-    height: 300px;
+    width: clamp(140px, 15vw, 280px);
+    height: clamp(160px, 17vw, 300px);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
@@ -351,6 +352,30 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.
 body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
 
 /* ── Responsive ─────────────────────────────────────────────────────── */
+
+/* ── Two-row grid at medium sizes ─────────────────────────────────── */
+@media (max-width: 1100px) and (min-width: 601px) {
+    .stacked-images {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 1.5rem 0;
+    }
+    .stack-item {
+        width: 100%;
+        height: 220px;
+    }
+    .stack-item[data-index="0"],
+    .stack-item[data-index="1"],
+    .stack-item[data-index="2"],
+    .stack-item[data-index="3"],
+    .stack-item[data-index="4"],
+    .stack-item[data-index="6"] { transform: none; }
+    .stack-item:hover {
+        transform: translateY(-6px) scale(1.03) !important;
+    }
+}
+
 @media (max-width: 768px) {
     main {
         margin-top: 80px;
@@ -366,18 +391,30 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
     }
 
     .stacked-images {
-        gap: 10px;
-        padding: 20px 0 40px;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        padding-left: 12px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 1rem 0 2rem;
+        width: 100%;
+        height: auto;
     }
 
     .stack-item {
-        width: 140px;
-        height: 185px;
+        width: 100%;
+        height: 180px;
     }
+
+    .stack-item[data-index="0"],
+    .stack-item[data-index="1"],
+    .stack-item[data-index="2"],
+    .stack-item[data-index="3"],
+    .stack-item[data-index="4"],
+    .stack-item[data-index="6"] { transform: none; }
+
+    .stack-item:hover {
+        transform: translateY(-4px) scale(1.02) !important;
+    }
+
 
     .bio-info { padding-top: 6rem; }
     .bio-name { font-size: 2.5rem; }

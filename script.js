@@ -222,6 +222,21 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         lbWindow.appendChild(dissolve);
       }
+      
+      // Mobile card stack click-to-front
+function initMobileStack() {
+  const items = document.querySelectorAll('.stacked-images .stack-item');
+  if (!items.length) return;
+
+  items.forEach(item => {
+      item.addEventListener('click', () => {
+          if (window.innerWidth > 600) return;
+          items.forEach(i => i.classList.remove('stack-active'));
+          item.classList.add('stack-active');
+      });
+  });
+}
+initMobileStack();
 
       // Match dissolve color to dark/light mode
       const isDark = document.body.classList.contains('dark-mode');
