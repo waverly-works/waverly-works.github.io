@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { label: 'Mission',   href: '#mission'   },
       { label: 'Pain Points',  href: '#painpoints'  },
       { label: 'Decisions',    href: '#decisions'  },
-      { label: 'Process',    href: '#process'  },
+      { label: 'Form Process',    href: '#process'  },
       { label: 'Reflection', href: '#reflection' },
     ],
     'sasfui.html': [
@@ -236,6 +236,7 @@ function initMobileStack() {
       });
   });
 }
+
 initMobileStack();
 
       // Match dissolve color to dark/light mode
