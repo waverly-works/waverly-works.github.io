@@ -344,6 +344,7 @@ body.dark-mode .intro-body p em { color: var(--ink-light); }
     border: 1px solid var(--rule);
     border-radius: 12px;
     overflow: hidden;
+    margin-bottom: 5rem;
 }
 
 body.dark-mode .question-grid {

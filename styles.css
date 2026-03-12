@@ -9,7 +9,7 @@
 
 /* ── CSS variables (light mode) ───────────────────────────────────── */
 :root {
-    --bg: #eeece8;
+    --bg: #f2f4f7;
     --ink: #111110;
     --ink-muted: rgba(17, 17, 16, 0.62);
     --ink-light: #f0eee9;
