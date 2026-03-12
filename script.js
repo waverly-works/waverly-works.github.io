@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     'waddle.html': [
       { label: 'Overview',   href: '#overview'   },
       { label: 'Mission',   href: '#mission'   },
+      { label: 'Decisions',    href: '#decisions'  },
       { label: 'Solution',    href: '#solution'    },
       { label: 'Process',    href: '#process'    },
       { label: 'Reflection', href: '#reflection' },
