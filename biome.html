@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioMe — Waverly Huang</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <video autoplay loop muted playsinline>
+                <source src="Images/about me/about_me.mp4" type="video/mp4">
+            </video>
+        </a>
+        <nav>
+            <a href="index.html">Selected</a>
+            <a href="archive.html">Archive</a>
+            <a href="about.html">About</a>
+            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+        </nav>
+        <div class="nav-icons">
+            <span id="modeToggle" title="Toggle Dark Mode"></span>
+        </div>
+    </header>
+
+    <nav class="side-nav">
+        <a href="#overview" data-section="overview">Overview</a>
+        <a href="#mission" data-section="mission">Mission</a>
+        <a href="#solution" data-section="solution">Solution</a>
+        <a href="#usecases" data-section="usecases">Use Cases</a>
+        <a href="#process" data-section="process">Process</a>
+        <a href="#reflection" data-section="reflection">Reflection</a>
+    </nav>
+
+    <main>
+
+        <!-- ── 00. OVERVIEW ─────────────────────────────────── -->
+        <section class="project-hero" id="overview">
+
+            <div class="hero-label">Product Design · FigBuild 2026</div>
+            <h1 class="project-hero-title">BioMe 🌸</h1>
+            <p class="project-hero-subtitle">An app that turns vulnerability into art — letting you grow a personal mood garden, track your social battery, and share your emotional landscape with the people you trust.</p>
+
+            <div class="project-meta-grid">
+                <div class="meta-block">
+                    <h4><strong>Role</strong></h4>
+                    <p>UI/UX Design & Research</p>
+                </div>
+                <div class="meta-block">
+                    <h4><strong>Timeline</strong></h4>
+                    <p>48 Hours</p>
+                </div>
+                <div class="meta-block">
+                    <h4><strong>Team</strong></h4>
+                    <p>Waverly Huang, Ariana Kim, Rumei Zha</p>
+                </div>
+                <div class="meta-block">
+                    <h4><strong>Tools</strong></h4>
+                    <p>Figma & FigmaMake</p>
+                </div>
+            </div>
+
+            <div class="hero-images">
+                <!-- Replace with: biome_project/biome_hero.png -->
+                <img src="biome_project/biome_hero.png" alt="BioMe app interface overview">
+            </div>
+        </section>
+
+        <!-- ── 01. MISSION ──────────────────────────────────── -->
+        <section class="content-section" id="mission">
+            <span class="section-label">01 — Mission</span>
+            <div class="two-col-intro">
+                <h2 class="section-heading">Emotions are invisible — but they don't have to be</h2>
+                <div class="intro-body">
+                    <p>For FigBuild, Figma's student design-a-thon, we kept returning to the same tension: people experience rich internal emotional lives, but have almost no good tools for communicating those states to themselves or others. A single emoji doesn't cut it. Neither does a therapy-adjacent mood tracker that makes you feel like a patient.</p>
+                    <p>BioMe is our answer — a personal, digital biome grown from the emotions you log, designed to make the invisible tangible without ever making you feel guilty for how you feel.</p>
+                </div>
+            </div>
+
+            <div class="question-grid">
+                <div class="question-card">
+                    <span class="card-num">01</span>
+                    <h3>How do you quantify both positive and negative emotions without making people feel ashamed?</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">02</span>
+                    <h3>How do you signal social availability to friends without an awkward conversation?</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">03</span>
+                    <h3>What does emotional tracking look like when it's gentle and collective — not clinical?</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">04</span>
+                    <h3>How do you build a shared emotional space that encourages vulnerability, not comparison?</h3>
+                </div>
+            </div>
+
+            <div class="insight-grid" style="margin-top: 40px;">
+                <div class="insight-card">
+                    <span class="insight-icon">🪴</span>
+                    <h3>Internal states are invisible</h3>
+                    <p>People experience emotions and social energy constantly — but these signals are vague, hard to articulate, and invisible to others.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-icon">🔋</span>
+                    <h3>Social battery has no language</h3>
+                    <p>"Do I have the energy to socialize right now? How do I tell my friends if I don't?" There's no quiet, low-friction way to communicate this.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-icon">😔</span>
+                    <h3>Mood tracking feels clinical</h3>
+                    <p>Existing tools frame emotion as something to be measured and corrected — not explored. That framing makes people less likely to engage honestly.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-icon">🤝</span>
+                    <h3>Empathy needs infrastructure</h3>
+                    <p>Friend groups want to support each other — but without visibility into how someone is doing, support is reactive rather than proactive.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 02. SOLUTION ─────────────────────────────────── -->
+        <section class="content-section-dark" id="solution">
+            <span class="section-label light">02 — Solution</span>
+            <h2 class="section-heading light">Key features</h2>
+
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <!-- Replace with: videos/biome_project/mood_garden.mov -->
+                    <img src="biome_project/biome_mood_garden.png" alt="Mood Garden feature">
+                </div>
+                <div class="feature-text">
+                    <h3>Mood Garden</h3>
+                    <p class="feature-summary">Every emotion you log becomes a flower — and your garden grows with you.</p>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Botanical metaphors</strong>
+                            <p>Each mood maps to a specific flower with its own meaning — logging an emotion adds a bloom to your personal garden</p>
+                        </div>
+                        <div class="detail">
+                            <strong>No good or bad</strong>
+                            <p>Rather than categorizing emotions as positive or negative, the garden treats all feelings as natural biodiversity</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Weekly & monthly views</strong>
+                            <p>See how your garden has grown over time — patterns emerge gently, without judgment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-block reverse">
+                <div class="feature-visual">
+                    <!-- Replace with: videos/biome_project/social_battery.mov -->
+                    <img src="biome_project/biome_social_battery.png" alt="Social Battery feature">
+                </div>
+                <div class="feature-text">
+                    <h3>Social Battery</h3>
+                    <p class="feature-summary">A quiet, low-friction way to communicate your availability to friends.</p>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Visible status</strong>
+                            <p>Your social battery is always visible on your profile — friends can check in without asking directly</p>
+                        </div>
+                        <div class="detail">
+                            <strong>One-tap update</strong>
+                            <p>Adjusting your battery before meeting up takes seconds — no explanation required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <!-- Replace with: videos/biome_project/friend_garden.mov -->
+                    <img src="biome_project/biome_friend_garden.png" alt="Friend Garden feature">
+                </div>
+                <div class="feature-text">
+                    <h3>Friend Gardens</h3>
+                    <p class="feature-summary">Invite friends to a shared garden and grow something together.</p>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>Collective mood space</strong>
+                            <p>Everyone's logged emotions contribute to a single shared garden — a living map of how your group is doing</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Mutual agreement required</strong>
+                            <p>Sharing is always opt-in with a two-way invite — no one's garden is visible without consent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 03. USE CASES ────────────────────────────────── -->
+        <section class="content-section" id="usecases">
+            <span class="section-label">03 — Demographics & Use Cases</span>
+            <h2 class="section-heading">Who is BioMe for?</h2>
+
+            <div class="question-grid">
+                <div class="question-card">
+                    <span class="card-num">01</span>
+                    <h3>Anyone who wishes to see their emotions in a way that doesn't negatively portray them</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">02</span>
+                    <h3>Those managing social burnout and/or people navigating group dynamics</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">03</span>
+                    <h3>Friend groups who want to better support one another's emotional wellbeing</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">04</span>
+                    <h3>People who wish to track and archive their emotional states over time</h3>
+                </div>
+            </div>
+
+            <div class="decisions-grid">
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Battery low</span>
+                        <p>Waverly has had too many dance practices and workshops in the same day — no social energy left</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Social Battery Status</span>
+                        <p>Waverly logs a low social battery status. Friends see the status and know to give Waverly more space — no conversation needed</p>
+                    </div>
+                </div>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Unprocessed emotions</span>
+                        <p>Ariana lives a fast lifestyle where emotions are experienced but never reflected or worked through, creeping into daily life</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Naming Feelings</span>
+                        <p>Ariana labels and processes feelings in BioMe — building a deeper connection with herself through daily reflection</p>
+                    </div>
+                </div>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Lack of community</span>
+                        <p>Rumei lives somewhere they can't easily commute to hang out with friends, and is too busy to schedule regular catch-ups</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Virtual & Simple Check-Ins</span>
+                        <p>Rumei establishes connection by seeing how friends are doing through BioMe — with low friction, or needing to physically be there</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 04. PROCESS ──────────────────────────────────── -->
+        <section class="content-section" id="process">
+            <span class="section-label">04 — Process</span>
+            <h2 class="section-heading">From prompt to prototype in 48 hours</h2>
+
+            <div class="subsection" style="margin-top: 0; padding-top: 0; border-top: none;">
+
+                <div class="process-step">
+                    <div class="step-meta">Ideation — defining the problem</div>
+                    <p>We started with the core tension: emotional states and social energy are universally felt but nearly impossible to communicate. We mapped the problem space, identified who was most affected, and landed on the botanical metaphor as our organizing principle — every feeling deserves a place to bloom.</p>
+                    <!-- Replace with: biome_project/biome_ideation.png -->
+                    <img src="biome_project/biome_ideation.png" alt="Ideation and problem mapping">
+                </div>
+
+                <div class="process-step">
+                    <div class="step-meta">Finalizing the concept</div>
+                    <p>We narrowed to three core systems: the Mood Garden (personal emotional tracking), the Social Battery (status visibility), and Friend Gardens (shared emotional spaces). We also pressure-tested the concept against its own risks — competition, invasiveness, and whether the design would actually encourage vulnerability rather than suppress it.</p>
+                    <!-- Replace with: biome_project/biome_concept.png -->
+                    <img src="biome_project/biome_concept.png" alt="Concept finalization">
+
+                    <div class="takeaway-box">
+                        <strong>Safeguards we designed around</strong>
+                        <div class="takeaway-list">
+                            <p><strong>Is it invasive?</strong> Friend sharing requires a mutual two-way agreement — no one's garden is visible without consent</p>
+                            <p><strong>Is it competitive?</strong> The garden framing emphasizes biodiversity, not performance — there's no "better" or "worse" emotional state</p>
+                            <p><strong>Does it encourage vulnerability?</strong> Flowers have equal weight — a difficult emotion grows something just as beautiful as a positive one</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-meta">UI design</div>
+                    <p>With the concept locked, we moved into Figma to build out the interface — balancing warmth and delight with the clarity needed for quick, daily use. The visual language needed to feel botanical and alive without losing legibility.</p>
+                    <!-- Replace with: biome_project/biome_ui.png -->
+                    <img src="biome_project/biome_ui.png" alt="UI screens">
+                </div>
+
+            </div>
+
+            <div class="subsection">
+                <span class="section-label">Primary Goals</span>
+                <h3 class="subsection-heading">Why download BioMe?</h3>
+
+                <div class="insight-grid">
+                    <div class="insight-card">
+                        <span class="insight-icon">🌻</span>
+                        <h3>Emotional Awareness</h3>
+                        <p>Develop stronger self-awareness by reflecting on emotions throughout the day — patterns emerge over time, gently.</p>
+                    </div>
+                    <div class="insight-card">
+                        <span class="insight-icon">🌼</span>
+                        <h3>Non-Judgmental Reflection</h3>
+                        <p>The garden representation encourages acceptance rather than performance-based positivity. All feelings are valid biodiversity.</p>
+                    </div>
+                    <div class="insight-card">
+                        <span class="insight-icon">🌸</span>
+                        <h3>Healthier Communication</h3>
+                        <p>Making social energy visible reduces friction. Friends understand when someone needs rest, support, or connection — without direct confrontation.</p>
+                    </div>
+                    <div class="insight-card">
+                        <span class="insight-icon">🌺</span>
+                        <h3>Empathetic Understanding</h3>
+                        <p>BioMe cultivates empathy within friend groups by creating a shared emotional landscape everyone can quietly check in on.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 05. REFLECTION ───────────────────────────────── -->
+        <section class="content-section" id="reflection">
+            <span class="section-label">05 — Reflection</span>
+            <h2 class="section-heading">What this project taught me</h2>
+
+            <div class="learning-block">
+                <h3>Takeaway</h3>
+                <p>BioMe pushed us to design for something genuinely hard to visualize: internal experience. The botanical metaphor gave us a framework that was both emotionally resonant and visually rich — emotions aren't good or bad, they're just part of a living ecosystem. Building this in 48 hours for FigBuild taught me how much design clarity you can achieve when the concept is strong enough to carry the work. Every feature we cut made the core idea sharper. Every feeling deserves a place to bloom. 🌺</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; Waverly Huang 2026 &nbsp;·&nbsp; Coded carefully, made with 🫶 & sips of 🍵</p>
+            <p>
+                <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a>
+                &nbsp;·&nbsp;
+                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+</body>
+</html>
