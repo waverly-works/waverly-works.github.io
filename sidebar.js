@@ -8,7 +8,7 @@
     "tasktone.html": ["#overview", "#mission", "#painpoints", "#decisions", "#process", "#reflection"],
     "sasfui.html":   ["#overview", "#build",     "#specs",     "#tabs",      "#reflection"],
     "navi.html":     ["#overview", "#mission",  "#decisions",  "#solution",  "#process",  "#reflection"],
-    "waddle.html":   ["#overview", "#mission",  "#solution",   "#process",   "#reflection"],
+    "waddle.html":   ["#overview", "#mission", "#decisions", "#solution",   "#process",   "#reflection"],
   };
 
   const overlay   = document.getElementById("lightbox-overlay");
