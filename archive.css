@@ -185,6 +185,7 @@ main {
 /* ── Gallery rows ─────────────────────────────────────────────────── */
 .gallery-row {
     margin-bottom: 14px;
+    margin-top: 14px;
     width: 100%;
 }
 
