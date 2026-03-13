@@ -39,6 +39,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     /* =========================
+       GALLERY FILTER
+    ========================== */
+
+    const filterBar = document.getElementById("filterBar");
+
+    if (filterBar) {
+      const pills = filterBar.querySelectorAll(".filter-pill");
+
+      pills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          // Update active pill
+          pills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+
+          const filter = pill.getAttribute("data-filter");
+
+          // Show/hide gallery items
+          const allItems = document.querySelectorAll(
+            ".gallery-item-horizontal, .gallery-item-vertical"
+          );
+
+          allItems.forEach(item => {
+            const category = item.getAttribute("data-category") || "";
+            if (filter === "all" || category === filter) {
+              item.classList.remove("hidden");
+            } else {
+              item.classList.add("hidden");
+            }
+          });
+
+          // Hide rows where all children are hidden
+          const rows = document.querySelectorAll(".gallery-row");
+          rows.forEach(row => {
+            const visibleItems = row.querySelectorAll(
+              ".gallery-item-horizontal:not(.hidden), .gallery-item-vertical:not(.hidden)"
+            );
+            if (visibleItems.length === 0) {
+              row.classList.add("row-empty");
+            } else {
+              row.classList.remove("row-empty");
+            }
+          });
+        });
+      });
+    }
+
+    /* =========================
        LIGHTBOX FUNCTIONALITY WITH NAVIGATION
     ========================== */
   
@@ -47,91 +94,85 @@ document.addEventListener("DOMContentLoaded", () => {
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
-    const galleryImages = document.querySelectorAll('.gallery-item-horizontal img, .gallery-item-vertical img');
-  
-    if (lightbox && galleryImages.length > 0) {
+
+    if (lightbox) {
       let currentImageIndex = 0;
-      const imageArray = Array.from(galleryImages);
-  
+
+      // Build visible image array at click time so filtered-out images are excluded
+      function getVisibleImages() {
+        return Array.from(document.querySelectorAll(
+          '.gallery-item-horizontal:not(.hidden) img, .gallery-item-vertical:not(.hidden) img'
+        ));
+      }
+
       // Open lightbox when clicking on any gallery image
-      galleryImages.forEach((img, index) => {
+      document.querySelectorAll('.gallery-item-horizontal img, .gallery-item-vertical img')
+        .forEach(img => {
           img.addEventListener('click', (e) => {
-              e.preventDefault();
-              currentImageIndex = index;
-              showImage(currentImageIndex);
-              lightbox.classList.add('active');
-              body.style.overflow = 'hidden';
+            e.preventDefault();
+            const visibleImages = getVisibleImages();
+            currentImageIndex = visibleImages.indexOf(img);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+            showImage(currentImageIndex, visibleImages);
+            lightbox.classList.add('active');
+            body.style.overflow = 'hidden';
           });
-      });
-  
-      // Show image at specific index
-      function showImage(index) {
-          if (index >= 0 && index < imageArray.length) {
-              lightboxImg.src = imageArray[index].src;
-              currentImageIndex = index;
-          }
+        });
+
+      function showImage(index, imageArray) {
+        imageArray = imageArray || getVisibleImages();
+        if (index >= 0 && index < imageArray.length) {
+          lightboxImg.src = imageArray[index].src;
+          currentImageIndex = index;
+        }
       }
-  
-      // Navigate to previous image
+
       function showPreviousImage() {
-          currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
-          showImage(currentImageIndex);
+        const imageArray = getVisibleImages();
+        currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
+        showImage(currentImageIndex, imageArray);
       }
-  
-      // Navigate to next image
+
       function showNextImage() {
-          currentImageIndex = (currentImageIndex + 1) % imageArray.length;
-          showImage(currentImageIndex);
+        const imageArray = getVisibleImages();
+        currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+        showImage(currentImageIndex, imageArray);
       }
-  
-      // Click handlers for navigation buttons
+
       if (lightboxPrev) {
-          lightboxPrev.addEventListener('click', (e) => {
-              e.stopPropagation();
-              showPreviousImage();
-          });
+        lightboxPrev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showPreviousImage();
+        });
       }
-  
+
       if (lightboxNext) {
-          lightboxNext.addEventListener('click', (e) => {
-              e.stopPropagation();
-              showNextImage();
-          });
+        lightboxNext.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showNextImage();
+        });
       }
-  
-      // Close lightbox with close button
+
       if (lightboxClose) {
-          lightboxClose.addEventListener('click', () => {
-              closeLightbox();
-          });
+        lightboxClose.addEventListener('click', () => closeLightbox());
       }
       
-      // Close lightbox when clicking outside the image
       lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox) {
-              closeLightbox();
-          }
+        if (e.target === lightbox) closeLightbox();
       });
-  
-      // Keyboard navigation
+
       document.addEventListener('keydown', (e) => {
-          if (lightbox.classList.contains('active')) {
-              if (e.key === 'Escape') {
-                  closeLightbox();
-              } else if (e.key === 'ArrowLeft') {
-                  showPreviousImage();
-              } else if (e.key === 'ArrowRight') {
-                  showNextImage();
-              }
-          }
+        if (lightbox.classList.contains('active')) {
+          if (e.key === 'Escape')       closeLightbox();
+          else if (e.key === 'ArrowLeft')  showPreviousImage();
+          else if (e.key === 'ArrowRight') showNextImage();
+        }
       });
-  
+
       function closeLightbox() {
-          lightbox.classList.remove('active');
-          body.style.overflow = 'auto';
-          setTimeout(() => {
-              lightboxImg.src = '';
-          }, 300);
+        lightbox.classList.remove('active');
+        body.style.overflow = 'auto';
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
       }
     }
   
@@ -144,34 +185,23 @@ document.addEventListener("DOMContentLoaded", () => {
   
     if (archiveHeader && allImages.length > 0) {
       function handleScroll() {
-          const scrollPosition = window.scrollY;
-          const scrollThreshold = 200; // Adjust this value to control when the effect starts
-          
-          // Hide header when scrolled down
-          if (scrollPosition > scrollThreshold) {
-              archiveHeader.classList.add('hidden');
-          } else {
-              archiveHeader.classList.remove('hidden');
-          }
-          
-          // Handle grayscale and zoom for images
-          if (scrollPosition > scrollThreshold) {
-              // Scrolled down - remove grayscale and zoom in
-              allImages.forEach(img => {
-                  img.classList.add('color');
-              });
-          } else {
-              // At top - add grayscale and zoom out
-              allImages.forEach(img => {
-                  img.classList.remove('color');
-              });
-          }
+        const scrollPosition = window.scrollY;
+        const scrollThreshold = 200;
+        
+        if (scrollPosition > scrollThreshold) {
+          archiveHeader.classList.add('hidden');
+        } else {
+          archiveHeader.classList.remove('hidden');
+        }
+        
+        if (scrollPosition > scrollThreshold) {
+          allImages.forEach(img => img.classList.add('color'));
+        } else {
+          allImages.forEach(img => img.classList.remove('color'));
+        }
       }
-  
-      // Run on scroll
+
       window.addEventListener('scroll', handleScroll);
-  
-      // Run on load to set initial state
       handleScroll();
     }
   
@@ -183,61 +213,12 @@ document.addEventListener("DOMContentLoaded", () => {
   
     projectCards.forEach(card => {
       card.addEventListener("click", (e) => {
-        if (e.target.closest("a")) return; // prevent double nav
+        if (e.target.closest("a")) return;
         const url = card.getAttribute("data-project");
-        if (url) {
-          window.location.href = url;
-        }
+        if (url) window.location.href = url;
       });
     });
-  
-    /* =========================
-       STACKED IMAGES FUNCTIONALITY
-    ========================== */
-  
-    /*const stackedImages = document.getElementById('stackedImages');
-    if (stackedImages) {
-        const stackItems = stackedImages.querySelectorAll('.stack-item');
-        
-        stackItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                // Get all items and their current indices
-                const allItems = Array.from(stackItems);
-                const clickedIndex = parseInt(item.getAttribute('data-index'));
-                
-                // Only bring to front if it's not already at front
-                if (clickedIndex !== 0) {
-                    // Reorder z-indices
-                    allItems.forEach(otherItem => {
-                        const otherIndex = parseInt(otherItem.getAttribute('data-index'));
-                        
-                        if (otherItem === item) {
-                            // Clicked item goes to front
-                            otherItem.setAttribute('data-index', '0');
-                        } else if (otherIndex < clickedIndex) {
-                            // Items that were in front move back one position
-                            otherItem.setAttribute('data-index', String(otherIndex + 1));
-                        }
-                        // Items behind stay in same relative position
-                    });
-                    
-                    // Update transforms and z-indices based on new data-index
-                    updateStackPositions();
-                }
-            });
-        });
-        
-        function updateStackPositions() {
-          stackItems.forEach(item => {
-              const index = parseInt(item.getAttribute('data-index'));
-              const offset = index * 22;  // ← Change this to match your CSS offset
-              
-              item.style.zIndex = 5 - index;
-              item.style.transform = `translate(${offset}px, ${offset}px)`;
-          });*/
-        
-    
-  
+
     /* =========================
        LEADERSHIP DROPDOWN FUNCTIONALITY
     ========================== */
@@ -245,26 +226,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const leadershipHeaders = document.querySelectorAll('.leadership-header');
   
     leadershipHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const targetId = header.getAttribute('data-leadership');
-            const content = document.getElementById(targetId);
-            
-            // Toggle active class on header
-            header.classList.toggle('active');
-            
-            // Toggle active class on content
-            content.classList.toggle('active');
-            
-            // Close other dropdowns (optional - remove if you want multiple open at once)
-            leadershipHeaders.forEach(otherHeader => {
-                if (otherHeader !== header && otherHeader.classList.contains('active')) {
-                    otherHeader.classList.remove('active');
-                    const otherId = otherHeader.getAttribute('data-leadership');
-                    const otherContent = document.getElementById(otherId);
-                    otherContent.classList.remove('active');
-                }
-            });
+      header.addEventListener('click', () => {
+        const targetId = header.getAttribute('data-leadership');
+        const content = document.getElementById(targetId);
+        
+        header.classList.toggle('active');
+        content.classList.toggle('active');
+        
+        leadershipHeaders.forEach(otherHeader => {
+          if (otherHeader !== header && otherHeader.classList.contains('active')) {
+            otherHeader.classList.remove('active');
+            const otherId = otherHeader.getAttribute('data-leadership');
+            const otherContent = document.getElementById(otherId);
+            otherContent.classList.remove('active');
+          }
         });
+      });
     });
   
   });
