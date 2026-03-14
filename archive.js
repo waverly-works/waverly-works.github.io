@@ -175,35 +175,40 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => { lightboxImg.src = ''; }, 300);
       }
     }
-  
-    /* =========================
-       ARCHIVE PAGE SCROLL EFFECTS
-    ========================== */
-  
-    const archiveHeader = document.getElementById('archiveHeader');
-    const allImages = document.querySelectorAll('.gallery-item-horizontal img, .gallery-item-vertical img');
-  
-    if (archiveHeader && allImages.length > 0) {
-      function handleScroll() {
-        const scrollPosition = window.scrollY;
-        const scrollThreshold = 200;
-        
-        if (scrollPosition > scrollThreshold) {
-          archiveHeader.classList.add('hidden');
-        } else {
-          archiveHeader.classList.remove('hidden');
-        }
-        
-        if (scrollPosition > scrollThreshold) {
-          allImages.forEach(img => img.classList.add('color'));
-        } else {
-          allImages.forEach(img => img.classList.remove('color'));
-        }
-      }
 
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
-    }
+    
+  
+  /* =========================
+   ARCHIVE PAGE SCROLL EFFECTS
+========================== */
+
+const horizontalRows = document.querySelectorAll('.gallery-row-horizontal');
+const verticalRows   = document.querySelectorAll('.gallery-row-vertical');
+
+function applyParallax() {
+  const scrollY = window.scrollY;
+
+  horizontalRows.forEach((row, i) => {
+    const rect      = row.getBoundingClientRect();
+    const rowCenter = rect.top + rect.height / 2;
+    const viewMid   = window.innerHeight / 2;
+    const offset    = (viewMid - rowCenter) * 0.06;
+    const direction = i % 2 === 0 ? 1 : -1;   // alternate left/right
+    row.style.transform = `translateX(${offset * direction}px)`;
+  });
+
+  verticalRows.forEach((row, i) => {
+    const rect      = row.getBoundingClientRect();
+    const rowCenter = rect.top + rect.height / 2;
+    const viewMid   = window.innerHeight / 2;
+    const offset    = (viewMid - rowCenter) * 0.06;
+    const direction = i % 2 === 0 ? 1 : -1;
+    row.style.transform = `translateX(${offset * direction}px)`;
+  });
+}
+
+window.addEventListener('scroll', applyParallax, { passive: true });
+applyParallax(); // run once on load
   
     /* =========================
        PROJECT CARD NAVIGATION

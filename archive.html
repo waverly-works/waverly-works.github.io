@@ -9,6 +9,7 @@
   <link rel="icon" href=Images/favicon.ico.ocean.ico>
   <link rel="stylesheet" href="archive.css">
   <link rel="stylesheet" href="styles.css">
+  <!--<link rel="stylesheet" href="archive-filter.css">-->
 </head>
 <body>
     <main>
@@ -55,81 +56,87 @@
             </p>
           </div>
 
+        <!-- Filter bar 
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="coding">Coding experiments</button>
+            <button class="filter-pill" data-filter="illustration">Illustration</button>
+            <button class="filter-pill" data-filter="photography">Photography</button>
+            <button class="filter-pill" data-filter="3d">3D</button>
+        </div>-->
+
         <div class="gallery-container">
-            <!-- Horizontal Row 1 -->
+            <!-- Horizontal Row 1 — 3D -->
             <div class="gallery-row gallery-row-horizontal">
-               <!-- <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/3D_Modeling/headphones_cad.png" alt="Archive image">
-                </div>-->
-                <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/3D_Modeling/pot_cad.png" alt="Archive image">
+                <div class="gallery-item-horizontal" data-category="3d">
+                    <img src="Archive_Page/3D_Modeling/pot_cad.png" alt="3D pot model">
                 </div>
-                <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/3D_Modeling/shark_slippers.png" alt="Archive image">
+                <div class="gallery-item-horizontal" data-category="3d">
+                    <img src="Archive_Page/3D_Modeling/shark_slippers.png" alt="3D shark slippers">
                 </div>
-                <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/3D_Modeling/watches_4 (1).png" alt="Archive image">
+                <div class="gallery-item-horizontal" data-category="3d">
+                    <img src="Archive_Page/3D_Modeling/watches_4 (1).png" alt="3D watches">
                 </div>
             </div>
 
-            <!-- Vertical Row 1 -->
+            <!-- Vertical Row 1 — illustration + photography -->
             <div class="gallery-row gallery-row-vertical">
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/painting/EFS_drawing_final_3.jpg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="illustration">
+                    <img src="Archive_Page/painting/EFS_drawing_final_3.jpg" alt="Drawing">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/posters/pen_plot_sky.jpg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="illustration">
+                    <img src="Archive_Page/posters/pen_plot_sky.jpg" alt="Pen plot sky poster">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/painting/心痛_…_grief_is.jpg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="illustration">
+                    <img src="Archive_Page/painting/心痛_…_grief_is.jpg" alt="Grief is painting">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/blue_heron_lake.jpg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/blue_heron_lake.jpg" alt="Blue heron at lake">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/painting/exit_painting.JPG" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="illustration">
+                    <img src="Archive_Page/painting/exit_painting.JPG" alt="Exit painting">
                 </div>
             </div>
 
-            <!-- Horizontal Row 2 -->
+            <!-- Horizontal Row 2 — illustration + photography -->
             <div class="gallery-row gallery-row-horizontal">
-                <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/painting/cityscape_painting.JPG" alt="Archive image">
+                <div class="gallery-item-horizontal" data-category="illustration">
+                    <img src="Archive_Page/painting/cityscape_painting.JPG" alt="Cityscape painting">
                 </div>
-                <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/photography/airplane_clouds.jpg" alt="Archive image">
+                <div class="gallery-item-horizontal" data-category="photography">
+                    <img src="Archive_Page/photography/airplane_clouds.jpg" alt="Airplane clouds">
                 </div>
-                <div class="gallery-item-horizontal">
-                    <img src="Archive_Page/photography/gondola_river.JPG" alt="Archive image">
+                <div class="gallery-item-horizontal" data-category="photography">
+                    <img src="Archive_Page/photography/gondola_river.JPG" alt="Gondola on river">
                 </div>
             </div>
 
-            <!-- Vertical Row 2 -->
+            <!-- Vertical Row 2 — photography -->
             <div class="gallery-row gallery-row-vertical">
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/IMG_1478.jpg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/IMG_1478.jpg" alt="Photography">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/sunlight_tree_beijing_street.jpg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/sunlight_tree_beijing_street.jpg" alt="Sunlight through trees, Beijing">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/kids_bubble.jpeg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/kids_bubble.jpeg" alt="Kids with bubbles">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/statue_newport.jpeg" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/statue_newport.jpeg" alt="Statue in Newport">
                 </div>
             </div>
 
-              <!-- Vertical Row 3 -->
-              <div class="gallery-row gallery-row-vertical">
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/beijing_streets_view.jpg" alt="Archive image">
+            <!-- Vertical Row 3 — photography -->
+            <div class="gallery-row gallery-row-vertical">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/beijing_streets_view.jpg" alt="Beijing streets">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/cows_tibet.JPG" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/cows_tibet.JPG" alt="Cows in Tibet">
                 </div>
-                <div class="gallery-item-vertical">
-                    <img src="Archive_Page/photography/shanghai_kids_water.JPG" alt="Archive image">
+                <div class="gallery-item-vertical" data-category="photography">
+                    <img src="Archive_Page/photography/shanghai_kids_water.JPG" alt="Kids playing in water, Shanghai">
                 </div>
             </div>
         </div>
@@ -146,9 +153,7 @@
             <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
             <div class="footer-right">
                 <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=waverlyhuang2004@gmail.com&su=Hello%20Waverly&body=Hi%20Waverly," target="_blank">
-                    Email
-                    </a>&#10022;
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=waverlyhuang2004@gmail.com&su=Hello%20Waverly&body=Hi%20Waverly," target="_blank">Email</a> &#10022;
                 <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2/view?usp=sharing" target="_blank">Resume</a>
             </div>
         </div>
@@ -160,7 +165,7 @@
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
                 <path d="M15 9L9 15M9 9l6 6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
+            </svg>
         </button>
         <div class="lightbox-content">
             <img id="lightboxImg" src="" alt="Expanded view">
