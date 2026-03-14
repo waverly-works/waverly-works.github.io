@@ -166,6 +166,15 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     background-size: 600% 600%;
     animation: tileGradientFlow 6s ease infinite;
     animation-delay: var(--tile-delay, 0s);
+    animation: tileGradientFlow 6s ease infinite, tileBounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: var(--tile-delay, 0s), var(--tile-bounce-delay, 0s);
+}
+
+@keyframes tileBounceIn {
+    0%   { opacity: 0; transform: translateY(32px) scale(0.82); }
+    60%  { opacity: 1; transform: translateY(-8px) scale(1.01); }
+    80%  { transform: translateY(4px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes tileGradientFlow {
@@ -174,13 +183,13 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     100% { background-position: 0% 50%; }
 }
 
-.name-tiles .tile:nth-child(1) { --tile-delay: 0s; }
-.name-tiles .tile:nth-child(2) { --tile-delay: -0.8s; }
-.name-tiles .tile:nth-child(3) { --tile-delay: -1.6s; }
-.name-tiles .tile:nth-child(4) { --tile-delay: -2.4s; }
-.name-tiles .tile:nth-child(5) { --tile-delay: -3.2s; }
-.name-tiles .tile:nth-child(6) { --tile-delay: -4.0s; }
-.name-tiles .tile:nth-child(7) { --tile-delay: -4.8s; }
+.name-tiles .tile:nth-child(1) { --tile-delay: 0s;    --tile-bounce-delay: 0.05s; }
+.name-tiles .tile:nth-child(2) { --tile-delay: -0.8s; --tile-bounce-delay: 0.12s; }
+.name-tiles .tile:nth-child(3) { --tile-delay: -1.6s; --tile-bounce-delay: 0.19s; }
+.name-tiles .tile:nth-child(4) { --tile-delay: -2.4s; --tile-bounce-delay: 0.26s; }
+.name-tiles .tile:nth-child(5) { --tile-delay: -3.2s; --tile-bounce-delay: 0.33s; }
+.name-tiles .tile:nth-child(6) { --tile-delay: -4.0s; --tile-bounce-delay: 0.40s; }
+.name-tiles .tile:nth-child(7) { --tile-delay: -4.8s; --tile-bounce-delay: 0.47s; }
 
 .tile::after { content: attr(data-letter); }
 
@@ -324,6 +333,7 @@ main { padding: 22px 22px 0; }
     color: var(--text-muted);
     font-weight: 400;
 }
+
 
 /* ── Footer (sticky glass) ────────────────────────────────────────── */
 .footer {

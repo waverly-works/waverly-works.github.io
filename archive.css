@@ -189,6 +189,7 @@ main {
     width: 100%;
 }
 
+
 .gallery-row-horizontal {
     display: flex;
     gap: 14px;
@@ -253,6 +254,12 @@ main {
 
 .gallery-item-vertical:hover img {
     transform: scale(1.05);
+}
+
+.gallery-row-horizontal,
+.gallery-row-vertical {
+    will-change: transform;
+    transition: transform 0.15s ease-out;
 }
 
 /* ── Spacer above fixed footer ────────────────────────────────────── */
