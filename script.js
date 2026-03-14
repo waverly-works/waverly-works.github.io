@@ -140,6 +140,14 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================== */
 
   const projectSidebars = {
+    'navi.html': [
+      { label: 'Overview',   href: '#overview'   },
+      { label: 'Mission',   href: '#mission'   },
+      { label: 'Decisions',    href: '#decisions'  },
+      { label: 'Solution',  href: '#solution'  },
+      { label: 'Process',  href: '#process'  },
+      { label: 'Reflection', href: '#reflection' },
+    ],
     'tasktone.html': [
       { label: 'Overview',   href: '#overview'   },
       { label: 'Mission',   href: '#mission'   },
@@ -147,20 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
       { label: 'Decisions',    href: '#decisions'  },
       { label: 'Form Process',    href: '#process'  },
       { label: 'Reflection', href: '#reflection' },
-    ],
+    ], 
     'sasfui.html': [
       { label: 'Overview',   href: '#overview'   },
       { label: 'Build',      href: '#build'      },
       { label: 'Specs',      href: '#specs'      },
       { label: 'Tabs',       href: '#tabs'       },
-      { label: 'Reflection', href: '#reflection' },
-    ],
-    'navi.html': [
-      { label: 'Overview',   href: '#overview'   },
-      { label: 'Mission',   href: '#mission'   },
-      { label: 'Decisions',    href: '#decisions'  },
-      { label: 'Solution',  href: '#solution'  },
-      { label: 'Process',  href: '#process'  },
       { label: 'Reflection', href: '#reflection' },
     ],
     'waddle.html': [
