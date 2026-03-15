@@ -26,6 +26,13 @@
     --sans: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
     --serif: 'DM Serif Display', Georgia, serif;
 
+    /* Gradient mesh stops — shift on scroll via JS */
+    --mesh-x: 50%;
+    --mesh-y: 30%;
+    --mesh-a: #c8f0f4;
+    --mesh-b: #d8d0f8;
+    --mesh-c: #f2f4f7;
+
     /* Tile layout constants */
     --tile-size: 110px;
     --tile-step: 116px;
@@ -48,9 +55,12 @@ body.dark-mode {
     --tag-border: rgba(255, 255, 255, 0.15);
     --nav-active-bg: #333;
     --nav-inactive: rgba(240, 238, 233, 0.45);
+    --mesh-a: #0e2a30;
+    --mesh-b: #1a1328;
+    --mesh-c: #111110;
 }
 
-/* ── Body ─────────────────────────────────────────────────────────── */
+/* ── Body + gradient mesh background ─────────────────────────────── */
 body {
     font-family: var(--sans);
     background: var(--bg);
@@ -61,6 +71,27 @@ body {
 }
 
 html.dark-mode { background: #111110; }
+
+/* Gradient mesh background layer */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 70% 60% at var(--mesh-x) var(--mesh-y), var(--mesh-a) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at calc(100% - var(--mesh-x)) calc(100% - var(--mesh-y)), var(--mesh-b) 0%, transparent 60%),
+        var(--bg);
+    transition:
+        --mesh-x 0.6s ease,
+        --mesh-y 0.6s ease,
+        background 0.6s ease;
+    opacity: 0.9;
+}
+
+/* All content above the mesh */
+body > * { position: relative; z-index: 1; }
 
 /* ── Nav (top right pill) ─────────────────────────────────────────── */
 .tab-nav {
@@ -164,10 +195,9 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
         #4cc9d4, #3bb8c3
     );
     background-size: 600% 600%;
-    animation: tileGradientFlow 6s ease infinite;
-    animation-delay: var(--tile-delay, 0s);
     animation: tileGradientFlow 6s ease infinite, tileBounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     animation-delay: var(--tile-delay, 0s), var(--tile-bounce-delay, 0s);
+    cursor: none;
 }
 
 @keyframes tileBounceIn {
@@ -265,7 +295,58 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
 
 .bio-tag.expandable.expanded .bio-tag-extra-wrap { grid-template-columns: 1fr; }
 .bio-tag.expandable.expanded .bio-tag-extra-inner { opacity: 1; transform: translateX(0); }
-.bio-tag.expandable { cursor: pointer; transition: padding 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.bio-tag.expandable { transition: padding 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* ── Open to work ticker ──────────────────────────────────────────── */
+.work-ticker {
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 9px 0;
+    margin: 8px 0 4px;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.work-ticker-inner {
+    display: inline-flex;
+    gap: 0;
+    animation: ticker-scroll 22s linear infinite;
+    will-change: transform;
+}
+
+.work-ticker-segment {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding-right: 28px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.work-ticker-segment .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3bb8c3;
+    flex-shrink: 0;
+    animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+@keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 
 /* ── Projects grid ────────────────────────────────────────────────── */
 main { padding: 22px 22px 0; }
@@ -273,20 +354,30 @@ main { padding: 22px 22px 0; }
 .projects-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 14px;
+    gap: 18px;
+    margin-bottom: 18px;
     margin-top: 14px;
 }
 
+/* ── Scroll reveal ────────────────────────────────────────────────── */
 .project-card {
     background: transparent;
     border-radius: 0;
     overflow: visible;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+        opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.project-card:hover { transform: none; box-shadow: none; }
+.project-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger children within each row */
+.projects-row .project-card:nth-child(2) { transition-delay: 0.1s; }
 
 .project-link {
     text-decoration: none;
@@ -294,12 +385,18 @@ main { padding: 22px 22px 0; }
     display: block;
 }
 
+/* ── Project image with 3-D tilt ──────────────────────────────────── */
 .project-image {
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: rgba(17,17,16,0.06);
     border-radius: 16px;
+    transform-style: preserve-3d;
+    transform: perspective(900px) rotateX(0deg) rotateY(0deg);
+    transition: transform 0.18s ease, box-shadow 0.3s ease;
+    will-change: transform;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
 .project-image img {
@@ -307,17 +404,27 @@ main { padding: 22px 22px 0; }
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
-.project-card:hover .project-image img { transform: scale(1.05); }
+.project-card:hover .project-image {
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.13),
+        0 6px 16px rgba(0,0,0,0.08);
+}
 
+.project-card:hover .project-image img {
+    transform: scale(1.04);
+}
+
+/* ── Project info — editorial hover effect ────────────────────────── */
 .project-info {
-    padding: 10px 4px 12px;
-    transition: opacity 0.2s ease;
+    padding: 12px 4px 14px;
+    transition: opacity 0.25s ease;
+    position: relative;
 }
 
-.project-card:hover .project-info { opacity: 0.5; }
+.project-card:hover .project-info { opacity: 0.45; }
 
 .project-name {
     font-family: var(--sans);
@@ -325,7 +432,24 @@ main { padding: 22px 22px 0; }
     font-weight: 600;
     margin-bottom: 3px;
     color: var(--text);
+    position: relative;
+    display: inline-block;
 }
+
+/* Underline sweep on project name */
+.project-name::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, #3bb8c3, #9b9de8);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 2px;
+}
+
+.project-card:hover .project-name::after { width: 100%; }
 
 .project-description {
     font-family: var(--sans);
@@ -334,6 +458,24 @@ main { padding: 22px 22px 0; }
     font-weight: 400;
 }
 
+/* ── Section label (editorial element) ───────────────────────────── */
+.section-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section-label.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* ── Footer (sticky glass) ────────────────────────────────────────── */
 .footer {
@@ -390,7 +532,7 @@ body.dark-mode .mode-toggle-bar { background: rgba(104, 103, 103, 0.45); }
 .mode-btn {
     background: none;
     border: none;
-    cursor: pointer;
+    cursor: none;
     font-family: var(--sans);
     font-size: 13px;
     width: 26px;
@@ -550,6 +692,7 @@ body.dark-mode #lightbox-window ::-webkit-scrollbar-thumb:hover { background: rg
 #lightbox-window { scrollbar-color: rgba(0,0,0,0.18) transparent; scrollbar-width: thin; }
 body.dark-mode #lightbox-window { scrollbar-color: rgba(255,255,255,0.18) transparent; }
 
+
 /* ════════════════════════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
    ════════════════════════════════════════════════════════════════════ */
@@ -586,4 +729,13 @@ body.dark-mode #lightbox-window { scrollbar-color: rgba(255,255,255,0.18) transp
     .tab { font-size: 11px; padding: 4px 9px; }
     .tab-nav { top: 12px; right: 12px; }
     .spacer { height: 64px; }
+
+    .work-ticker { display: none; }
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .work-ticker-inner { animation: none; }
+    .project-card { opacity: 1; transform: none; transition: none; }
+    body::before { transition: none; }
 }

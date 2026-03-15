@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   /* =========================
    ARCHIVE PAGE SCROLL EFFECTS
-========================== */
+==========================
 
 const horizontalRows = document.querySelectorAll('.gallery-row-horizontal');
 const verticalRows   = document.querySelectorAll('.gallery-row-vertical');
@@ -205,7 +205,7 @@ function applyParallax() {
     const direction = i % 2 === 0 ? 1 : -1;
     row.style.transform = `translateX(${offset * direction}px)`;
   });
-}
+} */
 
 window.addEventListener('scroll', applyParallax, { passive: true });
 applyParallax(); // run once on load
