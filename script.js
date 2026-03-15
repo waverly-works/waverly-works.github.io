@@ -431,6 +431,31 @@ initMobileStack();
     });
   });
 
+    /* =========================
+     SCROLL EFFECTS!
+  ========================== */
+
+  function updateMesh() {
+
+    const scrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+  
+    const meshX = 30 + progress * 40;
+    const meshY = 20 + progress * 60;
+  
+    document.documentElement.style.setProperty('--mesh-x', meshX + '%');
+    document.documentElement.style.setProperty('--mesh-y', meshY + '%');
+  
+    /* subtle parallax */
+    document.querySelector(".name-tiles").style.transform =
+        `translateY(${scrollY * -0.05}px)`;
+  
+    document.querySelector(".bio-section").style.transform =
+        `translateY(${scrollY * -0.02}px)`;
+  
+  }
+
 
   /* =========================
      STACKED IMAGES FUNCTIONALITY
