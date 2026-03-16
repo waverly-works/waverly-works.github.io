@@ -273,6 +273,8 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     outline: 1.5px solid;
     outline-color: transparent;
     position: relative;
+    box-shadow: 0 4px 20px rgba(69, 71, 72, 0.06);
+    
 }
 
 .bio-tag::before {
@@ -281,10 +283,10 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     inset: -1.5px;
     border-radius: 999px;
     padding: 1.5px;
-    background: linear-gradient(135deg, #2dd4bf, #a855f7);
+    /*background: linear-gradient(135deg, #2dd4bf, #a855f7);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    mask-composite: exclude;*/
     pointer-events: none;
 }
 
