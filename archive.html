@@ -12,138 +12,71 @@
   <!--<link rel="stylesheet" href="archive-filter.css">-->
 </head>
 <body>
-    <main>
         <nav class="tab-nav">
             <a href="index.html" class="tab">Work</a>
             <a href="archive.html" class="tab active">Archive</a>
             <a href="about.html" class="tab">About</a>
-            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing"class="tab" target="_blank">Resume</a>
-          </nav>
-        
-          <div class="name-tiles" id="nameTiles">
-            <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
-            <div class="tile" data-letter="r" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
-            <div class="tile" data-letter="c" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
-            <div class="tile" data-letter="h" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
-            <div class="tile" data-letter="i" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
-            <div class="tile" data-letter="v" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
-            <div class="tile" data-letter="e" style="--tile-color:#9b9de8; --tile-top:8px;"></div>
-          </div>
-        
-          <div class="bio-section">
-            <p class="bio-text">
-                I enjoy creating across
-        
-              <span class="bio-tag expandable" data-expanded="false">
-                <strong>different mediums ✦</strong>
-                <span class="bio-tag-extra-wrap">
-                  <span class="bio-tag-extra-inner">
-                    <span class="bio-tag-extra">&nbsp;ft. illustration, 3D modeling, photography, & more</span>
-                  </span>
-                </span>
-              </span>
-        
-              with deep love & appreciation for all, originating from 
-              
-              <span class="bio-tag expandable" data-expanded="false">
-                <strong>living room walls ❏</strong>
-                <span class="bio-tag-extra-wrap">
-                  <span class="bio-tag-extra-inner">
-                    <span class="bio-tag-extra">&nbsp;my first canvas was my house. sorry mom!</span>
-                  </span>
-                </span>
-              </span>
-            </p>
-          </div>
-
-        <!-- Filter bar 
-        <div class="filter-bar" id="filterBar">
-            <button class="filter-pill active" data-filter="all">All</button>
-            <button class="filter-pill" data-filter="coding">Coding experiments</button>
-            <button class="filter-pill" data-filter="illustration">Illustration</button>
-            <button class="filter-pill" data-filter="photography">Photography</button>
-            <button class="filter-pill" data-filter="3d">3D</button>
-        </div>-->
-
-        <div class="gallery-container">
-            <!-- Horizontal Row 1 — 3D -->
-            <div class="gallery-row gallery-row-horizontal">
-                <div class="gallery-item-horizontal" data-category="3d">
-                    <img src="Archive_Page/3D_Modeling/pot_cad.png" alt="3D pot model">
-                </div>
-                <div class="gallery-item-horizontal" data-category="3d">
-                    <img src="Archive_Page/3D_Modeling/shark_slippers.png" alt="3D shark slippers">
-                </div>
-                <div class="gallery-item-horizontal" data-category="3d">
-                    <img src="Archive_Page/3D_Modeling/watches_4 (1).png" alt="3D watches">
+            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" class="tab" target="_blank">Resume</a>
+        </nav>
+    
+        <main>
+            <div class="batch-dots" id="batchLabel">
+                <span class="dot" data-i="0"></span>
+                <span class="dot" data-i="1"></span>
+                <span class="dot" data-i="2"></span>
+            </div>
+    
+            <div class="scroll-track" id="scrollTrack">
+                <div class="sticky-stage" id="stickyStage">
+    
+                    <div class="name-tiles" id="nameTiles">
+                        <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
+                        <div class="tile" data-letter="r" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
+                        <div class="tile" data-letter="c" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
+                        <div class="tile" data-letter="h" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
+                        <div class="tile" data-letter="i" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
+                        <div class="tile" data-letter="v" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
+                        <div class="tile" data-letter="e" style="--tile-color:#9b9de8; --tile-top:8px;"></div>
+                    </div>
+    
+                    <div class="bio-section" id="bioFloat">
+                        <p class="bio-text">
+                            I enjoy creating across
+    
+                            <span class="bio-tag expandable" data-expanded="false">
+                                <strong>different mediums ✦</strong>
+                                <span class="bio-tag-extra-wrap">
+                                    <span class="bio-tag-extra-inner">
+                                        <span class="bio-tag-extra">&nbsp;ft. illustration, 3D modeling, photography, &amp; more</span>
+                                    </span>
+                                </span>
+                            </span>
+    
+                            with deep love &amp; appreciation for all, originating from
+    
+                            <span class="bio-tag expandable" data-expanded="false">
+                                <strong>living room walls ❏</strong>
+                                <span class="bio-tag-extra-wrap">
+                                    <span class="bio-tag-extra-inner">
+                                        <span class="bio-tag-extra">&nbsp;my first canvas was my house. sorry mom!</span> 
+                                    </span>
+                                </span>
+                            </span>
+                           If you want to explore,  <strong>scroll down!</strong>
+                        </p>
+                    </div>
+                    <div class="hero-image">
+                        <img src="Archive_Page/sketchbook_flip.png" alt="Sketchbook">
+                      </div>
+                    <div class="scroll-hint" id="scrollHint">
+                        <span class="scroll-hint-text"></span>
+                        <div class="scroll-arrow"></div>
+                    </div>
+    
                 </div>
             </div>
-
-            <!-- Vertical Row 1 — illustration + photography -->
-            <div class="gallery-row gallery-row-vertical">
-                <div class="gallery-item-vertical" data-category="illustration">
-                    <img src="Archive_Page/painting/EFS_drawing_final_3.jpg" alt="Drawing">
-                </div>
-                <div class="gallery-item-vertical" data-category="illustration">
-                    <img src="Archive_Page/posters/pen_plot_sky.jpg" alt="Pen plot sky poster">
-                </div>
-                <div class="gallery-item-vertical" data-category="illustration">
-                    <img src="Archive_Page/painting/心痛_…_grief_is.jpg" alt="Grief is painting">
-                </div>
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/blue_heron_lake.jpg" alt="Blue heron at lake">
-                </div>
-                <div class="gallery-item-vertical" data-category="illustration">
-                    <img src="Archive_Page/painting/exit_painting.JPG" alt="Exit painting">
-                </div>
-            </div>
-
-            <!-- Horizontal Row 2 — illustration + photography -->
-            <div class="gallery-row gallery-row-horizontal">
-                <div class="gallery-item-horizontal" data-category="illustration">
-                    <img src="Archive_Page/painting/cityscape_painting.JPG" alt="Cityscape painting">
-                </div>
-                <div class="gallery-item-horizontal" data-category="photography">
-                    <img src="Archive_Page/photography/airplane_clouds.jpg" alt="Airplane clouds">
-                </div>
-                <div class="gallery-item-horizontal" data-category="photography">
-                    <img src="Archive_Page/photography/gondola_river.JPG" alt="Gondola on river">
-                </div>
-            </div>
-
-            <!-- Vertical Row 2 — photography -->
-            <div class="gallery-row gallery-row-vertical">
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/IMG_1478.jpg" alt="Photography">
-                </div>
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/sunlight_tree_beijing_street.jpg" alt="Sunlight through trees, Beijing">
-                </div>
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/kids_bubble.jpeg" alt="Kids with bubbles">
-                </div>
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/statue_newport.jpeg" alt="Statue in Newport">
-                </div>
-            </div>
-
-            <!-- Vertical Row 3 — photography -->
-            <div class="gallery-row gallery-row-vertical">
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/beijing_streets_view.jpg" alt="Beijing streets">
-                </div>
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/cows_tibet.JPG" alt="Cows in Tibet">
-                </div>
-                <div class="gallery-item-vertical" data-category="photography">
-                    <img src="Archive_Page/photography/shanghai_kids_water.JPG" alt="Kids playing in water, Shanghai">
-                </div>
-            </div>
-        </div>
-
-        <div class="spacer"></div>
-    </main>
-
+        </main>
+ 
     <footer class="footer">
         <div class="footer-content">
             <div class="mode-toggle-bar">

@@ -51,14 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      IMAGE LIGHTBOX (gallery pages)
-  ========================== */
+  ========================== 
 
   const imageLightbox = document.getElementById('lightbox');
   const lightboxImg   = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxPrev  = document.getElementById('lightboxPrev');
   const lightboxNext  = document.getElementById('lightboxNext');
-  const galleryImages = document.querySelectorAll('.gallery-item-horizontal img, .gallery-item-vertical img');
 
   if (imageLightbox && galleryImages.length > 0) {
     let currentImageIndex = 0;
@@ -117,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      ARCHIVE PAGE SCROLL EFFECTS
-  ========================== */
+  ==========================
 
   const archiveHeader = document.getElementById('archiveHeader');
   const allImages = document.querySelectorAll('.gallery-item-horizontal img, .gallery-item-vertical img');
@@ -132,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-  }
+  } */
 
 
   /* =========================
@@ -423,37 +422,32 @@ initMobileStack();
      EXPANDABLE BIO TAGS
   ========================== */
 
-  document.querySelectorAll('.bio-tag.expandable').forEach(tag => {
-    tag.addEventListener('click', () => {
-      const expanded = tag.dataset.expanded === 'true';
-      tag.dataset.expanded = String(!expanded);
-      tag.classList.toggle('expanded', !expanded);
+  if (!document.getElementById('stickyStage')) {
+    document.querySelectorAll('.bio-tag.expandable').forEach(tag => {
+      tag.addEventListener('click', () => {
+        const expanded = tag.dataset.expanded === 'true';
+        tag.dataset.expanded = String(!expanded);
+        tag.classList.toggle('expanded', !expanded);
+      });
     });
-  });
+  }
 
     /* =========================
      SCROLL EFFECTS!
   ========================== */
 
   function updateMesh() {
-
     const scrollY = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
   
-    const meshX = 30 + progress * 40;
-    const meshY = 20 + progress * 60;
+    document.documentElement.style.setProperty('--mesh-x', (30 + progress * 40) + '%');
+    document.documentElement.style.setProperty('--mesh-y', (20 + progress * 60) + '%');
   
-    document.documentElement.style.setProperty('--mesh-x', meshX + '%');
-    document.documentElement.style.setProperty('--mesh-y', meshY + '%');
-  
-    /* subtle parallax */
-    document.querySelector(".name-tiles").style.transform =
-        `translateY(${scrollY * -0.05}px)`;
-  
-    document.querySelector(".bio-section").style.transform =
-        `translateY(${scrollY * -0.02}px)`;
-  
+    const tiles = document.querySelector(".name-tiles");
+    const bio   = document.querySelector(".bio-section");
+    if (tiles) tiles.style.transform = `translateY(${scrollY * -0.05}px)`;
+    if (bio)   bio.style.transform   = `translateY(${scrollY * -0.02}px)`;
   }
 
 

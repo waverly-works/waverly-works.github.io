@@ -188,7 +188,17 @@ main {
     margin-top: 14px;
     width: 100%;
 }
+/* Fade in on scroll */
+.gallery-row {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
 
+.gallery-row.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 .gallery-row-horizontal {
     display: flex;
@@ -267,6 +277,234 @@ main {
     height: 80px;
 }
 
+
+/* ── Scatter scroll: track + stage ───────────────────── */
+.scroll-track {
+    height: 500vh; /* overridden by JS, just a fallback */
+    position: relative;
+  }
+  
+  .sticky-stage {
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  /* ── Hero image, sketchbook open ─────────────────────────────── */
+
+  .hero-image {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5rem;
+    width: 730px;
+    height: 550px;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 4;
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  
+  .hero-image.hidden {
+    opacity: 0;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .bio-section {
+    pointer-events: all;
+}
+
+.bio-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: var(--tag-bg);
+    border: 1.5px solid transparent;
+    background-clip: padding-box;
+    outline: 1.5px solid;
+    outline-color: transparent;
+    position: relative;
+}
+
+.bio-tag::before {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    border-radius: 999px;
+    padding: 1.5px;
+    background: linear-gradient(135deg, #2dd4bf, #a855f7);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.bio-tag strong { font-weight: 600; }
+
+.bio-tag-extra-wrap {
+    display: inline-grid;
+    grid-template-columns: 0fr;
+    transition: grid-template-columns 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+.bio-tag-extra-inner {
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+        opacity 0.3s ease 0.08s,
+        transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s;
+}
+
+.bio-tag-extra {
+    font-weight: 300;
+    color: var(--text);
+}
+
+.bio-tag.expandable {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.bio-tag.expandable.expanded .bio-tag-extra-wrap { grid-template-columns: 1fr; }
+.bio-tag.expandable.expanded .bio-tag-extra-inner { opacity: 1; transform: translateX(0); }
+.bio-tag.expandable { transition: padding 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+
+  /* ── Floating image cards ─────────────────────────────── */
+  .scatter-img {
+    position: absolute;
+    pointer-events: all;
+    cursor: zoom-in;
+    border-radius: 12px;
+    overflow: hidden;
+    
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+    opacity: 0;
+    transform: translate(
+      calc(50vw - var(--center-x)),
+      calc(50vh - var(--center-y))
+    ) scale(0.7);
+    transition:
+        opacity  0.8s cubic-bezier(.22,.68,0,1.1),
+        transform 1s cubic-bezier(.22,.68,0,1.2);
+    will-change: transform, opacity;
+    pointer-events: none;  /* ← add this */
+    opacity: 0;
+  }
+  
+  .scatter-img.visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(var(--rot));
+    pointer-events: all;   /* ← add this */
+    opacity: 1;
+  }
+  
+  .scatter-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  
+  .scatter-img:hover {
+    transform: scale(1.04) translateY(-4px) rotate(calc(var(--rot) * 0.5)) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    z-index: 200 !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  }
+  
+  /* ── Batch counter (top-right) ────────────────────────── */
+  .batch-dots {
+    position: fixed;
+    bottom: 58px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 600;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    opacity: 1;        /* always visible */
+    transition: opacity 0.4s;
+    pointer-events: all;  /* clickable */
+    margin-bottom: 1.8rem;
+  }
+  
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.3;
+    transition: opacity 0.3s, transform 0.3s;
+    cursor: default;
+  }
+
+  .dot.active {
+    opacity: 1;
+    transform: scale(1.3);
+    background: var(--text);
+  }
+  
+  .batch-label.visible { opacity: 1; }
+  
+  /* ── Scroll hint ────────────────────────────────────────
+  .scroll-hint {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 1;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    margin-bottom: 2rem;
+  }
+  
+  .scroll-hint.hidden { opacity: 0; }
+  
+  .scroll-hint-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  } */
+  
+  /*.scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 1.5px solid var(--text-muted);
+    border-bottom: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);*/
+  
+  
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50%       { transform: rotate(45deg) translateY(5px); }
+  }
+
 /* ── Lightbox ─────────────────────────────────────────────────────── */
 .lightbox {
     display: none;
@@ -290,6 +528,7 @@ main {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
 
 .lightbox-content {
     position: relative;

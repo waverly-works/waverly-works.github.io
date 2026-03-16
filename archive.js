@@ -1,252 +1,257 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* ═══════════════════════════════════════════════════
+   DATA — all images, grouped into batches of 6
+═══════════════════════════════════════════════════ */
+const BATCHES = [
+  // Batch 0 — 3D & Illustration
+  [
+    { src: 'Archive_Page/3D_Modeling/pot_cad.png',          alt: '3D pot model'      },
+    { src: 'Archive_Page/3D_Modeling/shark_slippers.png',   alt: '3D shark slippers' },
+    { src: 'Archive_Page/3D_Modeling/watches_4 (1).png',    alt: '3D watches'        },
+    { src: 'Archive_Page/painting/EFS_drawing_final_3.jpg', alt: 'Drawing'           },
+    { src: 'Archive_Page/posters/pen_plot_sky.jpg',         alt: 'Pen plot sky'      },
+    { src: 'Archive_Page/painting/心痛_…_grief_is.jpg',     alt: 'Grief is'          },
+  ],
+  // Batch 1 — Painting & Photography
+  [
+    { src: 'Archive_Page/photography/blue_heron_lake.jpg',  alt: 'Blue heron'        },
+    { src: 'Archive_Page/painting/exit_painting.JPG',       alt: 'Exit painting'     },
+    { src: 'Archive_Page/painting/cityscape_painting.JPG',  alt: 'Cityscape'         },
+    { src: 'Archive_Page/photography/airplane_clouds.jpg',  alt: 'Airplane clouds'   },
+    { src: 'Archive_Page/photography/gondola_river.JPG',    alt: 'Gondola'           },
+    { src: 'Archive_Page/photography/IMG_1478.jpg',         alt: 'Photography'       },
+  ],
+  // Batch 2 — Photography
+  [
+    { src: 'Archive_Page/photography/sunlight_tree_beijing_street.jpg', alt: 'Sunlight Beijing'   },
+    { src: 'Archive_Page/photography/kids_bubble.jpeg',                 alt: 'Kids with bubbles'  },
+    { src: 'Archive_Page/photography/statue_newport.jpeg',              alt: 'Statue Newport'     },
+    { src: 'Archive_Page/photography/beijing_streets_view.jpg',         alt: 'Beijing streets'    },
+    { src: 'Archive_Page/photography/cows_tibet.JPG',                   alt: 'Cows Tibet'         },
+    { src: 'Archive_Page/photography/shanghai_kids_water.JPG',          alt: 'Shanghai kids water'},
+  ],
+];
 
-    /* =========================
-       DARK MODE TOGGLE
-    ========================== */
-  
-    const modeToggle = document.getElementById("modeToggle");
-    const body = document.body;
-  
-    // Load saved preference
-    if (localStorage.getItem("theme") === "dark") {
-      body.classList.add("dark-mode");
-    }
-  
-    if (modeToggle) {
-      modeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-  
-        localStorage.setItem(
-          "theme",
-          body.classList.contains("dark-mode") ? "dark" : "light"
-        );
-      });
-    }
-  
-    /* =========================
-       SMOOTH SCROLL
-    ========================== */
-  
-    const scrollDown = document.getElementById("scrollDown");
-  
-    if (scrollDown) {
-      scrollDown.addEventListener("click", () => {
-        const projects = document.getElementById("projects");
-        if (projects) {
-          projects.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    }
-  
-    /* =========================
-       GALLERY FILTER
-    ========================== */
+/* ═══════════════════════════════════════════════════
+   LAYOUT ZONES
+═══════════════════════════════════════════════════ */
+const ZONES = [
+  [
+    { top:  8, left:  4, w: 26, h: 36, rot: -3.5 },
+    { top:  6, left: 68, w: 24, h: 34, rot:  2.8 },
+    { top: 38, left:  2, w: 20, h: 30, rot: -2.0 },
+    { top: 28, left: 36, w: 28, h: 38, rot:  1.5 },
+    { top: 42, left: 74, w: 20, h: 30, rot: -1.8 },
+    { top: 60, left: 10, w: 24, h: 32, rot:  3.2 },
+  ],
+  [
+    { top: 10, left: 58, w: 22, h: 32, rot:  2.1 },
+    { top:  5, left: 14, w: 26, h: 36, rot: -2.4 },
+    { top: 45, left: 68, w: 24, h: 34, rot:  3.5 },
+    { top: 32, left: 28, w: 20, h: 30, rot: -1.2 },
+    { top: 55, left: 42, w: 26, h: 36, rot:  2.0 },
+    { top: 18, left: 80, w: 18, h: 28, rot: -3.0 },
+  ],
+  [
+    { top: 12, left: 32, w: 24, h: 34, rot:  1.8 },
+    { top:  7, left: 72, w: 20, h: 30, rot: -2.9 },
+    { top: 50, left:  6, w: 26, h: 36, rot:  3.1 },
+    { top: 22, left: 52, w: 22, h: 32, rot: -1.5 },
+    { top: 48, left: 76, w: 22, h: 32, rot:  2.6 },
+    { top: 62, left: 28, w: 20, h: 28, rot: -2.2 },
+  ],
+];
 
-    const filterBar = document.getElementById("filterBar");
+/* ═══════════════════════════════════════════════════
+   CONSTANTS
+═══════════════════════════════════════════════════ */
+const VH_PER_BATCH = 2.2;
+const INTRO_VH     = 0.3;
 
-    if (filterBar) {
-      const pills = filterBar.querySelectorAll(".filter-pill");
+/* ═══════════════════════════════════════════════════
+   DOM REFS
+═══════════════════════════════════════════════════ */
+const stage         = document.getElementById('stickyStage');
+const scrollTrack   = document.getElementById('scrollTrack');
+const scrollHint    = document.getElementById('scrollHint');
+const nameTiles     = document.getElementById('nameTiles');
+const bioFloat      = document.getElementById('bioFloat');
+const heroImage     = document.getElementById('heroImage');
+const batchLabel    = document.getElementById('batchLabel');
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightBtn      = document.getElementById('lightBtn');
+const darkBtn       = document.getElementById('darkBtn');
 
-      pills.forEach(pill => {
-        pill.addEventListener("click", () => {
-          // Update active pill
-          pills.forEach(p => p.classList.remove("active"));
-          pill.classList.add("active");
+/* ═══════════════════════════════════════════════════
+   SCROLL TRACK HEIGHT
+═══════════════════════════════════════════════════ */
+const totalVH = INTRO_VH + BATCHES.length * VH_PER_BATCH + 0.6;
+scrollTrack.style.height = `${totalVH * 100}vh`;
 
-          const filter = pill.getAttribute("data-filter");
+/* ═══════════════════════════════════════════════════
+   BUILD IMAGE ELEMENTS
+═══════════════════════════════════════════════════ */
+const batchEls = BATCHES.map((batch, bi) =>
+  batch.map((img, ii) => {
+    const zone = ZONES[bi][ii];
+    const el   = document.createElement('div');
+    el.className = 'scatter-img';
+    const cx = zone.left + zone.w / 2;
+    const cy = zone.top  + zone.h / 2;
+    el.style.cssText = `
+      top:        ${zone.top}%;
+      left:       ${zone.left}%;
+      width:      ${zone.w}vw;
+      height:     ${zone.h}vh;
+      z-index:    ${(bi + 1) * 10 + ii};
+      --rot:      ${zone.rot}deg;
+      --center-x: ${cx}vw;
+      --center-y: ${cy}vh;
+    `;
+    el.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
+    el.addEventListener('click', () => openLightbox(img.src));
+    stage.appendChild(el);
+    return el;
+  })
+);
 
-          // Show/hide gallery items
-          const allItems = document.querySelectorAll(
-            ".gallery-item-horizontal, .gallery-item-vertical"
-          );
+/* ═══════════════════════════════════════════════════
+   ARROW KEY BATCH NAVIGATION
+═══════════════════════════════════════════════════ 
+document.addEventListener('keydown', e => {
+  if (lightbox.classList.contains('active')) return;
 
-          allItems.forEach(item => {
-            const category = item.getAttribute("data-category") || "";
-            if (filter === "all" || category === filter) {
-              item.classList.remove("hidden");
-            } else {
-              item.classList.add("hidden");
-            }
-          });
+  const introPx    = INTRO_VH * window.innerHeight;
+  const batchPx    = VH_PER_BATCH * window.innerHeight;
+  const current    = getActiveBatch();
 
-          // Hide rows where all children are hidden
-          const rows = document.querySelectorAll(".gallery-row");
-          rows.forEach(row => {
-            const visibleItems = row.querySelectorAll(
-              ".gallery-item-horizontal:not(.hidden), .gallery-item-vertical:not(.hidden)"
-            );
-            if (visibleItems.length === 0) {
-              row.classList.add("row-empty");
-            } else {
-              row.classList.remove("row-empty");
-            }
-          });
-        });
-      });
-    }
+  if (e.key === 'ArrowRight') {
+    const next = Math.min(current + 1, BATCHES.length - 1);
+    window.scrollTo({ top: introPx + next * batchPx, behavior: 'smooth' });
+  } else if (e.key === 'ArrowLeft') {
+    const prev = Math.max(current - 1, 0);
+    window.scrollTo({ top: introPx + prev * batchPx, behavior: 'smooth' });
+  }
+});*/
+/* ═══════════════════════════════════════════════════
+   SCROLL LOGIC
+═══════════════════════════════════════════════════ */
+function getActiveBatch() {
+  const introPx  = INTRO_VH * window.innerHeight;
+  const batchPx  = VH_PER_BATCH * window.innerHeight;
+  const scrolled = window.scrollY;
+  if (scrolled < introPx) return -1;
+  return Math.min(Math.floor((scrolled - introPx) / batchPx), BATCHES.length - 1);
+}
 
-    /* =========================
-       LIGHTBOX FUNCTIONALITY WITH NAVIGATION
-    ========================== */
-  
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
+let lastActiveBatch = -2;
 
-    if (lightbox) {
-      let currentImageIndex = 0;
+function onScroll() {
+  const activeBatch = getActiveBatch();
 
-      // Build visible image array at click time so filtered-out images are excluded
-      function getVisibleImages() {
-        return Array.from(document.querySelectorAll(
-          '.gallery-item-horizontal:not(.hidden) img, .gallery-item-vertical:not(.hidden) img'
-        ));
-      }
+  // Scroll hint
+  scrollHint.classList.toggle('hidden', window.scrollY > 80);
 
-      // Open lightbox when clicking on any gallery image
-      document.querySelectorAll('.gallery-item-horizontal img, .gallery-item-vertical img')
-        .forEach(img => {
-          img.addEventListener('click', (e) => {
-            e.preventDefault();
-            const visibleImages = getVisibleImages();
-            currentImageIndex = visibleImages.indexOf(img);
-            if (currentImageIndex === -1) currentImageIndex = 0;
-            showImage(currentImageIndex, visibleImages);
-            lightbox.classList.add('active');
-            body.style.overflow = 'hidden';
-          });
-        });
+  // Hero elements fade
+  const heroGone = window.scrollY > window.innerHeight * 0.12;
+  nameTiles.classList.toggle('hidden', heroGone);
+  bioFloat.classList.toggle('hidden', heroGone);
+  if (heroImage) heroImage.classList.toggle('hidden', heroGone);
 
-      function showImage(index, imageArray) {
-        imageArray = imageArray || getVisibleImages();
-        if (index >= 0 && index < imageArray.length) {
-          lightboxImg.src = imageArray[index].src;
-          currentImageIndex = index;
-        }
-      }
-
-      function showPreviousImage() {
-        const imageArray = getVisibleImages();
-        currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
-        showImage(currentImageIndex, imageArray);
-      }
-
-      function showNextImage() {
-        const imageArray = getVisibleImages();
-        currentImageIndex = (currentImageIndex + 1) % imageArray.length;
-        showImage(currentImageIndex, imageArray);
-      }
-
-      if (lightboxPrev) {
-        lightboxPrev.addEventListener('click', (e) => {
-          e.stopPropagation();
-          showPreviousImage();
-        });
-      }
-
-      if (lightboxNext) {
-        lightboxNext.addEventListener('click', (e) => {
-          e.stopPropagation();
-          showNextImage();
-        });
-      }
-
-      if (lightboxClose) {
-        lightboxClose.addEventListener('click', () => closeLightbox());
-      }
-      
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (lightbox.classList.contains('active')) {
-          if (e.key === 'Escape')       closeLightbox();
-          else if (e.key === 'ArrowLeft')  showPreviousImage();
-          else if (e.key === 'ArrowRight') showNextImage();
-        }
-      });
-
-      function closeLightbox() {
-        lightbox.classList.remove('active');
-        body.style.overflow = 'auto';
-        setTimeout(() => { lightboxImg.src = ''; }, 300);
-      }
-    }
-
-    
-  
-  /* =========================
-   ARCHIVE PAGE SCROLL EFFECTS
-==========================
-
-const horizontalRows = document.querySelectorAll('.gallery-row-horizontal');
-const verticalRows   = document.querySelectorAll('.gallery-row-vertical');
-
-function applyParallax() {
-  const scrollY = window.scrollY;
-
-  horizontalRows.forEach((row, i) => {
-    const rect      = row.getBoundingClientRect();
-    const rowCenter = rect.top + rect.height / 2;
-    const viewMid   = window.innerHeight / 2;
-    const offset    = (viewMid - rowCenter) * 0.06;
-    const direction = i % 2 === 0 ? 1 : -1;   // alternate left/right
-    row.style.transform = `translateX(${offset * direction}px)`;
+  // Dot indicator highlight
+  batchLabel.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i <= activeBatch);
   });
 
-  verticalRows.forEach((row, i) => {
-    const rect      = row.getBoundingClientRect();
-    const rowCenter = rect.top + rect.height / 2;
-    const viewMid   = window.innerHeight / 2;
-    const offset    = (viewMid - rowCenter) * 0.06;
-    const direction = i % 2 === 0 ? 1 : -1;
-    row.style.transform = `translateX(${offset * direction}px)`;
-  });
-} */
+  // Only re-animate when batch changes
+  if (activeBatch === lastActiveBatch) return;
 
-window.addEventListener('scroll', applyParallax, { passive: true });
-applyParallax(); // run once on load
-  
-    /* =========================
-       PROJECT CARD NAVIGATION
-    ========================== */
-  
-    const projectCards = document.querySelectorAll(".project-card[data-project]");
-  
-    projectCards.forEach(card => {
-      card.addEventListener("click", (e) => {
-        if (e.target.closest("a")) return;
-        const url = card.getAttribute("data-project");
-        if (url) window.location.href = url;
-      });
+  batchEls.forEach((batch, bi) => {
+    const shouldShow  = bi <= activeBatch;
+    const isEntering  = shouldShow && bi > lastActiveBatch;
+    const isLeaving   = !shouldShow && bi <= lastActiveBatch;
+
+    batch.forEach((el, ii) => {
+      if (isEntering) {
+        el.style.transitionDelay = `${ii * 0.09}s`;
+        el.classList.add('visible');
+      } else if (isLeaving) {
+        el.style.transitionDelay = `${(batch.length - 1 - ii) * 0.06}s`;
+        el.classList.remove('visible');
+      } else if (shouldShow) {
+        el.style.transitionDelay = '0s';
+        el.classList.add('visible');
+      } else {
+        el.style.transitionDelay = '0s';
+        el.classList.remove('visible');
+      }
     });
-
-    /* =========================
-       LEADERSHIP DROPDOWN FUNCTIONALITY
-    ========================== */
-  
-    const leadershipHeaders = document.querySelectorAll('.leadership-header');
-  
-    leadershipHeaders.forEach(header => {
-      header.addEventListener('click', () => {
-        const targetId = header.getAttribute('data-leadership');
-        const content = document.getElementById(targetId);
-        
-        header.classList.toggle('active');
-        content.classList.toggle('active');
-        
-        leadershipHeaders.forEach(otherHeader => {
-          if (otherHeader !== header && otherHeader.classList.contains('active')) {
-            otherHeader.classList.remove('active');
-            const otherId = otherHeader.getAttribute('data-leadership');
-            const otherContent = document.getElementById(otherId);
-            otherContent.classList.remove('active');
-          }
-        });
-      });
-    });
-  
   });
+
+  lastActiveBatch = activeBatch;
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ═══════════════════════════════════════════════════
+   MOUSE PARALLAX DRIFT
+═══════════════════════════════════════════════════ */
+document.addEventListener('mousemove', e => {
+  if (lightbox.classList.contains('active')) return;
+  const cx = (e.clientX / window.innerWidth  - 0.5) * 2;
+  const cy = (e.clientY / window.innerHeight - 0.5) * 2;
+  batchEls.forEach(batch => {
+    batch.forEach((el, ii) => {
+      if (!el.classList.contains('visible')) return;
+      const depth = 0.4 + (ii % 3) * 0.3;
+      el.style.translate = `${cx * depth * 6}px ${cy * depth * 4}px`;
+    });
+  });
+});
+
+/* ═══════════════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════════════ */
+function openLightbox(src) {
+  lightboxImg.src = src;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => { lightboxImg.src = ''; }, 300);
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+});
+
+/* ═══════════════════════════════════════════════════
+   DARK MODE
+═══════════════════════════════════════════════════ */
+if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
+
+lightBtn.addEventListener('click', () => {
+  document.body.classList.remove('dark-mode');
+  localStorage.setItem('theme', 'light');
+});
+
+darkBtn.addEventListener('click', () => {
+  document.body.classList.add('dark-mode');
+  localStorage.setItem('theme', 'dark');
+});
+
+/* ═══════════════════════════════════════════════════
+   BIO TAGS
+═══════════════════════════════════════════════════ */
+document.querySelectorAll('.bio-tag.expandable').forEach(tag => {
+  tag.addEventListener('click', () => {
+    tag.classList.toggle('expanded');
+  });
+});
