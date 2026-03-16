@@ -460,7 +460,7 @@ letter-spacing: -0.01em;
     display: inline-block;
 }
 
-/* Underline sweep on project name */
+/* Underline sweep on project name 
 .project-name::after {
     content: '';
     position: absolute;
@@ -471,7 +471,7 @@ letter-spacing: -0.01em;
     background: linear-gradient(90deg, #3bb8c3, #9b9de8);
     transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     border-radius: 2px;
-}
+}*/
 
 .project-card:hover .project-name::after { width: 100%; }
 
