@@ -437,7 +437,6 @@ main {
     position: fixed;
     bottom: 58px;
     left: 50%;
-    transform: translateX(-50%);
     z-index: 600;
     display: flex;
     gap: 8px;
