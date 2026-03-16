@@ -106,10 +106,28 @@ main {
     z-index: 10;
 }
 
-/* ── Bio info ─────────────────────────────────────────────────────── */
-.bio-info {
-    flex: 1;
+/* Bio tag links — adapts to light/dark mode */
+.bio-tag-extra-inner a.bio-tag-link,
+.bio-tag-extra-inner a.bio-tag-link:link,
+.bio-tag-extra-inner a.bio-tag-link:visited {
+    color: #111110 !important;  /* dark for light mode */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+    transition: opacity 0.2s;
 }
+
+.bio-tag-extra-inner a.bio-tag-link:hover {
+    opacity: 0.7;
+}
+
+body.dark-mode .bio-tag-extra-inner a.bio-tag-link,
+body.dark-mode .bio-tag-extra-inner a.bio-tag-link:link,
+body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
+    color: #f5f5f5 !important;  /* light for dark mode */
+}
+
+
 
 .bio-section p {
     margin-bottom: 1rem;
@@ -447,7 +465,7 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
         transform: translateY(-4px) scale(1.02) !important;
     }
 
-
+ 
     .bio-info { padding-top: 6rem; }
     .bio-name { font-size: 2.5rem; }
     .bio-subtitle { font-size: 1rem; }
