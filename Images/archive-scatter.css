@@ -1,0 +1,59 @@
+<main>
+  <!-- Batch counter label -->
+  <div class="batch-label" id="batchLabel"></div>
+
+  <!-- Scroll track: gives the page its scroll height -->
+  <div class="scroll-track" id="scrollTrack">
+
+    <!-- Sticky stage: stays fixed while you scroll through the track -->
+    <div class="sticky-stage" id="stickyStage">
+
+      <!-- Name tiles — untouched from your original -->
+      <div class="name-tiles" id="nameTiles">
+        <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
+        <div class="tile" data-letter="r" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
+        <div class="tile" data-letter="c" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
+        <div class="tile" data-letter="h" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
+        <div class="tile" data-letter="i" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
+        <div class="tile" data-letter="v" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
+        <div class="tile" data-letter="e" style="--tile-color:#9b9de8; --tile-top:8px;"></div>
+      </div>
+
+      <!-- Bio section — untouched from your original -->
+      <div class="bio-section" id="bioFloat">
+        <p class="bio-text">
+          I enjoy creating across
+
+          <span class="bio-tag expandable" data-expanded="false">
+            <strong>different mediums ✦</strong>
+            <span class="bio-tag-extra-wrap">
+              <span class="bio-tag-extra-inner">
+                <span class="bio-tag-extra">&nbsp;ft. illustration, 3D modeling, photography, &amp; more</span>
+              </span>
+            </span>
+          </span>
+
+          with deep love &amp; appreciation for all, originating from
+
+          <span class="bio-tag expandable" data-expanded="false">
+            <strong>living room walls ❏</strong>
+            <span class="bio-tag-extra-wrap">
+              <span class="bio-tag-extra-inner">
+                <span class="bio-tag-extra">&nbsp;my first canvas was my house. sorry mom!</span>
+              </span>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" id="scrollHint">
+        <span class="scroll-hint-text">scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+
+      <!-- Scattered images are injected here by archive.js -->
+
+    </div>
+  </div>
+</main>
