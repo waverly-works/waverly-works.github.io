@@ -567,6 +567,15 @@ body.dark-mode .feature-visual {
     margin-bottom: 1rem;
 }
 
+.feature-visual-person img {
+    width: 14rem;
+    height: 14rem;        /* make it a square for a true circle */
+    display: block;
+    border-radius: 50%;   /* perfect circle */
+    object-fit: cover;    /* prevents stretching */
+    margin-bottom: 1rem;
+}
+
 .feature-text { display: flex; flex-direction: column; }
 
 .feature-text h2 {
