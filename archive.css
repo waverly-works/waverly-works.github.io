@@ -322,7 +322,7 @@ main {
     pointer-events: all;
   }
 
-  /* ── Floating image cards ─────────────────────────────── */
+  /* ── Floating image cards ─────────────────────────────── */ 
   .scatter-img {
     position: absolute;
     pointer-events: all;

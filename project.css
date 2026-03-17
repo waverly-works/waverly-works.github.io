@@ -326,7 +326,7 @@ body.dark-mode .section-heading h3.light { color: var(--ink-light); }
 
 .intro-body p { font-size: 1.05rem; }
 
-body.dark-mode .intro-body p { color: rgba(240, 238, 233, 0.72); }
+body.dark-mode .intro-body p { color: rgba(241, 239, 234, 0.88); }
 
 .intro-body p em {
     font-style: italic;
