@@ -170,6 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
       { label: 'Process',    href: '#process'    },
       { label: 'Reflection', href: '#reflection' },
     ],
+
+    'https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/preview': [],
+     
+    
   };
 
   const overlay   = document.getElementById('lightbox-overlay');
