@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+ 
 :root {
     --bg: #f6f8fd;
     --bg-dark: #111110;
@@ -332,6 +332,10 @@ body.dark-mode .intro-body p { color: rgba(240, 238, 233, 0.72); }
     font-style: italic;
     color: var(--ink);
 }
+
+.intro-body p + p {
+    margin-top: 1rem; /* Adjust the value as needed */
+  }
 
 body.dark-mode .intro-body p em { color: var(--ink-light); }
 
