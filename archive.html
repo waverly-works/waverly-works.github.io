@@ -4,106 +4,248 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Archive — Waverly Huang</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href=Images/favicon.ico.ocean.ico>
+  <link rel="icon" href="Images/favicon.ico.ocean.ico">
   <link rel="stylesheet" href="archive.css">
-  <!--<link rel="stylesheet" href="archive-filter.css">-->
-</head> 
+</head>
 <body>
-        <nav class="tab-nav">
-            <a href="index.html" class="tab">Work</a>
-            <a href="archive.html" class="tab active">Archive</a>
-            <a href="about.html" class="tab">About</a>
-            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" class="tab" target="_blank">Resume</a>
-        </nav>
-        <main>
-            <div class="batch-dots" id="batchLabel">
-                <span class="dot" data-i="0"></span>
-                <span class="dot" data-i="1"></span>
-                <span class="dot" data-i="2"></span>
-            </div>
-    
-            <div class="scroll-track" id="scrollTrack">
-                <div class="sticky-stage" id="stickyStage">
-    
-                    <div class="name-tiles" id="nameTiles">
-                        <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
-                        <div class="tile" data-letter="r" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
-                        <div class="tile" data-letter="c" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
-                        <div class="tile" data-letter="h" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
-                        <div class="tile" data-letter="i" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
-                        <div class="tile" data-letter="v" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
-                        <div class="tile" data-letter="e" style="--tile-color:#9b9de8; --tile-top:8px;"></div>
-                    </div>
-    
-                    <div class="bio-section" id="bioFloat">
-                        <p class="bio-text">
-                            I enjoy creating across
-    
-                            <span class="bio-tag expandable" data-expanded="false">
-                                <strong>different mediums ✦</strong>
-                                <span class="bio-tag-extra-wrap">
-                                    <span class="bio-tag-extra-inner">
-                                        <span class="bio-tag-extra">&nbsp;ft. illustration, 3D modeling, photography, &amp; more</span>
-                                    </span>
-                                </span>
-                            </span>
-    
-                            with deep love &amp; appreciation for all, originating from
-    
-                            <span class="bio-tag expandable" data-expanded="false">
-                                <strong>living room walls ❏</strong>
-                                <span class="bio-tag-extra-wrap">
-                                    <span class="bio-tag-extra-inner">
-                                        <span class="bio-tag-extra">&nbsp;my first canvas was my house. sorry mom!</span> 
-                                    </span>
-                                </span>
-                            </span>
-                           If you want to explore,  <strong>scroll down!</strong>
-                        </p>
-                    </div>
-                    <div class="hero-image">
-                        <img src="Archive_Page/sketchbook_flip.png" alt="Sketchbook">
-                      </div>
-                    <div class="scroll-hint" id="scrollHint">
-                        <span class="scroll-hint-text"></span>
-                        <div class="scroll-arrow"></div>
-                    </div>
-    
-                </div>
-            </div>
-        </main>
- 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="mode-toggle-bar">
-                <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">&#9728;</button>
-                <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">&#9790;</button>
-            </div>
-            <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
-            <div class="footer-right">
-                <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=waverlyhuang2004@gmail.com&su=Hello%20Waverly&body=Hi%20Waverly," target="_blank">Email</a> &#10022;
-                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2/view?usp=sharing" target="_blank">Resume</a>
-            </div>
-        </div>
-    </footer>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
-                <path d="M15 9L9 15M9 9l6 6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-        </button>
-        <div class="lightbox-content">
-            <img id="lightboxImg" src="" alt="Expanded view">
-        </div>
+  <!-- ── Top nav ──────────────────────────────────────────────── -->
+  <nav class="tab-nav">
+    <a href="index.html" class="tab">Work</a>
+    <a href="archive.html" class="tab active">Archive</a>
+    <a href="about.html" class="tab">About</a>
+    <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" class="tab" target="_blank">Resume</a>
+  </nav>
+
+  <!-- ── Side nav ─────────────────────────────────────────────── -->
+  <nav class="side-nav" id="sideNav">
+    <!--<a href="#" class="side-nav-link active" data-category="code">Code</a>
+    <a href="#" class="side-nav-link" data-category="uiux">UIUX</a>-->
+    <a href="#" class="side-nav-link" data-category="photography">Photography</a>
+    <a href="#" class="side-nav-link" data-category="illustration">Illustration</a>
+    <a href="#" class="side-nav-link" data-category="3d">3D Work</a>
+  </nav>
+
+  <main>
+
+    <!-- ── Animated header ──────────────────────────────────────── -->
+    <div class="archive-hero">
+      <div class="name-tiles" id="nameTiles">
+        <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
+        <div class="tile" data-letter="r" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
+        <div class="tile" data-letter="c" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
+        <div class="tile" data-letter="h" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
+        <div class="tile" data-letter="i" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
+        <div class="tile" data-letter="v" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
+        <div class="tile" data-letter="e" style="--tile-color:#9b9de8; --tile-top:8px;"></div>
+      </div>
+
+      <div class="bio-section">
+        <p class="bio-text">
+          I enjoy creating across
+          <span class="bio-tag expandable" data-expanded="false">
+            <strong>different mediums ✦</strong>
+            <span class="bio-tag-extra-wrap">
+              <span class="bio-tag-extra-inner">
+                <span class="bio-tag-extra">&nbsp;ft. illustration, 3D modeling, photography, &amp; more</span>
+              </span>
+            </span>
+          </span>
+          with deep love &amp; appreciation for all, originating from
+          <span class="bio-tag expandable" data-expanded="false">
+            <strong>living room walls ❏</strong>
+            <span class="bio-tag-extra-wrap">
+              <span class="bio-tag-extra-inner">
+                <span class="bio-tag-extra">&nbsp;my first canvas was my house. sorry mom!</span>
+              </span>
+            </span>
+          </span>
+          If you want to explore, <strong>scroll down!</strong>
+        </p>
+      </div>
     </div>
 
-    <script src="archive.js"></script>
-    <script src="script.js"></script>
+    <!-- ── Gallery ──────────────────────────────────────────────── -->
+    <div class="gallery" id="gallery">
+
+      <!-- CODE EXPLORATIONS ─────────────────────────────────────── 
+      <section class="gallery-section" data-category="code">
+        <div class="section-label">Code Explorations</div>
+
+        <div class="gallery-row horizontal-row">
+          <div class="gallery-item" data-src="Archive_Page/code1.png" data-category="code">
+            <img src="Archive_Page/code1.png" alt="Code exploration 1" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/code2.png" data-category="code">
+            <img src="Archive_Page/code2.png" alt="Code exploration 2" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/code3.png" data-category="code">
+            <img src="Archive_Page/code3.png" alt="Code exploration 3" loading="lazy">
+          </div>
+        </div>
+      </section>-->
+
+      <!-- UI/UX EXPLORATIONS ───────────────────────────────────── 
+      <section class="gallery-section" data-category="uiux">
+        <div class="section-label">UI/UX Explorations</div>
+
+        <div class="gallery-row horizontal-row">
+          <div class="gallery-item" data-src="Archive_Page/uiux1.png" data-category="uiux">
+            <img src="Archive_Page/uiux1.png" alt="UI/UX exploration 1" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/uiux2.png" data-category="uiux">
+            <img src="Archive_Page/uiux2.png" alt="UI/UX exploration 2" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/uiux3.png" data-category="uiux">
+            <img src="Archive_Page/uiux3.png" alt="UI/UX exploration 3" loading="lazy">
+          </div>
+        </div>
+      </section>-->
+
+      <!-- PHOTOGRAPHY ──────────────────────────────────────────── -->
+      <section class="gallery-section" data-category="photography">
+        <div class="section-label">Photography</div>
+
+        <!-- vertical row: taller than wide -->
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/photography/kids_bubble.jpeg" data-category="photography">
+            <img src="Archive_Page/photography/kids_bubble.jpeg" alt="Photo 1" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/gondola_river.JPG" data-category="photography">
+            <img src="Archive_Page/photography/gondola_river.JPG" alt="Photo 2" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/statue_newport.jpeg" data-category="photography">
+            <img src="Archive_Page/photography/statue_newport.jpeg" alt="Photo 3" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/blue_heron_lake.jpg" data-category="photography">
+            <img src="Archive_Page/photography/blue_heron_lake.jpg" alt="Photo 4" loading="lazy">
+          </div>
+        </div>
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/photography/beijing_streets_view.jpg" data-category="photography">
+            <img src="Archive_Page/photography/beijing_streets_view.jpg" alt="Photo 3" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/airplane_clouds.jpg" data-category="photography">
+            <img src="Archive_Page/photography/airplane_clouds.jpg" alt="Photo 1" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photo2.jpg" data-category="photography">
+            <img src="Archive_Page/photography/cows_tibet.JPG" alt="Photo 2" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/IMG_E837E4056B86-1.jpeg" data-category="photography">
+            <img src="Archive_Page/photography/IMG_E837E4056B86-1.jpeg" alt="Photo 4" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- ILLUSTRATION ─────────────────────────────────────────── -->
+      <section class="gallery-section" data-category="illustration">
+        <div class="section-label">Illustration</div>
+        <!-- vertical row -->
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/painting/axolotl_painting_edit copy.png" data-category="illustration">
+            <img src="Archive_Page/painting/axolotl_painting_edit copy.png" alt="Illustration 7" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/painting/心痛_…_grief_is.jpg" data-category="illustration">
+            <img src="Archive_Page/painting/心痛_…_grief_is.jpg" alt="Illustration 5" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/painting/EFS_drawing_final_3.jpg" data-category="illustration">
+            <img src="Archive_Page/painting/EFS_drawing_final_3.jpg" alt="Illustration 6" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/painting/exit_painting.JPG" data-category="illustration">
+            <img src="Archive_Page/posters/pen_plot_sky.jpg" alt="Illustration 7" loading="lazy">
+          </div>
+        </div>
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/painting/EFS_head_rip.JPG" data-category="illustration">
+            <img src="Archive_Page/painting/EFS_head_rip.JPG" alt="Illustration 5" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/painting/hs_mural_me.jpg" data-category="illustration">
+            <img src="Archive_Page/painting/hs_mural_me.jpg" alt="Illustration 6" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/painting/hs_mural_me.jpg" data-category="illustration">
+            <img src="Archive_Page/painting/hs_mural.jpg" alt="Illustration 7" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/painting/exit_painting.JPG" data-category="illustration">
+            <img src="Archive_Page/painting/exit_painting.JPG" alt="Illustration 7" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- 3D WORK ──────────────────────────────────────────────── -->
+      <section class="gallery-section" data-category="3d">
+        <div class="section-label">3D Work</div>
+
+        <!-- vertical row: taller than wide -->
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/3D_Modeling/pot_cad.png" data-category="3d">
+            <img src="Archive_Page/3D_Modeling/pot_cad.png" alt="3D pot model" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/3D_Modeling/shark_slippers.png" data-category="3d">
+            <img src="Archive_Page/3D_Modeling/shark_slippers.png" alt="3D shark slippers" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/3D_Modeling/watches_4 (1).png" data-category="3d">
+            <img src="Archive_Page/3D_Modeling/watches_4 (1).png" alt="3D watches" loading="lazy">
+          </div>
+        </div>
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/3D_Modeling/invade/INVADE_assembled.png" data-category="3d">
+            <img src="Archive_Page/3D_Modeling/invade/INVADE_assembled.png" alt="3D pot model" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/3D_Modeling/invade/INVADE_board.png" data-category="3d">
+            <img src="Archive_Page/3D_Modeling/invade/INVADE_box.png" alt="3D shark slippers" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/3D_Modeling/invade/INVADE_characters.png" data-category="3d">
+            <img src="Archive_Page/3D_Modeling/invade/INVADE_characters.png" alt="3D watches" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/3D_Modeling/invade/INVADE_gamepartslayout.png" data-category="3d">
+            <img src="Archive_Page/3D_Modeling/invade/INVADE_gamepartslayout.png" alt="3D watches" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /gallery -->
+
+    <div class="spacer"></div>
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="mode-toggle-bar">
+        <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">&#9728;</button>
+        <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">&#9790;</button>
+      </div>
+      <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
+      <div class="footer-right">
+        <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=waverlyhuang2004@gmail.com&su=Hello%20Waverly&body=Hi%20Waverly," target="_blank">Email</a> &#10022;
+        <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2/view?usp=sharing" target="_blank">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Lightbox ──────────────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
+        <path d="M15 9L9 15M9 9l6 6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Expanded view">
+    </div>
+  </div>
+
+  <script src="archive.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
