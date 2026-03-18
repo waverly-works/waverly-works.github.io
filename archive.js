@@ -146,8 +146,7 @@
     /* ── BIO EXPANDABLE PILLS ─────────────────────────────────────── */
     document.querySelectorAll(".bio-tag.expandable").forEach(tag => {
       tag.addEventListener("click", () => {
-        const expanded = tag.dataset.expanded === "true";
-        tag.dataset.expanded = expanded ? "false" : "true";
+        tag.classList.toggle("expanded");
       });
     });
   
