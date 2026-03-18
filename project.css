@@ -145,19 +145,7 @@ body.dark-mode #modeToggle::before {
     background: var(--bg-dark);
 }
 
-body.dark-mode .side-nav a { color: rgba(255,255,255,0.35); }
-body.dark-mode .side-nav a:hover,
-body.dark-mode .side-nav a.active {
-    color: #fff;
-    border-left-color: #fff;
-}
 
-.side-nav a:hover,
-.side-nav a.active {
-    color: var(--ink);
-    border-left-color: var(--ink);
-    opacity: 1;
-}
 
 /* ── Layout ─────────────────────────────────────────────── */
 main {
