@@ -197,7 +197,7 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--sans);
+    font-family: var(--serif);
     font-weight: 400;
     font-size: var(--tile-font);
     color: rgba(255, 255, 255, 0.9);
