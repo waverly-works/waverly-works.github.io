@@ -585,8 +585,28 @@ body.dark-mode .spotlight-card {
   background: rgba(255,255,255,0.03);
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(17,17,16,0.2); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(17,17,16,0.35); }
+body.dark-mode ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+body.dark-mode ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+* { scrollbar-width: thin; scrollbar-color: rgba(17,17,16,0.2) transparent; }
+body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════ */
+
 @media (max-width: 960px) {
+  .side-nav { display: none; }
+  .gallery { padding-right: 22px; }
+
+  header { padding: 14px 22px; }
+  .logo { left: 22px; }
+  .nav-icons { right: 22px; }
+
   .spotlight-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 380px;
@@ -594,58 +614,63 @@ body.dark-mode .spotlight-card {
 }
 
 @media (max-width: 768px) {
+  main {
+    margin-top: 80px;
+    padding: 16px 16px 0;
+  }
+
+  .archive-header { margin-bottom: 36px; }
+
+  .archive-title {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+  }
+
+  .archive-description { font-size: 0.95rem; }
+
+  .gallery-section { margin-bottom: 36px; }
+
+  .horizontal-row,
+  .vertical-row {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+
+  .horizontal-row .gallery-item { height: 220px; flex: none; }
+  .vertical-row .gallery-item   { height: 300px; flex: none; }
+
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
+
   .spotlight-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 12px;
   }
 
-  .spotlight-card {
-    height: 340px;
-  }
-
+  .spotlight-card { height: 340px; }
   .spotlight-card__title { font-size: 1.35rem; }
   .spotlight-card--wide .spotlight-card__title { font-size: 1.35rem; }
 }
-  
-  /* ── Scrollbar ──────────────────────────────────────────────────── */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(17,17,16,0.2); border-radius: 999px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(17,17,16,0.35); }
-  body.dark-mode ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
-  body.dark-mode ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
-  * { scrollbar-width: thin; scrollbar-color: rgba(17,17,16,0.2) transparent; }
-  body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
-  
-  /* ── Responsive ──────────────────────────────────────────────── */
-  @media (max-width: 960px) {
-    .side-nav { display: none; }
-    .archive-hero { padding-right: 22px; }
-    .gallery { padding-right: 22px; }
-  }
-  
-  @media (max-width: 768px) {
-    .archive-hero { padding-top: 80px; }
-    .tile { width: 64px; height: 64px; border-radius: 14px; }
-    .tile::after { font-size: 1.7rem; }
-  
-    .horizontal-row,
-    .vertical-row {
-      flex-direction: column;
-      height: auto;
-      gap: 10px;
-    }
-  
-    .horizontal-row .gallery-item { height: 220px; flex: none; }
-    .vertical-row .gallery-item   { height: 300px; flex: none; }
-  
-    .lightbox-prev { left: 10px; }
-    .lightbox-next { right: 10px; }
-  }
-  
-  @media (max-width: 480px) {
-    .archive-hero { padding: 72px 12px 0; }
-    .gallery { padding: 0 12px; }
-    .spacer { height: 64px; }
-  }
+
+@media (max-width: 480px) {
+  main { padding: 12px 12px 0; }
+
+  .archive-title { font-size: 2rem; }
+  .archive-description { font-size: 0.9rem; }
+  .archive-header { margin-bottom: 28px; }
+
+  .gallery { padding: 0 12px; }
+  .gallery-section { margin-bottom: 28px; }
+  .gallery-row { gap: 10px; margin-bottom: 10px; }
+
+  .horizontal-row .gallery-item { height: 180px; }
+  .vertical-row .gallery-item   { height: 240px; }
+
+  .spotlight-card { height: 280px; }
+  .spotlight-card__title { font-size: 1.2rem; }
+  .spotlight-card--wide .spotlight-card__title { font-size: 1.2rem; }
+
+  .spacer { height: 64px; }
+}
