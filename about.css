@@ -175,7 +175,7 @@ body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
 }
 
 .section-label {
-    font-family: var(--sans);
+    font-family: var(--serif);
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 20px;
