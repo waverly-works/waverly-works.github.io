@@ -1,0 +1,168 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   spotlight.css  —  Spotlight section styles for explore.html
+   Link this AFTER explore.css:  <link rel="stylesheet" href="spotlight.css">
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section shell ──────────────────────────────────────────────────────── */
+.spotlight-section {
+  margin-bottom: 4rem;
+}
+
+/* ── Grid layout ────────────────────────────────────────────────────────── */
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* equal 50/50 columns */
+  gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Card base ──────────────────────────────────────────────────────────── */
+.spotlight-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Anchor link wrapper — fills the entire card ────────────────────────── */
+.spotlight-card__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  position: relative;
+}
+
+.spotlight-card__link:focus-visible {
+  outline: 2px solid var(--accent, #4acdd9);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* ── Media — image fills the whole card ────────────────────────────────── */
+.spotlight-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.spotlight-card--wide .spotlight-card__media {
+  aspect-ratio: 16 / 9;
+}
+
+.spotlight-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.spotlight-card:hover .spotlight-card__media img {
+  transform: scale(1.05);
+}
+
+/* ── Gradient scrim — always visible, deepens on hover ──────────────────── */
+.spotlight-card__overlay {
+  position: absolute;
+  inset: 0;
+  /* tall gradient rising from the bottom so text is always legible */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.45) 40%,
+    rgba(0, 0, 0, 0.08) 70%,
+    rgba(0, 0, 0, 0)    100%
+  );
+  transition: background 0.3s ease;
+}
+
+.spotlight-card:hover .spotlight-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9)  0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.15) 75%,
+    rgba(0, 0, 0, 0)    100%
+  );
+}
+
+/* ── Card body — sits inside the media, on top of the gradient ──────────── */
+.spotlight-card__body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.4rem 1.3rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  z-index: 1;
+}
+
+/* ── Badge ──────────────────────────────────────────────────────────────── */
+.spotlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent, #3bb8c3);
+}
+
+/* ── Title ──────────────────────────────────────────────────────────────── */
+.spotlight-card__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  color: #fff;
+}
+
+/* ── Description — always-visible caption ───────────────────────────────── */
+.spotlight-card__desc {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* ── Meta ───────────────────────────────────────────────────────────────── */
+.spotlight-card__meta {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 0.1rem;
+}
+
+/* ── "View ↗" CTA — slides up on hover ─────────────────────────────────── */
+.spotlight-card__cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease 0.08s, transform 0.25s ease 0.08s;
+}
+
+.spotlight-card:hover .spotlight-card__cta {
+  opacity: 1;
+  transform: translateY(0);
+}

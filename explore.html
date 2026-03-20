@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Archive — Waverly Huang</title>
+  <title>Explore — Waverly Huang</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="Images/favicon.ico.ocean.ico">
-  <link rel="stylesheet" href="archive.css">
+  <link rel="stylesheet" href="explore.css">
+  <link rel="stylesheet" href="spotlight.css">
 </head>
 <body>
 
   <!-- ── Top nav ──────────────────────────────────────────────── -->
   <nav class="tab-nav">
-    <a href="index.html" class="tab">Work</a>
-    <a href="archive.html" class="tab active">Archive</a>
+    <a href="index.html" class="tab">Home</a>
+    <a href="explore.html" class="tab active">Explore</a>
     <a href="about.html" class="tab">About</a>
     <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" class="tab" target="_blank">Resume</a>
   </nav>
@@ -23,9 +24,10 @@
   <nav class="side-nav" id="sideNav">
     <!--<a href="#" class="side-nav-link active" data-category="code">Code</a>
     <a href="#" class="side-nav-link" data-category="uiux">UIUX</a>-->
-    <a href="#" class="side-nav-link" data-category="photography">Photography</a>
+    <a href="#" class="side-nav-link" data-category="spotlight">Spotlight</a>
     <a href="#" class="side-nav-link" data-category="illustration">Illustration</a>
     <a href="#" class="side-nav-link" data-category="3d">3D Work</a>
+    <a href="#" class="side-nav-link" data-category="photography">Photography</a>
   </nav>
 
   <main>
@@ -33,12 +35,12 @@
     <!-- ── Animated header ──────────────────────────────────────── -->
     <div class="archive-hero">
       <div class="name-tiles" id="nameTiles">
-        <div class="tile" data-letter="a" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
-        <div class="tile" data-letter="r" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
-        <div class="tile" data-letter="c" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
-        <div class="tile" data-letter="h" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
-        <div class="tile" data-letter="i" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
-        <div class="tile" data-letter="v" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
+        <div class="tile" data-letter="e" style="--tile-color:#3bb8c3; --tile-top:5px;"></div>
+        <div class="tile" data-letter="x" style="--tile-color:#4cc9d4; --tile-top:22px;"></div>
+        <div class="tile" data-letter="p" style="--tile-color:#5ad4dc; --tile-top:0px;"></div>
+        <div class="tile" data-letter="l" style="--tile-color:#6bcbe3; --tile-top:30px;"></div>
+        <div class="tile" data-letter="o" style="--tile-color:#7ab8e8; --tile-top:6px;"></div>
+        <div class="tile" data-letter="r" style="--tile-color:#8aaaf0; --tile-top:28px;"></div>
         <div class="tile" data-letter="e" style="--tile-color:#9b9de8; --tile-top:8px;"></div>
       </div>
 
@@ -104,44 +106,59 @@
         </div>
       </section>-->
 
-      <!-- PHOTOGRAPHY ──────────────────────────────────────────── -->
-      <section class="gallery-section" data-category="photography">
-        <div class="section-label">01 — Photography</div>
+<section class="spotlight-section" data-category="spotlight">
+  <div class="section-label">00 — Spotlight</div>
 
-        <!-- vertical row: taller than wide -->
-        <div class="gallery-row vertical-row">
-          <div class="gallery-item" data-src="Archive_Page/photography/kids_bubble.jpeg" data-category="photography">
-            <img src="Archive_Page/photography/kids_bubble.jpeg" alt="Photo 1" loading="lazy">
-          </div>
-          <div class="gallery-item" data-src="Archive_Page/photography/gondola_river.JPG" data-category="photography">
-            <img src="Archive_Page/photography/gondola_river.JPG" alt="Photo 2" loading="lazy">
-          </div>
-          <div class="gallery-item" data-src="Archive_Page/photography/statue_newport.jpeg" data-category="photography">
-            <img src="Archive_Page/photography/statue_newport.jpeg" alt="Photo 3" loading="lazy">
-          </div>
-          <div class="gallery-item" data-src="Archive_Page/photography/blue_heron_lake.jpg" data-category="photography">
-            <img src="Archive_Page/photography/blue_heron_lake.jpg" alt="Photo 4" loading="lazy">
-          </div>
-        </div>
-        <div class="gallery-row vertical-row">
-          <div class="gallery-item" data-src="Archive_Page/photography/beijing_streets_view.jpg" data-category="photography">
-            <img src="Archive_Page/photography/beijing_streets_view.jpg" alt="Photo 3" loading="lazy">
-          </div>
-          <div class="gallery-item" data-src="Archive_Page/photography/airplane_clouds.jpg" data-category="photography">
-            <img src="Archive_Page/photography/airplane_clouds.jpg" alt="Photo 1" loading="lazy">
-          </div>
-          <div class="gallery-item" data-src="Archive_Page/photo2.jpg" data-category="photography">
-            <img src="Archive_Page/photography/cows_tibet.JPG" alt="Photo 2" loading="lazy">
-          </div>
-          <div class="gallery-item" data-src="Archive_Page/photography/IMG_E837E4056B86-1.jpeg" data-category="photography">
-            <img src="Archive_Page/photography/IMG_E837E4056B86-1.jpeg" alt="Photo 4" loading="lazy">
+  <div class="spotlight-grid">
+
+    <!-- Card 1: NYT Digital Painting -->
+    <article class="spotlight-card">
+      <a href="https://int.nyt.com/data/documenttools/coming-of-age-2020-updated/6c8994774d2b68bf/full.pdf" target="_blank" rel="noopener noreferrer" class="spotlight-card__link" aria-label="View NYT Finalists">
+        <div class="spotlight-card__media">
+          <img src="Archive_Page/spotlight/nyt_painting.png" alt="Painting displayed in the U.S. Capitol Building" loading="lazy">
+          <div class="spotlight-card__overlay"></div>
+          <div class="spotlight-card__body">
+            <span class="spotlight-badge">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4.5" stroke="currentColor" stroke-width="1"/><circle cx="5" cy="5" r="2" fill="currentColor"/></svg>
+              New York Times
+            </span>
+            <h2 class="spotlight-card__title">New York Times Featured Finalist</h2>
+            <p class="spotlight-card__desc">A work exploring what it was like to be a teenager during quarantine — selected and published by The New York Times as part of their 'Coming of Age' feature.</p>
+            <div class="spotlight-card__meta">Digital Painting · 2021</div>
+            <span class="spotlight-card__cta">View award link&nbsp;↗</span>
           </div>
         </div>
-      </section>
+      </a>
+    </article>
+
+    <!-- Card 2: Capitol Building Painting -->
+    <article class="spotlight-card">
+      <a href="https://www.congressionalinstitute.org/art_entry/2020-pa-12/" target="_blank" rel="noopener noreferrer" class="spotlight-card__link" aria-label="View Capitol Exhibition">
+        <div class="spotlight-card__media">
+          <img src="Archive_Page/spotlight/cloudy_pov_capitol.JPG" alt="Painting displayed in the U.S. Capitol Building" loading="lazy">
+          <div class="spotlight-card__overlay"></div>
+          <div class="spotlight-card__body">
+            <span class="spotlight-badge">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4.5" stroke="currentColor" stroke-width="1"/><circle cx="5" cy="5" r="2" fill="currentColor"/></svg>
+              U.S. Capitol Building
+            </span>
+            <h2 class="spotlight-card__title">Capitol Exhibition</h2>
+            <p class="spotlight-card__desc">A painting selected for one-year display in the United States Capitol Building in Washington, D.C.</p>
+            <div class="spotlight-card__meta">Acrylic on Canvas · 2020</div>
+            <span class="spotlight-card__cta">View award link&nbsp;↗</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- Add more cards following the same <article> structure -->
+
+  </div>
+</section>
 
       <!-- ILLUSTRATION ─────────────────────────────────────────── -->
       <section class="gallery-section" data-category="illustration">
-        <div class="section-label">02 — Illustration</div>
+        <div class="section-label">01 — Illustration</div>
         <!-- vertical row -->
         <div class="gallery-row vertical-row">
           <div class="gallery-item" data-src="Archive_Page/painting/axolotl_painting_edit copy.png" data-category="illustration">
@@ -175,7 +192,7 @@
 
       <!-- 3D WORK ──────────────────────────────────────────────── -->
       <section class="gallery-section" data-category="3d">
-        <div class="section-label">03 — 3D Work</div>
+        <div class="section-label">02 — 3D Work</div>
 
         <!-- vertical row: taller than wide -->
         <div class="gallery-row vertical-row">
@@ -204,6 +221,43 @@
           </div>
         </div>
       </section>
+
+
+      <!-- PHOTOGRAPHY ──────────────────────────────────────────── -->
+      <section class="gallery-section" data-category="photography">
+        <div class="section-label">03 — Photography</div>
+
+        <!-- vertical row: taller than wide -->
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/photography/kids_bubble.jpeg" data-category="photography">
+            <img src="Archive_Page/photography/kids_bubble.jpeg" alt="Photo 1" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/gondola_river.JPG" data-category="photography">
+            <img src="Archive_Page/photography/gondola_river.JPG" alt="Photo 2" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/statue_newport.jpeg" data-category="photography">
+            <img src="Archive_Page/photography/statue_newport.jpeg" alt="Photo 3" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/blue_heron_lake.jpg" data-category="photography">
+            <img src="Archive_Page/photography/blue_heron_lake.jpg" alt="Photo 4" loading="lazy">
+          </div>
+        </div>
+        <div class="gallery-row vertical-row">
+          <div class="gallery-item" data-src="Archive_Page/photography/beijing_streets_view.jpg" data-category="photography">
+            <img src="Archive_Page/photography/beijing_streets_view.jpg" alt="Photo 3" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/airplane_clouds.jpg" data-category="photography">
+            <img src="Archive_Page/photography/airplane_clouds.jpg" alt="Photo 1" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photo2.jpg" data-category="photography">
+            <img src="Archive_Page/photography/cows_tibet.JPG" alt="Photo 2" loading="lazy">
+          </div>
+          <div class="gallery-item" data-src="Archive_Page/photography/IMG_E837E4056B86-1.jpeg" data-category="photography">
+            <img src="Archive_Page/photography/IMG_E837E4056B86-1.jpeg" alt="Photo 4" loading="lazy">
+          </div>
+        </div>
+      </section>
+
 
     </div><!-- /gallery -->
 
@@ -245,7 +299,7 @@
     </div>
   </div>
 
-  <script src="archive.js"></script>
+  <script src="explore.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
