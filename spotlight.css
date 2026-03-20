@@ -83,7 +83,7 @@
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.82) 0%,
-    rgba(0, 0, 0, 0.45) 40%,
+    rgba(0, 0, 0, 0.45) 50%,
     rgba(0, 0, 0, 0.08) 70%,
     rgba(0, 0, 0, 0)    100%
   );
@@ -136,7 +136,7 @@
 
 /* ── Description — always-visible caption ───────────────────────────────── */
 .spotlight-card__desc {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
