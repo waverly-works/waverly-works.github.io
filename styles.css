@@ -375,8 +375,8 @@ main { padding: 22px 22px 0; }
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
-    margin-bottom: 18px;
-    margin-top: 18px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
  /* ── Project name + tag pills row ────────────────────────────── */
