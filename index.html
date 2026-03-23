@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="icon" href=Images/favicon.ico.ocean.ico>
   <link rel="stylesheet" href="styles.css">
+
+   
 </head>
 <body>
   <main>
@@ -63,8 +65,15 @@
             <img src="images/project_thumbnails/navi_thumbnail.png" alt="Navi">
           </div>
           <div class="project-info">
-            <h3 class="project-name">Navi</h3>
-            <p class="project-description">Award-winning App • Wayfinding • AI Integration</p>
+            <div class="project-name-row">
+              <h3 class="project-name">Navi</h3>
+              <div class="project-tags">
+                <span class="project-tag">Wayfinding</span>
+                <span class="project-tag">AI Integration</span>
+                <span class="project-tag">$200 Cash Award</span>
+              </div>
+            </div>
+            <p class="project-description">Navigating campus & university resources has never been easier.</p>
           </div>
         </div>
         <div class="project-card" data-project="tasktone.html">
@@ -72,8 +81,15 @@
             <img src="images/project_thumbnails/tasktone_thumbnail.png" alt="Task Tone">
           </div>
           <div class="project-info">
-            <h3 class="project-name">Task Tone</h3>
-            <p class="project-description">Physical Product &amp; App • Healthcare • Accessibility</p>
+            <div class="project-name-row">
+              <h3 class="project-name">Task Tone</h3>
+              <div class="project-tags">
+                <span class="project-tag">Physical & Digital</span>
+                <span class="project-tag">Healthcare</span>
+                <span class="project-tag">Accessibility</span>
+              </div>
+            </div>
+            <p class="project-description">Inspired by my mom. Forgetfulness = no more.</p>
           </div>
         </div>
       </div>
@@ -85,8 +101,15 @@
               <img src="Images/project_thumbnails/Fountainhead_Thumbnail.png" alt="Fountainhead">
             </div>
             <div class="project-info">
-              <h3 class="project-name">Fountainhead</h3>
-              <p class="project-description">Shipped Screenwriting Website • Founding Designer • Start Up Contractor</p>
+              <div class="project-name-row">
+                <h3 class="project-name">Fountainhead</h3>
+                <div class="project-tags">
+                  <span class="project-tag">Web App</span>
+                  <span class="project-tag">Start Up</span>
+                  <span class="project-tag">Founding Designer</span>
+                </div>
+              </div>
+              <p class="project-description">Shipped Screenwriting Website with 100+ unique users. Built by writers, for writers.</p>
             </div>
           </a>
         </div>
@@ -95,8 +118,15 @@
             <img src="images/project_thumbnails/sas_thumbnail.png" alt="Zero State">
           </div>
           <div class="project-info">
-            <h3 class="project-name">Zero State</h3>
-            <p class="project-description">Summer Internship • Design System • Documentation • UX Writing</p>
+            <div class="project-name-row">
+              <h3 class="project-name">Zero State</h3>
+              <div class="project-tags">
+                <span class="project-tag">Design System</span>
+                <span class="project-tag">Internship</span>
+                <span class="project-tag">UX Writing</span>
+              </div>
+            </div>
+            <p class="project-description">SAS Institute Summer Internship: Created a component & UIUX documentation for hundreds of users.</p>
           </div>
         </div>
       </div>
@@ -107,8 +137,15 @@
             <img src="Images/project_thumbnails/waddle_thumbnail_old.png" alt="Waddle">
           </div>
           <div class="project-info">
-            <h3 class="project-name">Waddle</h3>
-            <p class="project-description">Community • 3 Day Design Sprint • On and Off Campus Events</p>
+            <div class="project-name-row">
+              <h3 class="project-name">Waddle</h3>
+              <div class="project-tags">
+                <span class="project-tag">Community</span>
+                <span class="project-tag">Design Sprint</span>
+                <span class="project-tag">Events</span>
+              </div>
+            </div>
+            <p class="project-description">Spent 72 hours tackling loneliness for college students.</p>
           </div>
         </div>
         <div class="project-card" data-project="https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/preview">
@@ -116,8 +153,15 @@
             <img src="Images/project_thumbnails/GardeningTool_thumbnail.png" alt="Gardening Tool">
           </div>
           <div class="project-info">
-            <h3 class="project-name">Ergonomic Gardening Tool</h3>
-            <p class="project-description">Physical Product Design • Accessibility</p>
+            <div class="project-name-row">
+              <h3 class="project-name">Ergonomic Gardening Tool</h3>
+              <div class="project-tags">
+                <span class="project-tag">Physical Product</span>
+                <span class="project-tag">Accessibility</span>
+                <span class="project-tag">Brand Identity</span>
+              </div>
+            </div>
+            <p class="project-description">Creating a painless & familiar gardening tool.</p>
           </div>
         </div>
       </div>
@@ -167,9 +211,7 @@
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
 
-      // Mesh X drifts 30% → 70% across scroll
       const meshX = 30 + progress * 40;
-      // Mesh Y rises 20% → 80%
       const meshY = 20 + progress * 60;
 
       document.documentElement.style.setProperty('--mesh-x', meshX + '%');
@@ -185,9 +227,9 @@
         const rect = img.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top  + rect.height / 2;
-        const dx = (e.clientX - cx) / (rect.width  / 2); // -1 to 1
-        const dy = (e.clientY - cy) / (rect.height / 2); // -1 to 1
-        const rotX = -dy * 6; // max 6 deg
+        const dx = (e.clientX - cx) / (rect.width  / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        const rotX = -dy * 6;
         const rotY =  dx * 6;
         img.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
       });
