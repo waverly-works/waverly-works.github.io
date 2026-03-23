@@ -379,6 +379,44 @@ main { padding: 22px 22px 0; }
     margin-top: 18px;
 }
 
+ /* ── Project name + tag pills row ────────────────────────────── */
+ .project-name-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .project-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 999px;
+    padding: 2px 9px;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    letter-spacing: 0.01em;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .project-card:hover .project-tag {
+    color: var(--text);
+  }
+
+
 /* ── Scroll reveal ────────────────────────────────────────────────── */
 .project-card {
     background: transparent;
@@ -452,9 +490,9 @@ main { padding: 22px 22px 0; }
 .project-card:hover .project-info { opacity: 0.45; }
 
 .project-name {
-    font-family: var(--sans);
-    font-size: clamp(1rem, 1.1vw, 1.15rem);
-letter-spacing: -0.01em;
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 1.3vw, 1.15rem);
+letter-spacing: 0.04em;
     font-weight: 600;
     margin-bottom: 3px;
     color: var(--text);
@@ -480,7 +518,8 @@ letter-spacing: -0.01em;
 .project-description {
     font-family: var(--sans);
     font-size: clamp(.8rem,.9vw,.9rem);
-    color: var(--text-muted);
+    color: var(--text);
+    opacity: .9;
     font-weight: 400;
     
 }
