@@ -510,7 +510,7 @@ body.dark-mode .takeaway-box p { border-left-color: var(--rule-dark); }
 /* ── Feature Blocks ─────────────────────────────────────── */
 .feature-block {
     display: grid;
-    grid-template-columns: 480px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
     padding: 0;
