@@ -1,1074 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>poetic vision</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Waverly Huang</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="icon" href=Images/favicon.ico.ocean.ico>
+  <link rel="stylesheet" href="styles.css">
 
-  :root {
-    --c1: #0a0a12;
-    --accent1: #7b6ef6;
-    --accent2: #c084fc;
-    --accent3: #38bdf8;
-    --text: #e8e4f0;
-    --muted: #7a7490;
-    --border: rgba(255,255,255,0.07);
-  }
-
-  html, body {
-    width: 100%; height: 100%;
-    background: var(--c1);
-    color: var(--text);
-    font-family: 'Cormorant Garamond', serif;
-    overflow: hidden;
-    overflow-y: auto;
-  }
-
-  .bg-gradient {
-    position: fixed; inset: 0; z-index: 0; background: var(--c1);
-  }
-  .bg-gradient::before {
-    content: ''; position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 20% 30%, rgba(123,110,246,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 60% at 80% 70%, rgba(192,132,252,0.09) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 50% 90%, rgba(56,189,248,0.08) 0%, transparent 60%);
-    animation: bgShift 12s ease-in-out infinite alternate;
-  }
-  @keyframes bgShift {
-    0%   { transform: scale(1) translate(0,0); }
-    50%  { transform: scale(1.08) translate(-2%,2%); }
-    100% { transform: scale(1.03) translate(2%,-1%); }
-  }
-
-  .noise {
-    position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  /* ── LAYOUT: full viewport, flex column, nothing overflows ── */
-  .layout {
-    position: relative; z-index: 2;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 24px 0 24px;
-    overflow: visible;
-  }
-
-  .title-bar {
-    display: flex; align-items: center; gap: 10px; white-space: nowrap;
-    margin-bottom: 28px; margin-top: 4px;
-    flex-shrink: 0;
-  }
-  .dot-row { display: flex; gap: 5px; }
-  .dot-row span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--accent1);
-    animation: dotPulse 2.4s ease-in-out infinite;
-  }
-  .dot-row span:nth-child(2) { background: var(--accent2); animation-delay: .4s; }
-  .dot-row span:nth-child(3) { background: var(--accent3); animation-delay: .8s; }
-  @keyframes dotPulse {
-    0%,100% { opacity:.35; transform:scale(.8); }
-    50%     { opacity:1;   transform:scale(1.2); }
-  }
-  .title-text {
-    font-family:'DM Mono',monospace; font-size:13px;
-    font-weight:300; letter-spacing:.25em; color:var(--muted);
-  }
-
-  /* ── main content row: camera + poetry, fills remaining space ── */
-  .content-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 36px;
-    width: 100%;
-    max-width: 1200px;
-    flex: 1;
-    min-height: 0;
-    flex-shrink: 1;
-  }
-
-  /* ── camera wrap ── */
-  .camera-wrap {
-    position: relative; flex-shrink: 0;
-    width: 620px; height: 465px;
-    border-radius: 18px; overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: 0 0 0 1px rgba(123,110,246,.15),
-                0 0 60px rgba(123,110,246,.08),
-                0 24px 80px rgba(0,0,0,.6);
-    background: #0d0d1a;
-  }
-  .camera-wrap canvas {
-    position: absolute !important;
-    top: 0 !important; left: 0 !important;
-    width: 100% !important; height: 100% !important;
-    border-radius: 18px;
-  }
-
-  .scanline {
-    position: absolute; left: 0; right: 0; height: 2px; pointer-events: none; z-index: 5;
-    background: linear-gradient(90deg,transparent,rgba(123,110,246,.5),rgba(192,132,252,.5),transparent);
-    animation: scanMove 4s linear infinite;
-  }
-  @keyframes scanMove {
-    0%  { top:-2px; opacity:0; }
-    5%  { opacity:1; }
-    95% { opacity:1; }
-    100%{ top:100%; opacity:0; }
-  }
-
-  .corner { position: absolute; width: 20px; height: 20px; pointer-events: none; z-index: 6; }
-  .corner::before,.corner::after { content:''; position:absolute; background:var(--accent1); border-radius:1px; }
-  .corner.tl{top:10px;left:10px}   .corner.tl::before{top:0;left:0;width:2px;height:14px} .corner.tl::after{top:0;left:0;width:14px;height:2px}
-  .corner.tr{top:10px;right:10px}  .corner.tr::before{top:0;right:0;width:2px;height:14px} .corner.tr::after{top:0;right:0;width:14px;height:2px}
-  .corner.bl{bottom:10px;left:10px}.corner.bl::before{bottom:0;left:0;width:2px;height:14px} .corner.bl::after{bottom:0;left:0;width:14px;height:2px}
-  .corner.br{bottom:10px;right:10px}.corner.br::before{bottom:0;right:0;width:2px;height:14px} .corner.br::after{bottom:0;right:0;width:14px;height:2px}
-
-  #loadOverlay {
-    position: absolute; inset: 0; z-index: 20;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 14px;
-    background: rgba(10,10,18,.93);
-    border-radius: 18px; transition: opacity .6s;
-  }
-  #loadOverlay.hidden { opacity:0; pointer-events:none; }
-  #loadMsg { font-family:'DM Mono',monospace; font-size:13px; letter-spacing:.2em; color:var(--muted); }
-  .load-bar { width:120px; height:2px; background:rgba(255,255,255,.07); border-radius:2px; overflow:hidden; }
-  .load-bar-fill {
-    height:100%; width:0%;
-    background:linear-gradient(90deg,var(--accent1),var(--accent2));
-    transition:width .3s;
-  }
-
-  /* ── poetry panel ── */
-  .poetry-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    min-height: 0;
-    height: 100%;
-  }
-  .panel-top { display:flex; align-items:center; justify-content:space-between; flex-shrink: 0; }
-  .panel-label { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.3em; color:var(--muted); }
-  .top-right { display:flex; align-items:center; gap:14px; }
-
-  .status-badge { display:flex; align-items:center; gap:6px; }
-  .status-dot { width:6px; height:6px; border-radius:50%; background:var(--muted); transition:background .4s; }
-  .status-dot.active { background:#4ade80; box-shadow:0 0 6px #4ade80; animation:sPulse 1.6s ease-in-out infinite; }
-  .status-dot.paused { background:var(--accent2); }
-  @keyframes sPulse { 0%,100%{opacity:.6}50%{opacity:1} }
-  .status-label { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.15em; color:var(--muted); }
-
-  .btn-control {
-    all:unset; cursor:pointer;
-    font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.2em;
-    padding:8px 20px; border:1px solid var(--border); border-radius:30px;
-    color:var(--text); background:rgba(255,255,255,.03);
-    transition:all .25s; position:relative; overflow:hidden;
-  }
-  .btn-control::before {
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(135deg,rgba(123,110,246,.15),rgba(192,132,252,.1));
-    opacity:0; transition:opacity .25s;
-  }
-  .btn-control:hover { border-color:rgba(123,110,246,.4); color:var(--accent2); }
-  .btn-control:hover::before { opacity:1; }
-  .btn-control:active { transform:scale(.97); }
-
-  .poetry-scroll {
-    flex:1; overflow-y:auto; padding:20px 4px 20px 0;
-    scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.06) transparent;
-    mask-image: linear-gradient(to bottom, black 30%, transparent 70%);
-    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 70%);
-    min-height: 0;
-  }
-  .poetry-scroll::-webkit-scrollbar { width:3px; }
-  .poetry-scroll::-webkit-scrollbar-thumb { background:rgba(255,255,255,.08); border-radius:2px; }
-
-  .poetry-text {
-    font-size:21px; line-height:1.9; font-weight:300; font-style:italic;
-    color:var(--text); letter-spacing:.01em;
-  }
-
-  .poetry-text .line {
-    display:block; opacity:0; transform:translateY(8px);
-    animation:lineIn .7s ease forwards;
-  }
-  @keyframes lineIn { to { opacity:1; transform:translateY(0); } }
-
-  .cursor-blink {
-    display:inline-block; width:1px; height:1em;
-    background:var(--accent1); margin-left:3px;
-    vertical-align:text-bottom; animation:blink 1s step-end infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
-
-  .intro-hint { font-size:18px; font-style:normal; color:var(--muted); line-height:1.7; }
-  .intro-hint em { color:var(--accent1); font-style:italic; }
-
-  .stanza-gap { display:block; height:.9em; }
-
-  /* ══════════════════════════════════════════════
-     MORE INFO 
-  ══════════════════════════════════════════════ */
-
-  .info-grid {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.info-card {
-  flex: 1;
-  min-width: 0;
-}
-  .more-info-wrap {
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 1200px;
-    position: relative;   /* anchor for absolute panel */
-  }
-
-  .info-item {
-  border-top: 1px solid var(--border);
-  margin-top: 10px;
-}
-
-.info-header {
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: .25em;
-  color: var(--muted);
-  transition: opacity .2s;
-}
-
-.info-header:hover {
-  opacity: 0.7;
-}
-
-.info-header.active .dropdown-icon {
-  transform: rotate(180deg);
-}
-
-.dropdown-icon {
-  transition: transform 0.3s;
-}
-
-.info-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  flex-direction: row; 
-}
-
-.info-content.active {
-  max-height: 65vh; /* adjust if needed */
-  padding-bottom: 20px;
-}
-
-.info-inner {
-  padding-top: 10px;
-}
-.info-card-title { 
-    font-family: 'DM Mono', monospace; 
-    font-size: 10px; 
-    letter-spacing: .3em; 
-    color: var(--accent1); 
-    margin-bottom: 14px; 
-    text-transform: uppercase; 
-}
-
-.info-rows { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 13px; }
-
-.info-row { 
-    display: flex; 
-    gap: 14px; align-items: flex-start; } .info-signal { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: .05em; flex-shrink: 0; padding-top: 3px; min-width: 120px; } .info-desc { font-size: 15px; font-style: italic; color: rgba(232,228,240,.65); line-height: 1.5; }
-
-    @media (max-width: 900px) {
-  .info-grid {
-    flex-direction: column;
-  }
-}
-</style>
+   
 </head>
 <body>
-<div class="bg-gradient"></div>
-<div class="noise"></div>
-
-<div class="layout">
-  <div class="title-bar">
-    <div class="dot-row"><span></span><span></span><span></span></div>
-    <span class="title-text">poetic vision — face, hand &amp; feeling</span>
-    <div class="dot-row"><span></span><span></span><span></span></div>
-  </div>
-
-  <div class="content-row">
-    <div class="camera-wrap" id="cameraWrap">
-      <div id="loadOverlay">
-        <span id="loadMsg">loading face model...</span>
-        <div class="load-bar"><div class="load-bar-fill" id="loadBar"></div></div>
-      </div>
-      <div class="scanline"></div>
-      <div class="corner tl"></div><div class="corner tr"></div>
-      <div class="corner bl"></div><div class="corner br"></div>
-    </div>
-
-    <div class="poetry-panel">
-      <div class="panel-top">
-        <span class="panel-label">observed verse</span>
-        <div class="top-right">
-          <div class="status-badge">
-            <div class="status-dot" id="statusDot"></div>
-            <span class="status-label" id="statusLabel">idle</span>
-          </div>
-          <button class="btn-control" id="btnToggle">continue writing</button>
-        </div>
-      </div>
-      <div class="poetry-scroll" id="poetryScroll">
-        <div class="poetry-text" id="poetryText">
-          <span class="line intro-hint" style="animation-delay:.1s">
-            press <em>continue writing</em> to begin
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MORE INFO — button stays static, panel expands downward -->
-  <div class="info-item">
-    <div class="info-header" data-info="info-panel">
-      <span>how it works — what the camera sees & how it shapes the poem</span>
-      <span class="dropdown-icon">▼</span>
+  <main>
+    <nav class="tab-nav">
+        <a href="index.html" class="tab active">Projects</a>
+        <a href="explore.html" class="tab">Explore</a>
+        <a href="about.html" class="tab">About</a>
+        <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" class="tab" target="_blank">Resume</a>
+    </nav>
+    
+    <div class="name-tiles" id="nameTiles">
+      <div class="tile" data-letter="w" style="--tile-color:#3bb8c3; --tile-top:26px;"></div>
+      <div class="tile" data-letter="a" style="--tile-color:#4cc9d4; --tile-top:3px;"></div>
+      <div class="tile" data-letter="v" style="--tile-color:#5ad4dc; --tile-top:30px;"></div>
+      <div class="tile" data-letter="e" style="--tile-color:#6bcbe3; --tile-top:0px;"></div>
+      <div class="tile" data-letter="r" style="--tile-color:#7ab8e8; --tile-top:25px;"></div>
+      <div class="tile" data-letter="l" style="--tile-color:#8aaaf0; --tile-top:6px;"></div>
+      <div class="tile" data-letter="y" style="--tile-color:#9b9de8; --tile-top:27px;"></div>
     </div>
   
-    <div class="info-content" id="info-panel">
-      <div class="info-inner">
-        <div class="info-grid">
+    <div class="bio-section">
+      <p class="bio-text">
+        Waverly Huang is a
 
-            <div class="info-card">
-                <div class="info-card-title">face signals</div>
-                <div class="info-rows">
-                  <div class="info-row">
-                    <span class="info-signal">close to cam</span>
-                    <span class="info-desc">your face fills most of the frame : the poem gets up-close and personal, almost uncomfortably so</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">far from cam</span>
-                    <span class="info-desc">you're small in the frame : the poem goes soft and distant, like a memory fading out</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">bright eyes</span>
-                    <span class="info-desc">your eyes reflect a lot of light : the poem reads you as switched on, alert, paying attention</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">dim eyes</span>
-                    <span class="info-desc">low reflected light : the poem goes quieter, more still, like you're resting or zoning out</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">eyes wide apart</span>
-                    <span class="info-desc">the distance between your eyes looks wide relative to your face : the poem opens up, expansive</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">eyes close together</span>
-                    <span class="info-desc">eyes appear closer to center : the poem narrows, concentrates, pulls inward</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">mouth open</span>
-                    <span class="info-desc">detected gap between lips : the poem picks up on speech, breath, something unsaid</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">mouth closed</span>
-                    <span class="info-desc">lips together : the poem treats it as held-back, sealed, keeping something in</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">head tilted left</span>
-                    <span class="info-desc">ear angled toward left shoulder : the poem leans into doubt, a sideways kind of thinking</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">head tilted right</span>
-                    <span class="info-desc">ear toward right shoulder : the poem reads it as listening, leaning into something</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="info-card">
-                <div class="info-card-title">hand signals</div>
-                <div class="info-rows">
-                  <div class="info-row">
-                    <span class="info-signal">one hand visible</span>
-                    <span class="info-desc">a single hand enters frame : the poem notices it like a new clause in a sentence, something added</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">two hands visible</span>
-                    <span class="info-desc">both hands in frame : the poem treats this as a conversation happening between them</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">hand open / spread</span>
-                    <span class="info-desc">fingertips spread far from the wrist : open palm, open gesture, the poem reads offering or stopping</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">hand closed / fist</span>
-                    <span class="info-desc">fingers curl close to wrist : the poem goes tighter, more private, something held back</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">hand raised high</span>
-                    <span class="info-desc">wrist is in the upper half of frame : the poem reaches upward, signals, lifts</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">hand held low</span>
-                    <span class="info-desc">wrist in lower half of frame : the poem drops down, settles, comes to rest</span>
-                  </div>
-                  <div class="info-row">
-                    <span class="info-signal">no hands</span>
-                    <span class="info-desc">nothing detected in the frame : the poem falls back on your face alone, or reaches for something universal</span>
-                  </div>
-                </div>
-              </div>
+        <span class="bio-tag expandable" data-expanded="false">
+          <strong>Product Designer ✸</strong>
+          <span class="bio-tag-extra-wrap">
+            <span class="bio-tag-extra-inner">
+              <span class="bio-tag-extra">&nbsp;who creates with scalable systems &amp; touches of play</span>
+            </span>
+          </span>
+        </span>
 
+        from Pennsylvania &amp; New York. Currently studying @
+        
+        <span class="bio-tag expandable" data-expanded="false">
+          <strong>Rhode Island School of Design ✿</strong>
+          <span class="bio-tag-extra-wrap">
+            <span class="bio-tag-extra-inner">
+              <span class="bio-tag-extra">&nbsp;Industrial Design BFA + Computation &amp; Sustainability</span>
+            </span>
+          </span>
+        </span>
+
+        &amp; open to work!
+      </p>
+    </div>
+
+    <div class="projects-section" id="projects">
+
+      <div class="projects-row">
+        <div class="project-card" data-project="navi.html">
+          <div class="project-image">
+            <img src="images/project_thumbnails/navi_thumbnail.png" alt="Navi">
+          </div>
+          <div class="project-info">
+            <div class="project-name-row">
+              <h3 class="project-name">Navi</h3>
+              <div class="project-tags">
+                <span class="project-tag">AI Integration</span>
+                <span class="project-tag">$200 Cash Award</span>
+                <span class="project-tag">RISD Make-A-Thon</span>
+              </div>
+            </div>
+            <p class="project-description">Navigating campus & university resources has never been easier with this award-winning app design.</p>
+          </div>
         </div>
+        <div class="project-card" data-project="tasktone.html">
+          <div class="project-image">
+            <img src="images/project_thumbnails/tasktone_thumbnail.png" alt="Task Tone">
+          </div>
+          <div class="project-info">
+            <div class="project-name-row">
+              <h3 class="project-name">Task Tone</h3>
+              <div class="project-tags">
+                <span class="project-tag">Physical & Digital</span>
+                <span class="project-tag">Healthcare</span>
+                <span class="project-tag">Accessibility</span>
+              </div>
+            </div>
+            <p class="project-description">Inspired by my mom. Forgetfulness = no more.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-row">
+        <div class="project-card">
+          <a href="https://fountainhead.site/" target="_blank" class="project-link">
+            <div class="project-image">
+              <img src="Images/project_thumbnails/Fountainhead_Thumbnail.png" alt="Fountainhead">
+            </div>
+            <div class="project-info">
+              <div class="project-name-row">
+                <h3 class="project-name">Fountainhead</h3>
+                <div class="project-tags">
+                  <span class="project-tag">Web App</span>
+                  <span class="project-tag">Start Up</span>
+                  <span class="project-tag">Founding Designer</span>
+                </div>
+              </div>
+              <p class="project-description">Shipped Screenwriting Website with 100+ unique users. Built by writers, for writers.</p>
+            </div>
+          </a>
+        </div>
+        <div class="project-card" data-project="sasfui.html">
+          <div class="project-image">
+            <img src="images/project_thumbnails/sas_thumbnail.png" alt="Zero State">
+          </div>
+          <div class="project-info">
+            <div class="project-name-row">
+              <h3 class="project-name">Zero State</h3>
+              <div class="project-tags">
+                <span class="project-tag">Design System</span>
+                <span class="project-tag">B2B SaaS</span>
+                <span class="project-tag">Internship</span>
+                <span class="project-tag">UX Writing</span>
+              </div>
+            </div>
+            <p class="project-description">SAS Institute Summer Internship: Created live UI component & documentation for hundreds of users.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-row">
+        <div class="project-card" data-project="waddle.html">
+          <div class="project-image">
+            <img src="Images/project_thumbnails/waddle_thumbnail_old.png" alt="Waddle">
+          </div>
+          <div class="project-info">
+            <div class="project-name-row">
+              <h3 class="project-name">Waddle</h3>
+              <div class="project-tags">
+                <span class="project-tag">Community</span>
+                <span class="project-tag">Design Sprint</span>
+                <span class="project-tag">Qualitative Data</span>
+              </div>
+            </div>
+            <p class="project-description">Spent 48 hours tackling loneliness for college students, informed by 90+ student survey responses.</p>
+          </div>
+        </div>
+        <div class="project-card" data-project="https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/preview">
+          <div class="project-image">
+            <img src="Images/project_thumbnails/GardeningTool_thumbnail.png" alt="Gardening Tool">
+          </div>
+          <div class="project-info">
+            <div class="project-name-row">
+              <h3 class="project-name">Ergonomic Gardening Tool</h3>
+              <div class="project-tags">
+                <span class="project-tag">Physical Product</span>
+                <span class="project-tag">Accessibility</span>
+                <span class="project-tag">Brand Identity</span>
+              </div>
+            </div>
+            <p class="project-description">Fabricated a painless & familiar gardening tool with design constraints.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="spacer"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="mode-toggle-bar">
+          <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">&#9728;</button>
+          <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">&#9790;</button>
+      </div>
+      <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
+      <div class="footer-right">
+          <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=waverlyhuang2004@gmail.com&su=Hello%20Waverly&body=Hi%20Waverly," target="_blank">Email</a>&#10022;
+          <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2/view?usp=sharing" target="_blank">Resume</a>
+      </div>
+  </div>
+  </footer>
+
+  <div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Project detail">
+    <div id="lightbox-window">
+      <div id="lightbox-loading">Loading...</div>
+      <button id="lightbox-close" aria-label="Close project">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#333" stroke-width="1.5"/>
+          <path d="M15 9L9 15M9 9l6 6" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <nav id="lightbox-sidebar" aria-label="Project sections"></nav>
+      <div id="lightbox-content">
+        <iframe id="lightbox-iframe" title="Project content"></iframe>
       </div>
     </div>
   </div>
 
-</div><!-- /layout -->
+  <script src="script.js"></script>
+  <script src="sidebar.js"></script>
 
-<!-- TF 3.x — required by BlazeFace 0.0.7 -->
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
-<!-- BlazeFace (face detection) -->
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface@0.0.7/dist/blazeface.min.js"></script>
-<!-- MediaPipe Hands native runtime (independent of TF version) -->
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.min.js" crossorigin="anonymous"></script>
-<!-- p5 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-<script>
-    
-// ═══════════════════════════════════════════════
-//  MORE INFO TOGGLE
-// ═══════════════════════════════════════════════
-const infoHeaders = document.querySelectorAll('.info-header');
+  <script>
+    /* ── Scroll-driven gradient mesh ────────────────────────────── */
+    function updateMesh() {
+      const scrollY = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
 
-infoHeaders.forEach(header => {
-  header.addEventListener('click', () => {
-    const targetId = header.getAttribute('data-info');
-    const content  = document.getElementById(targetId);
+      const meshX = 30 + progress * 40;
+      const meshY = 20 + progress * 60;
 
-    header.classList.toggle('active');
-    content.classList.toggle('active');
-  });
-});
-
-// ═══════════════════════════════════════════════
-//  POETRY ENGINE — casual, literal
-// ═══════════════════════════════════════════════
-const POOLS = {
-  calm: [
-    "your face, quiet.",
-    "something easy in the eyes right now. resting.",
-    "low energy. the face isn't asking for anything.",
-    "you look relaxed, or close to it.",
-    "nothing urgent. the expression settles.",
-    "still. the face is just here.",
-    "a kind of calm. not performing anything.",
-    "eyes soft. jaw loose.",
-  ],
-  alert: [
-    "your eyes are working. something caught them.",
-    "switched on. alert. maybe slightly intense.",
-    "you noticed something... the eyes give it away.",
-    "sharp. focused. paying close attention.",
-    "the gaze is doing a lot of work right now.",
-    "eyes up, tracking. you're awake. hello.",
-    "attentive. the face leans forward. closer.",
-    "alert — the kind that happens before a thought finishes.",
-  ],
-  wideSet: [
-    "your eyes, wide apart. open. almost surprised.",
-    "a lot of space between the eyes. receptive.",
-    "wide-set — the face makes room for things.",
-    "the eyes spread out, like you're taking more in.",
-  ],
-  closeSet: [
-    "eyes drawn in, close together. concentrated.",
-    "tight around the brow. zeroing in.",
-    "the gaze narrows. you're focusing on something specific.",
-    "close-set and focused. a particular kind of attention.",
-  ],
-  mouthOpen: [
-    "your mouth, open. mid-breath, or mid-word.",
-    "lips parted — something almost said.",
-    "you were about to say something. or just breathing.",
-    "the mouth opens. a gap. something coming out, or going in.",
-    "open mouth. thinking out loud, maybe.",
-  ],
-  mouthClosed: [
-    "lips together. keeping it in.",
-    "mouth closed. whatever that thought was, it stayed.",
-    "tight-lipped. could mean anything.",
-    "sealed. the mouth isn't giving it away.",
-    "lips shut. listening, or not talking. hard to say.",
-  ],
-  tiltLeft: [
-    "your head, tilted left. the classic 'I'm not sure' angle.",
-    "a left lean — skeptical, or just thinking sideways.",
-    "the tilt says: maybe. I haven't decided.",
-    "head left. the body expressing a doubt the face won't.",
-  ],
-  tiltRight: [
-    "head tilted right. you're listening to something.",
-    "right-side lean — curious. drawn toward something off-frame.",
-    "the tilt: you're angled toward it, whatever it is.",
-    "right lean. the body already interested before the mind is.",
-  ],
-  straight: [
-    "head level. looking straight at this.",
-    "centered. you're facing it directly.",
-    "no tilt, no lean. just you, forward.",
-    "square. level. harder than it looks.",
-  ],
-  close: [
-    "you're close. very close. the face fills everything.",
-    "too close, almost. the pores become geography.",
-    "up close like this, everything gets more intense than it is.",
-    "your face takes up the whole frame. a lot of you, right now.",
-  ],
-  far: [
-    "you're far back. small in the frame.",
-    "keeping your distance — which is a choice.",
-    "from here the face blurs into suggestion.",
-    "why did you back away?",
-    "backed up. the features soften at this distance.",
-  ],
-  mid: [
-    "good distance. you look like yourself from here.",
-    "the face at a reasonable distance. readable.",
-    "neither too close nor gone. just here.",
-    "you're close enough, maybe.",
-  ],
-  universal: [
-    "a face in a frame is always performing something.",
-    "being watched changes things. even by a machine.",
-    "the camera doesn't know your name. it just sees light.",
-    "you're being seen right now, more or less.",
-    "your face carries more than you probably mean it to.",
-    "recognition — the machine's version of it, anyway.",
-    "something about sitting in front of a lens makes people look like themselves.",
-    "the light on your face is doing a lot of work.",
-  ],
-  handPresent: [
-    "a hand enters the frame. yours, presumably.",
-    "now there's a hand. it changes things.",
-    "five fingers in the shot. a whole new element.",
-    "the hand arrives — another thing to read.",
-    "your hand, here now. it adds a clause.",
-    "do you want a high-five or something?",
-  ],
-  handOpen: [
-    "palm open. spread wide. stop sign, or offering — unclear.",
-    "hand flat, fingers spread. showing something.",
-    "an open palm. honest, or just relaxed.",
-    "spread fingers, no grip. the hand says something easy.",
-    "open. the hand gives it away.",
-    "are we about to shake hands?",
-  ],
-  handClosed: [
-    "fist, or close to one. keeping something in.",
-    "fingers curled. the hand won't say.",
-    "closed — a thought kept private in the grip.",
-    "the fist doesn't give anything away.",
-    "knuckles forward. holding something.",
-    "why is your hand a fist? wanna fight?",
-  ],
-  handHigh: [
-    "hand raised. reaching, or making a point. perhaps.",
-    "the hand goes up. emphasis, or a question. what is it?",
-    "lifted. reaching.",
-    "raised hand. the gesture says: here. this.",
-    "put your hand back down...",
-  ],
-  handLow: [
-    "hand down, resting. the gesture winding down.",
-    "low and loose. not asking for attention.",
-    "the hand drops. settles. done.",
-    "hanging easy. the hand at rest.",
-  ],
-  twoHands: [
-    "both hands now. you're really talking with them.",
-    "two hands in frame — that's a whole conversation.",
-    "left and right, both here. you mean it.",
-    "two hands. the body is fully in on this.",
-    "both visible. whatever you're saying, you mean it.",
-  ],
-  noHands: [
-    "no hands in frame. just your face.",
-    "the hands are somewhere else.",
-    "back to just the face. simpler.",
-    "just your face... what about your fingers?",
-  ],
-};
-
-function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-let recentLines = [];
-function fresh(pool) {
-  let line, tries = 0;
-  do { line = pick(pool); tries++; } while (recentLines.includes(line) && tries < 12);
-  recentLines.push(line);
-  if (recentLines.length > 16) recentLines.shift();
-  return line;
-}
-
-function buildStanza(fd) {
-  const hd = latestHand;
-  let parts = [];
-
-  if      (fd.faceArea > 0.18) parts.push(fresh(POOLS.close));
-  else if (fd.faceArea < 0.06) parts.push(fresh(POOLS.far));
-  else                          parts.push(fresh(POOLS.mid));
-
-  parts.push(fresh(fd.alert ? POOLS.alert : POOLS.calm));
-
-  if      (fd.eyeRatio > 0.38) parts.push(fresh(POOLS.wideSet));
-  else if (fd.eyeRatio < 0.27) parts.push(fresh(POOLS.closeSet));
-  else                          parts.push(fresh(fd.alert ? POOLS.alert : POOLS.calm));
-
-  parts.push(fresh(fd.mouthOpen ? POOLS.mouthOpen : POOLS.mouthClosed));
-
-  if (hd) {
-    if (hd.count >= 2)        parts.push(fresh(POOLS.twoHands));
-    else if (hd.open)         parts.push(fresh(POOLS.handOpen));
-    else                       parts.push(fresh(POOLS.handClosed));
-  } else {
-    if      (fd.tilt > 0.05)  parts.push(fresh(POOLS.tiltRight));
-    else if (fd.tilt < -0.05) parts.push(fresh(POOLS.tiltLeft));
-    else                        parts.push(fresh(Math.random()<.5 ? POOLS.straight : POOLS.universal));
-  }
-
-  if (hd) {
-    if (hd.high)              parts.push(fresh(POOLS.handHigh));
-    else                       parts.push(fresh(POOLS.handLow));
-  } else {
-    parts.push(fresh(POOLS.universal));
-  }
-
-  return parts;
-}
-
-// ═══════════════════════════════════════════════
-//  DOM
-// ═══════════════════════════════════════════════
-const btnToggle   = document.getElementById('btnToggle');
-const statusDot   = document.getElementById('statusDot');
-const statusLabel = document.getElementById('statusLabel');
-const poetryText  = document.getElementById('poetryText');
-const poetryScroll= document.getElementById('poetryScroll');
-const loadOverlay = document.getElementById('loadOverlay');
-const loadMsg     = document.getElementById('loadMsg');
-const loadBar     = document.getElementById('loadBar');
-
-let isWriting  = false;
-let writeTimer = null;
-let poemLines  = [];
-let latestFaces = [];
-let latestHand = null;
-let stanzaCount = 0;
-
-function setStatus(label, state) {
-  statusLabel.textContent = label;
-  statusDot.className = 'status-dot ' + (state||'');
-}
-// ── NEW: relationship detection ──
-function analyzeRelationships(faces) {
-  if (faces.length < 2) return null;
-
-  let distances = [];
-  for (let i = 0; i < faces.length; i++) {
-    for (let j = i + 1; j < faces.length; j++) {
-      let dx = faces[i].cx - faces[j].cx;
-      let dy = faces[i].cy - faces[j].cy;
-      distances.push(Math.sqrt(dx*dx + dy*dy));
+      document.documentElement.style.setProperty('--mesh-x', meshX + '%');
+      document.documentElement.style.setProperty('--mesh-y', meshY + '%');
     }
-  }
 
-  const avg = distances.reduce((a,b)=>a+b,0) / distances.length;
+    window.addEventListener('scroll', updateMesh, { passive: true });
 
-  return {
-    close: avg < 120,
-    far: avg > 260
-  };
-}
-
-function renderPoetry() {
-  poetryText.innerHTML = '';
-  let delay = 0;
-
-  let stanzas = [];
-  let current = [];
-  for (let l of poemLines) {
-    if (l === null) { stanzas.push(current); current = []; }
-    else current.push(l);
-  }
-  if (current.length) stanzas.push(current);
-  stanzas.reverse();
-
-  for (let si = 0; si < stanzas.length; si++) {
-    const opacity = si === 0 ? 1 : Math.max(0.12, 1 - si * 0.22);
-    const wrapper = document.createElement('div');
-    wrapper.style.opacity = opacity;
-    wrapper.style.transition = 'opacity .4s';
-
-    for (let l of stanzas[si]) {
-      const s = document.createElement('span');
-      s.className = 'line';
-      s.style.animationDelay = delay + 's';
-      s.textContent = l;
-      wrapper.appendChild(s);
-      delay += 0.11;
-    }
-    poetryText.appendChild(wrapper);
-
-    if (si < stanzas.length - 1) {
-      const g = document.createElement('span');
-      g.className = 'stanza-gap';
-      poetryText.appendChild(g);
-    }
-  }
-
-  const cur = document.createElement('span');
-  cur.className = 'cursor-blink';
-  poetryText.firstChild && poetryText.firstChild.appendChild
-    ? poetryText.firstChild.appendChild(cur)
-    : poetryText.appendChild(cur);
-
-  setTimeout(()=> poetryScroll.scrollTo({top: 0, behavior:'smooth'}), 90);
-}
-
-function writePoetry() {
-    if (!latestFaces.length) return;
-const fd = latestFaces[Math.floor(Math.random()*latestFaces.length)];
-const rel = analyzeRelationships(latestFaces);
-  if (stanzaCount > 0) poemLines.push(null);
-  const stanza = buildStanza(fd);
-
-if (latestFaces.length > 1) {
-  stanza.push("more than one person here.");
-
-  if (rel?.close) stanza.push("you are standing close together.");
-  if (rel?.far) stanza.push("you keep your distance from each other.");
-}
-
-  poemLines.push(...stanza);
-  stanzaCount++;
-  renderPoetry();
-}
-
-btnToggle.addEventListener('click', () => {
-  isWriting = !isWriting;
-  if (isWriting) {
-    btnToggle.textContent = 'pause writing';
-    setStatus('writing', 'active');
-    writePoetry();
-    writeTimer = setInterval(writePoetry, 7000);
-  } else {
-    btnToggle.textContent = 'continue writing';
-    setStatus('paused', 'paused');
-    clearInterval(writeTimer);
-    writeTimer = null;
-  }
-});
-
-// ═══════════════════════════════════════════════
-//  p5 SKETCH
-// ═══════════════════════════════════════════════
-new p5(function(p) {
-  const W = 620, H = 465;
-  const ROWS = 24, COLS = 32;
-
-  let video, faceModel, mpHands;
-  let faces = [];
-  let handPreds = [];   // array of { landmarks: [{x,y,z}, ...] }
-  let dots = [];
-  let faceReady = false, handReady = false;
-  let videoReady = false;
-  let firstFace = true;
-  let t = 0;
-  let pg;
-
-  const HAND_CONNECTIONS = [
-    [0,1],[1,2],[2,3],[3,4],
-    [0,5],[5,6],[6,7],[7,8],
-    [0,9],[9,10],[10,11],[11,12],
-    [0,13],[13,14],[14,15],[15,16],
-    [0,17],[17,18],[18,19],[19,20],
-    [5,9],[9,13],[13,17],
-  ];
-  const TIPS = [4, 8, 12, 16, 20];
-
-  // MediaPipe native API gives pixel coords in VIDEO space. It's safe.... lol 
-  // Canvas draws video mirrored, so I flip x.
-  function mirrorPt(lm) {
-    const vw = video.elt.videoWidth  || W;
-    const vh = video.elt.videoHeight || H;
-    return {
-      x: W - p.map(lm.x, 0, vw, 0, W),
-      y: p.map(lm.y, 0, vh, 0, H),
-    };
-  }
-
-  p.setup = function() {
-    p.createCanvas(W, H).parent('cameraWrap');
-
-    video = p.createCapture(p.VIDEO);
-    video.size(W, H);
-    video.hide();
-
-    pg = p.createGraphics(W, H);
-
-    for (let r = 0; r < ROWS; r++)
-      for (let c = 0; c < COLS; c++)
-        dots.push({
-          x: (c+.5)*W/COLS, y: (r+.5)*H/ROWS,
-          phase: p.random(p.TWO_PI),
-          speed: p.random(.3, 1.0),
-          base:  p.random(1.2, 3.2),
-        });
-
-    setStatus('waiting for camera', '');
-
-    // kick off model loading once video is actually streaming
-    video.elt.addEventListener('playing', () => {
-      if (videoReady) return;   // guard against duplicate fires
-      videoReady = true;
-      loadModels();
-    });
-  };
-
-  async function loadModels() {
-    // ── 1. BlazeFace (uses TF.js 3.x already loaded) ──
-    loadMsg.textContent = 'loading face model...';
-    loadBar.style.width = '20%';
-    try {
-      faceModel = await blazeface.load();
-      faceReady = true;
-      loadBar.style.width = '55%';
-    } catch(e) { console.error('BlazeFace load failed:', e); }
-
-    // ── 2. MediaPipe Hands — native API, no TF wrapper needed ──
-    loadMsg.textContent = 'loading hand model...';
-    try {
-      await new Promise((resolve, reject) => {
-        mpHands = new Hands({
-          locateFile: f => `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/${f}`
-        });
-        mpHands.setOptions({ maxNumHands: 10, modelComplexity: 0, minDetectionConfidence: 0.6, minTrackingConfidence: 0.5 });
-        mpHands.onResults(results => {
-          // results.multiHandLandmarks: array of 21-landmark arrays [{x,y,z}, ...]
-          // x/y are NORMALISED 0-1 in this native API  ← key fact
-          handPreds = results.multiHandLandmarks || [];
-        });
-        mpHands.initialize().then(() => { handReady = true; resolve(); }).catch(reject);
-        setTimeout(resolve, 12000);   // safety timeout
+    /* ── Project card 3-D tilt on mouse move ────────────────────── */
+    document.querySelectorAll('.project-image').forEach(img => {
+      const card = img.closest('.project-card');
+      img.addEventListener('mousemove', e => {
+        const rect = img.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top  + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width  / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        const rotX = -dy * 6;
+        const rotY =  dx * 6;
+        img.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
       });
-    } catch(e) { console.warn('MediaPipe Hands load failed:', e); }
-
-    loadBar.style.width = '100%';
-    loadMsg.textContent = (faceReady && handReady) ? 'models ready' : faceReady ? 'face ready (no hands)' : 'error loading models';
-    setTimeout(() => loadOverlay.classList.add('hidden'), 700);
-    setStatus('searching', '');
-
-    // start detection loops
-    runFaceLoop();
-    if (handReady) runHandLoop();
-  }
-
-  p.draw = function() {
-    t += 0.012;
-    p.clear();
-
-    if (videoReady) {
-      p.push(); p.translate(W, 0); p.scale(-1, 1);
-      p.image(video, 0, 0, W, H);
-      p.pop();
-    }
-
-    // luminance buffer (mirrored)
-    pg.clear();
-    pg.push(); pg.translate(W, 0); pg.scale(-1, 1);
-    if (videoReady) pg.image(video, 0, 0, W, H);
-    pg.pop();
-    const px = pg.drawingContext.getImageData(0, 0, W, H).data;
-
-    function lum(x, y) {
-      const xi = Math.min(W-1, Math.max(0, Math.floor(x)));
-      const yi = Math.min(H-1, Math.max(0, Math.floor(y)));
-      const i  = (yi*W + xi)*4;
-      return (px[i]*.299 + px[i+1]*.587 + px[i+2]*.114) / 255;
-    }
-
-    // ── dot field ──
-    for (const d of dots) {
-      d.phase += d.speed * .012;
-      const l  = lum(d.x, d.y);
-      const sz = d.base*(0.4+l*1.4)*(0.88+0.12*Math.sin(d.phase));
-      const jx = Math.sin(d.phase*1.2)*1.8*l;
-      const jy = Math.cos(d.phase*.85)*1.8*l;
-      p.noStroke();
-      p.fill(p.lerp(123,56,l), p.lerp(110,189,l), p.lerp(246,248,l),
-             p.lerp(25,160,l) * (isWriting ? 1.0 : 0.4));
-      p.ellipse(d.x+jx, d.y+jy, sz);
-    }
-
-    // ── face overlay ──
-    if (faces && faces.length) {
-      // BlazeFace landmarks are pixel coords in VIDEO space; mirror for canvas
-        latestFaces = [];
-
-        if (faces.length) {
-        faces.forEach(face => {
-
-            const sc = pt => ({
-            x: W - p.map(pt[0], 0, video.elt.videoWidth  || W, 0, W),
-            y:     p.map(pt[1], 0, video.elt.videoHeight || H, 0, H),
-            });
-
-            const rEye  = sc(face.landmarks[0]);
-            const lEye  = sc(face.landmarks[1]);
-            const nose  = sc(face.landmarks[2]);
-            const mouth = sc(face.landmarks[3]);
-            const rEar  = sc(face.landmarks[4]);
-            const lEar  = sc(face.landmarks[5]);
-            const tl    = sc(face.topLeft);
-            const br    = sc(face.bottomRight);
-
-            const fw = Math.abs(br.x - tl.x);
-            const fh = Math.abs(br.y - tl.y);
-// draw face landmark dots
-p.noStroke();
-p.fill(192,132,252, 220);
-
-// eyes
-p.circle(rEye.x, rEye.y, 6);
-p.circle(lEye.x, lEye.y, 6);
-
-// nose
-p.circle(nose.x, nose.y, 5);
-
-// mouth
-p.circle(mouth.x, mouth.y, 5);
-
-// ears
-p.fill(123,110,246, 180);
-p.circle(rEar.x, rEar.y, 4);
-p.circle(lEar.x, lEar.y, 4);
-            // keep your visuals EXACTLY the same
-            p.noFill(); p.stroke(123,110,246, 35+18*Math.sin(t*2)); p.strokeWeight(1);
-            p.rect(Math.min(tl.x,br.x), Math.min(tl.y,br.y), fw, fh, 8);
-
-            const eyeDist = Math.hypot(rEye.x-lEye.x, rEye.y-lEye.y);
-
-            const cx = tl.x + fw/2;
-            const cy = tl.y + fh/2;
-
-            latestFaces.push({
-            faceArea:  (fw*fh)/(W*H),
-            eyeRatio:  fw>0 ? eyeDist/fw : 0.33,
-            tilt:      fw>0 ? (lEye.y-rEye.y)/fw : 0,
-            mouthOpen: (mouth.y-nose.y) > fh*0.26,
-            alert: true,
-            cx, cy
-            });
-
-            });
-            } else {
-            latestFaces = [];
-            }
-    }
-
-    // ── hand debug ──
-    p.fill(handPreds.length>0 ? p.color(56,220,180) : p.color(100,100,120));
-    p.noStroke(); p.textFont('monospace'); p.textSize(10);
-    p.fill(faces.length > 0 ? p.color(192,132,252) : p.color(100,100,120));
-    p.text('faces: ' + faces.length, 45, H-24);
-    p.text('hands: '+handPreds.length, 45, H-10);
-
-    // ── hand overlay ──
-    // Native MediaPipe normalised landmarks: x/y are 0-1 fractions of VIDEO size
-    const mpMirror = lm => ({
-      x: W - lm.x * W,   // x is 0-1; mirror for canvas
-      y: lm.y * H,
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+      });
     });
 
-    if (handPreds.length > 0) {
-      for (let h = 0; h < handPreds.length; h++) {
-        const kps = handPreds[h].map(mpMirror);
-
-        p.strokeWeight(1);
-        for (const [a,b] of HAND_CONNECTIONS) {
-          const pa=kps[a], pb=kps[b];
-          const alpha = p.map(Math.hypot(pa.x-pb.x,pa.y-pb.y),0,120,120,20,true)*(0.6+0.4*Math.sin(t*2+h));
-          p.stroke(56,200,210,alpha); p.line(pa.x,pa.y,pb.x,pb.y);
+    /* ── Scroll reveal for project cards ────────────────────────── */
+    const revealTargets = document.querySelectorAll('.project-card, .section-label');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
         }
-        for (let j=0; j<kps.length; j++) {
-          const kp=kps[j], tip=TIPS.includes(j);
-          if (tip) {
-            p.noFill(); p.stroke(56,220,230,200); p.strokeWeight(1.5); p.ellipse(kp.x,kp.y,10+4*Math.sin(t*3+j));
-            p.stroke(56,220,230,50); p.strokeWeight(.7); p.ellipse(kp.x,kp.y,18+5*Math.sin(t*2+j));
-            p.fill(56,220,230,240); p.noStroke(); p.ellipse(kp.x,kp.y,4);
-          } else {
-            p.fill(120,220,230,160+40*Math.sin(t*2+j)); p.noStroke(); p.ellipse(kp.x,kp.y,3.5);
-          }
-        }
-        p.noFill(); p.stroke(56,200,220,30+20*Math.sin(t*1.5+h)); p.strokeWeight(1);
-        p.ellipse(kps[0].x,kps[0].y,28+8*Math.sin(t*2));
-      }
+      });
+    }, { threshold: 0.12 });
 
-      const kps0 = handPreds[0].map(mpMirror);
-      const w0   = kps0[0];
-      const avgTip = TIPS.map(ti=>Math.hypot(kps0[ti].x-w0.x,kps0[ti].y-w0.y)).reduce((a,b)=>a+b,0)/TIPS.length;
-      latestHand = { open: avgTip>70, high: w0.y < H*0.45, count: handPreds.length };
-    } else {
-      latestHand = null;
-    }
-  };
+    revealTargets.forEach(el => revealObserver.observe(el));
+  </script>
 
-  // ── face loop: BlazeFace async polling ──
-  async function runFaceLoop() {
-    while (true) {
-      if (faceReady && videoReady) {
-        try {
-            const preds = await faceModel.estimateFaces(video.elt, false);
-            faces = preds.length ? preds : [];
-        } catch(e) {}
-      }
-      await new Promise(r => setTimeout(r, 80));
-    }
-  }
-
-  // ── hand loop: send frames to MediaPipe native Hands ──
-  async function runHandLoop() {
-    while (true) {
-      if (handReady && videoReady && video.elt.readyState >= 2) {
-        try { await mpHands.send({ image: video.elt }); } catch(e) {}
-      }
-      await new Promise(r => setTimeout(r, 100));
-    }
-  }
-});
-</script>
 </body>
 </html>
