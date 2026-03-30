@@ -7,8 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="icon" href=Images/favicon.ico.ocean.ico>
   <link rel="stylesheet" href="styles.css">
-
-   
 </head>
 <body>
   <main>
@@ -31,13 +29,13 @@
   
     <div class="bio-section">
       <p class="bio-text">
-        Waverly Huang is a
+        Waverly Huang is a curious
 
         <span class="bio-tag expandable" data-expanded="false">
-          <strong>Product Designer ✸</strong>
+          <strong>Product Designer ◓</strong>
           <span class="bio-tag-extra-wrap">
             <span class="bio-tag-extra-inner">
-              <span class="bio-tag-extra">&nbsp;who creates with scalable systems &amp; touches of play</span>
+              <span class="bio-tag-extra">&nbsp;who creates with scalablity &amp; touches of play</span>
             </span>
           </span>
         </span>
@@ -48,7 +46,7 @@
           <strong>Rhode Island School of Design ✿</strong>
           <span class="bio-tag-extra-wrap">
             <span class="bio-tag-extra-inner">
-              <span class="bio-tag-extra">&nbsp;Industrial Design BFA + Computation &amp; Sustainability</span>
+              <span class="bio-tag-extra">&nbsp;Industrial Design BFA</span>
             </span>
           </span>
         </span>
@@ -123,7 +121,7 @@
               <div class="project-tags">
                 <span class="project-tag">Design System</span>
                 <span class="project-tag">B2B SaaS</span>
-                <span class="project-tag">Internship</span>
+                <span class="project-tag">Specs</span>
                 <span class="project-tag">UX Writing</span>
               </div>
             </div>
@@ -174,28 +172,67 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="mode-toggle-bar">
-          <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">&#9728;</button>
-          <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">&#9790;</button>
+        <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">✸</button>
+        <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">☽</button>
       </div>
       <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
       <div class="footer-right">
-          <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=waverlyhuang2004@gmail.com&su=Hello%20Waverly&body=Hi%20Waverly," target="_blank">Email</a>&#10022;
-          <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+        <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=waverlyhuang2004@gmail.com&su=Hello%20Waverly&body=Hi%20Waverly," target="_blank">Email</a> &#10022;
+        <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
       </div>
-  </div>
+    </div>
   </footer>
 
+  <!-- ── Project Lightbox ──────────────────────────────────────────── -->
   <div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Project detail">
+
+      <!-- Prev / Next arrows — outside the modal window -->
+      <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous project">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next project">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
     <div id="lightbox-window">
       <div id="lightbox-loading">Loading...</div>
+
+      <!-- Close button 
       <button id="lightbox-close" aria-label="Close project">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="12" r="10" stroke="#333" stroke-width="1.5"/>
           <path d="M15 9L9 15M9 9l6 6" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-      </button>
+      </button>-->
+
+      <!-- Desktop sidebar nav -->
       <nav id="lightbox-sidebar" aria-label="Project sections"></nav>
+
+      <!-- Mobile nav button (hamburger-style) -->
+      <button id="lightbox-mobile-nav-btn" aria-label="Navigate sections" title="Navigate sections">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="5" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect x="3" y="9.25" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect x="3" y="13.5" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <!-- Mobile nav modal -->
+      <div id="lightbox-mobile-nav-modal" role="dialog" aria-label="Jump to section">
+        <div id="lightbox-mobile-nav-modal-inner">
+          <div class="mobile-nav-header">
+            <span>Jump to section</span>
+               <!--<button id="lightbox-close" aria-label="Close project">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>-->
+          </div>
+          <nav id="lightbox-mobile-nav-links"></nav>
+        </div>
+      </div>
+
       <div id="lightbox-content">
         <iframe id="lightbox-iframe" title="Project content"></iframe>
       </div>
@@ -204,54 +241,7 @@
 
   <script src="script.js"></script>
   <script src="sidebar.js"></script>
-
-  <script>
-    /* ── Scroll-driven gradient mesh ────────────────────────────── */
-    function updateMesh() {
-      const scrollY = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
-
-      const meshX = 30 + progress * 40;
-      const meshY = 20 + progress * 60;
-
-      document.documentElement.style.setProperty('--mesh-x', meshX + '%');
-      document.documentElement.style.setProperty('--mesh-y', meshY + '%');
-    }
-
-    window.addEventListener('scroll', updateMesh, { passive: true });
-
-    /* ── Project card 3-D tilt on mouse move ────────────────────── */
-    document.querySelectorAll('.project-image').forEach(img => {
-      const card = img.closest('.project-card');
-      img.addEventListener('mousemove', e => {
-        const rect = img.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top  + rect.height / 2;
-        const dx = (e.clientX - cx) / (rect.width  / 2);
-        const dy = (e.clientY - cy) / (rect.height / 2);
-        const rotX = -dy * 6;
-        const rotY =  dx * 6;
-        img.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-      });
-      img.addEventListener('mouseleave', () => {
-        img.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
-      });
-    });
-
-    /* ── Scroll reveal for project cards ────────────────────────── */
-    const revealTargets = document.querySelectorAll('.project-card, .section-label');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    revealTargets.forEach(el => revealObserver.observe(el));
-  </script>
+  <script src="index.js"></script>
 
 </body>
 </html>
