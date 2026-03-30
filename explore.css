@@ -364,60 +364,74 @@ main {
     display: block;
   }
   
-  /* Close button */
-  .lightbox-close {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    z-index: 2001;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.9;
-    transition: opacity 0.15s;
-    padding: 0;
-    color: #d0d0d0;
-  }
+  /* ── Close button ── */
+#lightbox-close {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.2s ease;
+  pointer-events: none;
+  padding: 0;
+}
+
+#lightbox-overlay.open #lightbox-close {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#lightbox-close:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#lightbox-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+body.dark-mode #lightbox-close { background: rgba(255,255,255,0.18); }
+body.dark-mode #lightbox-close:hover { background: rgba(255,255,255,0.32); }
+
+/* Lightbox Arrow */
   
-  .lightbox-close:hover { opacity: 0.55; }
-  
-  .lightbox-close svg {
-    width: 36px;
-    height: 36px;
-  }
-  
-  /* Arrow buttons */
   .lightbox-arrow {
+    display: none;
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 2002;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
     width: 48px;
     height: 48px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.18);
-    background: rgba(20,20,20,0.55);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     cursor: pointer;
-    display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.75;
-    transition: opacity 0.15s, background 0.15s, transform 0.15s;
-    padding: 0;
+    color: #fff;
   }
   
+  .lightbox-arrow.visible {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
   .lightbox-arrow:hover {
-    opacity: 1;
-    background: rgba(20,20,20,0.8);
-    transform: translateY(-50%) scale(1.07);
+    background: rgba(20, 20, 20, 0.8);
+    /*transform: translateY(-50%) scale(1.07);*/
   }
   
   .lightbox-prev { left: 24px; }
@@ -428,9 +442,75 @@ main {
     height: 22px;
   }
   
-  /* Hide arrows when only one image visible */
-  .lightbox-arrow.hidden { display: none; }
+ /* ── Footer ───────────────────────────────────────────────────────── */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--footer-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
+}
 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-muted);
+  gap: 12px;
+}
+
+.footer-content a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-center { flex: 1; text-align: center; }
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* ── Mode toggle ──────────────────────────────────────────────────── */
+.mode-toggle-bar {
+  display: flex;
+  gap: 2px;
+  background: rgba(180, 180, 180, 0.35);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+body.dark-mode .mode-toggle-bar { background: rgba(104, 103, 103, 0.45); }
+
+.mode-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 13px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  color: var(--text);
+}
+
+.mode-btn.active-mode { background: var(--nav-active-bg); }
   /* ══════════════════════════════════════════════════════════════
    SPOTLIGHT SECTION  —  archive.css addition
    ══════════════════════════════════════════════════════════════ */

@@ -67,22 +67,32 @@
 
   let allItems     = [];
   let currentIndex = 0;
-
+  
   function openLightbox(item) {
-    allItems     = Array.from(document.querySelectorAll(".gallery-item"));
+    allItems = Array.from(document.querySelectorAll(".gallery-item"));
     currentIndex = allItems.indexOf(item);
     showImage(currentIndex);
     lightbox.classList.add("active");
+    lightboxPrev.classList.add("visible");
+    lightboxNext.classList.add("visible");
     document.body.style.overflow = "hidden";
   }
-
+  
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    lightboxPrev.classList.remove("visible");
+    lightboxNext.classList.remove("visible");
+    document.body.style.overflow = "";
+    setTimeout(() => { lightboxImg.src = ""; }, 300);
+  }
+  
   function showImage(idx) {
     if (!allItems.length) return;
     currentIndex = (idx + allItems.length) % allItems.length;
     const item   = allItems[currentIndex];
     const src    = item.querySelector("img")?.getAttribute("src") || "";
     const alt    = item.querySelector("img")?.alt || "";
-
+  
     lightboxImg.style.opacity   = "0";
     lightboxImg.style.transform = "scale(0.97)";
     setTimeout(() => {
@@ -91,16 +101,8 @@
       lightboxImg.style.opacity   = "1";
       lightboxImg.style.transform = "scale(1)";
     }, 110);
-
-    const showArrows = allItems.length > 1;
-    lightboxPrev.classList.toggle("hidden", !showArrows);
-    lightboxNext.classList.toggle("hidden", !showArrows);
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove("active");
-    document.body.style.overflow = "";
-    setTimeout(() => { lightboxImg.src = ""; }, 300);
+  
+    // ← Remove the hidden toggle entirely; arrows always show
   }
 
   document.getElementById("gallery").addEventListener("click", e => {
@@ -141,6 +143,29 @@
     document.body.classList.add("dark-mode");
     localStorage.setItem("theme", "dark");
   });
+
+  // After your existing lightBtn/darkBtn listeners, add:
+
+function syncModeButtons() {
+  const isDark = document.body.classList.contains("dark-mode");
+  lightBtn.classList.toggle("active-mode", !isDark);
+  darkBtn.classList.toggle("active-mode", isDark);
+}
+
+// Call on load
+syncModeButtons();
+
+// Update your existing listeners to also call it:
+if (lightBtn) lightBtn.addEventListener("click", () => {
+  document.body.classList.remove("dark-mode");
+  localStorage.setItem("theme", "light");
+  syncModeButtons();
+});
+if (darkBtn) darkBtn.addEventListener("click", () => {
+  document.body.classList.add("dark-mode");
+  localStorage.setItem("theme", "dark");
+  syncModeButtons();
+});
 
   /* ── BIO EXPANDABLE PILLS ─────────────────────────────────────── */
   document.querySelectorAll(".bio-tag.expandable").forEach(tag => {
