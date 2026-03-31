@@ -196,10 +196,14 @@ function closeCodingLightbox() {
   setTimeout(() => { codingIframe.src = ""; }, 300);
 }
 
-// Click on card → open lightbox
+// Click on card → open lightbox (desktop) or new tab (mobile)
 document.querySelectorAll(".coding-card[data-href]").forEach(card => {
   card.addEventListener("click", () => {
-    openCodingLightbox(card.dataset.href);
+    if (window.innerWidth <= 768) {
+      window.open(card.dataset.href, "_blank", "noopener,noreferrer");
+    } else {
+      openCodingLightbox(card.dataset.href);
+    }
   });
 });
 
