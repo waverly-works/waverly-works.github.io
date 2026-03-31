@@ -205,6 +205,8 @@ document.querySelectorAll(".coding-card[data-href]").forEach(card => {
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.click();
+    } else {
+      openCodingLightbox(card.dataset.href);
     }
   });
 });
