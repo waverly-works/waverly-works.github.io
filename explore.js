@@ -200,9 +200,11 @@ function closeCodingLightbox() {
 document.querySelectorAll(".coding-card[data-href]").forEach(card => {
   card.addEventListener("click", () => {
     if (window.innerWidth <= 800) {
-      window.open(card.dataset.href, "_blank", "noopener,noreferrer");
-    } else {
-      openCodingLightbox(card.dataset.href);
+      const a = document.createElement("a");
+      a.href = card.dataset.href;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.click();
     }
   });
 });
