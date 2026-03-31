@@ -61,7 +61,6 @@
   /* ── LIGHTBOX ─────────────────────────────────────────────────── */
   const lightbox      = document.getElementById("lightbox");
   const lightboxImg   = document.getElementById("lightboxImg");
-  const lightboxClose = document.getElementById("lightboxClose");
   const lightboxPrev  = document.getElementById("lightboxPrev");
   const lightboxNext  = document.getElementById("lightboxNext");
 
@@ -110,7 +109,7 @@
     if (item) openLightbox(item);
   });
 
-  lightboxClose.addEventListener("click", closeLightbox);
+
   lightboxPrev.addEventListener("click",  () => showImage(currentIndex - 1));
   lightboxNext.addEventListener("click",  () => showImage(currentIndex + 1));
 
@@ -173,5 +172,59 @@ if (darkBtn) darkBtn.addEventListener("click", () => {
       tag.classList.toggle("expanded");
     });
   });
+  /* ── CODING EXPLORATIONS LIGHTBOX ────────────────────────── */
+const codingLightbox      = document.getElementById("coding-lightbox");
+const codingIframe        = document.getElementById("coding-lightbox-iframe");
+const codingClose         = document.getElementById("coding-lightbox-close");
+const codingLoading       = document.getElementById("coding-lightbox-loading");
+
+function openCodingLightbox(url) {
+  codingLoading.classList.remove("hidden");
+  codingIframe.src = "";
+  codingLightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+
+  codingIframe.onload = () => {
+    codingLoading.classList.add("hidden");
+  };
+  codingIframe.src = url;
+}
+
+function closeCodingLightbox() {
+  codingLightbox.classList.remove("active");
+  document.body.style.overflow = "";
+  setTimeout(() => { codingIframe.src = ""; }, 300);
+}
+
+// Click on card → open lightbox
+document.querySelectorAll(".coding-card[data-href]").forEach(card => {
+  card.addEventListener("click", () => {
+    openCodingLightbox(card.dataset.href);
+  });
+});
+
+codingClose.addEventListener("click", closeCodingLightbox);
+
+codingLightbox.addEventListener("click", e => {
+  if (e.target === codingLightbox) closeCodingLightbox();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && codingLightbox.classList.contains("active")) {
+    closeCodingLightbox();
+  }
+});
+
+/* ── Also observe coding cards for fade-in ──────────────── */
+const codingCards = document.querySelectorAll(".coding-card");
+const codingIO = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("fade-in-visible");
+      codingIO.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+codingCards.forEach(card => codingIO.observe(card));
 
 })();

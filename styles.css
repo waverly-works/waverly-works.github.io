@@ -555,7 +555,7 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
     box-shadow: 0 32px 80px rgba(0,0,0,0.22);
     width: 100%;
     max-width: 1500px;
-    height: 92vh;
+    height: 90vh;
     display: flex;
     overflow: hidden;
     animation: lb-in 0.28s cubic-bezier(.22,.68,0,1.2);
