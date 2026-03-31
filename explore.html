@@ -23,6 +23,7 @@
   <!-- ── Side nav ─────────────────────────────────────────────── -->
   <nav class="side-nav" id="sideNav">
     <a href="#" class="side-nav-link" data-category="spotlight">Spotlight</a>
+    <a href="#" class="side-nav-link" data-category="coding">Coding</a>
     <a href="#" class="side-nav-link" data-category="illustration">Illustration</a>
     <a href="#" class="side-nav-link" data-category="3d">3D Work</a>
     <a href="#" class="side-nav-link" data-category="photography">Photography</a>
@@ -49,7 +50,7 @@
             <strong>different mediums ⧒</strong>
             <span class="bio-tag-extra-wrap">
               <span class="bio-tag-extra-inner">
-                <span class="bio-tag-extra">&nbsp;ft. illustration, 3D, & photography</span>
+                <span class="bio-tag-extra">&nbsp;ft. illustration, 3D, code, & more</span>
               </span>
             </span>
           </span>
@@ -118,9 +119,88 @@
         </div>
       </section>
 
+<!-- CODING EXPLORATIONS ──────────────────────────────────── -->
+      <section class="gallery-section coding-section" data-category="coding">
+        <div class="section-label">01 — Coding Explorations</div>
+
+        <div class="coding-grid">
+
+          <article class="coding-card" data-href="https://waverly.work/poetic-vision/">
+            <div class="coding-card__image">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="Archive_Page/coding_explore/poetic_vision_gif.mp4" type="video/mp4">
+              </video>
+              <div class="coding-card__overlay"></div>
+            </div>
+            <div class="coding-card__info">
+              <div class="coding-card__name-row">
+                <h3 class="coding-card__name">Poetic Vision</h3>
+                <div class="coding-card__tags">
+                  <span class="coding-tag">Poetry</span>
+                  <span class="coding-tag">Computer Vision</span>
+                  <span class="coding-tag">Machine Learning</span>
+                </div>
+              </div>
+              <p class="coding-card__desc">A website exploration of p5js's hand & facial recognition libraries, each movement intertwined with poetry.</p>
+            </div>
+          </article>
+
+          <article class="coding-card" data-href="https://waverlywaves.github.io/poetics-final/">
+            <div class="coding-card__image">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="Archive_Page/coding_explore/digital_poetics_final.mp4" type="video/mp4">
+              </video>
+              <div class="coding-card__overlay"></div>
+            </div>
+            <div class="coding-card__info">
+              <div class="coding-card__name-row">
+                <h3 class="coding-card__name">things we carry</h3>
+                <div class="coding-card__tags">
+                  <span class="coding-tag">Poetry</span>
+                  <span class="coding-tag">Hidden Interactions</span>
+                  <span class="coding-tag">Random Chance</span>
+                </div>
+              </div>
+              <p class="coding-card__desc">A personal poetry website about grief, ft. hidden & fun interactions / code as a visual & emotional tool.</p>
+            </div>
+          </article>
+
+         <!--<article class="coding-card" data-href="https://waverlywaves.github.io/drawingchance/">
+            <div class="coding-card__image">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="Archive_Page/coding_explore/poetic_vision_gif.mp4" type="video/mp4">
+              </video>
+              <div class="coding-card__overlay"></div>
+            </div>
+            <div class="coding-card__info">
+              <div class="coding-card__name-row">
+                <h3 class="coding-card__name">Drawing with Chance</h3>
+                <div class="coding-card__tags">
+                  <span class="coding-tag">JavaScript</span>
+                  <span class="coding-tag">Drawing Tool</span>
+                  <span class="coding-tag">Random Chance</span>
+                </div>
+              </div>
+              <p class="coding-card__desc">A quick exploration of 'randomness' in code & how it can be a visual tool</p>
+            </div>
+          </article>-->
+        </div>
+      </section>
+
+<!-- CODING LIGHTBOX ──────────────────────────────────────── -->
+      <div id="coding-lightbox" role="dialog" aria-modal="true" aria-label="Coding exploration">
+        <button id="coding-lightbox-close" aria-label="Close">
+         
+        </button>
+        <div id="coding-lightbox-inner">
+          <div id="coding-lightbox-loading">Loading…</div>
+          <iframe id="coding-lightbox-iframe" title="Coding exploration" allowfullscreen></iframe>
+        </div>
+      </div>
+
       <!-- ILLUSTRATION ─────────────────────────────────────────── -->
       <section class="gallery-section" data-category="illustration">
-        <div class="section-label">01 — Illustration</div>
+        <div class="section-label">02 — Illustration</div>
         <div class="gallery-row vertical-row">
           <div class="gallery-item">
             <img src="Archive_Page/painting/axolotl_painting_edit copy.png" alt="Colorful illustration of an axolotl in a surreal environment" loading="lazy">
@@ -169,7 +249,7 @@
 
       <!-- 3D WORK ──────────────────────────────────────────────── -->
       <section class="gallery-section" data-category="3d">
-        <div class="section-label">02 — 3D Work</div>
+        <div class="section-label">03 — 3D Work</div>
         <div class="gallery-row vertical-row">
           <div class="gallery-item">
             <img src="Archive_Page/3D_Modeling/pot_cad.png" alt="3D CAD model of a ceramic pot design" loading="lazy">
@@ -200,7 +280,7 @@
 
       <!-- PHOTOGRAPHY ──────────────────────────────────────────── -->
       <section class="gallery-section" data-category="photography">
-        <div class="section-label">03 — Photography</div>
+        <div class="section-label">04 — Photography</div>
         <div class="gallery-row vertical-row">
           <div class="gallery-item">
             <img src="Archive_Page/photography/china_koi.jpg" alt="Koi fish swimming in a pond in China" loading="lazy">
@@ -263,12 +343,6 @@
   </button>
 
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
-        <path d="M15 9L9 15M9 9l6 6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </button>
     <div class="lightbox-content">
       <img id="lightboxImg" src="" alt="Expanded view">
     </div>
