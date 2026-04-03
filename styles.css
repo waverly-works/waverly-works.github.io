@@ -275,7 +275,7 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     grid-template-columns: 0fr;
     transition: grid-template-columns 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
     overflow: hidden;
-    height: 1em; /* lock the height so it never pushes vertically */
+    height: 1.3em; /* lock the height so it never pushes vertically */
     align-items: center;
     white-space: nowrap;    
 }
