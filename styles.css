@@ -616,7 +616,7 @@ body.dark-mode #lightbox-close:hover { background: rgba(255,255,255,0.32); }
     height: 44px;
     border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.38);
+    background: rgba(52, 52, 52, 0.612);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     cursor: pointer;
@@ -653,8 +653,8 @@ body.dark-mode #lightbox-close:hover { background: rgba(255,255,255,0.32); }
     flex-shrink: 0;
 }
 
-body.dark-mode .lightbox-arrow { background: rgba(255,255,255,0.18); }
-body.dark-mode .lightbox-arrow:hover { background: rgba(255,255,255,0.32); }
+body.dark-mode .lightbox-arrow { background: rgba(52, 52, 52, 0.612); }
+body.dark-mode .lightbox-arrow:hover { background: rgba(149, 148, 148, 0.32); }
 
 /* ── Desktop sidebar nav ── */
 #lightbox-sidebar {
