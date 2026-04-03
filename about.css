@@ -479,9 +479,11 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
 
     .leadership-images { gap: 15px; }
     .leadership-images img { width: 100%; height: auto; aspect-ratio: 1; }
-    .experience-item { flex-wrap: wrap; }
-    .experience-title { width: 100%; margin-bottom: 5px; }
-    .leadership-header { flex-wrap: wrap; }
+    .experience-item { flex-wrap: wrap; gap: 10px; }
+    .experience-title { width: 100%;  gap: 8px; }
+    .leadership-item { gap: 8px; }
+    .experience-title { width: 100%;  gap: 8px; }
+    .leadership-header { flex-wrap: wrap; gap: 10px;}
     .leadership-main { width: 100%; margin-bottom: 5px; }
 
     .life-title-container {
