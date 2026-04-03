@@ -24,6 +24,7 @@
         { label: 'Form Process',  href: '#process'    },
         { label: 'Reflection',    href: '#reflection' },
       ],
+      'https://fountainhead.site/': [],   // ← ADD THIS
       'sasfui.html': [
         { label: 'Overview',      href: '#overview'   },
         { label: 'Build',         href: '#build'      },
