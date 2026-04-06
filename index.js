@@ -244,28 +244,24 @@
     });
   
     /* ── Scroll reveal for project cards ── */
-    const revealTargets = document.querySelectorAll('.project-card, .section-label');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealTargets.forEach(el => revealObserver.observe(el));
-  
-    /* ── 3-D tilt on project images ── */
-    document.querySelectorAll('.project-image').forEach(img => {
-      img.addEventListener('mousemove', e => {
-        const rect = img.getBoundingClientRect();
-        const dx = (e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2);
-        const dy = (e.clientY - rect.top  - rect.height / 2) / (rect.height / 2);
-        img.style.transform = `perspective(900px) rotateX(${-dy * 6}deg) rotateY(${dx * 6}deg)`;
-      });
-      img.addEventListener('mouseleave', () => {
-        img.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
-      });
-    });
-  
+const revealTargets = document.querySelectorAll('.project-card, .section-label');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealTargets.forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight) {
+    // Above the fold — use CSS keyframe load animation
+    el.classList.add('load-reveal');
+  } else {
+    // Below the fold — use existing scroll observer
+    revealObserver.observe(el);
+  }
+});
   });
