@@ -12,8 +12,6 @@
     transform: translateZ(0);
     will-change: transform;
 }
-.bio-section { transform: translateZ(0); }
-.projects-section { transform: translateZ(0); }
 
 /* ── CSS variables (light mode) ───────────────────────────────────── */
 :root {
@@ -223,7 +221,16 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
 .tile::after { content: attr(data-letter); }
 
 /* ── Bio section ──────────────────────────────────────────────────── */
-.bio-section { padding: 0 0 1rem; }
+@keyframes fadeUpIn {
+    0%   { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.bio-section {
+    padding: 0 0 1rem;
+    opacity: 0;
+    animation: fadeUpIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+}
 
 .bio-text {
     font-family: var(--sans);
@@ -242,7 +249,7 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     margin-bottom: 1rem;
     text-transform: lowercase;
     color: var(--text);
-    opacity: 1.0 !important;
+    opacity: 0.95 !important;
     transform: none !important;
     letter-spacing: 0.01em;
 }
@@ -371,6 +378,21 @@ main { padding: 22px 22px 0; }
     transform: translateY(0);
 }
 
+.project-card.load-reveal {
+    animation: fadeUpIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.projects-row:nth-child(1) .project-card:nth-child(1) { animation-delay: 0.7s; }
+.projects-row:nth-child(1) .project-card:nth-child(2) { animation-delay: 0.82s; }
+.projects-row:nth-child(2) .project-card:nth-child(1) { animation-delay: 0.94s; }
+.projects-row:nth-child(2) .project-card:nth-child(2) { animation-delay: 1.06s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card { opacity: 1; transform: none; transition: none; animation: none; }
+    .bio-section { opacity: 1; animation: none; }
+    .section-label { opacity: 1; transform: none; animation: none; }
+    body::before { transition: none; }
+}
+
 .projects-row .project-card:nth-child(2) { transition-delay: 0.1s; }
 
 .project-link {
@@ -450,7 +472,6 @@ main { padding: 22px 22px 0; }
     transform: translateY(12px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
 .section-label.revealed {
     opacity: 1;
     transform: translateY(0);
