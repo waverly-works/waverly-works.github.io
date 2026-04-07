@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Stacked images: stagger in after bio finishes ── */
     const stackItems = document.querySelectorAll('.stack-item');
-    const BIO_DURATION = 1400;
+    const BIO_DURATION = 1000;
 
     stackItems.forEach((item, index) => {
         setTimeout(() => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bottomSection) {
         setTimeout(() => {
             bottomSection.classList.add('revealed');
-        }, 2200);
+        }, 1800);
     }
 
 });
