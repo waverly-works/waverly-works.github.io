@@ -492,6 +492,9 @@ body.dark-mode .mode-toggle-bar { background: rgba(104, 103, 103, 0.45); }
 
 /* ── Section wrapper ─────────────────────────────────────────── */
 
+.spotlight-section {
+  margin-top: 1rem;
+}
 
 /* ── Grid layout ─────────────────────────────────────────────── */
 .spotlight-grid {
