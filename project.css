@@ -384,6 +384,15 @@ body.dark-mode .question-card { background: #1a1918; }
 
 body.dark-mode .insight-card { background: rgba(200, 75, 47, 0.08); }
 
+.insight-card-green {
+    padding: 36px;
+    background: rgba(36, 170, 156, 0.145);
+    border-left: 2px solid rgba(2, 111, 100, 0.823);
+    border-radius: 8px;
+}
+
+body.dark-mode .insight-card-green { background: rgba(47, 200, 185, 0.08); }
+
 .insight-icon {
     display: block;
     font-size: 1.4rem;
@@ -404,6 +413,27 @@ body.dark-mode .insight-card { background: rgba(200, 75, 47, 0.08); }
 }
 
 body.dark-mode .insight-card p { color: rgba(240, 238, 233, 0.72); }
+
+.insight-green-icon {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.insight-card-green h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+}
+
+.insight-card-green p {
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: var(--ink-muted);
+}
+
+body.dark-mode .insight-card-green p { color: rgba(240, 238, 233, 0.72); }
 
 /* ── Survey ─────────────────────────────────────────────── */
 .survey-row {
