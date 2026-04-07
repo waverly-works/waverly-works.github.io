@@ -246,12 +246,12 @@ body.dark-mode .tab:not(.active):hover { color: rgba(255, 255, 255, 0.825); }
     font-family: var(--serif);
     font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     text-transform: lowercase;
     color: var(--text);
     opacity: 0.95 !important;
     transform: none !important;
-    letter-spacing: 0.01em;
+    letter-spacing: .04em;
 }
 
 .bio-tag {

@@ -166,7 +166,7 @@ body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
     font-size: 1.05rem;
     line-height: 1.8;
     font-weight: 300;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.04em;
     color: var(--text);
 }
 
