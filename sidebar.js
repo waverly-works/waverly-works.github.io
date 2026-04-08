@@ -7,6 +7,7 @@
   const projectSidebars = {
     "tasktone.html": ["#overview", "#mission", "#painpoints", "#decisions", "#process", "#reflection"],
     "sasfui.html":   ["#overview", "#build",     "#specs",     "#tabs",      "#reflection"],
+    "sasfds.html":   ["#overview", "#scope",     "#research",  "#expo",      "#reflection"],
     "navi.html":     ["#overview", "#mission",  "#decisions",  "#solution",  "#process",  "#reflection"],
     "waddle.html":   ["#overview", "#mission", "#decisions", "#solution",   "#process",   "#reflection"],
   };
