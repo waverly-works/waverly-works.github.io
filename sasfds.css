@@ -251,7 +251,6 @@ body.dark-mode .learning-block { border-color: var(--rule-dark); }
     border: 1px solid var(--rule);
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 56px;
 }
 body.dark-mode .stat-band { background: var(--rule-dark); border-color: var(--rule-dark); }
 .stat-item {
