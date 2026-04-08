@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAS Filament Website Redesign — Waverly Huang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="sasfds.css">
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <video autoplay loop muted playsinline>
+                <source src="Images/about me/about_me.mp4" type="video/mp4">
+            </video>
+        </a>
+        <nav>
+            <a href="index.html">Selected</a>
+            <a href="archive.html">Archive</a>
+            <a href="about.html">About</a>
+            <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+        </nav>
+        <div class="nav-icons">
+            <span id="modeToggle" title="Toggle Dark Mode"></span>
+        </div>
+    </header>
+
+    <nav class="side-nav">
+        <a href="#overview" data-section="overview">Overview</a>
+        <a href="#scope" data-section="scope">Scope</a>
+        <a href="#research" data-section="research">Research</a>
+        <a href="#expo" data-section="expo">Expo</a>
+        <a href="#reflection" data-section="reflection">Thanks</a>
+    </nav>
+
+    <main>
+
+        <!-- ── 00. OVERVIEW ── -->
+        <section class="project-hero" id="overview">
+            <div class="hero-label">Product Design · SAS Institute Internship 2025</div>
+            <h1 class="project-hero-title">Filament Website Redesign Concepts</h1>
+
+            <div class="nda-pill">
+                🔒 Under NDA · For details, please email me!
+            </div>
+
+            <p class="project-hero-subtitle">A summer-long internship project at <a href="https://www.sas.com" target="_blank">SAS Institute</a> contributing to a comprehensive series of redesign concepts for the Filament Design System (FDS) website, including component research, icon data surfacing, and UX design work.</p>
+            <div class="project-meta-grid">
+                <div class="meta-block">
+                    <h4><strong>Role</strong></h4>
+                    <p>Product Design Intern</p>
+                </div>
+                <div class="meta-block">
+                    <h4><strong>Timeline</strong></h4>
+                    <p>Summer 2025</p>
+                </div>
+                <div class="meta-block">
+                    <h4><strong>Team</strong></h4>
+                    <p>Filament Design System (FDS) Design Team</p>
+                </div>
+                <div class="meta-block">
+                    <h4><strong>Tools</strong></h4>
+                    <p>Figma, Jira, Mural, Microsoft Suite</p>
+                </div>
+            </div>
+
+            <!-- Blurred hero -->
+            <div class="blurred-image-wrap" style="aspect-ratio: 16/7;">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8e4f5 0%,#d9d3ef 30%,#f2c9c3 70%,#f5e2c8 100%);"></div>
+                <div class="blur-overlay">
+                    <span class="blur-label">🔒 Project visuals under NDA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 01. SCOPE ── -->
+        <section class="content-section" id="scope">
+            <span class="section-label">01 — Project Scope</span>
+            <div class="two-col-intro">
+                <h2 class="section-heading">Four areas of contribution</h2>
+                <div class="intro-body">
+                    <p>This was a broad redesign concept initiative spanning the FDS website — from how components are documented, to how icon and component usage data is surfaced for the teams that rely on it daily.</p>
+                    <p>My work touched all four workstreams, with a particular focus on research, component design, and designing data-surfacing tools that could serve engineers, designers, and test engineers across SAS.</p>
+                </div>
+            </div>
+
+            <div class="question-grid">
+                <div class="question-card">
+                    <span class="card-num">01</span>
+                    <h3>Understanding Components — building the Zero State component and its full variant set</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">02</span>
+                    <h3>Zero State Component & Documentation Tabs — creating the docs that designers and developers actually use</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">03</span>
+                    <h3>Filament Icon & Component Data Surfacing Tool Research — surveying 50+ FDS members to understand what data they need</h3>
+                </div>
+                <div class="question-card">
+                    <span class="card-num">04</span>
+                    <h3>Filament Icon & Component Data Surfacing Design — translating research insights into wireframes and prototypes</h3>
+                </div>
+            </div>
+
+            <div class="stat-band">
+                <div class="stat-item">
+                    <strong>50+</strong>
+                    <span>FDS members surveyed across Front-End Dev, UX Design, Visual Design, Test Engineering & Internal roles</span>
+                </div>
+                <div class="stat-item">
+                    <strong>5</strong>
+                    <span>Primary user personas identified, with unique pain points around documentation, search, and resource access</span>
+                </div>
+                <div class="stat-item">
+                    <strong>3</strong>
+                    <span>Component variants consolidated from 18 separate states into 3 core states with scoped properties</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 02. RESEARCH ── -->
+        <section class="content-section-dark" id="research">
+            <span class="section-label">02 — Research & Decisions</span>
+            <h2 class="section-heading">Turning survey data into design decisions</h2>
+
+            <div class="two-col-intro" style="margin-bottom: 48px;">
+                <div class="intro-body" style="grid-column: 1 / -1; max-width: 820px;">
+                    <p>The core research question: without an internal tool to surface icon and component usage data, how does that gap affect the people who work with FDS every day? Through a 50+ person survey with carefully considered data synthesis, key patterns emerged across all personas — context, documentation, and refined search were the top unmet needs.</p>
+                </div>
+            </div>
+
+            <!-- Blurred research image -->
+            <div class="photo-slot-wide" style="margin-bottom: 48px; aspect-ratio: 16/6;">
+                <img src="sas_fds_project/mural_sas.png" alt="Expo photo" class="img">
+            </div>
+            <div class="photo-slot-wide" style="margin-bottom: 48px; aspect-ratio: 16/6;">
+                <img src="sas_fds_project/mural_sas_3.png" alt="Expo photo" class="img">
+            </div>
+
+            <div class="decisions-grid">
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">No usage context</span>
+                        <p>48% of survey respondents said icon context data was the most-wanted information — with no existing tool to surface it</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Usage Examples tab</span>
+                        <p>Designed a tab-based layout merging icon documentation with usage examples, keeping everything in one accessible place</p>
+                    </div>
+                </div>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Search frustration</span>
+                        <p>68% of respondents said they struggle finding the right icon; 61% found searching for component information the most time-consuming task</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Refined search + keywords</span>
+                        <p>Proposed refined search with more keyword support and filter options, reducing time spent hunting for the right component or icon</p>
+                    </div>
+                </div>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">Fragmented docs</span>
+                        <p>Multiple personas — developers, test engineers, UX designers — all flagged unclear or incomplete documentation as a core frustration</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Unified component cards</span>
+                        <p>Wireframed a component overview page surfacing total usage, product deployment links, and usage context in a scannable grid format</p>
+                    </div>
+                </div>
+                <div class="decision-row">
+                    <div class="decision-problem">
+                        <span class="decision-tag problem-tag">No "breaking change" visibility</span>
+                        <p>Teams couldn't easily tell if a component change would break something downstream — because there was no view of where components were actually used</p>
+                    </div>
+                    <div class="decision-arrow">→</div>
+                    <div class="decision-solution">
+                        <span class="decision-tag solution-tag">Usage Across Solutions panel</span>
+                        <p>Designed a per-component view showing total uses, products, repositories, and last-updated date — making impact analysis fast and clear</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 03. EXPO ── -->
+        <section class="content-section" id="expo">
+            <span class="section-label">03 — Internship Expo</span>
+            <h2 class="section-heading">Presenting the work</h2>
+
+            <div class="presenting-section">
+                    <img src="sas_fds_project/sas_expo.png" alt="Expo photo" class="presenting-image">
+                
+
+                <div class="feature-text">
+                    <h3>SAS Internship Expo 2025</h3>
+                    <p class="feature-summary">Presenting four months of research, component work, and data-surfacing design to stakeholders across SAS Institute.</p>
+                    <div class="detail-list">
+                        <div class="detail">
+                            <strong>What was shown</strong>
+                            <p>The full project arc — from the Zero State component and documentation tabs, through survey research synthesis and icon data surfacing wireframes</p>
+                        </div>
+                        <div class="detail">
+                            <strong>Who was there</strong>
+                            <p>100+ people! Designers, developers, and product stakeholders across the Filament Design System and broader SAS design organization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 04. THANKS ── -->
+        <section class="content-section" id="reflection">
+            <span class="section-label">04 — Internship Memories</span>
+            <h2 class="section-heading">The people who made it</h2>
+
+            <div class="thanks-intro">
+                <p>A summer full of feedback, late Figma sessions, and people who made every project sharper. Thanks to this year's intern cohort, as I've made lifelong friends!
+                    <strong>Huge thank you to my manager, Jacquie Goyena </strong>for all of her support throughout the process!</p>
+    
+            </div>
+
+            <!-- Wide photos row -->
+           <!-- Wide photos grid -->
+<div class="photo-grid-wide" style="margin-bottom:12px;">
+    <div class="photo-slot-wide">
+        <img src="sas_fds_project/sas_office.jpg" alt="Team photo / group moment" class="img">
+    </div>
+    <div class="photo-slot-wide">
+        <img src="sas_fds_project/IMG_7072.JPG" alt="Offsite or event" class="img">
+    </div>
+    <div class="photo-slot-wide">
+        <img src="sas_fds_project/sas_catcafe.jpg" alt="Working / coworking" class="img">
+    </div>
+</div>
+
+<!-- Square photos grid -->
+<div class="photo-grid">
+    <div class="photo-slot">
+        <img src="sas_fds_project/sas_carowinds.jpg" alt="Expo photo" class="img">
+    </div>
+    <div class="photo-slot">
+        <img src="sas_fds_project/sas_roomies.jpg" alt="Photo 3" class="img">
+    </div>
+    <div class="photo-slot">
+        <img src="sas_fds_project/sas_rock.jpg" alt="Photo 2" class="img">
+    </div>
+    <div class="photo-slot">
+        <img src="sas_fds_project/shiv_char_wave_triplet.png" alt="Photo 4" class="img">
+    </div>
+</div>
+<div class="feature-text">
+    <h3>Extra shout out to:</h3>
+</div>
+            <div class="thanks-names">
+                <span class="name-tag">Jacquie Goyena</span>
+                <span class="name-tag">Anna Parnell</span>
+                <span class="name-tag">Sierra Shell</span>
+                <span class="name-tag">Abby Olaleye</span>
+                <span class="name-tag">Dottie Blyth</span>
+                <span class="name-tag">Ginny Matsey</span>
+                <span class="name-tag">Helena Pearce</span>
+                <span class="name-tag">Rajiv Ramarajan</span>
+                <span class="name-tag">Justin Pfeifer</span>
+                <span class="name-tag">Andrew Hilts</span>
+                <span class="name-tag">Shivani Nallapu</span>
+                <span class="name-tag">Charlotte Tsui</span>
+                <span class="name-tag">Nick Ciraolo</span>
+                <span class="name-tag">Cameron Nagle</span>
+                <span class="name-tag">+ the whole FDS team & my roommates 💙</span>
+            </div>
+
+            <div class="learning-block">
+                <h3>Takeaway</h3>
+                <p>This internship showed me what it means to design inside a living system — where every decision ripples outward to the developers, engineers, and designers who build with it. From learning there's no single "right" way to structure a component, to writing documentation where every word earns its place, to sitting in on research synthesis with a team of brilliant people: I left a much sharper designer than I arrived. Thank you to everyone at SAS who made it such a genuinely great summer.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; Waverly Huang 2026 &nbsp;·&nbsp; Coded carefully, made with 🫶 & sips of 🍵</p>
+            <p style="margin-top:6px;">
+                <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a>
+                &nbsp;·&nbsp;
+                <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" target="_blank">Resume</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+
+</body>
+</html>

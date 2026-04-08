@@ -177,6 +177,7 @@ main {
     letter-spacing: -0.02em;
     line-height: 1.0;
     margin-bottom: 28px;
+    max-width: 60rem;
 }
 
 .project-hero-subtitle {
