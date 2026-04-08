@@ -8,37 +8,36 @@
     const body = document.body;
   
     const projectSidebars = {
-      'navi.html': [
-        { label: 'Overview',      href: '#overview'   },
-        { label: 'Mission',       href: '#mission'    },
-        { label: 'Decisions',     href: '#decisions'  },
-        { label: 'Solution',      href: '#solution'   },
-        { label: 'Process',       href: '#process'    },
-        { label: 'Reflection',    href: '#reflection' },
+      'https://fountainhead.site/': [],
+      'sasfds.html': [
+        { label: 'Overview',   href: '#overview'   },
+        { label: 'Scope',      href: '#scope'      },
+        { label: 'Research',   href: '#research'   },
+        { label: 'Expo',       href: '#expo'       },
+        { label: 'Reflection', href: '#reflection' },
+      ],
+      'sasfui.html': [
+        { label: 'Overview',   href: '#overview'   },
+        { label: 'Build',      href: '#build'      },
+        { label: 'Specs',      href: '#specs'      },
+        { label: 'Tabs',       href: '#tabs'       },
+        { label: 'Reflection', href: '#reflection' },
       ],
       'tasktone.html': [
-        { label: 'Overview',      href: '#overview'   },
-        { label: 'Mission',       href: '#mission'    },
-        { label: 'Pain Points',   href: '#painpoints' },
-        { label: 'Decisions',     href: '#decisions'  },
-        { label: 'Form Process',  href: '#process'    },
-        { label: 'Reflection',    href: '#reflection' },
+        { label: 'Overview',   href: '#overview'   },
+        { label: 'Mission',    href: '#mission'    },
+        { label: 'Pain Points',href: '#painpoints' },
+        { label: 'Decisions',  href: '#decisions'  },
+        { label: 'Form Process',href: '#process'   },
+        { label: 'Reflection', href: '#reflection' },
       ],
-      'https://fountainhead.site/': [],   // ← ADD THIS
-      'sasfui.html': [
-        { label: 'Overview',      href: '#overview'   },
-        { label: 'Build',         href: '#build'      },
-        { label: 'Specs',         href: '#specs'      },
-        { label: 'Tabs',          href: '#tabs'       },
-        { label: 'Reflection',    href: '#reflection' },
-      ],
-      'waddle.html': [
-        { label: 'Overview',      href: '#overview'   },
-        { label: 'Mission',       href: '#mission'    },
-        { label: 'Decisions',     href: '#decisions'  },
-        { label: 'Solution',      href: '#solution'   },
-        { label: 'Process',       href: '#process'    },
-        { label: 'Reflection',    href: '#reflection' },
+      'navi.html': [
+        { label: 'Overview',   href: '#overview'   },
+        { label: 'Mission',    href: '#mission'    },
+        { label: 'Decisions',  href: '#decisions'  },
+        { label: 'Solution',   href: '#solution'   },
+        { label: 'Process',    href: '#process'    },
+        { label: 'Reflection', href: '#reflection' },
       ],
       'https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/preview': [],
     };
