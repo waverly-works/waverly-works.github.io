@@ -9,7 +9,6 @@
     "sasfui.html":   ["#overview", "#build",     "#specs",     "#tabs",      "#reflection"],
     "sasfds.html":   ["#overview", "#scope",     "#research",  "#expo",      "#reflection"],
     "navi.html":     ["#overview", "#mission",  "#decisions",  "#solution",  "#process",  "#reflection"],
-    "waddle.html":   ["#overview", "#mission", "#decisions", "#solution",   "#process",   "#reflection"],
   };
 
   const overlay   = document.getElementById("lightbox-overlay");
