@@ -65,7 +65,7 @@
       const style = document.createElement("style");
       style.id = "ascii-hero-styles";
       style.textContent = `
-        .ascii-hero-frame{position:relative;overflow:hidden;border-radius:28px;min-height:360px;}
+        .ascii-hero-frame{position:relative;overflow:hidden;border-radius:14px;min-height:360px;}
         .ascii-hero-frame > .ascii-hero__canvas{position:absolute;inset:0;font-family:'DM Mono',monospace;font-size:11px;line-height:1.1;white-space:pre;overflow:hidden;z-index:0;pointer-events:none;}
         .ascii-hero-frame > *:not(.ascii-hero__canvas){position:relative;z-index:1;}
         .ascii-hero__slider-wrap{position:absolute !important;bottom:16px !important;right:16px !important;top:auto !important;left:auto !important;z-index:2;display:inline-flex !important;width:auto !important;flex:none !important;align-items:center;gap:8px;background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:6px 14px;border-radius:999px;}
