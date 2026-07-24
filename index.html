@@ -4,77 +4,259 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio — Waverly Huang</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="icon" href=Images/favicon.ico.ocean.ico>
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ── Nav bar now lives above the hero, in normal flow, on the page background ── */
+    .page-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 22px;
+      gap: 12px;
+    }
+
+    /* This scopes tab-nav to sit inline here instead of using styles.css's
+       position:fixed top-right placement, since it now lives in normal flow. */
+    .page-topbar .tab-nav {
+      position: static;
+    }
+
+    /* ── Hero module now matches the project grid's width/padding ── */
+    .hero-container {
+      padding: 0 22px;
+    }
+
+    .hero-wrap {
+      position: relative;
+      width: 100%;
+      height: 55vh;
+      min-height: 300px;
+      max-height: 560px;
+      overflow: hidden;
+      margin-bottom: 0;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    #scene-canvas {
+      position: absolute;
+      inset: 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      line-height: 1.1;
+      white-space: pre;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      letter-spacing: 0em;
+      display: block;
+      box-sizing: border-box;
+    }
+
+    #hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(134, 162, 184, 0) 0%,
+        rgba(41, 54, 52, 0.073) 60%,
+        rgba(48, 63, 61, 0.132) 100%
+      );
+    }
+
+    .contact-pill {
+      pointer-events: all;
+      color: var(--text);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .contact-pill:hover {
+      transform: scale(1.03);
+    }
+
+    .hero-text {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      z-index: 20;
+      max-width: 400px;
+      pointer-events: none;
+    }
+
+    .hero-name {
+      font-family: var(--sans);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      line-height: 1.1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: clamp(18px, 1.2vw, 15px);
+      font-weight: 400;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.6;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+    }
+
+    .hero-sliders {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: clamp(200px, 24vw, 300px);
+    }
+
+    .slider-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.38);
+      border-radius: 999px;
+      padding: 6px 16px 6px 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+
+    .slider-icon {
+      font-size: 16px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 1;
+      opacity: 0.9;
+    }
+
+    input[type=range].season-range {
+      -webkit-appearance: none;
+      appearance: none;
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(to right,
+        rgba(120,60,180,0.88) 0%,
+        rgba(255,150,50,0.88) 25%,
+        rgba(255,225,90,0.9) 50%,
+        rgba(255,150,50,0.88) 75%,
+        rgba(120,60,180,0.88) 100%);
+      outline: none;
+      cursor: pointer;
+    }
+    input[type=range].season-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.22);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    input[type=range].season-range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    input[type=range].season-range::-moz-range-thumb {
+      width: 16px; height: 16px;
+      border-radius: 50%; background: #fff; border: none;
+    }
+    input[type=range].season-range::-moz-range-track {
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(to right,
+        rgba(32, 28, 78, 0.88) 100%,
+        rgba(120,60,180,0.88) 80%,
+        rgba(255,150,50,0.88) 25%,
+        rgba(255,225,90,0.9) 50%,
+        rgba(255,150,50,0.88) 75%,
+        rgba(120,60,180,0.88) 80%,
+        rgba(32, 28, 78, 0.88) 100%);
+    }
+
+    .below-hero { padding: 28px 22px 0; }
+    nav.tab-nav.standalone { display: none; }
+
+    /* 2-column project grid */
+    .projects-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .projects-row { display: contents; }
+
+    @media (max-width: 640px) {
+      .projects-section { grid-template-columns: 1fr; }
+      .page-topbar { flex-wrap: wrap; }
+    }
+  </style>
 </head>
 <body>
-  <main>
+
+  <div class="page-topbar">
+    <div class="mode-toggle-bar">
+      <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">✸</button>
+      <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">☽</button>
+    </div>
+
     <nav class="tab-nav">
-        <a href="index.html" class="tab active">Projects</a>
-        <a href="explore.html" class="tab">Explore</a>
-        <a href="about.html" class="tab">About</a>
-        <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" class="tab" target="_blank">Resume</a>
+      <a href="index.html" class="tab active">Projects</a>
+      <a href="explore.html" class="tab">Explore</a>
+      <a href="about.html" class="tab">About</a>
+      <a href="https://drive.google.com/file/d/1xq_m343v55XZ93HTP6_0ebYC2VO9rt2T/view?usp=sharing" class="tab" target="_blank">Resume</a>
     </nav>
-    
-    <div class="name-tiles" id="nameTiles">
-      <div class="tile" data-letter="w" style="--tile-color:#3bb8c3; --tile-top:26px;"></div>
-      <div class="tile" data-letter="a" style="--tile-color:#4cc9d4; --tile-top:3px;"></div>
-      <div class="tile" data-letter="v" style="--tile-color:#5ad4dc; --tile-top:30px;"></div>
-      <div class="tile" data-letter="e" style="--tile-color:#6bcbe3; --tile-top:0px;"></div>
-      <div class="tile" data-letter="r" style="--tile-color:#7ab8e8; --tile-top:25px;"></div>
-      <div class="tile" data-letter="l" style="--tile-color:#8aaaf0; --tile-top:6px;"></div>
-      <div class="tile" data-letter="y" style="--tile-color:#9b9de8; --tile-top:27px;"></div>
+
+    <a href="mailto:waverlyhuang2004@gmail.com" class="contact-pill">Contact Me!</a>
+  </div>
+
+  <div class="hero-container">
+    <div class="hero-wrap">
+      <div id="scene-canvas"></div>
+      <div id="hero-overlay"></div>
+
+      <div class="hero-text">
+        <div class="hero-name">waverly huang</div>
+        <div class="hero-sub">Product designer turning complex systems into intuitive, accessible experiences.<br> Shipping end-to-end work = no sweat 💡<br><br>Recently dabbling with experimental code &amp; computer vision 🔍</div>
+      </div>
+
+      <div class="hero-sliders">
+        <div class="slider-pill">
+          <span class="slider-icon" id="s-time-icon">☀️</span>
+          <input type="range" class="season-range" id="s-time" min="0" max="100" value="50">
+        </div>
+      </div>
     </div>
-  
-    <div class="bio-section">
-      <p class="bio-text-serif">
-        building things with observation & heart.
-      </p>
-      <p class="bio-text">
-        Waverly Huang is a curious
+  </div>
 
-        <span class="bio-tag expandable" data-expanded="false">
-          <strong>Product Designer ◓</strong>
-          <span class="bio-tag-extra-wrap">
-            <span class="bio-tag-extra-inner">
-              <span class="bio-tag-extra">&nbsp;who creates with scalablity &amp; touches of play</span>
-            </span>
-          </span>
-        </span>
-
-        from Pennsylvania &amp; New York. Studying @
-        
-        <span class="bio-tag expandable" data-expanded="false">
-          <strong>Rhode Island School of Design ✿</strong>
-          <span class="bio-tag-extra-wrap">
-            <span class="bio-tag-extra-inner">
-              <span class="bio-tag-extra">&nbsp;Industrial Design BFA</span>
-            </span>
-          </span>
-        </span>
-
-        &amp; open to work!
-      </p>
-    </div>
-   
-
-    <div class="projects-section" id="projects">
-
-
+  <main>
+    <div class="projects-section" id="projects" style="padding: 0 22px;">
 
       <div class="projects-row">
         <div class="project-card" data-project="https://fountainhead.site/">
-            <div class="project-image">
-              <video 
-                src="Images/project_thumbnails/fountainhead_demo_vid.mp4"
-                autoplay 
-                muted 
-                loop 
-                playsinline
-                class="project-video">
-              </video>
-            </div>
+          <div class="project-image">
+            <video src="Images/project_thumbnails/fountainhead_demo_vid.mp4" autoplay muted loop playsinline class="project-video"></video>
+          </div>
           <div class="project-info">
             <div class="project-name-row">
               <h3 class="project-name">Fountainhead</h3>
@@ -84,20 +266,15 @@
                 <span class="project-tag">Founding Designer</span>
               </div>
             </div>
-            <p class="project-description">0 → 100+ users & $10k in funding. Designed for a shipped screenwriting website.</p>
+            <p class="project-description">0 → 100+ users &amp; $10k in funding. Designed for a shipped screenwriting website.</p>
           </div>
         </div>
+      </div>
 
+      <div class="projects-row">
         <div class="project-card" data-project="tasktone.html">
           <div class="project-image">
-            <video 
-              src="Images/project_thumbnails/tasktone_update_thumbnail.mp4"
-              autoplay 
-              muted 
-              loop 
-              playsinline
-              class="project-video">
-            </video>
+            <video src="Images/project_thumbnails/tasktone_update_thumbnail.mp4" autoplay muted loop playsinline class="project-video"></video>
           </div>
           <div class="project-info">
             <div class="project-name-row">
@@ -111,16 +288,11 @@
             <p class="project-description">Designed physical + digital product system for users with memory loss. Inspired by my mom.</p>
           </div>
         </div>
-
-        
       </div>
 
       <div class="projects-row">
-
         <div class="project-card" data-project="sasfds.html">
-          <div class="project-image">
-            <img src="Images/project_thumbnails/sas_fds_thumbnail.png" alt="Zero State">
-          </div>
+          <div class="project-image"><img src="Images/project_thumbnails/sas_fds_thumbnail.png" alt="Zero State"></div>
           <div class="project-info">
             <div class="project-name-row">
               <h3 class="project-name">Website Redesign Concepts</h3>
@@ -133,11 +305,11 @@
             <p class="project-description">SAS Institute intern. Created redesign concepts for the Filament Design System site, now influencing live experiences for 100+ users.</p>
           </div>
         </div>
+      </div>
 
+      <div class="projects-row">
         <div class="project-card" data-project="sasfui.html">
-          <div class="project-image">
-            <img src="images/project_thumbnails/sas_thumbnail.png" alt="Zero State">
-          </div>
+          <div class="project-image"><img src="images/project_thumbnails/sas_thumbnail.png" alt="Zero State"></div>
           <div class="project-info">
             <div class="project-name-row">
               <h3 class="project-name">Zero State</h3>
@@ -147,17 +319,14 @@
                 <span class="project-tag">UX Writing</span>
               </div>
             </div>
-            <p class="project-description">SAS Institute intern. Created UI component & documentation shipped to thousands of real users.</p>
+            <p class="project-description">SAS Institute intern. Created UI component &amp; documentation shipped to thousands of real users.</p>
           </div>
         </div>
-
       </div>
 
       <div class="projects-row">
         <div class="project-card" data-project="navi.html">
-          <div class="project-image">
-            <img src="images/project_thumbnails/navi_thumbnail.png" alt="Navi">
-          </div>
+          <div class="project-image"><img src="images/project_thumbnails/navi_thumbnail.png" alt="Navi"></div>
           <div class="project-info">
             <div class="project-name-row">
               <h3 class="project-name">Navi</h3>
@@ -167,23 +336,24 @@
                 <span class="project-tag">RISD Make-A-Thon</span>
               </div>
             </div>
-            <p class="project-description">Scattered campus resources across apps & websites = lost students. RISD Navi won $200.</p>
+            <p class="project-description">Scattered campus resources across apps &amp; websites = lost students. RISD Navi won $200.</p>
           </div>
         </div>
-        <div class="project-card" data-project="https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/preview">
-          <div class="project-image">
-            <img src="Images/project_thumbnails/GardeningTool_thumbnail.png" alt="Gardening Tool">
-          </div>
+      </div>
+
+      <div class="projects-row">
+        <div class="project-card" data-project="biome.html">
+          <div class="project-image"><img src="images/project_thumbnails/BioMe_Thumbnail.png" alt="BioMe"></div>
           <div class="project-info">
             <div class="project-name-row">
-              <h3 class="project-name">Ergonomic Gardening Tool</h3>
+              <h3 class="project-name">BioMe</h3>
               <div class="project-tags">
-                <span class="project-tag">Physical Product</span>
-                <span class="project-tag">Accessibility</span>
-                <span class="project-tag">Brand Identity</span>
+                <span class="project-tag">FigmaBuild Hack-A-Thon</span>
+                <span class="project-tag">Mental Health</span>
+                <span class="project-tag">Mobile Design & Prototype</span>
               </div>
             </div>
-            <p class="project-description">Physical product design for users with limited grip strength. Fabricated within brand and ergonomic constraints, designed in the real world.</p>
+            <p class="project-description">In 48 hours, we designed an app that lets your emotions become gardens. Being vulnerable is now visible.</p>
           </div>
         </div>
       </div>
@@ -194,10 +364,7 @@
 
   <footer class="footer">
     <div class="footer-content">
-      <div class="mode-toggle-bar">
-        <button class="mode-btn" id="lightBtn" title="Light mode" aria-label="Light mode">✸</button>
-        <button class="mode-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">☽</button>
-      </div>
+      <div style="width:80px;"></div>
       <p class="footer-center">&copy; Waverly Huang 2026 &#10025; coded carefully, made with 💟 &amp; sips of 🍵</p>
       <div class="footer-right">
         <a href="https://www.linkedin.com/in/waverlyhuang/" target="_blank">LinkedIn</a> &#10022;
@@ -207,55 +374,29 @@
     </div>
   </footer>
 
-  <!-- ── Project Lightbox ──────────────────────────────────────────── -->
   <div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Project detail">
-
-      <!-- Prev / Next arrows — outside the modal window -->
-      <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous project">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next project">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous project">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next project">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
     <div id="lightbox-window">
       <div id="lightbox-loading"></div>
-
-      <!-- Close button 
-      <button id="lightbox-close" aria-label="Close project">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="10" stroke="#333" stroke-width="1.5"/>
-          <path d="M15 9L9 15M9 9l6 6" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>-->
-
-      <!-- Desktop sidebar nav -->
       <nav id="lightbox-sidebar" aria-label="Project sections"></nav>
-
-      <!-- Mobile nav button (hamburger-style) -->
-      <button id="lightbox-mobile-nav-btn" aria-label="Navigate sections" title="Navigate sections">
-        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button id="lightbox-mobile-nav-btn" aria-label="Navigate sections">
+        <svg viewBox="0 0 20 20" fill="none">
           <rect x="3" y="5" width="14" height="1.5" rx="0.75" fill="currentColor"/>
           <rect x="3" y="9.25" width="14" height="1.5" rx="0.75" fill="currentColor"/>
           <rect x="3" y="13.5" width="14" height="1.5" rx="0.75" fill="currentColor"/>
         </svg>
       </button>
-
-      <!-- Mobile nav modal -->
       <div id="lightbox-mobile-nav-modal" role="dialog" aria-label="Jump to section">
         <div id="lightbox-mobile-nav-modal-inner">
-          <div class="mobile-nav-header">
-            <span>Jump to section</span>
-               <!--<button id="lightbox-close" aria-label="Close project">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </button>-->
-          </div>
+          <div class="mobile-nav-header"><span>Jump to section</span></div>
           <nav id="lightbox-mobile-nav-links"></nav>
         </div>
       </div>
-
       <div id="lightbox-content">
         <iframe id="lightbox-iframe" title="Project content"></iframe>
       </div>
@@ -265,6 +406,22 @@
   <script src="script.js"></script>
   <script src="sidebar.js"></script>
   <script src="index.js"></script>
+  <script src="tree.js"></script>
+  <script>
+    // Swap the slider icon between sun/moon as it crosses day/night
+    (function(){
+      const slider = document.getElementById('s-time');
+      const icon = document.getElementById('s-time-icon');
+      if(!slider || !icon) return;
+      function updateIcon(){
+        const v = parseFloat(slider.value);
+        // rough day window matches the sunrise/sunset split in tree.js
+        icon.textContent = (v > 20 && v < 80) ? '☀️' : '🌙';
+      }
+      slider.addEventListener('input', updateIcon);
+      updateIcon();
+    })();
+  </script>
 
 </body>
 </html>

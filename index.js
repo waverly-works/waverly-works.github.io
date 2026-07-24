@@ -9,6 +9,14 @@
   
     const projectSidebars = {
       'https://fountainhead.site/': [],
+      'tasktone.html': [
+        { label: 'Overview',   href: '#overview'   },
+        { label: 'Mission',    href: '#mission'    },
+        { label: 'Pain Points',href: '#painpoints' },
+        { label: 'Decisions',  href: '#decisions'  },
+        { label: 'Form Process',href: '#process'   },
+        { label: 'Reflection', href: '#reflection' },
+      ],
       'sasfds.html': [
         { label: 'Overview',   href: '#overview'   },
         { label: 'Scope',      href: '#scope'      },
@@ -23,14 +31,6 @@
         { label: 'Tabs',       href: '#tabs'       },
         { label: 'Reflection', href: '#reflection' },
       ],
-      'tasktone.html': [
-        { label: 'Overview',   href: '#overview'   },
-        { label: 'Mission',    href: '#mission'    },
-        { label: 'Pain Points',href: '#painpoints' },
-        { label: 'Decisions',  href: '#decisions'  },
-        { label: 'Form Process',href: '#process'   },
-        { label: 'Reflection', href: '#reflection' },
-      ],
       'navi.html': [
         { label: 'Overview',   href: '#overview'   },
         { label: 'Mission',    href: '#mission'    },
@@ -39,7 +39,14 @@
         { label: 'Process',    href: '#process'    },
         { label: 'Reflection', href: '#reflection' },
       ],
-      'https://drive.google.com/file/d/1OEFPpVZ7_9pYOWnbHrQfuff9GV5yCxTG/preview': [],
+      'biome.html': [
+        { label: 'Overview',   href: '#overview'   },
+        { label: 'Mission',    href: '#mission'    },
+        { label: 'Solution',   href: '#solution'   },
+        { label: 'Use Cases',  href: '#usecases'   },
+        { label: 'Process',    href: '#process'    },
+        { label: 'Reflection', href: '#reflection' },
+      ]
     };
   
     const projectOrder = Object.keys(projectSidebars);
