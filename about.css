@@ -169,19 +169,26 @@ body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
 }
 
 
-#nameTiles:empty { display: none; }
+/* ── Bio hero (matches archive-hero pattern exactly) ─────────────── */
+.bio-hero {
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.403);
+    opacity: 0;
+    animation: fadeUpIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
 .bio-hero.ascii-hero-frame {
     height: 55vh;
     min-height: 360px;
     max-height: 360px;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    margin-bottom: 20px;
 }
+
 .bio-hero-text {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
+    position: relative;
+    left: 50px;
+    top: 12rem;
     z-index: 20;
     max-width: 460px;
     pointer-events: none;
@@ -195,28 +202,33 @@ body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
     font-family: var(--sans);
     font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.01em;
+    color: rgba(27, 35, 56, 0.92);
+    letter-spacing: 0.02em;
     margin-bottom: 8px;
     line-height: 1.1;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 .bio-hero-text .bio-text-serif,
 .bio-hero-text .bio-text {
     font-family: var(--sans);
-    font-size: clamp(13px, 1.1vw, 15px);
+    font-size: clamp(15px, 1.4vw, 18px);
     font-weight: 400;
-    color: rgba(255,255,255,0.92);
+    color: rgba(41, 54, 86, 0.92);
     line-height: 1.6;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.35);
 }
+
 .bio-hero-text .bio-text-serif {
+    /* the site-wide gradient text-clip is too low-contrast over the
+       animated scene — drop it here so it reads like hero-sub */
     background: none;
     -webkit-text-fill-color: unset;
     background-clip: unset;
     font-weight: 600;
     margin-bottom: 6px;
 }
+
+/* tag pills keep their normal light/dark-mode-aware text color,
+   since they have their own light pill background and shouldn't
+   turn white with the rest of the hero text */
 .bio-hero-text .bio-tag,
 .bio-hero-text .bio-tag-extra {
     color: var(--text);
@@ -241,7 +253,7 @@ body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
     pointer-events: auto;
 }
 @media (prefers-reduced-motion: reduce) {
-    .bio-section { opacity: 1; animation: none; }
+    .bio-hero, .bio-section { opacity: 1; animation: none; }
     .stack-item { opacity: 1; }
     .bottom-section { opacity: 1; transform: none; transition: none; }
 }
@@ -251,7 +263,7 @@ body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
 }
 
 .section-label {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 20px;
@@ -417,7 +429,7 @@ body.dark-mode .leadership-details a { color: #6aadff; }
 }
 
 .life-title {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-weight: 400;
     letter-spacing: -0.01em;
     color: var(--text);
@@ -566,10 +578,7 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
     }
 
  
-    .bio-info { padding-top: 6rem; }
-    .bio-name { font-size: 2.5rem; }
-    .bio-subtitle { font-size: 1rem; }
-    .bio-description { font-size: 1rem; }
+    .bio-hero-text .bio-name { font-size: 2.2rem; }
 
     .bottom-section {
         flex-direction: column;

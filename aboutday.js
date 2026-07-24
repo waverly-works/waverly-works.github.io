@@ -8,28 +8,20 @@
    and the sun itself, floating in the upper-right portion of the
    hero. The power slider is a small fixed-width pill in the
    bottom-right corner.
+
+   This mirrors explore.js: the hero markup (.bio-hero > .bio-hero-text)
+   already exists statically in the HTML, so this script just decorates
+   the existing .bio-hero in place — it does NOT build its own wrapper.
    ============================================================ */
    (function () {
     function init() {
-      const nameTiles = document.getElementById("nameTiles");
-      const bioSection = document.querySelector(".bio-section");
-      if (!nameTiles || !bioSection) return;
+      const hero = document.querySelector(".bio-hero");
+      if (!hero) return;
 
       injectStyles();
 
-      // Build (or reuse) the hero wrapper around the existing heading/bio.
-      let hero = document.querySelector(".about-hero");
-      if (!hero) {
-        hero = document.createElement("div");
-        hero.className = "about-hero ascii-hero-frame";
-        nameTiles.parentNode.insertBefore(hero, nameTiles);
-      
-        const textWrap = document.createElement("div");
-        textWrap.className = "about-hero-text";
-        textWrap.appendChild(nameTiles);
-        textWrap.appendChild(bioSection);
-        hero.appendChild(textWrap);
-      }
+      hero.classList.add("ascii-hero-frame");
+
       const canvas = document.createElement("div");
       canvas.id = "aboutSceneCanvas";
       canvas.className = "ascii-hero__canvas";
