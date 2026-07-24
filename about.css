@@ -41,6 +41,42 @@ body.dark-mode {
     100% { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Page topbar (matches index.html) ─────────────────────────────── */
+.page-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    gap: 12px;
+}
+
+.page-topbar .tab-nav {
+    position: static;
+}
+
+.contact-pill {
+    pointer-events: all;
+    color: var(--text);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+}
+.contact-pill:hover {
+    transform: scale(1.03);
+}
+
+@media (max-width: 640px) {
+    .page-topbar { flex-wrap: wrap; }
+}
+
 /* ── Body ─────────────────────────────────────────────────────────── */
 body {
     font-family: var(--sans);
@@ -133,41 +169,58 @@ body.dark-mode .bio-tag-extra-inner a.bio-tag-link:visited {
 }
 
 
-.bio-section {
-    opacity: 0;
-    animation: fadeUpIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-}
-.bio-section p {
-    margin-bottom: 1rem;
-}
-
-.bio-name {
-    font-family: var(--serif);
-    font-size: 3.5rem;
-    font-weight: 400;
-    margin-bottom: 30px;
-    letter-spacing: -0.02em;
-    color: var(--text);
-}
-
-.bio-subtitle {
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    font-weight: 600;
+#nameTiles:empty { display: none; }
+.bio-hero.ascii-hero-frame {
+    height: 55vh;
+    min-height: 360px;
+    max-height: 360px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     margin-bottom: 20px;
-    margin-top: 20px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
 }
-
-.bio-description {
+.bio-hero-text {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 20;
+    max-width: 460px;
+    pointer-events: none;
+}
+.bio-hero-text .bio-name,
+.bio-hero-text .bio-section,
+.bio-hero-text .bio-tag {
+    pointer-events: auto;
+}
+.bio-hero-text .bio-name {
     font-family: var(--sans);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    font-weight: 300;
-    letter-spacing: 0.04em;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    line-height: 1.1;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.bio-hero-text .bio-text-serif,
+.bio-hero-text .bio-text {
+    font-family: var(--sans);
+    font-size: clamp(13px, 1.1vw, 15px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.6;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+}
+.bio-hero-text .bio-text-serif {
+    background: none;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.bio-hero-text .bio-tag,
+.bio-hero-text .bio-tag-extra {
     color: var(--text);
+    text-shadow: none;
 }
 
 /* ── Bottom Section: Experience + Leadership ──────────────────────── */
@@ -422,7 +475,7 @@ body.dark-mode .leadership-details a { color: #6aadff; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(17,17,16,0.35); }
 body.dark-mode ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
 body.dark-mode ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
-* { scrollbar-width: thin; scrollbar-color: rgba(17,17,16,0.2) transparent; }
+* { scrollbar-width: thin; scrollbar-color: rgba(176, 104, 42, 0.2) transparent; }
 body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
 
 /* ── Responsive ─────────────────────────────────────────────────────── */
@@ -476,7 +529,6 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
 
 @media (max-width: 768px) {
     main {
-        margin-top: 80px;
         padding: 16px 16px 0;
     }
 
@@ -551,6 +603,8 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
     }
 
     .life-gallery-item:last-child:nth-child(odd) { width: 100%; }
+
+    .page-topbar { flex-wrap: wrap; }
 }
 
 @media (max-width: 480px) {

@@ -352,7 +352,7 @@ body.dark-mode .bio-text-serif {
 .bio-tag.expandable { transition: padding 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
 /* ── Projects grid ────────────────────────────────────────────────── */
-main { padding: 22px 22px 0; }
+main { padding: 22px 0 0; }
 
 .projects-row {
     display: grid;
@@ -485,9 +485,8 @@ main { padding: 22px 22px 0; }
 .project-card:hover .project-info { opacity: 0.45; }
 
 .project-name {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-size: clamp(1.2rem, 1.3vw, 1.15rem);
-    letter-spacing: 0.04em;
     font-weight: 600;
     margin-bottom: 3px;
     color: var(--text);
