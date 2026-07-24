@@ -119,9 +119,10 @@ main {
 
 /* ── Bottom-left text box, same pattern as index.html's .hero-text ── */
 .archive-hero-text {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
+  letter-spacing: 0.02em;
+  position: relative;
+  left: 50px;
+  top: 12rem;
   z-index: 20;
   max-width: 460px;
   pointer-events: none;
@@ -592,7 +593,7 @@ body.dark-mode .mode-toggle-bar { background: rgba(104, 103, 103, 0.45); }
 
 /* ── Title ───────────────────────────────────────────────────── */
 .spotlight-card__title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.45rem;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -745,7 +746,7 @@ body.dark-mode * { scrollbar-color: rgba(255,255,255,0.15) transparent; }
    }
    
    .coding-card__name {
-     font-family: var(--serif);
+     font-family: var(--sans);
      font-size: clamp(1rem, 1.3vw, 1.15rem);
      letter-spacing: 0.02em;
      font-weight: 600;
