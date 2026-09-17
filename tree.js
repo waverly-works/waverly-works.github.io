@@ -2,6 +2,28 @@
   const canvas = document.getElementById("scene-canvas");
   if(!canvas) return;
 
+  // ── Perf: figure out if we're on a small/touch device so we can render
+  // a coarser grid and a lower frame rate there. This is the single
+  // biggest lever for mobile CPU/battery use, since the whole scene is
+  // re-rasterized from scratch every rendered frame. ──
+  const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const isNarrow = window.innerWidth < 700;
+  const IS_MOBILE = isCoarsePointer || isNarrow;
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Target frame rate for the ambient animation. Desktop can afford a
+  // smoother loop; mobile renders far fewer frames per second since this
+  // is decorative background art, not something the eye tracks closely.
+  const TARGET_FPS = IS_MOBILE ? 12 : 30;
+  const FRAME_INTERVAL = 1000 / TARGET_FPS;
+
+  // Quantizing colors collapses many near-identical per-pixel shades into
+  // shared buckets, which drastically cuts the number of <span> tags the
+  // renderer has to open/close per frame (this was the biggest hidden
+  // cost — building + laying out thousands of tiny spans every frame).
+  const COLOR_STEP = IS_MOBILE ? 8 : 4;
+  function quant(v){ return Math.round(v / COLOR_STEP) * COLOR_STEP; }
+
   let W = 72, H = 26;
 
   function measureGrid(){
@@ -14,8 +36,15 @@
     const wrap = canvas.parentElement;
     const containerW = wrap ? wrap.getBoundingClientRect().width : window.innerWidth;
     const containerH = wrap ? wrap.getBoundingClientRect().height : 400;
-    W = Math.max(40, Math.floor(containerW / cw));
-    H = Math.max(18, Math.floor(containerH / (11 * 1.1)));
+    let w = Math.max(40, Math.floor(containerW / cw));
+    let h = Math.max(18, Math.floor(containerH / (11 * 1.1)));
+    // Cap the grid resolution on mobile — fewer cells means fewer canopy
+    // scans, fewer grass cells, and a much smaller HTML string per frame.
+    if(IS_MOBILE){
+      w = Math.min(w, 56);
+      h = Math.min(h, 20);
+    }
+    W = w; H = h;
   }
   measureGrid();
 
@@ -58,42 +87,55 @@
   function buildGrassNoise(){grassNoise=[];for(let y=0;y<H;y++){grassNoise.push([]);for(let x=0;x<W;x++)grassNoise[y].push(Math.random());}}
   buildGrassNoise();
 
+  // ── Perf: canopy shape + per-cell "which leaf character" and density
+  // decisions used to be re-rolled with fresh Math.random() calls for
+  // every cell, every single frame. That's expensive and also invisible
+  // as extra "quality" (it just re-dithers the same-looking leaf mass).
+  // We now roll that randomness once per tree build (on init/resize) and
+  // reuse it every frame — only the color (via leafRgb/time) still
+  // animates, which is what actually reads as "alive" to the eye.
+  let treeCanopyCache = { main: null, left: null, right: null };
+
   let t=0;
 
   const SUN_R=2.6, MOON_R=2.2;
 
-  function paintCanopy(set,cx,cy,rx,ry,GRASS_Y,lChars,density){
+  function buildCanopyCells(cx,cy,rx,ry,GRASS_Y,lCharsLen,density,seedOffset){
+    const cells=[];
     for(let dy=-Math.ceil(ry+1);dy<=Math.ceil(ry+1);dy++){
       for(let dx=-Math.ceil(rx+1);dx<=Math.ceil(rx+1);dx++){
         const px=Math.round(cx+dx), py=Math.round(cy+dy);
         if(py<0||py>=GRASS_Y||px<0||px>=W) continue;
         const inside=(dx*dx)/(rx*rx)+(dy*dy)/(ry*ry);
-        const jag=0.28*Math.sin(dx*2.5+dy*1.9+t*0.25)+0.18*Math.sin(dx*1.3-dy*3.1+t*0.18)+0.12*Math.sin(dx*4.1+dy*0.7);
-        if(inside+jag>1.08) continue;
-        if(inside>0.5&&Math.random()<0.08) continue;
+        // Keep a slightly generous static bound (jag varies with time so
+        // we can't bake the exact edge in — but this trims the vast
+        // majority of empty bounding-box cells out of the per-frame walk).
+        if(inside>1.5) continue;
+        if(inside>0.5 && Math.random()<0.08) continue;
         if(Math.random() > density) continue;
-        const rgb=leafRgb(px,py);
-        const ci=Math.abs(px*3+py*7+Math.floor(t*0.3))%lChars.length;
-        set(px,py+Math.round(Math.sin(t*0.4+px*0.3)*0.3),lChars[ci],rgb);
+        cells.push({dx,dy,px,py,inside});
       }
+    }
+    return cells;
+  }
+
+  function paintCanopyCached(set,cells,lChars){
+    for(let i=0;i<cells.length;i++){
+      const c=cells[i];
+      const dx=c.dx, dy=c.dy;
+      const jag=0.28*Math.sin(dx*2.5+dy*1.9+t*0.25)+0.18*Math.sin(dx*1.3-dy*3.1+t*0.18)+0.12*Math.sin(dx*4.1+dy*0.7);
+      if(c.inside+jag>1.08) continue;
+      const rgb=leafRgb(c.px,c.py);
+      const ci=Math.abs(c.px*3+c.py*7+Math.floor(t*0.3))%lChars.length;
+      set(c.px,c.py+Math.round(Math.sin(t*0.4+c.px*0.3)*0.3),lChars[ci],rgb);
     }
   }
 
   // ── MAIN TREE ──
-  function drawMainTree(set,cx,GRASS_Y,H,W,brRgb){
+  function buildMainTreeTrunkBranches(cx,GRASS_Y){
     const tx=cx-1;
     const CROWN_BOT=Math.floor(GRASS_Y*0.55);
     const TRUNK_TOP=Math.floor(GRASS_Y*0.42);
-    const lCharsMain=["@","&","#","Q","0","o","q","G"];
-
-    const bk0=lerpRgb([40,24,12],[68,38,16],curL), bk1=lerpRgb([32,18,10],[55,30,12],curL);
-    for(let y=TRUNK_TOP;y<GRASS_Y;y++){
-      set(tx,  y, y%3===0?'{':(y%5===2?'(':  '|'), bk0);
-      set(tx+1,y, y%3===0?'}':(y%5===2?')':  '|'), bk1);
-      if(y>=GRASS_Y-2){ set(tx-1,y,'/',bk1); set(tx+2,y,'\\',bk1); }
-    }
-    for(let y=TRUNK_TOP-3;y<TRUNK_TOP;y++) set(tx,y,'|',brRgb);
-
     const branches=[
       [[tx-2,CROWN_BOT-1,'/'],[tx-3,CROWN_BOT-2,'-'],[tx-4,CROWN_BOT-3,'/'],[tx-5,CROWN_BOT-4,'-'],[tx-6,CROWN_BOT-5,'/'],[tx-7,CROWN_BOT-5,'-']],
       [[tx-3,CROWN_BOT-3,'\\'],[tx-4,CROWN_BOT-4,'-'],[tx-5,CROWN_BOT-5,'\\']],
@@ -104,41 +146,55 @@
       [[tx,TRUNK_TOP-4,'|'],[tx,TRUNK_TOP-5,'/'],[tx-1,TRUNK_TOP-6,'-']],
       [[tx+1,TRUNK_TOP-5,'\\'],[tx+2,TRUNK_TOP-6,'-']],
     ];
-    branches.forEach(b=>b.forEach(([bx,by,bc])=>{if(by>=0&&by<GRASS_Y&&bx>=0&&bx<W)set(bx,by,bc,brRgb);}));
-
-    const crownCX=cx, crownCY=Math.floor(GRASS_Y*0.35);
-    const CRX=10, CRY=8;
-    const density=0.82;
-    const bumps=[
-      {cx:crownCX-9,cy:crownCY+1,rx:3.5,ry:3},
-      {cx:crownCX-7,cy:crownCY-5,rx:4,ry:3},
-      {cx:crownCX-3,cy:crownCY-7,rx:4,ry:3.5},
-      {cx:crownCX+2,cy:crownCY-8,rx:3.5,ry:3},
-      {cx:crownCX+6,cy:crownCY-5,rx:3.5,ry:3},
-      {cx:crownCX+9,cy:crownCY,rx:3,ry:3.5},
-      {cx:crownCX+7,cy:crownCY+3,rx:3,ry:2.5},
-      {cx:crownCX-5,cy:crownCY+4,rx:3.5,ry:2.5},
-      {cx:crownCX,cy:crownCY+5,rx:4,ry:2.5},
-    ];
-    paintCanopy(set,crownCX,crownCY,CRX,CRY,GRASS_Y,lCharsMain,density);
-    bumps.forEach(b=>paintCanopy(set,b.cx,b.cy,b.rx,b.ry,GRASS_Y,lCharsMain,density));
+    return {tx,CROWN_BOT,TRUNK_TOP,branches};
   }
 
-  // ── LEFT TREE ──
-  function drawLeftTree(set,cx,GRASS_Y,H,W,brRgb){
-    const tx=cx-1;
-    const CROWN_BOT=Math.floor(GRASS_Y*0.58);
-    const TRUNK_TOP=Math.floor(GRASS_Y*0.46);
-    const lCharsLeft=["*","^","v","Y","y","n","u","w"];
-
+  function drawTrunkAndBranches(set,tx,TRUNK_TOP,GRASS_Y,branches,brRgb,trunkTopExtra){
     const bk0=lerpRgb([40,24,12],[68,38,16],curL), bk1=lerpRgb([32,18,10],[55,30,12],curL);
     for(let y=TRUNK_TOP;y<GRASS_Y;y++){
       set(tx,  y, y%3===0?'{':(y%5===2?'(':  '|'), bk0);
       set(tx+1,y, y%3===0?'}':(y%5===2?')':  '|'), bk1);
       if(y>=GRASS_Y-2){ set(tx-1,y,'/',bk1); set(tx+2,y,'\\',bk1); }
     }
-    for(let y=TRUNK_TOP-2;y<TRUNK_TOP;y++) set(tx,y,'|',brRgb);
+    for(let y=TRUNK_TOP-trunkTopExtra;y<TRUNK_TOP;y++) set(tx,y,'|',brRgb);
+    branches.forEach(b=>b.forEach(([bx,by,bc])=>{if(by>=0&&by<GRASS_Y&&bx>=0&&bx<W)set(bx,by,bc,brRgb);}));
+  }
 
+  function buildTreeCanopy(cx,GRASS_Y,crownFrac,bumps,CRX,CRY,density){
+    const crownCY=Math.floor(GRASS_Y*crownFrac);
+    let cells = buildCanopyCells(cx,crownCY,CRX,CRY,GRASS_Y,0,density);
+    bumps.forEach(b=>{cells = cells.concat(buildCanopyCells(b.cx,b.cy,b.rx,b.ry,GRASS_Y,0,density));});
+    return cells;
+  }
+
+  function drawMainTree(set,cx,GRASS_Y,brRgb){
+    const {tx,TRUNK_TOP,branches}=buildMainTreeTrunkBranches(cx,GRASS_Y);
+    const lCharsMain=["@","&","#","Q","0","o","q","G"];
+    drawTrunkAndBranches(set,tx,TRUNK_TOP,GRASS_Y,branches,brRgb,3);
+    if(!treeCanopyCache.main){
+      const crownCX=cx;
+      const bumps=[
+        {cx:crownCX-9,cy:Math.floor(GRASS_Y*0.35)+1,rx:3.5,ry:3},
+        {cx:crownCX-7,cy:Math.floor(GRASS_Y*0.35)-5,rx:4,ry:3},
+        {cx:crownCX-3,cy:Math.floor(GRASS_Y*0.35)-7,rx:4,ry:3.5},
+        {cx:crownCX+2,cy:Math.floor(GRASS_Y*0.35)-8,rx:3.5,ry:3},
+        {cx:crownCX+6,cy:Math.floor(GRASS_Y*0.35)-5,rx:3.5,ry:3},
+        {cx:crownCX+9,cy:Math.floor(GRASS_Y*0.35),rx:3,ry:3.5},
+        {cx:crownCX+7,cy:Math.floor(GRASS_Y*0.35)+3,rx:3,ry:2.5},
+        {cx:crownCX-5,cy:Math.floor(GRASS_Y*0.35)+4,rx:3.5,ry:2.5},
+        {cx:crownCX,cy:Math.floor(GRASS_Y*0.35)+5,rx:4,ry:2.5},
+      ];
+      treeCanopyCache.main = buildTreeCanopy(crownCX,GRASS_Y,0.35,bumps,10,8,0.82);
+    }
+    paintCanopyCached(set,treeCanopyCache.main,lCharsMain);
+  }
+
+  // ── LEFT TREE ──
+  function drawLeftTree(set,cx,GRASS_Y,brRgb){
+    const tx=cx-1;
+    const CROWN_BOT=Math.floor(GRASS_Y*0.58);
+    const TRUNK_TOP=Math.floor(GRASS_Y*0.46);
+    const lCharsLeft=["*","^","v","Y","y","n","u","w"];
     const branches=[
       [[tx-2,CROWN_BOT-1,'/'],[tx-3,CROWN_BOT-2,'-'],[tx-4,CROWN_BOT-3,'/'],[tx-5,CROWN_BOT-4,'-'],[tx-6,CROWN_BOT-4,'/']],
       [[tx-3,CROWN_BOT-3,'\\'],[tx-4,CROWN_BOT-4,'-'],[tx-5,CROWN_BOT-4,'\\']],
@@ -147,40 +203,31 @@
       [[tx+3,TRUNK_TOP-1,'\\'],[tx+4,TRUNK_TOP-2,'-'],[tx+5,TRUNK_TOP-3,'\\']],
       [[tx,TRUNK_TOP-4,'|'],[tx-1,TRUNK_TOP-5,'/']],
     ];
-    branches.forEach(b=>b.forEach(([bx,by,bc])=>{if(by>=0&&by<GRASS_Y&&bx>=0&&bx<W)set(bx,by,bc,brRgb);}));
-
-    const crownCX=cx-1, crownCY=Math.floor(GRASS_Y*0.38);
-    const CRX=7, CRY=7.5;
-    const density=0.82;
-    const bumps=[
-      {cx:crownCX-6,cy:crownCY+1,rx:2.5,ry:2.5},
-      {cx:crownCX-5,cy:crownCY-5,rx:3,ry:2.5},
-      {cx:crownCX-1,cy:crownCY-7,rx:3,ry:3},
-      {cx:crownCX+3,cy:crownCY-6,rx:2.5,ry:2.5},
-      {cx:crownCX+6,cy:crownCY-2,rx:2.5,ry:3},
-      {cx:crownCX+5,cy:crownCY+3,rx:2,ry:2},
-      {cx:crownCX-3,cy:crownCY+4,rx:2.5,ry:1.8},
-      {cx:crownCX,cy:crownCY+5,rx:3,ry:2},
-    ];
-    paintCanopy(set,crownCX,crownCY,CRX,CRY,GRASS_Y,lCharsLeft,density);
-    bumps.forEach(b=>paintCanopy(set,b.cx,b.cy,b.rx,b.ry,GRASS_Y,lCharsLeft,density));
+    drawTrunkAndBranches(set,tx,TRUNK_TOP,GRASS_Y,branches,brRgb,2);
+    if(!treeCanopyCache.left){
+      const crownCX=cx-1;
+      const cy=Math.floor(GRASS_Y*0.38);
+      const bumps=[
+        {cx:crownCX-6,cy:cy+1,rx:2.5,ry:2.5},
+        {cx:crownCX-5,cy:cy-5,rx:3,ry:2.5},
+        {cx:crownCX-1,cy:cy-7,rx:3,ry:3},
+        {cx:crownCX+3,cy:cy-6,rx:2.5,ry:2.5},
+        {cx:crownCX+6,cy:cy-2,rx:2.5,ry:3},
+        {cx:crownCX+5,cy:cy+3,rx:2,ry:2},
+        {cx:crownCX-3,cy:cy+4,rx:2.5,ry:1.8},
+        {cx:crownCX,cy:cy+5,rx:3,ry:2},
+      ];
+      treeCanopyCache.left = buildTreeCanopy(crownCX,GRASS_Y,0.38,bumps,7,7.5,0.82);
+    }
+    paintCanopyCached(set,treeCanopyCache.left,lCharsLeft);
   }
 
   // ── RIGHT TREE ──
-  function drawRightTree(set,cx,GRASS_Y,H,W,brRgb){
+  function drawRightTree(set,cx,GRASS_Y,brRgb){
     const tx=cx-1;
     const CROWN_BOT=Math.floor(GRASS_Y*0.57);
     const TRUNK_TOP=Math.floor(GRASS_Y*0.45);
     const lCharsRight=["O","o","(",")","{","}","s","S","8"];
-
-    const bk0=lerpRgb([40,24,12],[68,38,16],curL), bk1=lerpRgb([32,18,10],[55,30,12],curL);
-    for(let y=TRUNK_TOP;y<GRASS_Y;y++){
-      set(tx,  y, y%3===0?'{':(y%5===2?'(':  '|'), bk0);
-      set(tx+1,y, y%3===0?'}':(y%5===2?')':  '|'), bk1);
-      if(y>=GRASS_Y-2){ set(tx-1,y,'/',bk1); set(tx+2,y,'\\',bk1); }
-    }
-    for(let y=TRUNK_TOP-2;y<TRUNK_TOP;y++) set(tx,y,'|',brRgb);
-
     const branches=[
       [[tx-2,CROWN_BOT-1,'/'],[tx-3,CROWN_BOT-2,'-'],[tx-4,CROWN_BOT-3,'/'],[tx-5,CROWN_BOT-4,'-']],
       [[tx-3,CROWN_BOT-3,'\\'],[tx-4,CROWN_BOT-4,'-'],[tx-5,CROWN_BOT-4,'\\']],
@@ -190,30 +237,28 @@
       [[tx+3,TRUNK_TOP-1,'\\'],[tx+4,TRUNK_TOP-2,'-'],[tx+5,TRUNK_TOP-3,'\\'],[tx+6,TRUNK_TOP-4,'-']],
       [[tx,TRUNK_TOP-4,'|'],[tx+1,TRUNK_TOP-5,'\\']],
     ];
-    branches.forEach(b=>b.forEach(([bx,by,bc])=>{if(by>=0&&by<GRASS_Y&&bx>=0&&bx<W)set(bx,by,bc,brRgb);}));
-
-    const crownCX=cx+1, crownCY=Math.floor(GRASS_Y*0.37);
-    const CRX=9, CRY=6;
-    const density=0.82;
-    const bumps=[
-      {cx:crownCX-8,cy:crownCY,rx:3,ry:2.5},
-      {cx:crownCX-6,cy:crownCY-3,rx:3,ry:2.5},
-      {cx:crownCX-2,cy:crownCY-5,rx:3.5,ry:2.8},
-      {cx:crownCX+3,cy:crownCY-5,rx:3,ry:2.5},
-      {cx:crownCX+7,cy:crownCY-2,rx:2.5,ry:2.8},
-      {cx:crownCX+8,cy:crownCY+2,rx:2.5,ry:2},
-      {cx:crownCX+2,cy:crownCY+4,rx:3.5,ry:2},
-      {cx:crownCX-4,cy:crownCY+3,rx:3,ry:2},
-    ];
-    paintCanopy(set,crownCX,crownCY,CRX,CRY,GRASS_Y,lCharsRight,density);
-    bumps.forEach(b=>paintCanopy(set,b.cx,b.cy,b.rx,b.ry,GRASS_Y,lCharsRight,density));
+    drawTrunkAndBranches(set,tx,TRUNK_TOP,GRASS_Y,branches,brRgb,2);
+    if(!treeCanopyCache.right){
+      const crownCX=cx+1;
+      const cy=Math.floor(GRASS_Y*0.37);
+      const bumps=[
+        {cx:crownCX-8,cy:cy,rx:3,ry:2.5},
+        {cx:crownCX-6,cy:cy-3,rx:3,ry:2.5},
+        {cx:crownCX-2,cy:cy-5,rx:3.5,ry:2.8},
+        {cx:crownCX+3,cy:cy-5,rx:3,ry:2.5},
+        {cx:crownCX+7,cy:cy-2,rx:2.5,ry:2.8},
+        {cx:crownCX+8,cy:cy+2,rx:2.5,ry:2},
+        {cx:crownCX+2,cy:cy+4,rx:3.5,ry:2},
+        {cx:crownCX-4,cy:cy+3,rx:3,ry:2},
+      ];
+      treeCanopyCache.right = buildTreeCanopy(crownCX,GRASS_Y,0.37,bumps,9,6,0.82);
+    }
+    paintCanopyCached(set,treeCanopyCache.right,lCharsRight);
   }
 
   // ── SUN / MOON — single celestial body, position + identity driven by TIME ──
   function drawCelestial(set,GRASS_Y,H,W){
     const TIME = ((timeSlider?parseFloat(timeSlider.value):50) / 100) % 1;
-    // topY leaves clearance at the top of the canvas for the nav bar overlay —
-    // the sun/moon arc never rises above this row.
     const topY = H*0.24, horizonY = GRASS_Y*0.98;
 
     const sunrise=0.2, sunset=0.8;
@@ -228,10 +273,6 @@
       isSun = false;
     }
 
-    // The arc's peak (p=0.5, its highest and most visible point) would otherwise
-    // land at horizontal center — directly behind the middle tree. Give the sun's
-    // arc a midpoint shifted left of center and the moon's shifted right, by an
-    // equal amount, so the peak clears the tree on both sides.
     const CENTER_FRAC = 0.5, PEAK_OFFSET = 0.09, HALF_SPAN = 0.42;
     const midFrac = isSun ? (CENTER_FRAC - PEAK_OFFSET) : (CENTER_FRAC + PEAK_OFFSET);
     const cxFrac = (midFrac - HALF_SPAN) + p*(HALF_SPAN*2);
@@ -249,7 +290,6 @@
       const dist=Math.sqrt((dx*asp)*(dx*asp)+dy*dy), px=Math.round(cx+dx), py=Math.round(cy+dy);
       if(dist<R-0.15) set(px,py, isSun ? ["O","0","o","Q","O","0","o"][Math.abs((px*3+py*5+Math.floor(t*0.4))%7)] : ["O","0","o"][Math.abs((px*3+py*5)%3)], coreRgb);
       else if(dist<R+0.25) set(px,py,'o',rimRgb);
-      // Only the sun gets the sparkling ray glow — the moon stays a clean, still disc.
       else if(isSun && dist<R+1.4 && Math.random()<0.55) set(px,py,['.','`',"'",'*'][Math.abs((px*7+py*11+Math.floor(t))%4)],rayRgb);
     }
   }
@@ -258,9 +298,7 @@
     t+=0.025;
 
     const TIME = ((timeSlider?parseFloat(timeSlider.value):50) / 100) % 1;
-    // L: 0 at midnight, 1 at noon, smooth raised-cosine
     const L = clamp01(0.5*(1+Math.cos(2*Math.PI*(TIME-0.5))));
-    // W: twilight warmth, peaks at dawn/dusk (where L crosses ~0.5), 0 at noon/midnight
     const Wt = clamp01(1 - Math.abs(2*L-1));
     curL = L; curW = Wt;
 
@@ -282,7 +320,6 @@
     }}
     function set(x,y,ch,rgb){if(y>=0&&y<H&&x>=0&&x<W)grid[y][x]={ch,rgb};}
 
-    // sky texture: stars at night, faint sparkle by day
     const starVisibility = clamp01(1 - L*1.2);
     for(let y=0;y<GRASS_Y;y++){
       const rowSky=lerpRgb(skyTop,skyBot,y/Math.max(1,GRASS_Y));
@@ -305,7 +342,6 @@
       const depth=(y-GRASS_Y)/(H-GRASS_Y);
       for(let x=0;x<W;x++){
         const n=(grassNoise[y]&&grassNoise[y][x]!==undefined)?grassNoise[y][x]:Math.random();
-        // gentle wind ripple only right at the tree line, so it doesn't scroll like ticker text
         const ripple=(y===GRASS_Y)?Math.sin(t*0.5+x*0.35)*0.12:0;
         const idx=Math.floor(((n+ripple+1)%1)*gChars.length);
         const rRgb=darken(grassRgb, clamp01(depth*0.45 + (n-0.5)*0.12));
@@ -315,15 +351,16 @@
 
     const brRgb=lerpRgb(darken([90,48,21],0.55),[90,48,21],L);
 
-    drawLeftTree(set,CX_LEFT,GRASS_Y,H,W,brRgb);
-    drawRightTree(set,CX_RIGHT,GRASS_Y,H,W,brRgb);
-    drawMainTree(set,CX_MAIN,GRASS_Y,H,W,brRgb);
+    drawLeftTree(set,CX_LEFT,GRASS_Y,brRgb);
+    drawRightTree(set,CX_RIGHT,GRASS_Y,brRgb);
+    drawMainTree(set,CX_MAIN,GRASS_Y,brRgb);
 
     let html="",cur=null;
     for(let y=0;y<H;y++){
       for(let x=0;x<W;x++){
         const cell=grid[y][x];
-        const key=cell.rgb[0]+','+cell.rgb[1]+','+cell.rgb[2];
+        const qr=quant(cell.rgb[0]), qg=quant(cell.rgb[1]), qb=quant(cell.rgb[2]);
+        const key=qr+','+qg+','+qb;
         if(key!==cur){if(cur!==null)html+='</span>';html+=`<span style="color:rgb(${key})">`;cur=key;}
         const c=cell.ch;
         html+=c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c;
@@ -336,12 +373,52 @@
     const topKey=`rgb(${skyTop[0]},${skyTop[1]},${skyTop[2]})`;
     const botKey=`rgb(${skyBot[0]},${skyBot[1]},${skyBot[2]})`;
     canvas.style.background=`linear-gradient(to bottom,${topKey} 0%,${botKey} 100%)`;
+  }
 
-    requestAnimationFrame(render);
+  // ── Perf: only keep the rAF loop alive while it's worth paying for —
+  // paused when the tab is hidden and when the hero has scrolled out of
+  // view, and rate-limited to TARGET_FPS the rest of the time. ──
+  let isVisible = true;
+  let isInViewport = true;
+  let rafId = null;
+
+  function loop(ts){
+    rafId = requestAnimationFrame(loop);
+    if(!isVisible || !isInViewport) return;
+    if(ts - lastFrameTime < FRAME_INTERVAL) return;
+    lastFrameTime = ts;
+    render();
+  }
+  let lastFrameTime = 0;
+
+  function startLoop(){
+    if(rafId===null) rafId = requestAnimationFrame(loop);
+  }
+
+  document.addEventListener('visibilitychange', ()=>{ isVisible = !document.hidden; });
+
+  if(window.IntersectionObserver){
+    new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ isInViewport = e.isIntersecting; });
+    }, {threshold: 0.01}).observe(canvas.parentElement || canvas);
   }
 
   if(window.ResizeObserver){
-    new ResizeObserver(()=>{measureGrid();buildSkyNoise();buildGrassNoise();}).observe(canvas.parentElement||canvas);
+    new ResizeObserver(()=>{
+      measureGrid();
+      buildSkyNoise();
+      buildGrassNoise();
+      // Grid dimensions changed, so cached canopy cell positions (which
+      // are baked against W/H) are no longer valid — rebuild on next draw.
+      treeCanopyCache = { main: null, left: null, right: null };
+    }).observe(canvas.parentElement||canvas);
   }
-  render();
+
+  if(prefersReducedMotion){
+    // Respect the user's OS-level motion preference: draw one static
+    // frame and stop, instead of animating indefinitely.
+    render();
+  } else {
+    startLoop();
+  }
 })();
