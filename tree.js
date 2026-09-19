@@ -26,6 +26,10 @@
 
   let W = 72, H = 26;
 
+  // Pixel size of a single grid cell, used to convert cell (x,y) <-> px
+  // coordinates for the cursor-avoidance "float" effect below.
+  let CHAR_W = 6.6, LINE_H = 11 * 1.1;
+
   function measureGrid(){
     const test = document.createElement("span");
     test.style.cssText = "font-family:'DM Mono',monospace;font-size:11px;line-height:1.1;position:absolute;visibility:hidden;white-space:pre;letter-spacing:0em;";
@@ -45,6 +49,8 @@
       h = Math.min(h, 20);
     }
     W = w; H = h;
+    CHAR_W = cw;
+    LINE_H = 11 * 1.1;
   }
   measureGrid();
 
@@ -99,6 +105,131 @@
   let t=0;
 
   const SUN_R=2.6, MOON_R=2.2;
+
+  // ════════════════════════════════════════════════════════════════
+  // Cursor-avoidance "float" effect
+  //
+  // Characters near the mouse are pushed away from the cursor; when the
+  // cursor moves off or leaves, they ease back to their original grid
+  // position. Rather than rebuilding the whole scene as individually
+  // positioned characters (expensive), we keep the existing flow-text
+  // rendering for everything untouched, and only pull the small set of
+  // cells near the cursor out into separately positioned <span> overlays
+  // — the base text renders a blank in their place so nothing doubles up.
+  // ════════════════════════════════════════════════════════════════
+  const HOVER_ENABLED = !prefersReducedMotion && !isCoarsePointer;
+  const HOVER_RADIUS = 85;   // px, distance at which cells start to move
+  const MAX_PUSH = 20;       // px, max displacement for a cell right under the cursor
+  const EASE = 0.22;         // how quickly offsets chase their target each frame
+
+  let mouseX = null, mouseY = null; // px, relative to #scene-canvas
+  let floatOffsets = new Map();     // "x,y" -> {ox, oy} current displacement
+  let floatEls = new Map();         // "x,y" -> <span> overlay element
+  let floatLayer = null;
+
+  if(HOVER_ENABLED){
+    floatLayer = document.createElement('div');
+    floatLayer.id = 'scene-float-layer';
+    floatLayer.style.cssText = [
+      'position:absolute', 'inset:0', 'pointer-events:none',
+      "font-family:'DM Mono',monospace", 'font-size:11px', 'line-height:1.1',
+      'letter-spacing:0em', 'white-space:pre', 'overflow:hidden', 'z-index:2'
+    ].join(';');
+    canvas.insertAdjacentElement('afterend', floatLayer);
+
+    canvas.addEventListener('mousemove', (e)=>{
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+    canvas.addEventListener('mouseleave', ()=>{
+      mouseX = null;
+      mouseY = null;
+    });
+  }
+
+  function updateFloatState(){
+    if(!HOVER_ENABLED) return;
+
+    // Candidates = cells already mid-animation, plus (if hovering) every
+    // cell within the bounding box of the hover radius around the cursor.
+    const candidates = new Set(floatOffsets.keys());
+    if(mouseX !== null && mouseY !== null){
+      const colRadius = Math.ceil(HOVER_RADIUS / CHAR_W) + 1;
+      const rowRadius = Math.ceil(HOVER_RADIUS / LINE_H) + 1;
+      const cCol = Math.round(mouseX / CHAR_W);
+      const cRow = Math.round(mouseY / LINE_H);
+      for(let dy=-rowRadius; dy<=rowRadius; dy++){
+        for(let dx=-colRadius; dx<=colRadius; dx++){
+          const x = cCol+dx, y = cRow+dy;
+          if(x<0||x>=W||y<0||y>=H) continue;
+          candidates.add(x+','+y);
+        }
+      }
+    }
+
+    candidates.forEach(key=>{
+      const comma = key.indexOf(',');
+      const x = parseInt(key.slice(0,comma),10), y = parseInt(key.slice(comma+1),10);
+      const cellCx = (x+0.5)*CHAR_W, cellCy = (y+0.5)*LINE_H;
+
+      let targetX = 0, targetY = 0;
+      if(mouseX !== null && mouseY !== null){
+        const dxp = cellCx - mouseX, dyp = cellCy - mouseY;
+        const dist = Math.sqrt(dxp*dxp + dyp*dyp);
+        if(dist < HOVER_RADIUS){
+          const strength = 1 - dist/HOVER_RADIUS;
+          const invDist = dist < 0.001 ? 0 : 1/dist;
+          targetX = dxp*invDist*strength*MAX_PUSH;
+          targetY = dyp*invDist*strength*MAX_PUSH;
+        }
+      }
+
+      const cur = floatOffsets.get(key) || {ox:0, oy:0};
+      const nox = cur.ox + (targetX-cur.ox)*EASE;
+      const noy = cur.oy + (targetY-cur.oy)*EASE;
+
+      if(targetX===0 && targetY===0 && Math.abs(nox)<0.05 && Math.abs(noy)<0.05){
+        floatOffsets.delete(key); // fully back home — let it render inline again
+      } else {
+        floatOffsets.set(key, {ox:nox, oy:noy});
+      }
+    });
+  }
+
+  function syncFloatLayer(grid){
+    if(!HOVER_ENABLED) return;
+    const used = new Set();
+    floatOffsets.forEach((off, key)=>{
+      const comma = key.indexOf(',');
+      const x = parseInt(key.slice(0,comma),10), y = parseInt(key.slice(comma+1),10);
+      const cell = grid[y] && grid[y][x];
+      if(!cell || cell.ch===' ') return;
+      used.add(key);
+      let el = floatEls.get(key);
+      if(!el){
+        el = document.createElement('span');
+        el.style.position = 'absolute';
+        el.style.willChange = 'transform';
+        floatLayer.appendChild(el);
+        floatEls.set(key, el);
+      }
+      el.textContent = cell.ch;
+      el.style.color = `rgb(${cell.rgb[0]},${cell.rgb[1]},${cell.rgb[2]})`;
+      el.style.left = (x*CHAR_W)+'px';
+      el.style.top = (y*LINE_H)+'px';
+      el.style.transform = `translate(${off.ox.toFixed(2)}px, ${off.oy.toFixed(2)}px)`;
+    });
+    floatEls.forEach((el,key)=>{
+      if(!used.has(key)){ el.remove(); floatEls.delete(key); }
+    });
+  }
+
+  function resetFloatState(){
+    floatOffsets.clear();
+    floatEls.forEach(el=>el.remove());
+    floatEls.clear();
+  }
 
   function buildCanopyCells(cx,cy,rx,ry,GRASS_Y,lCharsLen,density,seedOffset){
     const cells=[];
@@ -355,20 +486,30 @@
     drawRightTree(set,CX_RIGHT,GRASS_Y,brRgb);
     drawMainTree(set,CX_MAIN,GRASS_Y,brRgb);
 
+    // Advance the "avoid cursor" displacement for cells near the mouse
+    // (and any cells still easing back home) before we flatten the grid
+    // into HTML, so we know which cells to leave blank in the base text.
+    updateFloatState();
+
     let html="",cur=null;
     for(let y=0;y<H;y++){
       for(let x=0;x<W;x++){
         const cell=grid[y][x];
+        const floating = HOVER_ENABLED && floatOffsets.has(x+','+y);
         const qr=quant(cell.rgb[0]), qg=quant(cell.rgb[1]), qb=quant(cell.rgb[2]);
         const key=qr+','+qg+','+qb;
         if(key!==cur){if(cur!==null)html+='</span>';html+=`<span style="color:rgb(${key})">`;cur=key;}
-        const c=cell.ch;
+        const c=floating?' ':cell.ch;
         html+=c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c;
       }
       html+='\n';
     }
     if(cur) html+='</span>';
     canvas.innerHTML=html;
+
+    // Paint the displaced characters on their own overlay layer, offset
+    // away from the cursor (or easing back toward 0 as it leaves).
+    syncFloatLayer(grid);
 
     const topKey=`rgb(${skyTop[0]},${skyTop[1]},${skyTop[2]})`;
     const botKey=`rgb(${skyBot[0]},${skyBot[1]},${skyBot[2]})`;
@@ -411,6 +552,7 @@
       // Grid dimensions changed, so cached canopy cell positions (which
       // are baked against W/H) are no longer valid — rebuild on next draw.
       treeCanopyCache = { main: null, left: null, right: null };
+      resetFloatState();
     }).observe(canvas.parentElement||canvas);
   }
 

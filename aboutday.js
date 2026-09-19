@@ -12,6 +12,10 @@
    This mirrors explore.js: the hero markup (.bio-hero > .bio-hero-text)
    already exists statically in the HTML, so this script just decorates
    the existing .bio-hero in place — it does NOT build its own wrapper.
+
+   Also mirrors tree.js's cursor-avoidance "float" effect: characters
+   near the mouse drift away from it, then ease back to their original
+   spot once the cursor moves off or leaves.
    ============================================================ */
    (function () {
     function init() {
@@ -36,7 +40,7 @@
 
       const powerSlider = document.getElementById("sunPower");
       setupSliderFill(powerSlider);
-      runScene(canvas, powerSlider);
+      runScene(canvas, powerSlider, hero);
     }
 
     function setupSliderFill(slider) {
@@ -122,9 +126,14 @@
       document.head.appendChild(style);
     }
 
-    function runScene(canvas, powerSlider) {
+    function runScene(canvas, powerSlider, hero) {
       let W = 72,
         H = 22;
+
+      // Pixel size of one grid cell — used to convert cell (x,y) <-> px
+      // for the cursor-avoidance "float" effect below.
+      let CHAR_W = 6.6,
+        LINE_H = 11 * 1.1;
 
       function measureGrid() {
         const test = document.createElement("span");
@@ -137,6 +146,8 @@
         const rect = canvas.getBoundingClientRect();
         W = Math.max(40, Math.floor((rect.width || window.innerWidth) / cw));
         H = Math.max(16, Math.floor((rect.height || 360) / (11 * 1.1)));
+        CHAR_W = cw;
+        LINE_H = 11 * 1.1;
       }
       measureGrid();
 
@@ -168,6 +179,134 @@
       buildSkyNoise();
 
       let t = 0;
+
+      // ════════════════════════════════════════════════════════════
+      // Cursor-avoidance "float" effect (see tree.js for the fuller
+      // write-up). Characters near the mouse are pushed away from it;
+      // when the cursor moves off or leaves, they ease back home.
+      // The canvas itself is pointer-events:none (so clicks reach the
+      // hero text/slider), so mouse tracking happens on the hero
+      // container instead, with positions still measured against the
+      // canvas's own bounding box.
+      // ════════════════════════════════════════════════════════════
+      const HOVER_ENABLED =
+        !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) &&
+        !(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+      const HOVER_RADIUS = 85; // px
+      const MAX_PUSH = 20; // px
+      const EASE = 0.22;
+
+      let mouseX = null,
+        mouseY = null; // px, relative to canvas
+      let floatOffsets = new Map(); // "x,y" -> {ox, oy}
+      let floatEls = new Map(); // "x,y" -> <span>
+      let floatLayer = null;
+
+      if (HOVER_ENABLED) {
+        floatLayer = document.createElement("div");
+        floatLayer.id = "aboutSceneFloat";
+        floatLayer.className = "ascii-hero__canvas"; // reuse existing layer styling
+        canvas.insertAdjacentElement("afterend", floatLayer);
+
+        hero.addEventListener("mousemove", (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
+        });
+        hero.addEventListener("mouseleave", () => {
+          mouseX = null;
+          mouseY = null;
+        });
+      }
+
+      function updateFloatState() {
+        if (!HOVER_ENABLED) return;
+        const candidates = new Set(floatOffsets.keys());
+        if (mouseX !== null && mouseY !== null) {
+          const colRadius = Math.ceil(HOVER_RADIUS / CHAR_W) + 1;
+          const rowRadius = Math.ceil(HOVER_RADIUS / LINE_H) + 1;
+          const cCol = Math.round(mouseX / CHAR_W);
+          const cRow = Math.round(mouseY / LINE_H);
+          for (let dy = -rowRadius; dy <= rowRadius; dy++) {
+            for (let dx = -colRadius; dx <= colRadius; dx++) {
+              const x = cCol + dx,
+                y = cRow + dy;
+              if (x < 0 || x >= W || y < 0 || y >= H) continue;
+              candidates.add(x + "," + y);
+            }
+          }
+        }
+
+        candidates.forEach((key) => {
+          const comma = key.indexOf(",");
+          const x = parseInt(key.slice(0, comma), 10),
+            y = parseInt(key.slice(comma + 1), 10);
+          const cellCx = (x + 0.5) * CHAR_W,
+            cellCy = (y + 0.5) * LINE_H;
+
+          let targetX = 0,
+            targetY = 0;
+          if (mouseX !== null && mouseY !== null) {
+            const dxp = cellCx - mouseX,
+              dyp = cellCy - mouseY;
+            const dist = Math.sqrt(dxp * dxp + dyp * dyp);
+            if (dist < HOVER_RADIUS) {
+              const strength = 1 - dist / HOVER_RADIUS;
+              const invDist = dist < 0.001 ? 0 : 1 / dist;
+              targetX = dxp * invDist * strength * MAX_PUSH;
+              targetY = dyp * invDist * strength * MAX_PUSH;
+            }
+          }
+
+          const cur = floatOffsets.get(key) || { ox: 0, oy: 0 };
+          const nox = cur.ox + (targetX - cur.ox) * EASE;
+          const noy = cur.oy + (targetY - cur.oy) * EASE;
+
+          if (targetX === 0 && targetY === 0 && Math.abs(nox) < 0.05 && Math.abs(noy) < 0.05) {
+            floatOffsets.delete(key);
+          } else {
+            floatOffsets.set(key, { ox: nox, oy: noy });
+          }
+        });
+      }
+
+      function syncFloatLayer(grid) {
+        if (!HOVER_ENABLED) return;
+        const used = new Set();
+        floatOffsets.forEach((off, key) => {
+          const comma = key.indexOf(",");
+          const x = parseInt(key.slice(0, comma), 10),
+            y = parseInt(key.slice(comma + 1), 10);
+          const cell = grid[y] && grid[y][x];
+          if (!cell || cell.ch === " ") return;
+          used.add(key);
+          let el = floatEls.get(key);
+          if (!el) {
+            el = document.createElement("span");
+            el.style.position = "absolute";
+            el.style.willChange = "transform";
+            floatLayer.appendChild(el);
+            floatEls.set(key, el);
+          }
+          el.textContent = cell.ch;
+          el.style.color = `rgb(${cell.rgb[0]},${cell.rgb[1]},${cell.rgb[2]})`;
+          el.style.left = x * CHAR_W + "px";
+          el.style.top = y * LINE_H + "px";
+          el.style.transform = `translate(${off.ox.toFixed(2)}px, ${off.oy.toFixed(2)}px)`;
+        });
+        floatEls.forEach((el, key) => {
+          if (!used.has(key)) {
+            el.remove();
+            floatEls.delete(key);
+          }
+        });
+      }
+
+      function resetFloatState() {
+        floatOffsets.clear();
+        floatEls.forEach((el) => el.remove());
+        floatEls.clear();
+      }
 
       // ── Sun power render ───────────────────────────────────
       // power: 0 = weak/small rays, 1 = powerful/big dense rays. Core size is constant.
@@ -231,18 +370,23 @@
 
         drawSun(set, SUN_CX, SUN_CY, SUN_R, power);
 
+        // Advance the "avoid cursor" displacement before flattening the
+        // grid to HTML, so we know which cells to leave blank below.
+        updateFloatState();
+
         let html = "",
           cur = null;
         for (let y = 0; y < H; y++) {
           for (let x = 0; x < W; x++) {
             const cell = grid[y][x];
+            const floating = HOVER_ENABLED && floatOffsets.has(x + "," + y);
             const key = cell.rgb[0] + "," + cell.rgb[1] + "," + cell.rgb[2];
             if (key !== cur) {
               if (cur !== null) html += "</span>";
               html += `<span style="color:rgb(${key})">`;
               cur = key;
             }
-            const c = cell.ch;
+            const c = floating ? " " : cell.ch;
             html += c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : c;
           }
           html += "\n";
@@ -251,6 +395,10 @@
         canvas.innerHTML = html;
         canvas.style.background = `linear-gradient(to bottom, rgb(${SKY_TOP.join(",")}) 0%, rgb(${SKY_BOT.join(",")}) 100%)`;
 
+        // Paint the displaced characters on their own overlay, offset
+        // away from the cursor (or easing back toward 0 as it leaves).
+        syncFloatLayer(grid);
+
         requestAnimationFrame(render);
       }
 
@@ -258,6 +406,7 @@
         new ResizeObserver(() => {
           measureGrid();
           buildSkyNoise();
+          resetFloatState();
         }).observe(canvas);
       }
       render();
